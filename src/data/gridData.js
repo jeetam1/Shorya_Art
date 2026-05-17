@@ -1,43 +1,373 @@
 export const gridItems = [
-  // First Loop (1-12)
-  { id: 1, src: '/1.jpg', title: 'In the deep II', url: '#/in-the-deep-ii' },
-  { id: 2, src: '/2.jpg', title: 'The Guardian', url: '#/the-guardian' },
-  { id: 3, src: '/3.jpg', title: 'Abstract Ocean', url: '#/abstract-ocean' },
-  { id: 4, src: '/4.jpg', title: 'Modern Horizon', url: '#/modern-horizon' },
-  { id: 5, src: '/5.jpg', title: 'In The Sea', url: '#/in-the-sea' },
-  { id: 6, src: '/6.jpg', title: 'Nature Canvas', url: '#/nature-canvas' },
-  { id: 7, src: '/7.jpg', title: 'Bright Light', url: '#/bright-light' },
-  { id: 8, src: '/8.jpg', title: 'Sunset Waves', url: '#/sunset-waves' },
-  { id: 9, src: '/9.jpg', title: 'Deep Thoughts', url: '#/deep-thoughts' },
-  { id: 10, src: '/10.jpg', title: 'Abstract View', url: '#/abstract-view' },
-  { id: 11, src: '/11.jpg', title: 'Vibrant Strokes', url: '#/vibrant-strokes' },
-  { id: 12, src: '/12.jpg', title: 'The Core Painting', url: '#/the-core' },
+  // ==========================================================================
+  // FIRST LOOP (ITEMS 1 - 12)
+  // ==========================================================================
+  {
+    id: 1,
+    slug: "in-the-deep-ii",
+    title: "In the deep II",
+    summary: "I look at mountains and oceans. Where you stand can change the...",
+    description: "I look at mountains and oceans. Where you stand can change the meaning of deep for you.",
+    medium: "Acrylic on canvas",
+    size: "2' X 3'",
+    src: "/1.jpg"
+  },
+  {
+    id: 2,
+    slug: "colours-of-life-i",
+    title: "Colours of Life I",
+    summary: "The colors of life surround us. The garden has so many colors...",
+    description: "The colors of life surround us. The garden has so many colors to explore and discover.",
+    medium: "Acrylic on canvas",
+    size: "3' X 4'",
+    src: "/2.jpg"
+  },
+  {
+    id: 3,
+    slug: "abstract-ocean",
+    title: "Abstract Ocean",
+    summary: "Diving deep into turquoise layers and sweeping visual currents...",
+    description: "Diving deep into turquoise layers and sweeping visual currents to explore oceanic depth patterns.",
+    medium: "Acrylic on canvas",
+    size: "30\" x 40\"",
+    src: "/3.jpg"
+  },
+  {
+    id: 4,
+    slug: "modern-horizon",
+    title: "Modern Horizon",
+    summary: "Where linear geometry intersects with raw landscape tones...",
+    description: "Where linear geometry intersects with raw landscape tones in a contemporary display environment.",
+    medium: "Mixed Media",
+    size: "3' X 3'",
+    src: "/4.jpg"
+  },
+  {
+    id: 5,
+    slug: "in-the-sea",
+    title: "In The Sea",
+    summary: "We wonder what goes on in the depths of the sea. We imagine...",
+    description: "We wonder what goes on in the depths of the sea. We imagine it and the colors come through.",
+    medium: "Acrylic on Canvas",
+    size: "18\" x 24\"",
+    src: "/5.jpg"
+  },
+  {
+    id: 6,
+    slug: "nature-canvas",
+    title: "Nature Canvas",
+    summary: "Earth tones blending into soft, textured visual backdrops...",
+    description: "Earth tones blending into soft, textured visual backdrops representing organic morning shifts.",
+    medium: "Acrylic on canvas",
+    size: "40\" x 40\"",
+    src: "/6.jpg"
+  },
+  {
+    id: 7,
+    slug: "bright-light",
+    title: "Bright Light",
+    summary: "High-contrast geometric illumination bursting from solid darkness...",
+    description: "High-contrast geometric illumination bursting from solid darkness to create depth fields.",
+    medium: "Oil on canvas",
+    size: "2' X 4'",
+    src: "/8.jpg"
+  },
+  {
+    id: 8,
+    slug: "sunset-waves",
+    title: "Sunset Waves",
+    summary: "Warm crimson gradients reflecting off fluid textural motions...",
+    description: "Warm crimson gradients reflecting off fluid textural motions captured at dusk thresholds.",
+    medium: "Acrylic on canvas",
+    size: "24\" x 24\"",
+    src: "/9.jpg"
+  },
+  {
+    id: 9,
+    slug: "deep-thoughts",
+    title: "Deep Thoughts",
+    summary: "A complex labyrinth of heavy palette strokes and dark fields...",
+    description: "A complex labyrinth of heavy palette strokes and dark fields provoking introspective visual states.",
+    medium: "Mixed Media",
+    size: "3' X 5'",
+    src: "/10.jpg"
+  },
+  {
+    id: 10,
+    slug: "abstract-view",
+    title: "Abstract View",
+    summary: "Deconstructing symmetrical perspective into broad dynamic layers...",
+    description: "Deconstructing symmetrical perspective into broad dynamic layers of bold primary balances.",
+    medium: "Acrylic on canvas",
+    size: "36\" x 48\"",
+    src: "/11.jpg"
+  },
+  {
+    id: 11,
+    slug: "vibrant-strokes",
+    title: "Vibrant Strokes",
+    summary: "High-energy expressive paint applications crossing paths cleanly...",
+    description: "High-energy expressive paint applications crossing paths cleanly on a heavy-weight canvas backdrop.",
+    medium: "Acrylic on canvas",
+    size: "30\" x 30\"",
+    src: "/12.jpg"
+  },
+  {
+    id: 12,
+    slug: "the-core-painting",
+    title: "The Core Painting",
+    summary: "The absolute foundational balance point of raw aesthetic energy...",
+    description: "The absolute foundational balance point of raw aesthetic energy and structural center points.",
+    medium: "Oil on canvas",
+    size: "4' X 4'",
+    src: "/7.jpg"
+  },
 
-  // Second Loop (13-24)
-  { id: 13, src: '/1.jpg', title: 'In the deep II (Copy 1)', url: '#/in-the-deep-ii-c1' },
-  { id: 14, src: '/2.jpg', title: 'The Guardian (Copy 1)', url: '#/the-guardian-c1' },
-  { id: 15, src: '/3.jpg', title: 'Abstract Ocean (Copy 1)', url: '#/abstract-ocean-c1' },
-  { id: 16, src: '/4.jpg', title: 'Modern Horizon (Copy 1)', url: '#/modern-horizon-c1' },
-  { id: 17, src: '/5.jpg', title: 'In The Sea (Copy 1)', url: '#/in-the-sea-c1' },
-  { id: 18, src: '/6.jpg', title: 'Nature Canvas (Copy 1)', url: '#/nature-canvas-c1' },
-  { id: 19, src: '/7.jpg', title: 'Bright Light (Copy 1)', url: '#/bright-light-c1' },
-  { id: 20, src: '/8.jpg', title: 'Sunset Waves (Copy 1)', url: '#/sunset-waves-c1' },
-  { id: 21, src: '/9.jpg', title: 'Deep Thoughts (Copy 1)', url: '#/deep-thoughts-c1' },
-  { id: 22, src: '/10.jpg', title: 'Abstract View (Copy 1)', url: '#/abstract-view-c1' },
-  { id: 23, src: '/11.jpg', title: 'Vibrant Strokes (Copy 1)', url: '#/vibrant-strokes-c1' },
-  { id: 24, src: '/12.jpg', title: 'The Core Painting (Copy 1)', url: '#/the-core-c1' },
+  // ==========================================================================
+  // SECOND LOOP (ITEMS 13 - 24)
+  // ==========================================================================
+  {
+    id: 13,
+    slug: "in-the-deep-ii-c1",
+    title: "In the deep II (Copy 1)",
+    summary: "Alternative spatial exploration into mountains and vast horizons...",
+    description: "Alternative spatial exploration into mountains and vast horizons using premium cold shades.",
+    medium: "Acrylic on canvas",
+    size: "2' X 3'",
+    src: "/1.jpg"
+  },
+  {
+    id: 14,
+    slug: "the-guardian-c1",
+    title: "The Guardian (Copy 1)",
+    summary: "...Only five and already he has a signature style...",
+    description: "A profound reflection on structure and scale, bringing out signature textures and heavy layers.",
+    medium: "Oil on canvas",
+    size: "24\" x 36\"",
+    src: "/2.jpg"
+  },
+  {
+    id: 15,
+    slug: "abstract-ocean-c1",
+    title: "Abstract Ocean (Copy 1)",
+    summary: "Extended flow variations across deep marine brush techniques...",
+    description: "Extended flow variations across deep marine brush techniques and turquoise canvas bases.",
+    medium: "Acrylic on canvas",
+    size: "30\" x 40\"",
+    src: "/3.jpg"
+  },
+  {
+    id: 16,
+    slug: "modern-horizon-c1",
+    title: "Modern Horizon (Copy 1)",
+    summary: "A focused study on the horizontal baseline segment layers...",
+    description: "A focused study on the horizontal baseline segment layers using modern metallic pigments.",
+    medium: "Mixed Media",
+    size: "3' X 3'",
+    src: "/4.jpg"
+  },
+  {
+    id: 17,
+    slug: "in-the-sea-c1",
+    title: "In The Sea (Copy 1)",
+    summary: "A secondary look underneath fluid visual surface elements...",
+    description: "A secondary look underneath fluid visual surface elements, expanding raw movement fields.",
+    medium: "Acrylic on Canvas",
+    size: "18\" x 24\"",
+    src: "/5.jpg"
+  },
+  {
+    id: 18,
+    slug: "nature-canvas-c1",
+    title: "Nature Canvas (Copy 1)",
+    summary: "Re-evaluating rich forest floor patterns with warm earth strokes...",
+    description: "Re-evaluating rich forest floor patterns with warm earth strokes and textured palette knives.",
+    medium: "Acrylic on canvas",
+    size: "40\" x 40\"",
+    src: "/6.jpg"
+  },
+  {
+    id: 19,
+    slug: "bright-light-c1",
+    title: "Bright Light (Copy 1)",
+    summary: "Shifting light focus fields along high-contrast focal bands...",
+    description: "Shifting light focus fields along high-contrast focal bands against raw black layouts.",
+    medium: "Oil on canvas",
+    size: "2' X 4'",
+    src: "/7.jpg"
+  },
+  {
+    id: 20,
+    slug: "sunset-waves-c1",
+    title: "Sunset Waves (Copy 1)",
+    summary: "Dusk wave tracking utilizing deep magenta fluid properties...",
+    description: "Dusk wave tracking utilizing deep magenta fluid properties over solid geometry grids.",
+    medium: "Acrylic on canvas",
+    size: "24\" x 24\"",
+    src: "/8.jpg"
+  },
+  {
+    id: 21,
+    slug: "deep-thoughts-c1",
+    title: "Deep Thoughts (Copy 1)",
+    summary: "A deeper descent into visual mental complexity and tracking...",
+    description: "A deeper descent into visual mental complexity using heavy impasto texturing methods.",
+    medium: "Mixed Media",
+    size: "3' X 5'",
+    src: "/9.jpg"
+  },
+  {
+    id: 22,
+    slug: "abstract-view-c1",
+    title: "Abstract View (Copy 1)",
+    summary: "Asymmetrical balance patterns mapped across broad panels...",
+    description: "Asymmetrical balance patterns mapped across broad panels with high-fidelity color fields.",
+    medium: "Acrylic on canvas",
+    size: "36\" x 48\"",
+    src: "/10.jpg"
+  },
+  {
+    id: 23,
+    slug: "vibrant-strokes-c1",
+    title: "Vibrant Strokes (Copy 1)",
+    summary: "High-energy expressive paint applications crossing paths cleanly...",
+    description: "High-energy expressive paint applications crossing paths cleanly on a heavy-weight template.",
+    medium: "Acrylic on canvas",
+    size: "30\" x 30\"",
+    src: "/11.jpg"
+  },
+  {
+    id: 24,
+    slug: "the-core-c1",
+    title: "The Core Painting (Copy 1)",
+    summary: "The second variance layout inspecting central aesthetic points...",
+    description: "The second variance layout inspecting central aesthetic points and micro-texture elements.",
+    medium: "Oil on canvas",
+    size: "4' X 4'",
+    src: "/12.jpg"
+  },
 
-  // Third Loop (25-36) - Added 12 More
-  { id: 25, src: '/1.jpg', title: 'In the deep II (Copy 2)', url: '#/in-the-deep-ii-c2' },
-  { id: 26, src: '/2.jpg', title: 'The Guardian (Copy 2)', url: '#/the-guardian-c2' },
-  { id: 27, src: '/3.jpg', title: 'Abstract Ocean (Copy 2)', url: '#/abstract-ocean-c2' },
-  { id: 28, src: '/4.jpg', title: 'Modern Horizon (Copy 2)', url: '#/modern-horizon-c2' },
-  { id: 29, src: '/5.jpg', title: 'In The Sea (Copy 2)', url: '#/in-the-sea-c2' },
-  { id: 30, src: '/6.jpg', title: 'Nature Canvas (Copy 2)', url: '#/nature-canvas-c2' },
-  { id: 31, src: '/7.jpg', title: 'Bright Light (Copy 2)', url: '#/bright-light-c2' },
-  { id: 32, src: '/8.jpg', title: 'Sunset Waves (Copy 2)', url: '#/sunset-waves-c2' },
-  { id: 33, src: '/9.jpg', title: 'Deep Thoughts (Copy 2)', url: '#/deep-thoughts-c2' },
-  { id: 34, src: '/10.jpg', title: 'Abstract View (Copy 2)', url: '#/abstract-view-c2' },
-  { id: 35, src: '/11.jpg', title: 'Vibrant Strokes (Copy 2)', url: '#/vibrant-strokes-c2' },
-  { id: 36, src: '/12.jpg', title: 'The Core Painting (Copy 2)', url: '#/the-core-c2' }
+  // ==========================================================================
+  // THIRD LOOP (ITEMS 25 - 36)
+  // ==========================================================================
+  {
+    id: 25,
+    slug: "in-the-deep-ii-c2",
+    title: "In the deep II (Copy 2)",
+    summary: "Final atmospheric landscape variations using broad geometric panels...",
+    description: "Final atmospheric landscape variations using broad geometric panels and deep value shades.",
+    medium: "Acrylic on canvas",
+    size: "2' X 3'",
+    src: "/1.jpg"
+  },
+  {
+    id: 26,
+    slug: "the-guardian-c2",
+    title: "The Guardian (Copy 2)",
+    summary: "The final layer review tracking massive abstract figure structures...",
+    description: "The final layer review tracking massive abstract figure structures and rich charcoal additions.",
+    medium: "Oil on canvas",
+    size: "24\" x 36\"",
+    src: "/2.jpg"
+  },
+  {
+    id: 27,
+    slug: "abstract-ocean-c2",
+    title: "Abstract Ocean (Copy 2)",
+    summary: "Concluding exploration into oceanic visuals and high-speed motion strokes...",
+    description: "Concluding exploration into oceanic visuals and high-speed motion strokes.",
+    medium: "Acrylic on canvas",
+    size: "30\" x 40\"",
+    src: "/3.jpg"
+  },
+  {
+    id: 28,
+    slug: "modern-horizon-c2",
+    title: "Modern Horizon (Copy 2)",
+    summary: "A definitive geometric summary mapping horizontal space grids...",
+    description: "A definitive geometric summary mapping horizontal space grids using deep matte textures.",
+    medium: "Mixed Media",
+    size: "3' X 3'",
+    src: "/4.jpg"
+  },
+  {
+    id: 29,
+    slug: "in-the-sea-c2",
+    title: "In The Sea (Copy 2)",
+    summary: "Final deep-water concepts breaking up linear alignment tracks...",
+    description: "Final deep-water concepts breaking up linear alignment tracks with fluid pouring mediums.",
+    medium: "Acrylic on Canvas",
+    size: "18\" x 24\"",
+    src: "/5.jpg"
+  },
+  {
+    id: 30,
+    slug: "nature-canvas-c2",
+    title: "Nature Canvas (Copy 2)",
+    summary: "Organic structural patterns finalized inside broad paint fields...",
+    description: "Organic structural patterns finalized inside broad paint fields with premium earth tones.",
+    medium: "Acrylic on canvas",
+    size: "40\" x 40\"",
+    src: "/6.jpg"
+  },
+  {
+    id: 31,
+    slug: "bright-light-c2",
+    title: "Bright Light (Copy 2)",
+    summary: "Concluding structural light study tracing high-intensity core nodes...",
+    description: "Concluding structural light study tracing high-intensity core nodes in thick oil layers.",
+    medium: "Oil on canvas",
+    size: "2' X 4'",
+    src: "/7.jpg"
+  },
+  {
+    id: 32,
+    slug: "sunset-waves-c2",
+    title: "Sunset Waves (Copy 2)",
+    summary: "The final dusk spectrum exploration capturing ambient field hues...",
+    description: "The final dusk spectrum exploration capturing ambient field hues over fine woven linen.",
+    medium: "Acrylic on canvas",
+    size: "24\" x 24\"",
+    src: "/8.jpg"
+  },
+  {
+    id: 33,
+    slug: "deep-thoughts-c2",
+    title: "Deep Thoughts (Copy 2)",
+    summary: "The final complex configuration layout of intersecting emotional paint paths...",
+    description: "The final complex configuration layout of intersecting emotional paint paths and raw media tones.",
+    medium: "Mixed Media",
+    size: "3' X 5'",
+    src: "/9.jpg"
+  },
+  {
+    id: 34,
+    slug: "abstract-view-c2",
+    title: "Abstract View (Copy 2)",
+    summary: "Definitive secondary perspective tracking clean primary balances...",
+    description: "Definitive secondary perspective tracking clean primary balances across wide canvas profiles.",
+    medium: "Acrylic on canvas",
+    size: "36\" x 48\"",
+    src: "/10.jpg"
+  },
+  {
+    id: 35,
+    slug: "vibrant-strokes-c2",
+    title: "Vibrant Strokes (Copy 2)",
+    summary: "The closing macro-stroke exploration tracing dynamic gestural rhythms...",
+    description: "The closing macro-stroke exploration tracing dynamic gestural rhythms and speed motions.",
+    medium: "Acrylic on canvas",
+    size: "30\" x 30\"",
+    src: "/11.jpg"
+  },
+  {
+    id: 36,
+    slug: "the-core-c2",
+    title: "The Core Painting (Copy 2)",
+    summary: "The ultimate focal center master panel closing the gallery series...",
+    description: "The ultimate focal center master panel closing the gallery series with premium textured glazes.",
+    medium: "Oil on canvas",
+    size: "4' X 4'",
+    src: "/12.jpg"
+  }
 ];

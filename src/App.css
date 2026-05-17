@@ -1,0 +1,392 @@
+/* ==========================================================================
+   1. GLOBAL DOCUMENT BASELINE (ALLOWS FULL-PAGE NATURAL WINDOW SCROLLING)
+   ========================================================================== */
+html, 
+body, 
+#root, 
+#app, 
+:root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  height: auto !important;         /* Allows document framework to expand beyond screen height */
+  min-height: 100vh !important;
+  background-color: #ffffff;
+  
+  /* Critical: Hands over scroll track controls completely to the primary window */
+  overflow-y: auto !important; 
+  overflow-x: hidden !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Force layout grid alignment trackers to share structural depth bounds */
+.app-container {
+  display: grid !important;
+  grid-template-columns: 7.4cm 1fr !important; /* Locks sidebar column width precisely to 7.4cm */
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   2. UNIFIED STRETCHING SIDEBAR CONTAINER (FORCED TO BOTTOM BASAL LINE)
+   ========================================================================== */
+.sidebar {
+  grid-column: 1 !important;
+  width: 7.4cm !important;       
+  min-width: 7.4cm !important;
+  max-width: 7.4cm !important;
+  background-color: #000000;
+  color: #ffffff;
+  
+  /* Relative position lets the items scroll naturally up and down with the mouse */
+  position: relative !important; 
+  top: 0; 
+  left: 0;
+  
+  /* CRITICAL FIX: Instructs the column background track to stretch completely 
+     to the lowest edge of the page, eliminating early cutoff bugs */
+  height: 100% !important;
+  min-height: 100vh !important;
+  
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 100;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   3. BRAND LOGO HEADER CONFIGURATION (EXACT 10.5cm SPACING FOOTPRINT)
+   ========================================================================== */
+.logo-container {
+  width: 100% !important;        
+  height: 10.5cm !important;     
+  min-height: 10.5cm !important; 
+  max-height: 10.5cm !important; 
+  padding: 0px !important;            
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #000000;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.brand-logo-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 10.5cm !important;             
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* ==========================================================================
+   4. NAVIGATION MENU LINK ITEM CLUSTERS
+   ========================================================================== */
+.nav-menu {
+  flex-grow: 0;
+  width: 100% !important;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ffffff;  /* White line partition divider above 'Home' link */
+}
+
+.nav-menu li {
+  width: 100% !important;
+  height: 1.1cm !important;       
+  min-height: 1.1cm !important;
+  max-height: 1.1cm !important;
+  border-bottom: 1px solid #ffffff; /* Explicit white separation panel division layout lines */
+  background-color: #000000;
+  box-sizing: border-box;
+}
+
+.nav-menu li a {
+  display: flex !important;
+  justify-content: center !important; 
+  align-items: center !important;     
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;                 
+  color: #ffffff;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  position: relative;                 
+  box-sizing: border-box;
+}
+
+.nav-text {
+  text-align: center;                 
+  width: 100%;
+  display: block;
+  line-height: 1.2;
+}
+
+.nav-menu li a .nav-icon {
+  position: absolute;
+  right: 20px;                        
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.nav-menu li.active a {
+  background-color: #df9939 !important; /* Active indicator premium theme fill color highlight */
+  color: #000000 !important;
+  font-weight: bold;
+}
+
+.nav-menu li.active a .nav-icon {
+  color: #000000;
+}
+
+.nav-menu li a:hover:not(.active) {
+  background-color: #121212;
+}
+
+/* ==========================================================================
+   5. LOWER PANEL COMPOSITIONS (SOCIAL MATRIX & TWITTER WIDGET BLOCKS)
+   ========================================================================== */
+.sidebar-bottom-widgets {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-top: 0 !important; 
+}
+
+.sidebar-social-section {
+  width: 100% !important;
+  height: 3.5cm !important;
+  min-height: 3.5cm !important;
+  max-height: 3.5cm !important;
+  background-color: #000000;
+  border-bottom: 1px solid #ffffff; /* Horizontal tracking border line below social grid buttons */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.social-section-heading {
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.social-links-grid {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px;
+}
+
+.social-img-btn {
+  width: 32px;
+  height: 32px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: opacity 0.2s ease;
+}
+
+.social-img-btn:hover { opacity: 0.85; }
+
+.fb-bg { background-color: #3b5998; border: 1px solid #2d4373; }
+.tw-bg { background-color: #00aced; border: 1px solid #0087ba; }
+.insta-bg { background-color: #4e433c; border: 1px solid #38302b; } 
+.pin-bg { background-color: #cb2027; border: 1px solid #9f181e; }
+.yt-bg { background-color: #bb0000; border: 1px solid #930000; }
+
+.sidebar-twitter-section {
+  width: 100% !important;
+  height: 2.2cm !important;
+  min-height: 2.2cm !important;
+  max-height: 2.2cm !important;
+  background-color: #000000;
+  border-bottom: 1px solid #ffffff; /* Horizontal partition border line tracking below twitter layout area */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box;
+}
+
+.twitter-panel-text {
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Solid background fill block for any leftover track space down to the footer line */
+.sidebar-empty-basement {
+  width: 100% !important;
+  flex-grow: 1 !important; 
+  background-color: #000000;
+}
+
+/* ==========================================================================
+   6. MAIN PORTFOLIO DISPLAY AREA WORKSPACE
+   ========================================================================== */
+.main-content {
+  grid-column: 2 !important;
+  position: relative !important;
+  left: 0 !important;
+  margin-left: 0 !important; 
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh !important;
+  overflow: hidden !important; 
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.art-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* Locks 4 equal columns across screen dimensions */
+  gap: 1px !important; 
+  width: 100% !important; 
+  max-width: 100% !important;
+  background-color: #e8e8e8 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   7. SEAMLESS PORTFOLIO GRID ARTICLE MOUNT TILES (STRICT 4:3 RATIO RESETS)
+   ========================================================================== */
+.portfolio-entry-card {
+  width: 100% !important;
+  display: block !important;
+  background-color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.art-card-wrapper {
+  width: 100% !important;    
+  aspect-ratio: 4 / 3 !important; 
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  display: block !important;
+}
+
+.art-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+  display: block !important;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.card-hover-overlay {
+  position: absolute !important;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(247, 148, 29, 0.95) !important; 
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  opacity: 0; 
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  z-index: 2 !important;
+}
+
+.card-hover-title {
+  color: #ffffff !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 1.4vw !important;
+  font-weight: bold !important;
+  margin-bottom: 12px !important;
+}
+
+.card-hover-icon-circle {
+  width: 42px !important; 
+  height: 42px !important;
+  background-color: #ffffff !important;
+  color: #f7941d !important;
+  border-radius: 50% !important;
+  display: flex !important; 
+  align-items: center !important; 
+  justify-content: center !important;
+}
+
+.portfolio-entry-card:hover .card-hover-overlay { opacity: 1 !important; visibility: visible !important; }
+.portfolio-entry-card:hover .art-card-img { transform: scale(1.03) !important; }
+
+/* ==========================================================================
+   8. DYNAMIC SUB-MENU DROPDOWN CONFIGURATION
+   ========================================================================== */
+.sub-menu-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.sub-menu-list li.sub-item {
+  width: 100% !important;
+  height: 1.1cm !important;
+  min-height: 1.1cm !important;
+  max-height: 1.1cm !important;
+  background-color: #df9939 !important; /* Premium gold/orange background for opened links */
+  border-bottom: 1px solid #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+.sub-menu-list li.sub-item a {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+  height: 100%;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.sub-nav-text {
+  color: #4baed4 !important; /* Precise blue text matching your uploaded screenshot */
+  font-family: Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  width: 100%;
+  display: block;
+}
+
+/* Hover style for sub-menu rows */
+.sub-menu-list li.sub-item:hover {
+  background-color: #cb8527 !important; /* Slightly darker shade on click hover states */
+}

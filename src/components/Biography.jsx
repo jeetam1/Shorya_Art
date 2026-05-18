@@ -109,7 +109,7 @@ export default function Biography() {
 
           {/* CHRONOLOGICAL GRAPHIC MAP TIMELINE */}
           <div className="biography-infographic-timeline-box" onClick={() => setModalImage('/501.jpg')} style={{ cursor: 'pointer' }}>
-            <img src="/501.jpg" alt="Shorya Timeline Journey Infographic" className="biography-full-width-infographic-asset" />
+            <img src="/500.jpg" alt="Shorya Timeline Journey Infographic" className="biography-full-width-infographic-asset" />
           </div>
 
           <h2 className="biography-journey-title-header">Shorya's art journey till date</h2>

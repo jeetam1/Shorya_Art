@@ -1,15 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Biography() {
+  const [modalImage, setModalImage] = useState(null);
+
+  // Exact academic accolades array sequencing certificates from 503.jpg to 510.jpg sequentially
+  const academicAccolades = [
+    {
+      id: 'harvard-1',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Harvard_University_coat_of_arms.svg',
+      institution: 'HARVARD UNIVERSITY',
+      certSrc: '/503.jpg'
+    },
+    {
+      id: 'harvard-2',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Harvard_University_coat_of_arms.svg',
+      institution: 'HARVARD UNIVERSITY',
+      certSrc: '/504.jpg'
+    },
+    {
+      id: 'mit-1',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg',
+      institution: 'MASSACHUSETTS INSTITUTE OF TECHNOLOGY',
+      certSrc: '/505.jpg'
+    },
+    {
+      id: 'mit-2',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg',
+      institution: 'MASSACHUSETTS INSTITUTE OF TECHNOLOGY',
+      certSrc: '/506.jpg'
+    },
+    {
+      id: 'mit-3',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg',
+      institution: 'MASSACHUSETTS INSTITUTE OF TECHNOLOGY',
+      certSrc: '/507.jpg'
+    },
+    {
+      id: 'imperial-1',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Imperial_College_London_Crest.svg',
+      institution: 'IMPERIAL COLLEGE LONDON',
+      certSrc: '/508.jpg'
+    },
+    {
+      id: 'imperial-2',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Imperial_College_London_Crest.svg',
+      institution: 'IMPERIAL COLLEGE LONDON',
+      certSrc: '/509.jpg'
+    },
+    {
+      id: 'davidson-1',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Davidson_College_logo.svg',
+      institution: 'DAVIDSON COLLEGE',
+      certSrc: '/510.jpg'
+    }
+  ];
+
   return (
     <div className="editorial-page-canvas">
-      <div className="editorial-hero-banner-frame" style={{ backgroundImage: `url('/501.jpg')` }}>
-        <h1 className="editorial-main-title-text">Biography</h1>
+      
+      {/* 1. TOP HERO BANNER STRIP - ALIGNED LEFT BOTTOM */}
+      <div className="editorial-hero-banner-frame" style={{ backgroundImage: `url('/6.jpg')` }}>
+        <div className="editorial-title-overlap-box">
+          <h1 className="editorial-main-title-text">Biography</h1>
+        </div>
       </div>
 
+      {/* 2. MAIN SCROLLABLE CONTENT BODY */}
       <div className="editorial-inner-content-scaffold">
+        
+        {/* MAIN PROFILE PORTRAIT */}
         <div className="editorial-portrait-wrapper-box">
-          <img src="/500.jpg" alt="Shorya Portrait" className="editorial-featured-portrait-asset" />
+          <img 
+            src="/511.jpg" 
+            alt="Shorya Portrait" 
+            className="editorial-featured-portrait-asset" 
+            onClick={() => setModalImage('/511.jpg')}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
 
         <div className="editorial-text-editorial-block">
@@ -40,34 +107,64 @@ export default function Biography() {
             to create a legacy, one magnum opus at one time!
           </p>
 
-          <div className="biography-infographic-timeline-box">
+          {/* CHRONOLOGICAL GRAPHIC MAP TIMELINE */}
+          <div className="biography-infographic-timeline-box" onClick={() => setModalImage('/501.jpg')} style={{ cursor: 'pointer' }}>
             <img src="/501.jpg" alt="Shorya Timeline Journey Infographic" className="biography-full-width-infographic-asset" />
           </div>
 
           <h2 className="biography-journey-title-header">Shorya's art journey till date</h2>
 
-          <div className="biography-historical-sampler-flex-grid">
-            <div className="sampler-thumbnail-card"><img src="/502.jpg" alt="Art 2011" /></div>
-            <div className="sampler-thumbnail-card"><img src="/503.jpg" alt="Art 2012" /></div>
-            <div className="sampler-thumbnail-card"><img src="/504.jpg" alt="Art 2013" /></div>
-            <div className="sampler-thumbnail-card"><img src="/505.jpg" alt="Art 2014" /></div>
-            <div className="sampler-thumbnail-card"><img src="/506.jpg" alt="Art 2015" /></div>
-            <div className="sampler-thumbnail-card"><img src="/507.jpg" alt="Art 2016" /></div>
+          {/* THE SINGLE DYNAMIC HIGH-RESOLUTION ARTWORK DISPLAY ROW */}
+          <div className="biography-single-artwork-journey-row">
+            <div className="biography-journey-main-artwork-frame" onClick={() => setModalImage('/502.jpg')}>
+              <img src="/502.jpg" alt="Shorya's Core Journey Abstract Artwork" className="biography-journey-main-img" />
+              <div className="biography-journey-artwork-meta-footer">
+                <span className="meta-left">Sparks of Spring (Sold)</span>
+                <span className="meta-center">2011</span>
+                <span className="meta-right">Acrylic on Canvas</span>
+              </div>
+            </div>
           </div>
 
+          {/* ACADEMIC TIMELINE STRUCTURE (MATCHES VIDEO CHRONOLOGY PERFECTLY) */}
           <h2 className="biography-journey-title-header">Academic accolades</h2>
 
-          <div className="biography-credentials-vertical-stack">
-            <div className="credential-certificate-card-frame"><img src="/508.jpg" alt="Harvard" /></div>
-            <div className="credential-certificate-card-frame"><img src="/509.jpg" alt="MIT" /></div>
-            <div className="credential-certificate-card-frame"><img src="/510.jpg" alt="Imperial" /></div>
+          <div className="academics-container-stack">
+            {academicAccolades.map((accolade, idx) => (
+              <div key={`${accolade.id}-${idx}`} className="academic-credential-row-block">
+                
+                {/* A. Official University Vector Emblem Logo */}
+                <div className="academic-institution-logo-wrap">
+                  <img src={accolade.logo} alt={`${accolade.institution} emblem`} className="academic-vector-logo-img" />
+                </div>
+
+                {/* B. University Typographic Header Name */}
+                <h3 className="academic-institution-name-heading">{accolade.institution}</h3>
+
+                {/* C. Verified Certificate Document Image Component */}
+                <div className="academic-certificate-photo-frame" onClick={() => setModalImage(accolade.certSrc)}>
+                  <img src={accolade.certSrc} alt={`${accolade.institution} Certificate Document`} className="academic-certificate-img-asset" />
+                </div>
+
+              </div>
+            ))}
           </div>
+
         </div>
       </div>
 
-      <footer className="detail-page-footer-signature-bio">
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
+      {/* 3. HIGH-FIDELITY ANIMATED POP-UP OVERLAY LIGHTBOX ENGINE */}
+      {modalImage && (
+        <div className="portfolio-modal-overlay-shroud" onClick={() => setModalImage(null)}>
+          <div className="portfolio-modal-container-window" onClick={(e) => e.stopPropagation()}>
+            <button className="portfolio-modal-close-trigger-btn" onClick={() => setModalImage(null)}>&times;</button>
+            <div className="portfolio-modal-image-bounding-wrapper">
+              <img src={modalImage} alt="Enlarged Ultra-HD Asset" className="portfolio-modal-large-img animate-zoom-in" />
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

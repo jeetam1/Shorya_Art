@@ -5,7 +5,7 @@ import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import Events from './components/Events';
-import NewspaperArticles from './components/NewspaperArticles'; // Import the new component module
+import NewspaperArticles from './components/NewspaperArticles';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -16,12 +16,6 @@ export default function App() {
 
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
-
-  const [smoothPos, setSmoothPos] = useState({ x: 0, y: 0 });
-  const targetPos = useRef({ x: 0, y: 0 });
-  const animationFrameId = useRef(null);
-
-  const ZOOM_LEVEL = 3; 
 
   useEffect(() => {
     const handleUrlRouting = () => {
@@ -56,7 +50,7 @@ export default function App() {
       } else if (currentHash === '#/media/newspaper-articles') {
         setCurrentView({ type: 'newspaper-articles', data: null });
         setActiveTab('Newspapers Articles');
-        setExpandedMenu('Media'); // Keep parent accordion dropdown open safely
+        setExpandedMenu('Media');
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
       } else if (currentHash.startsWith('#/artwork/')) {
@@ -76,24 +70,6 @@ export default function App() {
     handleUrlRouting(); 
     return () => window.removeEventListener('hashchange', handleUrlRouting);
   }, []);
-
-  useEffect(() => {
-    const updateSmoothPosition = () => {
-      setSmoothPos(prev => {
-        const dx = targetPos.current.x - prev.x;
-        const dy = targetPos.current.y - prev.y;
-        return { x: prev.x + dx * 0.12, y: prev.y + dy * 0.12 };
-      });
-      animationFrameId.current = requestAnimationFrame(updateSmoothPosition);
-    };
-
-    if (magnifier.show) {
-      animationFrameId.current = requestAnimationFrame(updateSmoothPosition);
-    }
-    return () => {
-      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
-    };
-  }, [magnifier.show]);
 
   const handleMenuClick = (item) => {
     if (item.hasSub) {
@@ -122,8 +98,6 @@ export default function App() {
     if (posX < 0 || posY < 0 || posX > width || posY > height) {
       setMagnifier(prev => ({ ...prev, show: false }));
     } else {
-      targetPos.current = { x: posX, y: posY };
-      if (!magnifier.show) setSmoothPos({ x: posX, y: posY });
       setMagnifier({ x: posX, y: posY, show: true });
     }
   };
@@ -132,8 +106,8 @@ export default function App() {
     if (!containerRef.current) return {};
     const width = containerRef.current.offsetWidth;
     const height = containerRef.current.offsetHeight;
-    const pctX = (smoothPos.x / width) * 100;
-    const pctY = (smoothPos.y / height) * 100;
+    const pctX = (magnifier.x / width) * 100;
+    const pctY = (magnifier.y / height) * 100;
 
     return {
       left: `${magnifier.x - 75}px`,
@@ -146,7 +120,7 @@ export default function App() {
   return (
     <div className="app-container">
       
-      {/* SIDEBAR NAVIGATION ENGINE */}
+      {/* SIDEBAR NAVIGATION PANEL */}
       <aside className="sidebar">
         <div className="logo-container" onClick={() => window.location.hash = '#home'} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
@@ -217,7 +191,7 @@ export default function App() {
         <div className="sidebar-empty-basement"></div>
       </aside>
 
-      {/* RIGHT WORKSPACE RENDERING AREA */}
+      {/* CORE WORKSPACE DISPLAY LAYOUT ENGINE */}
       <main className="main-content">
         {currentView.type === 'grid' && (
           <div className="art-grid">
@@ -240,7 +214,7 @@ export default function App() {
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
-        {currentView.type === 'newspaper-articles' && <NewspaperArticles />} {/* Connected new file route view hook */}
+        {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
 
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">

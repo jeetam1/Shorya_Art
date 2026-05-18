@@ -1,22 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Minus, Search } from 'lucide-react';
 import { gridItems } from './data/gridData';
+import Biography from './components/Biography';
+import ArtistStatement from './components/ArtistStatement';
+import AcrylicOnCanvas from './components/AcrylicOnCanvas';
+import Events from './components/Events'; // Import the new Events module
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
-  
-  // Dynamic template routing state tracking variables
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
 
-  // Pinned magnifier coordinate tracking metrics
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
 
-  // Set your desired zoom magnification power scale here (3.5 matches the CSS background-size)
-  const ZOOM_LEVEL = 3.5; 
+  const [smoothPos, setSmoothPos] = useState({ x: 0, y: 0 });
+  const targetPos = useRef({ x: 0, y: 0 });
+  const animationFrameId = useRef(null);
+
+  const ZOOM_LEVEL = 3; 
 
   useEffect(() => {
     const handleUrlRouting = () => {
@@ -25,6 +29,27 @@ export default function App() {
       if (!currentHash || currentHash === '#home') {
         setCurrentView({ type: 'grid', data: null });
         setActiveTab('Home');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/biography') {
+        setCurrentView({ type: 'biography', data: null });
+        setActiveTab('Biography');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/artist-statement') {
+        setCurrentView({ type: 'artist-statement', data: null });
+        setActiveTab("Artist's Statement");
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/gallery/acrylic-on-canvas') {
+        setCurrentView({ type: 'acrylic-on-canvas', data: null });
+        setActiveTab('Acrylic on canvas');
+        setExpandedMenu('Gallery');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/events') {
+        setCurrentView({ type: 'events', data: null });
+        setActiveTab('Events');
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
       } else if (currentHash.startsWith('#/artwork/')) {
@@ -45,46 +70,76 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleUrlRouting);
   }, []);
 
+  useEffect(() => {
+    const updateSmoothPosition = () => {
+      setSmoothPos(prev => {
+        const dx = targetPos.current.x - prev.x;
+        const dy = targetPos.current.y - prev.y;
+        return { x: prev.x + dx * 0.12, y: prev.y + dy * 0.12 };
+      });
+      animationFrameId.current = requestAnimationFrame(updateSmoothPosition);
+    };
+
+    if (magnifier.show) {
+      animationFrameId.current = requestAnimationFrame(updateSmoothPosition);
+    }
+    return () => {
+      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
+    };
+  }, [magnifier.show]);
+
   const handleMenuClick = (item) => {
     if (item.hasSub) {
       setExpandedMenu(expandedMenu === item.name ? null : item.name);
     } else {
       setActiveTab(item.name);
       setExpandedMenu(null);
-      window.location.hash = '#home'; 
+      if (item.name === 'Biography') {
+        window.location.hash = '#/biography';
+      } else if (item.name === "Artist's Statement") {
+        window.location.hash = '#/artist-statement';
+      } else if (item.name === 'Events') {
+        window.location.hash = '#/events';
+      } else {
+        window.location.hash = '#home';
+      }
     }
   };
 
-  const handleArtworkSelection = (item) => {
-    if (item.slug) {
-      window.location.hash = `#/artwork/${item.slug}`;
-    } else {
-      window.location.hash = `#/artwork/${item.title.toLowerCase().replace(/ /g, '-')}`;
-    }
-  };
-
-  // CORRECTED PIXEL MATH: Keeps the background image strictly locked inside the container bounds
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
-
     const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-    
-    // Get cursor positions relative to the image container box edges
     const posX = e.clientX - left;
     const posY = e.clientY - top;
 
-    // Boundary validation checks to turn off the lens outside the asset perimeter
     if (posX < 0 || posY < 0 || posX > width || posY > height) {
       setMagnifier(prev => ({ ...prev, show: false }));
     } else {
+      targetPos.current = { x: posX, y: posY };
+      if (!magnifier.show) setSmoothPos({ x: posX, y: posY });
       setMagnifier({ x: posX, y: posY, show: true });
     }
+  };
+
+  const getMagnifierStyles = () => {
+    if (!containerRef.current) return {};
+    const width = containerRef.current.offsetWidth;
+    const height = containerRef.current.offsetHeight;
+    const pctX = (smoothPos.x / width) * 100;
+    const pctY = (smoothPos.y / height) * 100;
+
+    return {
+      left: `${magnifier.x - 75}px`,
+      top: `${magnifier.y - 75}px`,
+      backgroundImage: `url(${currentView.data.src})`,
+      backgroundPosition: `${pctX}% ${pctY}%`
+    };
   };
 
   return (
     <div className="app-container">
       
-      {/* 1. LEFT ACCORDION NAVIGATION SIDEBAR */}
+      {/* SIDEBAR ACCORDION CONTROLLER */}
       <aside className="sidebar">
         <div className="logo-container" onClick={() => window.location.hash = '#home'} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
@@ -94,24 +149,17 @@ export default function App() {
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
-              const isActive = activeTab === item.name;
+              const isActive = activeTab === item.name || (item.name === 'Gallery' && activeTab === 'Acrylic on canvas');
               
               return (
                 <React.Fragment key={item.name}>
-                  <li 
-                    className={`${isActive ? 'active' : ''} ${item.hasSub ? 'parent-item' : ''}`}
-                    onClick={() => handleMenuClick(item)}
-                  >
+                  <li className={`${isActive ? 'active' : ''}`} onClick={() => handleMenuClick(item)}>
                     <a 
-                      href={item.hasSub ? undefined : `#home`}
+                      href={item.name === 'Biography' ? '#/biography' : item.name === "Artist's Statement" ? '#/artist-statement' : item.name === 'Events' ? '#/events' : (item.hasSub ? undefined : '#home')}
                       onClick={(e) => item.hasSub && e.preventDefault()}
                     >
                       <span className="nav-text">{item.name}</span>
-                      {item.hasSub && (
-                        isExpanded ? 
-                          <Minus className="nav-icon" size={14} strokeWidth={2} /> : 
-                          <Plus className="nav-icon" size={14} strokeWidth={2} />
-                      )}
+                      {item.hasSub && (isExpanded ? <Minus className="nav-icon" size={14} /> : <Plus className="nav-icon" size={14} />)}
                     </a>
                   </li>
 
@@ -124,10 +172,12 @@ export default function App() {
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveTab(sub);
-                            window.location.hash = '#home'; 
+                            if (sub === 'Acrylic on canvas') {
+                              window.location.hash = '#/gallery/acrylic-on-canvas';
+                            }
                           }}
                         >
-                          <a href="#home" onClick={(e) => e.preventDefault()}>
+                          <a href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : '#home'} onClick={(e) => e.preventDefault()}>
                             <span className="sub-nav-text">{sub}</span>
                           </a>
                         </li>
@@ -151,98 +201,57 @@ export default function App() {
               <a href="#youtube" className="social-img-btn yt-bg"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
-
-          <div className="sidebar-twitter-section">
-            <span className="twitter-panel-text">Tweets by Shoryamahanot</span>
-          </div>
+          <div className="sidebar-twitter-section"><span className="twitter-panel-text">Tweets by Shoryamahanot</span></div>
         </div>
-
         <div className="sidebar-empty-basement"></div>
       </aside>
 
-      {/* 2. RIGHT DISPLAY WORKSPACE CONTAINER */}
+      {/* CORE DISPLAY STAGE */}
       <main className="main-content">
-        
-        {currentView.type === 'grid' ? (
+        {currentView.type === 'grid' && (
           <div className="art-grid">
             {gridItems.map((item) => (
-              <article 
-                key={item.id} 
-                className="portfolio-entry-card" 
-                onClick={() => handleArtworkSelection(item)}
-              >
+              <article key={item.id} className="portfolio-entry-card" onClick={() => window.location.hash = `#/artwork/${item.slug}`}>
                 <div className="art-card-wrapper">
                   <img src={item.src} alt={item.title} className="art-card-img" />
                   <div className="card-hover-overlay">
                     <h3 className="card-hover-title">{item.title}</h3>
                     {item.summary && <p className="card-hover-summary">{item.summary}</p>}
-                    <div className="card-hover-icon-circle">
-                      <Search size={18} strokeWidth={3} />
-                    </div>
+                    <div className="card-hover-icon-circle"><Search size={18} /></div>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-        ) : (
+        )}
+
+        {currentView.type === 'biography' && <Biography />}
+        {currentView.type === 'artist-statement' && <ArtistStatement />}
+        {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
+        {currentView.type === 'events' && <Events />} {/* Route path hook directly into your events module component rendering environment */}
+
+        {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">
               <h1 className="artwork-main-title">{currentView.data.title}</h1>
-              <div className="artwork-meta-subheader">
-                Posted | <span className="comment-ticker">0 comments</span>
-              </div>
+              <div className="artwork-meta-subheader">Posted | <span>0 comments</span></div>
             </header>
-
             <div className="detail-page-content-body">
-              
-              {/* IMAGE WRAPPER WITH EXACT CURSOR TRACKING EVENT CONTROLLERS */}
-              <div 
-                className="detail-image-container"
-                ref={containerRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={() => setMagnifier(prev => ({ ...prev, show: false }))}
-              >
-                <img 
-                  src={currentView.data.src} 
-                  alt={currentView.data.title} 
-                  className="detail-large-img" 
-                />
-
-                {/* THE MOVING VIEWPORT WINDOW LAYER REPLICA */}
-                {magnifier.show && (
-                  <div 
-                    className="artwork-magnifier-glass-lens"
-                    style={{
-                      left: `${magnifier.x - 75}px`, // Centers the 150px square exactly horizontally on cursor
-                      top: `${magnifier.y - 75}px`,  // Centers the 150px square exactly vertically on cursor
-                      backgroundImage: `url(${currentView.data.src})`,
-                      
-                      /* FIXED CALCULATIONS: Multiplies relative cursor coordinates against zoom factor levels 
-                         to lock the underlying image perfectly in place as your frame transitions */
-                      backgroundPosition: `-${(magnifier.x * ZOOM_LEVEL) - 75}px -${(magnifier.y * ZOOM_LEVEL) - 75}px`
-                    }}
-                  />
-                )}
+              <div className="detail-image-container" ref={containerRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMagnifier(prev => ({ ...prev, show: false }))}>
+                <img src={currentView.data.src} alt={currentView.data.title} className="detail-large-img" />
+                {magnifier.show && containerRef.current && <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />}
               </div>
-
               <div className="detail-text-description-area">
-                <p className="artwork-description-paragraph">
-                  {currentView.data.description || "I look at mountains and oceans. Where you stand can change the meaning of deep for you."}
-                </p>
-                
+                <p className="artwork-description-paragraph">{currentView.data.description}</p>
                 <ul className="artwork-technical-bullet-list">
                   <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
-                  <li><strong>Size: {currentView.data.size || "2' X 3'"}</strong></li>
+                  <li><strong>Size: {currentView.data.size}</strong></li>
                 </ul>
               </div>
             </div>
-
-            <footer className="detail-page-footer-signature">
-              Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-            </footer>
+            <footer className="detail-page-footer-signature">Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span></footer>
           </div>
         )}
-
       </main>
 
     </div>

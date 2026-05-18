@@ -634,3 +634,498 @@ body,
   color: #888888 !important;
   text-align: left !important;
 }
+
+/* ==========================================================================
+   11. EDITORIAL BIOGRAPHY SUB-PAGE SYSTEM
+   ========================================================================== */
+.biography-page-canvas {
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  animation: dynamicPageIn 0.5s ease-out;
+}
+
+.biography-hero-banner-frame {
+  width: 100% !important;
+  height: 5.5cm !important;
+  background-image: url('/501.jpg'); /* Dynamic banner accent treatment pattern overlay line */
+  background-size: cover;
+  background-position: center;
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  padding: 0 0 30px 60px !important;
+  box-sizing: border-box !important;
+}
+
+.biography-hero-banner-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85); /* Clean high-light white overlay sheet masking background textures */
+  z-index: 1;
+}
+
+.biography-main-title-text {
+  font-family: Arial, sans-serif !important;
+  font-size: 52px !important;
+  font-weight: bold !important;
+  color: #333333 !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+  letter-spacing: -1px;
+}
+
+.biography-inner-content-scaffold {
+  width: 100% !important;
+  max-width: 780px !important; /* Locks ideal layout boundaries for reading block flow widths */
+  padding: 40px 60px 60px 60px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 25px !important;
+}
+
+.biography-portrait-wrapper-box {
+  width: 100% !important;
+  max-width: 440px !important; /* Matches portrait footprint ratios accurately */
+  display: block !important;
+  margin-bottom: 15px !important;
+}
+
+.biography-featured-portrait-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.biography-highlight-first-paragraph {
+  font-family: Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: #222222 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.biography-section-subheading-marker {
+  font-family: Arial, sans-serif !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: #111111 !important;
+  margin: 30px 0 10px 0 !important;
+}
+
+.biography-standard-body-paragraph {
+  font-family: Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  color: #444444 !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.biography-infographic-timeline-box {
+  width: 100% !important;
+  margin: 35px 0 !important;
+  display: block !important;
+  border: 1px solid #eeeeee;
+}
+
+.biography-full-width-infographic-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.biography-journey-title-header {
+  font-family: Georgia, serif !important;
+  font-size: 26px !important;
+  font-weight: 500 !important;
+  color: #222222 !important;
+  margin: 40px 0 20px 0 !important;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 8px;
+}
+
+.biography-historical-sampler-flex-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important; /* Structured 3-column chronological mini masonry framework */
+  gap: 15px !important;
+  width: 100% !important;
+  margin-bottom: 30px !important;
+}
+
+.sampler-thumbnail-card {
+  width: 100% !important;
+  border: 1px solid #e2e2e2;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+.sampler-thumbnail-card img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.biography-credentials-vertical-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+
+.credential-certificate-card-frame {
+  width: 100% !important;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+}
+
+.credential-certificate-card-frame img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.detail-page-footer-signature-bio {
+  margin-top: auto !important;
+  padding: 40px 0 20px 60px !important;
+  width: 100% !important;
+  border-top: 1px solid #eeeeee !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 13px !important;
+  color: #888888 !important;
+}
+
+/* ==========================================================================
+   11. UNIFIED EDITORIAL CONTENT STYLING SYSTEM (BIO & ARTIST STATEMENT)
+   ========================================================================== */
+.editorial-page-canvas {
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  animation: dynamicPageIn 0.5s ease-out;
+}
+
+.editorial-hero-banner-frame {
+  width: 100% !important;
+  height: 5.5cm !important;
+  background-size: cover;
+  background-position: center;
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  padding: 0 0 30px 60px !important;
+  box-sizing: border-box !important;
+}
+
+.editorial-hero-banner-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.editorial-main-title-text {
+  font-family: Arial, sans-serif !important;
+  font-size: 52px !important;
+  font-weight: bold !important;
+  color: #333333 !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+  letter-spacing: -1px;
+}
+
+.editorial-inner-content-scaffold {
+  width: 100% !important;
+  max-width: 780px !important;
+  padding: 40px 60px 60px 60px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 25px !important;
+}
+
+.editorial-portrait-wrapper-box {
+  width: 100% !important;
+  max-width: 440px !important;
+  display: block !important;
+  margin-bottom: 15px !important;
+}
+
+.editorial-featured-portrait-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.editorial-highlight-paragraph {
+  font-family: Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: #222222 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.editorial-section-subheading-marker {
+  font-family: Arial, sans-serif !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: #111111 !important;
+  margin: 30px 0 10px 0 !important;
+}
+
+.editorial-standard-body-paragraph {
+  font-family: Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  color: #444444 !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.editorial-signature-footer-text {
+  font-family: Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-style: italic !important;
+  color: #333333 !important;
+  margin-top: 20px !important;
+  font-weight: bold;
+}
+
+.biography-infographic-timeline-box {
+  width: 100% !important;
+  margin: 35px 0 !important;
+  display: block !important;
+  border: 1px solid #eeeeee;
+}
+
+.biography-full-width-infographic-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.biography-journey-title-header {
+  font-family: Georgia, serif !important;
+  font-size: 26px !important;
+  font-weight: 500 !important;
+  color: #222222 !important;
+  margin: 40px 0 20px 0 !important;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 8px;
+}
+
+.biography-historical-sampler-flex-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 15px !important;
+  width: 100% !important;
+  margin-bottom: 30px !important;
+}
+
+.sampler-thumbnail-card {
+  width: 100% !important;
+  border: 1px solid #e2e2e2;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+.sampler-thumbnail-card img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.biography-credentials-vertical-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+
+.credential-certificate-card-frame {
+  width: 100% !important;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+}
+
+.credential-certificate-card-frame img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.detail-page-footer-signature-bio {
+  margin-top: auto !important;
+  padding: 40px 0 20px 60px !important;
+  width: 100% !important;
+  border-top: 1px solid #eeeeee !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 13px !important;
+  color: #888888 !important;
+}
+/* ==========================================================================
+   12. THREE-COLUMN ARTWORK CATEGORY GRID MATRIX
+   ========================================================================== */
+.gallery-category-container {
+  width: 100% !important;
+  padding: 40px 60px 60px 60px !important;
+  box-sizing: border-box !important;
+  background-color: #ffffff !important;
+}
+
+.gallery-category-3col-grid {
+  display: grid !important;
+  /* Locks the content into 3 identical layout columns matching your screenshots */
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 25px 20px !important; /* Spacious distribution row and column margins */
+  width: 100% !important;
+}
+
+.gallery-thumbnail-card-frame {
+  width: 100% !important;
+  background: #ffffff !important;
+  padding: 10px !important; /* Surrounding asset polaroid styling frames */
+  box-sizing: border-box !important;
+  border: 1px solid #e5e5e5 !important;
+  /* Subtle professional dropdown element blur shadows matching live website portal view */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-thumbnail-card-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.gallery-thumbnail-image-wrapper {
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important; /* Locks ideal intrinsic landscape aspect ratios flat */
+  overflow: hidden !important;
+  background-color: #fcfcfc;
+}
+
+.gallery-thumbnail-asset-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Responsive adjustment mixes for 3-column categories */
+@media (max-width: 1100px) {
+  .gallery-category-3col-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 650px) {
+  .gallery-category-3col-grid { grid-template-columns: 1fr !important; }
+  .gallery-category-container { padding: 20px !important; }
+}
+
+/* ==========================================================================
+   13. HISTORICAL TIMELINE EVENTS SCREEN STYLING MODULE
+   ========================================================================== */
+.event-page-scaffold {
+  max-width: 680px !important; /* Perfect desktop reading line width for events blocks */
+}
+
+.event-timeline-block {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 50px !important;
+}
+
+.event-year-heading {
+  font-family: Arial, sans-serif !important;
+  font-size: 26px !important;
+  font-weight: bold !important;
+  color: #222222 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.event-media-container {
+  width: 100% !important;
+  border: 1px solid #f0f0f0 !important;
+  box-sizing: border-box !important;
+  margin-bottom: 20px !important;
+}
+
+.event-large-banner-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.event-item-sub-title {
+  font-family: Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  color: #333333 !important;
+  margin: 0 0 20px 0 !important;
+  text-align: left !important;
+}
+
+/* Row alignment template mapping logo on the left and typography on the right */
+.event-split-row-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 25px !important;
+  width: 100% !important;
+}
+
+.event-brand-logo-wrapper {
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  display: block !important;
+}
+
+.pogo-logo-adjust {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+}
+
+.event-inline-logo-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.event-editorial-text-pane {
+  flex-grow: 1 !important;
+  display: block !important;
+}
+
+/* Distinctive bright teal colored link element rules */
+.event-teal-readmore-link {
+  font-family: Arial, sans-serif !important;
+  font-size: 14px !important;
+  color: #4baed4 !important; /* Perfect teal code matching original web portal style elements rules */
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  display: inline-block !important;
+  margin-top: 5px !important;
+  transition: color 0.2s ease;
+}
+
+.event-teal-readmore-link:hover {
+  color: #2da1cc !important;
+  text-decoration: underline !important;
+}
+
+/* Responsive breakpoint mixins for events screen rows layout scaling */
+@media (max-width: 600px) {
+  .event-split-row-layout { flex-direction: column !important; gap: 15px !important; }
+  .event-brand-logo-wrapper { width: 120px !important; }
+}

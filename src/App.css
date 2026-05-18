@@ -1129,3 +1129,110 @@ body,
   .event-split-row-layout { flex-direction: column !important; gap: 15px !important; }
   .event-brand-logo-wrapper { width: 120px !important; }
 }
+
+/* ==========================================================================
+   14. NEWSPAPERS ARTICLES HIGH-FIDELITY LAYOUT MODULE
+   ========================================================================== */
+.media-page-scaffold {
+  max-width: 680px !important; /* Locks ideal alignment width for reading layout lines flow */
+}
+
+.media-article-card-block {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 45px !important;
+}
+
+.media-article-split-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 30px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.media-agency-logo-box {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  display: block !important;
+  box-sizing: border-box;
+}
+
+/* TYPOGRAPHIC AGENCY LOGO SIGNATURE STYLES */
+.text-logo-style {
+  font-family: 'Times New Roman', Times, serif !important;
+  color: #111111 !important;
+  line-height: 1.1 !important;
+  text-align: left;
+}
+
+.guardian-logo-text {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  letter-spacing: -0.5px;
+}
+
+.toi-logo-text {
+  font-size: 15px !important;
+  font-weight: bold !important;
+  letter-spacing: 0.2px;
+  display: block;
+  border-bottom: 2px solid #111111;
+  padding-bottom: 3px;
+}
+
+/* BRAND REPLICA BADGE FOR HT CAFE */
+.filled-logo-style {
+  display: block !important;
+}
+
+.ht-cafe-badge-box {
+  background-color: #e31e24 !important; /* Authentic HT Cafe red primary palette */
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  text-align: center !important;
+  color: #ffffff !important;
+}
+
+.ht-cafe-main-text {
+  font-family: Arial, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  display: block !important;
+  line-height: 1;
+}
+
+.ht-cafe-sub-text {
+  font-family: Arial, sans-serif !important;
+  font-size: 8px !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin-top: 2px;
+}
+
+.media-article-text-pane {
+  flex-grow: 1 !important;
+  display: block !important;
+}
+
+.media-clipping-image-container {
+  width: 100% !important;
+  border: 1px solid #eaeaea !important;
+  box-sizing: border-box !important;
+  background-color: #fafafa;
+}
+
+.media-clipping-full-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Responsive adjustment mixes for news layout columns */
+@media (max-width: 600px) {
+  .media-article-split-row { flex-direction: column !important; gap: 15px !important; }
+  .media-agency-logo-box { width: 130px !important; }
+}

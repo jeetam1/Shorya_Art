@@ -4,7 +4,8 @@ import { gridItems } from './data/gridData';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
-import Events from './components/Events'; // Import the new Events module
+import Events from './components/Events';
+import NewspaperArticles from './components/NewspaperArticles'; // Import the new component module
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -50,6 +51,12 @@ export default function App() {
       } else if (currentHash === '#/events') {
         setCurrentView({ type: 'events', data: null });
         setActiveTab('Events');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/media/newspaper-articles') {
+        setCurrentView({ type: 'newspaper-articles', data: null });
+        setActiveTab('Newspapers Articles');
+        setExpandedMenu('Media'); // Keep parent accordion dropdown open safely
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
       } else if (currentHash.startsWith('#/artwork/')) {
@@ -139,7 +146,7 @@ export default function App() {
   return (
     <div className="app-container">
       
-      {/* SIDEBAR ACCORDION CONTROLLER */}
+      {/* SIDEBAR NAVIGATION ENGINE */}
       <aside className="sidebar">
         <div className="logo-container" onClick={() => window.location.hash = '#home'} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
@@ -149,7 +156,9 @@ export default function App() {
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
-              const isActive = activeTab === item.name || (item.name === 'Gallery' && activeTab === 'Acrylic on canvas');
+              const isActive = activeTab === item.name || 
+                               (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
+                               (item.name === 'Media' && activeTab === 'Newspapers Articles');
               
               return (
                 <React.Fragment key={item.name}>
@@ -174,10 +183,12 @@ export default function App() {
                             setActiveTab(sub);
                             if (sub === 'Acrylic on canvas') {
                               window.location.hash = '#/gallery/acrylic-on-canvas';
+                            } else if (sub === 'Newspapers Articles') {
+                              window.location.hash = '#/media/newspaper-articles';
                             }
                           }}
                         >
-                          <a href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : '#home'} onClick={(e) => e.preventDefault()}>
+                          <a href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : sub === 'Newspapers Articles' ? '#/media/newspaper-articles' : '#home'} onClick={(e) => e.preventDefault()}>
                             <span className="sub-nav-text">{sub}</span>
                           </a>
                         </li>
@@ -206,7 +217,7 @@ export default function App() {
         <div className="sidebar-empty-basement"></div>
       </aside>
 
-      {/* CORE DISPLAY STAGE */}
+      {/* RIGHT WORKSPACE RENDERING AREA */}
       <main className="main-content">
         {currentView.type === 'grid' && (
           <div className="art-grid">
@@ -228,7 +239,8 @@ export default function App() {
         {currentView.type === 'biography' && <Biography />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
-        {currentView.type === 'events' && <Events />} {/* Route path hook directly into your events module component rendering environment */}
+        {currentView.type === 'events' && <Events />}
+        {currentView.type === 'newspaper-articles' && <NewspaperArticles />} {/* Connected new file route view hook */}
 
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">

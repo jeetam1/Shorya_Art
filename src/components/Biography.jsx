@@ -230,7 +230,7 @@ export default function Biography() {
           </p>
 
           <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/501.jpg')}>
-            <img src="/501.jpg" alt="Shorya Timeline Journey Infographic" className="shorya-timeline-infographic-asset-img" />
+            <img src="/500.jpg" alt="Shorya Timeline Journey Infographic" className="shorya-timeline-infographic-asset-img" />
           </div>
 
           <h2 className="shorya-secondary-scaffold-section-header">Shorya's art journey till date</h2>

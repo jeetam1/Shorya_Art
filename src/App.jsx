@@ -154,35 +154,42 @@ export default function App() {
                     </a>
                   </li>
 
-                  <div className={`sub-menu-wrapper ${isExpanded ? 'is-open' : ''}`}>
-                    <ul className="sub-menu-list">
-                      {item.hasSub && item.subItems.map((sub) => (
-                        <li 
-                          key={sub} 
-                          className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveTab(sub);
-                            if (sub === 'Acrylic on canvas') {
-                              window.location.hash = '#/gallery/acrylic-on-canvas';
-                            } else if (sub === 'Newspapers Articles') {
-                              window.location.hash = '#/media/newspaper-articles';
-                            } else if (sub === 'Magazines') { 
-                              // FIXED: Hooks up sidebar tracking navigation parameter toggle state
-                              window.location.hash = '#/media/magazines';
-                            }
-                          }}
-                        >
-                          <a 
-                            href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : sub === 'Newspapers Articles' ? '#/media/newspaper-articles' : sub === 'Magazines' ? '#/media/magazines' : '#home'} 
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            <span className="sub-nav-text">{sub}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                 <div className={`sub-menu-wrapper ${isExpanded ? 'is-open' : ''}`}>
+  <ul className="sub-menu-list">
+    {item.hasSub && item.subItems.map((sub) => (
+      <li 
+        key={sub} 
+        className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          setActiveTab(sub);
+          if (sub === 'Acrylic on canvas') {
+            window.location.hash = '#/gallery/acrylic-on-canvas';
+          } else if (sub === 'Newspapers Articles') {
+            window.location.hash = '#/media/newspaper-articles';
+          } else if (sub === 'Magazines') { 
+            window.location.hash = '#/media/magazines';
+          }
+        }}
+      >
+        {/* FIXED: Removed e.preventDefault() so the hash change propagates properly through your app routing hooks */}
+        <a 
+          href={
+            sub === 'Acrylic on canvas' 
+              ? '#/gallery/acrylic-on-canvas' 
+              : sub === 'Newspapers Articles' 
+                ? '#/media/newspaper-articles' 
+                : sub === 'Magazines' 
+                  ? '#/media/magazines' 
+                  : '#home'
+          }
+        >
+          <span className="sub-nav-text">{sub}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
                 </React.Fragment>
               );
             })}

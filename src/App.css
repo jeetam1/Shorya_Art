@@ -845,3 +845,118 @@ body,
     gap: 15px !important;
   }
 }
+
+/* ==========================================================================
+   26. OFFICIAL VIDEO-MATCHED NEWSPAPER ARTICLES TIMELINE (LIVE REPLICA)
+   ========================================================================== */
+.shorya-media-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-media-articles-container {
+  width: 100% !important;
+  max-width: 690px !important; /* Forces the column layout width to perfectly match the live site */
+  padding: 40px 0px 60px 45px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-media-article-card {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+/* CHANGED: Arranges the brand logo and description horizontally */
+.shorya-media-split-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 25px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  margin-bottom: 25px !important;
+}
+
+/* Left Metadata: Forces the brand logo size limits */
+.shorya-media-left-meta-col {
+  width: auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 30px !important;
+  align-items: flex-start !important;
+  flex: 1 !important;
+}
+
+.shorya-media-brand-logo-frame {
+  width: 135px !important;
+  min-width: 135px !important;
+  max-width: 135px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.shorya-media-brand-logo-img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.shorya-media-description-body-text {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+  color: #444444 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  flex: 1 !important;
+}
+
+/* RIGHT SIDE: Centers the newspaper clipping directly below the description */
+.shorya-media-right-clipping-col {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important; /* Perfectly centers the clipping image */
+  margin-top: 10px !important;
+  margin-bottom: 20px !important;
+}
+
+.shorya-media-clipping-frame {
+  width: 100% !important;
+  max-width: 320px !important; /* Increased width to perfectly match the size on the live site */
+  border: 1px solid #e2e2e2 !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04) !important;
+  cursor: zoom-in !important;
+  overflow: hidden !important;
+  background-color: #ffffff !important;
+}
+
+.shorya-media-clipping-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* DASHED PARTITION LINE BREAKS */
+.shorya-media-divider-line {
+  width: 100% !important;
+  border: 0 !important;
+  border-top: 1px dashed #dddddd !important;
+  margin: 20px 0 40px 0 !important;
+}
+
+/* MOBILE VIEW RESPONSIVENESS */
+@media (max-width: 640px) {
+  .shorya-media-left-meta-col {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  .shorya-media-articles-container {
+    padding: 30px 20px !important;
+  }
+}

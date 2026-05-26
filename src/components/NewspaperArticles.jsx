@@ -1,80 +1,161 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function NewspaperArticles() {
+  const [modalImage, setModalImage] = useState(null);
+
+  // Structural array setup handling your multi-year newspaper data mapping
+  const articlesData = [
+    {
+      brand: "the guardian",
+      brandSrc: "/750.jpg",
+      clippingSrc: "/751.jpg",
+      text: "He swept the bristles in wide strokes over the canvas. Each movement appeared deliberate but exaggerated as if his paintings were an unruly orchestra under his conduction."
+    },
+    {
+      brand: "THE TIMES OF INDIA",
+      brandSrc: "/753.jpeg",
+      clippingSrc: "/754.jpg",
+      text: "Shorya Mahanot, an abstract artist whose paintings have been exhibited at RK Laxman's house and at the Taj Mahal Hotel, Mumbai has become the talk of the town. In fact, Cartoonist RK Laxman welcomed Shorya to his residence and was left speechless by his works."
+    },
+    {
+      brand: "THE TIMES OF INDIA",
+      brandSrc: "/755.jpeg",
+      clippingSrc: "/756.jpg",
+      text: "Renowned five-year-old abstract painting master Shorya Mahanot would showcase his works at Kalidas Academy, Ujjain. Shorya has already painted 150 canvases ever since his family realized his talent two years ago."
+    },
+    {
+      brand: "ht café",
+      brandSrc: "/757.jpeg",
+      clippingSrc: "/758.jpg",
+      text: "Shorya has painted over a hundred abstracts since his first started, and he is among one of the few child artists in the world who have had their works exhibited. He is also one of the lucky few to have been allotted a privileged space, the hotel's Chambers Terrace which hosted Obama's speech in Mumbai and the World Cup Celebration, for his show in the city."
+    },
+    {
+      brand: "hindustantimes",
+      brandSrc: "/759.png",
+      clippingSrc: "/760.jpg",
+      text: "The most significant aspect of Shorya's paintings is they have a signature unique to Shorya that all great artists across the globe uphold. Each of his painting has a style of his own and yet subtly they are all related to each other. But he is simply oblivious of the magic that his brush creates."
+    },
+    {
+      brand: "DNA AFTER Hrs",
+      brandSrc: "/761.jpeg",
+      clippingSrc: "/762.jpg",
+      text: "He's no different from a regular, naughty four-year-old kid. But one look at his canvas and you know that there's more to the persona of Shorya Mahanot. One of the youngest abstract artists... Shorya's brushwork has depth and there's beautiful usage of colours."
+    },
+    {
+      brand: "DNA",
+      brandSrc: "/763.jpeg",
+      clippingSrc: "/764.jpg",
+      text: "Six-year-old prodigy Shorya Mahanot, who features among the world's top three child artists, was in the city to receive blessings from Pune's very own Common Man, RK Laxman. 'My father wanted to meet Shorya when I told him about the child,' He said that he would like to see the child paint,' Said Usha, Daughter of RK Laxman. Laxman blessed the child and gifted him an autographed paintbrush, while his wife Kamala Laxman also presented a small gift to the child."
+    },
+    {
+      brand: "MID DAY",
+      brandSrc: "/765.jpg",
+      clippingSrc: "/766.jpg",
+      text: "Child prodigy Shorya Mahanot from Neemuch of Madhya Pradesh receives blessings from the legendary cartoonist RK Laxman."
+    },
+    {
+      brand: "ROBINAGE",
+      brandSrc: "/767.jpg",
+      clippingSrc: "/768.jpg",
+      text: "Starting from the tender age of four, Shorya has been painting willingly and has created over hundred abstract paintings till date. His works have been appreciated by reputed artists and collectors and Shorya is among few child artists to have exhibited their work across the globe."
+    },
+    {
+      brand: "Afternoon DESPATCH & COURIER",
+      brandSrc: "/769.jpg",
+      clippingSrc: "/770.jpg",
+      text: "It is very intriguing in the way he uses color and form. Shows he has an innate understanding of composition which is pure and unsullied by experience from the real world."
+    },
+    {
+      brand: "hindustantimes",
+      brandSrc: "/771.png",
+      clippingSrc: "/772.jpg",
+      text: "Shorya Mahanot from Madhya Pradesh displays his works at city hotel, The Taj Mahal Palace. Same space where Obama delivered a speech during his visit to Mumbai."
+    },
+    {
+      brand: "yak YOUNG ADULT",
+      brandSrc: "/773.jpg",
+      clippingSrc: "/774.jpg",
+      text: "The little painter's little hands flow gracefully across the canvas as he sets out to create just another painting but for his observers, a masterpiece of abstract art."
+    },
+    {
+      brand: "PUNE Newsline",
+      brandSrc: "/775.jpg",
+      clippingSrc: "/776.jpg",
+      text: "Five-year-old Shorya Mahanot, one of the youngest signature style abstract artists of the world, makes painting as Cartoonist RK Laxman watches at Laxman's residence in Aundh on Wednesday."
+    },
+    {
+      brand: "The Asian Age",
+      brandSrc: "/777.png",
+      clippingSrc: "/778.jpg",
+      text: "His work has an innocent confidence. It resembles Jackson Pollock's abstract expressionist work and makes you wonder what Shorya will accomplish in the years to come."
+    },
+    {
+      brand: "India Post",
+      brandSrc: "/779.jpg",
+      clippingSrc: "/780.jpg",
+      text: "\"The maturity of his creations defies his age...\""
+    }
+  ];
+
   return (
-    <div className="editorial-page-canvas">
-      
-      {/* 1. TOP EDITORIAL BANNER HEADER (Using 801.jpg as requested) */}
-      <div className="editorial-hero-banner-frame" style={{ backgroundImage: `url('/801.jpg')` }}>
-        <h1 className="editorial-main-title-text">Newspapers Articles</h1>
+  <div className="shorya-media-view-root">
+    
+    {/* HEADER BANNER BLOCK */}
+    <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      <div className="shorya-custom-title-white-block">
+        <h1 className="shorya-custom-title-text-value">Newspaper Articles</h1>
       </div>
-
-      {/* 2. MEDIA GRID LIST WRAPPER */}
-      <div className="editorial-inner-content-scaffold media-page-scaffold">
-        
-        {/* ==================== ARTICLE 1: THE GUARDIAN ==================== */}
-        <div className="media-article-card-block">
-          <div className="media-article-split-row">
-            <div className="media-agency-logo-box text-logo-style">
-              {/* Uses a typographic rendering style to capture standard newspaper font tracking signatures */}
-              <span className="guardian-logo-text">the<br />guardian</span>
-            </div>
-            <div className="media-article-text-pane">
-              <p className="editorial-standard-body-paragraph">
-                He swept the bristles in wide strokes over the canvas. Each movement appeared deliberate but exaggerated as if his paintings were an unruly orchestra under his conduction.
-              </p>
-            </div>
-          </div>
-          {/* Newspaper Scan Clipping Frame */}
-          <div className="media-clipping-image-container">
-            <img src="/801.jpg" alt="The Guardian Clipping Asset" className="media-clipping-full-img" />
-          </div>
-        </div>
-
-        {/* ==================== ARTICLE 2: THE TIMES OF INDIA ==================== */}
-        <div className="media-article-card-block">
-          <div className="media-article-split-row">
-            <div className="media-agency-logo-box text-logo-style">
-              <span className="toi-logo-text">THE TIMES OF INDIA</span>
-            </div>
-            <div className="media-article-text-pane">
-              <p className="editorial-standard-body-paragraph">
-                Shorya Mahanot, an abstract artist whose paintings have been exhibited at RK Laxman’s house and at The Taj Mahal Hotel, Mumbai has become the talk of the town. In fact, Cartoonist RK Laxman welcomed Shorya to his residence and was left speechless by his works.
-              </p>
-            </div>
-          </div>
-          <div className="media-clipping-image-container">
-            <img src="/802.jpg" alt="The Times of India Clipping Asset" className="media-clipping-full-img" />
-          </div>
-        </div>
-
-        {/* ==================== ARTICLE 3: HT CAFE ==================== */}
-        <div className="media-article-card-block">
-          <div className="media-article-split-row">
-            <div className="media-agency-logo-box filled-logo-style">
-              <div className="ht-cafe-badge-box">
-                <span className="ht-cafe-main-text">htcafé</span>
-                <span className="ht-cafe-sub-text">It's all happening here</span>
-              </div>
-            </div>
-            <div className="media-article-text-pane">
-              <p className="editorial-standard-body-paragraph">
-                Shorya has painted over a hundred abstracts since he first started, and he is among one of the few child artists in the world who have had their works exhibited. He is also one of the lucky few to have been allotted a privileged space, the hotel’s Chambers Terrace which hosted Obama’s speech in Mumbai and the World Cup Celebration, for his show in the city.
-              </p>
-            </div>
-          </div>
-          <div className="media-clipping-image-container">
-            <img src="/803.jpg" alt="HT Cafe Clipping Asset" className="media-clipping-full-img" />
-          </div>
-        </div>
-
-      </div>
-
-      {/* 3. STICKY BRAND CORNER FOOTLINE MARKER */}
-      <footer className="detail-page-footer-signature-bio">
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
-
     </div>
-  );
+
+    {/* ARTICLES LAYOUT TIMELINE COLUMN */}
+    <div className="shorya-media-articles-container">
+      {articlesData.map((article, index) => (
+        <div key={index} className="shorya-media-article-card">
+          
+          {/* Top Row: Brand Logo sits side-by-side with description text */}
+          <div className="shorya-media-split-row">
+            <div className="shorya-media-brand-logo-frame">
+              <img src={article.brandSrc} alt={`${article.brand} logo`} className="shorya-media-brand-logo-img" />
+            </div>
+            <p className="shorya-media-description-body-text">{article.text}</p>
+          </div>
+
+          {/* Bottom Row: Newspaper Clipping Scans Centered below text */}
+          <div className="shorya-media-right-clipping-col" onClick={() => setModalImage(article.clippingSrc)}>
+            <div className="shorya-media-clipping-frame">
+              <img src={article.clippingSrc} alt="Newspaper clipping snapshot document" className="shorya-media-clipping-img" />
+            </div>
+          </div>
+
+          {/* Separation Partition Line Divider */}
+          {index < articlesData.length - 1 && <hr className="shorya-media-divider-line" />}
+
+        </div>
+      ))}
+    </div>
+
+    {/* LIGHTBOX MODAL CHASSIS */}
+    {modalImage && (
+      <div 
+        style={{
+          position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.85)",
+          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 99999,
+          cursor: "zoom-out"
+        }} 
+        onClick={() => setModalImage(null)}
+      >
+        <img 
+          src={modalImage} 
+          alt="Enlarged view blueprint scanner" 
+          style={{ maxWidth: "90%", maxHeight: "90%", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.5)" }} 
+        />
+      </div>
+    )}
+
+    {/* FOOTER WIDGET SIGNATURE */}
+    <footer className="shorya-view-footer-signature-line">
+      Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
+    </footer>
+  </div>
+);
 }

@@ -720,3 +720,137 @@ body,
 @media (max-width: 480px) {
   .shorya-gallery-grid-three-columns-matrix { grid-template-columns: 1fr !important; }
 }
+
+/* ==========================================================================
+   25. OFFICIAL VIDEO-MATCHED EVENTS TIMELINE LAYOUT (LIVE REPLICA MATCH)
+   ========================================================================== */
+.shorya-events-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-events-timeline-container {
+  width: 100% !important;
+  max-width: 1140px !important; /* Widened smoothly to match live viewport alignments */
+  padding: 40px 50px 60px 50px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-event-timeline-card {
+  width: 100% !important;
+  margin-bottom: 50px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-event-year-header {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 28px !important; /* Premium structural font weight matching live site */
+  font-weight: 700 !important;
+  color: #222222 !important;
+  margin: 0 0 24px 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* CONTAINER ADJUSTS AUTOMATICALLY TO MATCH NATURAL PHOTO RATIOS */
+.shorya-event-main-image-frame {
+  width: 100% !important;
+  max-width: 768px !important; /* Limits maximum width footprint beautifully */
+  height: auto !important;     /* Eliminates forced hard crops and squishing */
+  border: 1px solid #e8e8e8 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+  cursor: pointer !important;
+  margin-bottom: 16px !important;
+  overflow: hidden !important;
+  background-color: #ffffff !important;
+}
+
+.shorya-event-display-photo {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important; /* Displays the complete uncropped image from edge to edge */
+  display: block !important;
+  transition: transform 0.25s ease !important;
+}
+
+.shorya-event-main-image-frame:hover .shorya-event-display-photo {
+  transform: scale(1.01) !important;
+}
+
+.shorya-event-content-title {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 14px !important; /* Clean minimal baseline caption subtitle layout */
+  font-weight: 700 !important;
+  color: #333333 !important;
+  margin: 0 0 20px 0 !important;
+  text-align: left !important;
+}
+
+/* TIMELINE TEXT CONTENT DETAILS AND BRAND ROW STYLING */
+.shorya-event-split-info-row {
+  display: flex !important;
+  gap: 30px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  max-width: 768px !important;
+}
+
+.shorya-event-brand-logo-box {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+  border: 1px solid #f0f0f0 !important;
+  padding: 6px !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+.shorya-event-brand-logo-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.shorya-event-description-text-block {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-event-body-paragraph-text {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+  color: #444444 !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.shorya-event-readmore-link-action {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #4baed4 !important;
+  text-decoration: none !important;
+  align-self: flex-start !important;
+}
+
+.shorya-event-readmore-link-action:hover {
+  text-decoration: underline !important;
+}
+
+/* RESPONSIVE FLUID LAYOUT REFOW BREAKPOINTS */
+@media (max-width: 640px) {
+  .shorya-event-split-info-row {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  .shorya-event-brand-logo-box {
+    width: 90px !important;
+    min-width: 90px !important;
+  }
+}

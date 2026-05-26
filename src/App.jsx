@@ -6,7 +6,7 @@ import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
-import Magazines from './components/Magazines'; // FIXED: Added missing component import statement
+import Magazines from './components/Magazines'; 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -14,6 +14,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Mobile view menu state tracker
 
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
@@ -55,7 +56,6 @@ export default function App() {
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
       } else if (currentHash === '#/media/magazines') { 
-        // FIXED: Integrated explicit URL catch router pattern for the Magazines section
         setCurrentView({ type: 'magazines', data: null });
         setActiveTab('Magazines');
         setExpandedMenu('Media');
@@ -85,6 +85,7 @@ export default function App() {
     } else {
       setActiveTab(item.name);
       setExpandedMenu(null);
+      setIsMobileMenuOpen(false); // Closes menu panel layout overlay context auto on redirect
       if (item.name === 'Biography') {
         window.location.hash = '#/biography';
       } else if (item.name === "Artist's Statement") {
@@ -130,11 +131,17 @@ export default function App() {
       
       {/* SIDEBAR NAVIGATION PANEL */}
       <aside className="sidebar">
-        <div className="logo-container" onClick={() => window.location.hash = '#home'} style={{ cursor: 'pointer' }}>
+        <div className="logo-container" onClick={() => { window.location.hash = '#home'; setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
         </div>
 
-        <nav className="nav-menu">
+        {/* Mobile Accordion Menu bar toggle component trigger element strip link */}
+        <div className="mobile-menu-toggle-bar" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <span className="mobile-toggle-title-text">Navigation Menu</span>
+          <span className="mobile-toggle-icon-symbol">{isMobileMenuOpen ? '–' : '+'}</span>
+        </div>
+
+        <nav className={`nav-menu ${isMobileMenuOpen ? 'mobile-expanded-view' : 'mobile-collapsed-view'}`}>
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
@@ -154,42 +161,32 @@ export default function App() {
                     </a>
                   </li>
 
-                 <div className={`sub-menu-wrapper ${isExpanded ? 'is-open' : ''}`}>
-  <ul className="sub-menu-list">
-    {item.hasSub && item.subItems.map((sub) => (
-      <li 
-        key={sub} 
-        className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
-        onClick={(e) => {
-          e.stopPropagation();
-          setActiveTab(sub);
-          if (sub === 'Acrylic on canvas') {
-            window.location.hash = '#/gallery/acrylic-on-canvas';
-          } else if (sub === 'Newspapers Articles') {
-            window.location.hash = '#/media/newspaper-articles';
-          } else if (sub === 'Magazines') { 
-            window.location.hash = '#/media/magazines';
-          }
-        }}
-      >
-        {/* FIXED: Removed e.preventDefault() so the hash change propagates properly through your app routing hooks */}
-        <a 
-          href={
-            sub === 'Acrylic on canvas' 
-              ? '#/gallery/acrylic-on-canvas' 
-              : sub === 'Newspapers Articles' 
-                ? '#/media/newspaper-articles' 
-                : sub === 'Magazines' 
-                  ? '#/media/magazines' 
-                  : '#home'
-          }
-        >
-          <span className="sub-nav-text">{sub}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+                  <div className={`sub-menu-wrapper ${isExpanded ? 'is-open' : ''}`}>
+                    <ul className="sub-menu-list">
+                      {item.hasSub && item.subItems.map((sub) => (
+                        <li 
+                          key={sub} 
+                          className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveTab(sub);
+                            setIsMobileMenuOpen(false); // Closes menu strip layout context canvas view overlay
+                            if (sub === 'Acrylic on canvas') {
+                              window.location.hash = '#/gallery/acrylic-on-canvas';
+                            } else if (sub === 'Newspapers Articles') {
+                              window.location.hash = '#/media/newspaper-articles';
+                            } else if (sub === 'Magazines') { 
+                              window.location.hash = '#/media/magazines';
+                            }
+                          }}
+                        >
+                          <a href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : sub === 'Newspapers Articles' ? '#/media/newspaper-articles' : sub === 'Magazines' ? '#/media/magazines' : '#home'}>
+                            <span className="sub-nav-text">{sub}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </React.Fragment>
               );
             })}
@@ -236,7 +233,7 @@ export default function App() {
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
-        {currentView.type === 'magazines' && <Magazines />} {/* FIXED: Mounted structural layer chassis layout view */}
+        {currentView.type === 'magazines' && <Magazines />} 
 
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">

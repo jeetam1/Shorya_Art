@@ -1113,3 +1113,117 @@ body,
     max-width: 100% !important;
   }
 }
+
+/* ==========================================================================
+   28. HIGH-FIDELITY MOBILE VIEW CONVERSION SYSTEM (DOMINANT LOGO UPDATE)
+   ========================================================================== */
+.mobile-menu-toggle-bar {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* FIXED: Adjusted container to accommodate the larger logo size */
+  .logo-container {
+    width: 100% !important;
+    height: auto !important; /* FIXED: Removed strict 10.5cm height restrictor token value matrix */
+    max-height: none !important; /* FIXED: Removed max-height constraint */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #000000;
+    overflow: hidden;
+    padding: 30px 0 !important; /* Adds standard breathing room space padding layout */
+  }
+
+  /* FIXED: Large mobile logo scaling settings */
+  .brand-logo-img {
+    width: auto !important;
+    max-width: 90% !important; /* Ensures the logo stays contained on narrow screens while maximized */
+    height: auto !important; /* FIXED: Removed strict 140px height marker value to unlock dynamic scaling */
+    object-fit: contain !important;
+    display: block !important;
+    image-rendering: -webkit-optimize-contrast !important; /* Crisp blueprint rendering context */
+  }
+
+  .mobile-menu-toggle-bar {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px;
+    width: 100% !important;
+    height: 1.2cm !important;
+    background-color: #df9939 !important;
+    color: #000000 !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    border-bottom: 1px solid #ffffff !important;
+    box-sizing: border-box !important;
+  }
+
+  .nav-menu {
+    display: grid !important;
+    transition: grid-template-rows 0.3s ease-out, opacity 0.2s ease !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  .nav-menu.mobile-collapsed-view {
+    grid-template-rows: 0fr !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .nav-menu.mobile-expanded-view {
+    grid-template-rows: 1fr !important;
+    opacity: 1 !important;
+  }
+
+  .nav-menu ul {
+    min-height: 0 !important;
+    border-top: none !important;
+  }
+
+  .sidebar-bottom-widgets,
+  .sidebar-empty-basement {
+    display: none !important;
+  }
+
+  .main-content {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .shorya-custom-header-strip-container {
+    height: 140px !important;
+  }
+
+  .shorya-custom-title-white-block {
+    padding: 15px 30px 15px 20px !important;
+  }
+
+  .shorya-custom-title-text-value {
+    font-size: 28px !important;
+  }
+
+  .art-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

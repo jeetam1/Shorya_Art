@@ -6,6 +6,7 @@ import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
+import Magazines from './components/Magazines'; // FIXED: Added missing component import statement
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -50,6 +51,13 @@ export default function App() {
       } else if (currentHash === '#/media/newspaper-articles') {
         setCurrentView({ type: 'newspaper-articles', data: null });
         setActiveTab('Newspapers Articles');
+        setExpandedMenu('Media');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/media/magazines') { 
+        // FIXED: Integrated explicit URL catch router pattern for the Magazines section
+        setCurrentView({ type: 'magazines', data: null });
+        setActiveTab('Magazines');
         setExpandedMenu('Media');
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
@@ -132,7 +140,7 @@ export default function App() {
               const isExpanded = expandedMenu === item.name;
               const isActive = activeTab === item.name || 
                                (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
-                               (item.name === 'Media' && activeTab === 'Newspapers Articles');
+                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines'));
               
               return (
                 <React.Fragment key={item.name}>
@@ -151,7 +159,7 @@ export default function App() {
                       {item.hasSub && item.subItems.map((sub) => (
                         <li 
                           key={sub} 
-                          className={`sub-item ${activeTab === sub ? 'sub-active' : ''}`}
+                          className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveTab(sub);
@@ -159,10 +167,16 @@ export default function App() {
                               window.location.hash = '#/gallery/acrylic-on-canvas';
                             } else if (sub === 'Newspapers Articles') {
                               window.location.hash = '#/media/newspaper-articles';
+                            } else if (sub === 'Magazines') { 
+                              // FIXED: Hooks up sidebar tracking navigation parameter toggle state
+                              window.location.hash = '#/media/magazines';
                             }
                           }}
                         >
-                          <a href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : sub === 'Newspapers Articles' ? '#/media/newspaper-articles' : '#home'} onClick={(e) => e.preventDefault()}>
+                          <a 
+                            href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : sub === 'Newspapers Articles' ? '#/media/newspaper-articles' : sub === 'Magazines' ? '#/media/magazines' : '#home'} 
+                            onClick={(e) => e.preventDefault()}
+                          >
                             <span className="sub-nav-text">{sub}</span>
                           </a>
                         </li>
@@ -215,6 +229,7 @@ export default function App() {
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
+        {currentView.type === 'magazines' && <Magazines />} {/* FIXED: Mounted structural layer chassis layout view */}
 
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">

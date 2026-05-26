@@ -960,3 +960,100 @@ body,
     padding: 30px 20px !important;
   }
 }
+
+/* ==========================================================================
+   27. OFFICIAL VIDEO-MATCHED MAGAZINES ROW TIMELINE INDEX (EXACT LIVE REPLICA)
+   ========================================================================== */
+.shorya-magazines-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Main container layout envelope */
+.shorya-magazines-list-container {
+  width: 100% !important;
+  max-width: 1140px !important; 
+  padding: 40px 0px 60px 45px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-magazine-row-card {
+  width: 100% !important;
+  margin-bottom: 45px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-magazine-split-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 35px !important; /* Perfect gap space between the image and text blocks */
+  align-items: flex-start !important;
+  width: 100% !important;
+}
+
+/* LEFT SIDE: MAGAZINE COVER CHASSIS DIMENSIONS */
+.shorya-magazine-cover-box {
+  width: 325px !important;     
+  min-width: 325px !important; 
+  max-width: 325px !important;
+  display: block !important;
+}
+
+.shorya-magazine-image-frame {
+  width: 100% !important;
+  border: 1px solid #e2e2e2 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+  cursor: zoom-in !important;
+  overflow: hidden !important;
+  background-color: #ffffff !important;
+}
+
+.shorya-magazine-cover-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* RIGHT SIDE: FIXED TEXT BOUNDS, FONT SIZE, AND EXACT ALIGNMENT */
+.shorya-magazine-text-content-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 350px !important; /* FIXED: Widened text box so sentences extend beautifully */
+  padding-top: 12px !important; /* FIXED: Slightly pushed down so line 1 centers vertically with Ben Affleck's forehead */
+}
+
+.shorya-magazine-paragraph-text-value {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 16px !important;       /* FIXED: Reduced font size to match live tracker scale */
+  line-height: 1.85 !important;     /* FIXED: Clean tracking distribution */
+  color: #444444 !important;    
+  text-align: left !important;
+  letter-spacing: 0.1px !important; /* Gives it that clean newspaper/magazine print feel */
+}
+
+/* REPETITIVE DASHED SEPARATOR */
+.shorya-magazine-dashed-divider {
+  width: 100% !important;
+  border: 0 !important;
+  border-top: 1px dashed #dddddd !important;
+  margin: 35px 0 15px 0 !important;
+}
+
+/* MOBILE RESPONSIVE LAYOUT */
+@media (max-width: 768px) {
+  .shorya-magazine-split-layout {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .shorya-magazine-cover-box {
+    width: 100% !important;
+    max-width: 280px !important;
+    min-width: 100% !important;
+  }
+}

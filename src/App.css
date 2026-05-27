@@ -1468,3 +1468,132 @@ body,
   border-left: 18px solid #ffffff !important;
   margin-left: 4px !important;
 }
+
+/* ==========================================================================
+   31. OFFICIAL LOOK THE WORLD IS TALKING GRAPHIC COMPONENT MATRIX
+   ========================================================================== */
+.shorya-look-talking-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-talking-cards-grid-container {
+  width: 100% !important;
+  max-width: 680px !important; /* Forces uniform column reading boundary just like live site */
+  padding: 40px 0px 60px 45px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important; /* Perfect spacing gap down the timeline stack */
+}
+
+/* CONTAINER COMPONENT: CLEAN BORDER BOX SHROUDS */
+/* CONTAINER COMPONENT: CHASSIS BOX WITH BACKGROUND TINT OVERLAY */
+.shorya-talking-quote-card-item {
+  width: 100% !important;
+  background-color: #f4f6f8 !important; /* FIXED: Soft gray-blue fluid color background fill layer */
+  border: 1px solid #c8c8c8 !important; 
+  padding: 20px 24px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* HEADER SUB-BAR CONFIGURATION */
+.shorya-talking-card-top-indicator-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  border-bottom: 1px solid #eef0f2 !important; /* Separation row line */
+  padding-bottom: 10px !important;
+  margin-bottom: 18px !important;
+}
+
+.shorya-talking-quote-mark-icon {
+  font-family: Georgia, serif !important;
+  font-size: 44px !important;
+  line-height: 1 !important;
+  color: #90a4ae !important; /* Premium muted steel blue quote marker color */
+  font-weight: bold !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.shorya-talking-card-main-label {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #333333 !important;
+  margin: 0 !important;
+}
+
+/* SPLIT BODY SCHEMATIC DESIGNS */
+.shorya-talking-card-split-body-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 25px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+}
+
+.shorya-talking-card-brand-img-box {
+  width: 165px !important;
+  min-width: 165px !important;
+  max-width: 165px !important;
+  border: 1px solid #e0e0e0 !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.shorya-talking-card-publisher-badge-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.shorya-talking-card-narrative-text-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.shorya-talking-card-short-quote {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.75 !important;
+  color: #555555 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.shorya-talking-card-author-signature {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #222222 !important;
+  text-align: right !important; /* Aligns author names flush to the right margin */
+  display: block !important;
+}
+
+/* MOBILE ADAPTER MEDIA DEVICE QUERY REFLECTION RULES */
+@media (max-width: 768px) {
+  .shorya-talking-cards-grid-container {
+    padding: 30px 20px !important;
+  }
+  .shorya-talking-card-split-body-layout {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+  }
+  .shorya-talking-card-brand-img-box {
+    width: 135px !important;
+    min-width: 135px !important;
+  }
+}

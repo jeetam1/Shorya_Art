@@ -8,7 +8,8 @@ import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
 import Magazines from './components/Magazines'; 
 import WebArticles from './components/WebArticles';
-import Videos from './components/Videos'; // FIXED: Added missing Videos component import statement
+import Videos from './components/Videos'; 
+import LookWorldTalking from './components/LookWorldTalking';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -73,6 +74,12 @@ export default function App() {
         setCurrentView({ type: 'videos', data: null });
         setActiveTab('Videos');
         setExpandedMenu('Media');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/look-world-talking') {
+        setCurrentView({ type: 'look-world-talking', data: null });
+        setActiveTab('Look the world is talking1');
+        setExpandedMenu('Look the world is talking');
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
       } else if (currentHash.startsWith('#/artwork/')) {
@@ -162,7 +169,8 @@ export default function App() {
               
               const isActive = activeTab === item.name || 
                                (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
-                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Web Articles' || activeTab === 'Videos'));
+                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
+                               (item.name === 'Look the world is talking' && (activeTab === 'Look the world is talking1' || activeTab === 'Twitter Mentions'));
               
               return (
                 <React.Fragment key={item.name}>
@@ -196,10 +204,11 @@ export default function App() {
                               window.location.hash = '#/media/web-articles';
                             } else if (sub === 'Videos') {
                               window.location.hash = '#/media/videos';
+                            } else if (sub === 'Look the world is talking1') {
+                              window.location.hash = '#/look-world-talking';
                             }
                           }}
                         >
-                          {/* FIXED: Removed internal onClick preventDefault hooks so hash navigation flows cleanly */}
                           <a 
                             href={
                               sub === 'Acrylic on canvas' 
@@ -212,7 +221,9 @@ export default function App() {
                                       ? '#/media/web-articles' 
                                       : sub === 'Videos' 
                                         ? '#/media/videos' 
-                                        : '#home'
+                                        : sub === 'Look the world is talking1' 
+                                          ? '#/look-world-talking' 
+                                          : '#home'
                             }
                           >
                             <span className="sub-nav-text">{sub}</span>
@@ -270,6 +281,7 @@ export default function App() {
         {currentView.type === 'magazines' && <Magazines />} 
         {currentView.type === 'web-articles' && <WebArticles />}
         {currentView.type === 'videos' && <Videos />}
+        {currentView.type === 'look-world-talking' && <LookWorldTalking />}
 
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">

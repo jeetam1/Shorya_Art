@@ -1227,3 +1227,244 @@ body,
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+/* ==========================================================================
+   29. OFFICIAL VIDEO-MATCHED WEB ARTICLES INDEX
+   ========================================================================== */
+.shorya-web-articles-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-web-articles-list-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  padding: 50px 0px 60px 45px !important; /* Matches exactly with your Sidebar text indents */
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-web-article-row-card {
+  width: 100% !important;
+  margin-bottom: 55px !important; /* Spacious layout padding split matching original design */
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-web-article-split-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 40px !important; /* Perfect gap footprint between badges and text content strings */
+  align-items: center !important; /* Centers elements cleanly along the line layout path */
+  width: 100% !important;
+}
+
+/* LEFT SIDE: BRAND PUBLISHER BADGES */
+.shorya-web-article-badge-box {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.shorya-web-article-badge-frame {
+  width: 100% !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+.shorya-web-article-badge-img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* RIGHT SIDE: QUOTE/NARRATIVE SPEECH BLOCKS */
+.shorya-web-article-text-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 650px !important; /* Sets clear word constraints */
+}
+
+.shorya-web-article-paragraph-value {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 15px !important; /* Clear, high-contrast reading scale font size */
+  line-height: 1.7 !important;
+  color: #444444 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+/* MOBILE SYSTEM ADAPTER MEDIA QUERY SCREEN SPLIT */
+@media (max-width: 768px) {
+  .shorya-web-article-split-layout {
+    flex-direction: column !important; /* Automatically flips content sequence into neat vertical rows */
+    align-items: flex-start !important;
+    gap: 15px !important;
+  }
+  
+  .shorya-web-article-badge-box {
+    width: 120px !important;
+    min-width: 120px !important;
+  }
+  
+  .shorya-web-articles-list-container {
+    padding: 30px 20px !important;
+  }
+}
+
+/* ==========================================================================
+   30. OFFICIAL VIDEO-MATCHED VIDEOS COMPONENT STYLING (LIVE REPLICA)
+   ========================================================================== */
+.shorya-videos-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-videos-list-container {
+  width: 100% !important;
+  max-width: 690px !important; /* Perfect reading constraint layout column aligned with Events page */
+  padding: 40px 0px 60px 45px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-video-card-item {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* Centers video canvas and logs elements perfectly */
+}
+
+/* TOP ROW: PUBLISHER LOGO BADGE CONTAINER */
+.shorya-video-publisher-logo-row {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+.shorya-video-publisher-badge-img {
+  height: auto !important;
+  max-height: 55px !important; /* Exact proportional balance matching live screenshots */
+  max-width: 160px !important;
+  object-fit: contain !important;
+}
+
+/* MIDDLE ROW: INTERACTIVE IFRAME SANDBOX CHASSIS */
+.shorya-video-player-aspect-wrapper {
+  width: 100% !important;
+  max-width: 480px !important; /* Precise 480px dimension layout matched to image_2ff922.jpg */
+  aspect-ratio: 16 / 9 !important;
+  position: relative !important;
+  border: 1px solid #e8e8e8 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+  background-color: #000000 !important;
+}
+
+.shorya-video-iframe-element {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* BOTTOM ROW: TEXT METRICS WRAPPING CONFIGURATION */
+.shorya-video-caption-container {
+  width: 100% !important;
+  max-width: 480px !important; /* Restricts text bounds directly under iframe footprint dimensions */
+  margin-top: 18px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.shorya-video-caption-text-value {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  color: #444444 !important;
+  text-align: center !important; /* Centers the description block */
+  margin: 0 !important;
+}
+
+/* REPETITIVE SEPARATOR SPACER LINE */
+.shorya-video-dashed-divider-line {
+  width: 100% !important;
+  border: 0 !important;
+  border-top: 1px dashed #dddddd !important;
+  margin: 40px 0 !important;
+}
+
+/* MOBILE SYSTEM ADAPTER MEDIA BREAKPOINTS */
+@media (max-width: 768px) {
+  .shorya-videos-list-container {
+    padding: 30px 20px !important;
+  }
+  .shorya-video-player-aspect-wrapper,
+  .shorya-video-caption-container {
+    max-width: 100% !important;
+  }
+}
+/* ==========================================================================
+   30.1 PERFORMANCE OPTIMIZED VIDEO PLACEHOLDER INTERFACES
+   ========================================================================== */
+.shorya-video-placeholder-trigger-hull {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+.shorya-video-preview-thumbnail-asset {
+  width: 100% !important;
+  height: 120% !important; /* Slight zoom compensation to crop YouTube black bars */
+  object-fit: cover !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Red YouTube play icon box replacement layer wrapper */
+.shorya-video-custom-play-button-overlay {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 68px !important;
+  height: 48px !important;
+  background-color: rgba(33, 33, 33, 0.8) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 5 !important;
+}
+
+/* Turns pure red when mouse floats on top of the container card frame */
+.shorya-video-placeholder-trigger-hull:hover .shorya-video-custom-play-button-overlay {
+  background-color: #ff0000 !important;
+}
+
+/* Inline geometric white arrow construction elements */
+.shorya-video-play-triangle-vector {
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  border-left: 18px solid #ffffff !important;
+  margin-left: 4px !important;
+}

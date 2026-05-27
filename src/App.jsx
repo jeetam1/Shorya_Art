@@ -7,6 +7,8 @@ import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
 import Magazines from './components/Magazines'; 
+import WebArticles from './components/WebArticles';
+import Videos from './components/Videos'; // FIXED: Added missing Videos component import statement
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -14,7 +16,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Mobile view menu state tracker
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
 
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
@@ -61,6 +63,18 @@ export default function App() {
         setExpandedMenu('Media');
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
+      } else if (currentHash === '#/media/web-articles') {
+        setCurrentView({ type: 'web-articles', data: null });
+        setActiveTab('Web Articles');
+        setExpandedMenu('Media');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      } else if (currentHash === '#/media/videos') {
+        setCurrentView({ type: 'videos', data: null });
+        setActiveTab('Videos');
+        setExpandedMenu('Media');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
       } else if (currentHash.startsWith('#/artwork/')) {
         const urlSlug = currentHash.replace('#/artwork/', '');
         const match = gridItems.find(item => item.slug === urlSlug);
@@ -85,7 +99,7 @@ export default function App() {
     } else {
       setActiveTab(item.name);
       setExpandedMenu(null);
-      setIsMobileMenuOpen(false); // Closes menu panel layout overlay context auto on redirect
+      setIsMobileMenuOpen(false); 
       if (item.name === 'Biography') {
         window.location.hash = '#/biography';
       } else if (item.name === "Artist's Statement") {
@@ -135,7 +149,7 @@ export default function App() {
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
         </div>
 
-        {/* Mobile Accordion Menu bar toggle component trigger element strip link */}
+        {/* Mobile Menu Trigger Strip */}
         <div className="mobile-menu-toggle-bar" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <span className="mobile-toggle-title-text">Navigation Menu</span>
           <span className="mobile-toggle-icon-symbol">{isMobileMenuOpen ? '–' : '+'}</span>
@@ -145,9 +159,10 @@ export default function App() {
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
+              
               const isActive = activeTab === item.name || 
                                (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
-                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines'));
+                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Web Articles' || activeTab === 'Videos'));
               
               return (
                 <React.Fragment key={item.name}>
@@ -170,17 +185,36 @@ export default function App() {
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveTab(sub);
-                            setIsMobileMenuOpen(false); // Closes menu strip layout context canvas view overlay
+                            setIsMobileMenuOpen(false); 
                             if (sub === 'Acrylic on canvas') {
                               window.location.hash = '#/gallery/acrylic-on-canvas';
                             } else if (sub === 'Newspapers Articles') {
                               window.location.hash = '#/media/newspaper-articles';
                             } else if (sub === 'Magazines') { 
                               window.location.hash = '#/media/magazines';
+                            } else if (sub === 'Web Articles') {
+                              window.location.hash = '#/media/web-articles';
+                            } else if (sub === 'Videos') {
+                              window.location.hash = '#/media/videos';
                             }
                           }}
                         >
-                          <a href={sub === 'Acrylic on canvas' ? '#/gallery/acrylic-on-canvas' : sub === 'Newspapers Articles' ? '#/media/newspaper-articles' : sub === 'Magazines' ? '#/media/magazines' : '#home'}>
+                          {/* FIXED: Removed internal onClick preventDefault hooks so hash navigation flows cleanly */}
+                          <a 
+                            href={
+                              sub === 'Acrylic on canvas' 
+                                ? '#/gallery/acrylic-on-canvas' 
+                                : sub === 'Newspapers Articles' 
+                                  ? '#/media/newspaper-articles' 
+                                  : sub === 'Magazines' 
+                                    ? '#/media/magazines' 
+                                    : sub === 'Web Articles' 
+                                      ? '#/media/web-articles' 
+                                      : sub === 'Videos' 
+                                        ? '#/media/videos' 
+                                        : '#home'
+                            }
+                          >
                             <span className="sub-nav-text">{sub}</span>
                           </a>
                         </li>
@@ -234,6 +268,8 @@ export default function App() {
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
         {currentView.type === 'magazines' && <Magazines />} 
+        {currentView.type === 'web-articles' && <WebArticles />}
+        {currentView.type === 'videos' && <Videos />}
 
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">

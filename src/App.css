@@ -270,7 +270,7 @@ body,
 }
 
 /* ==========================================================================
-   5. PORTFOLIO CARDS GRID (HOME) - REPLICA PHYSICS BOUNCE
+   5. PORTFOLIO CARDS GRID (HOME) - 3D POP-OUT BOUNCE MATCH
    ========================================================================== */
 .main-content {
   grid-column: 2 !important;
@@ -288,13 +288,12 @@ body,
   background-color: #e8e8e8 !important;
 }
 
-/* Parent boundaries allow items to pop out of frame during the bounce swing */
 .portfolio-entry-card {
   position: relative !important;
   overflow: visible !important;
 }
 
-/* THE CORE CONTAINER: Animates the unified image + overlay up and down together */
+/* THE CORE CONTAINER */
 .art-card-wrapper {
   width: 100% !important;    
   aspect-ratio: 4 / 3 !important; 
@@ -302,12 +301,15 @@ body,
   overflow: hidden !important;
   cursor: pointer !important;
   background-color: #ffffff !important;
-  transform: translateY(0);
+  transform: scale(1);
+  transform-origin: center center !important; /* Ensures it pops straight out towards you */
 }
 
-/* Trigger the complex physical spring bounce lifecycle on mouse entry */
+/* FIXED: Pops OUT of the screen towards you, bringing the z-index up so it overlaps neighbors */
 .art-card-wrapper:hover {
-  animation: cardFrameBounceMatch 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+  animation: cardFramePopMatch 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+  z-index: 50 !important; 
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important; /* Adds a shadow to make the 3D effect look real */
 }
 
 .art-card-img {
@@ -316,11 +318,11 @@ body,
   object-fit: cover !important;
 }
 
-/* THE COUCHING OVERLAY: Instantly covers the graphic frame area with Golden Orange color */
+/* THE GOLDEN ORANGE OVERLAY */
 .card-hover-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: #e8960c !important; /* Golden Orange hue matched from the video production layer */
+  background: #e8960c !important; /* Golden Orange */
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
@@ -329,17 +331,16 @@ body,
   box-sizing: border-box !important;
   z-index: 10 !important;
   
-  /* Initial state: Transparent */
+  /* Instantly transparent -> opaque on hover */
   opacity: 0 !important;
-  transition: opacity 0.12s ease-in-out !important;
+  transition: opacity 0.15s ease-in-out !important;
 }
 
-/* On hover, the orange box fully covers the photo instantly */
 .art-card-wrapper:hover .card-hover-overlay {
   opacity: 1 !important;
 }
 
-/* TYPOGRAPHY METRICS: Persistently visible throughout the animation cycle */
+/* TEXT CONTENT */
 .card-hover-title {
   color: #ffffff !important;
   font-family: Georgia, serif !important;
@@ -358,13 +359,13 @@ body,
   margin: 0 !important;
 }
 
-/* THE SEARCH ICON: Disappears and reappears when directly targeted */
+/* BLINKING SEARCH ICON */
 .card-hover-icon-circle {
   width: 46px !important;
   height: 46px !important;
   border-radius: 50% !important;
   background: #ffffff !important;
-  color: #e8960c !important; /* Core orange match color */
+  color: #e8960c !important; 
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -379,28 +380,27 @@ body,
 }
 
 /* ==========================================================================
-   HOVER LIFECYCLE KEYFRAMES DEFINITIONS
+   ANIMATION KEYFRAMES (3D POP OUT)
    ========================================================================== */
-/* Bounces the entire wrapper node (image + orange overlay block together) */
-@keyframes cardFrameBounceMatch {
+/* Zooms out towards you, then settles back into the screen */
+@keyframes cardFramePopMatch {
   0% {
-    transform: translateY(0);
+    transform: scale(1);
   }
   40% {
-    transform: translateY(-22px); /* Shoots upward out of the frame canvas */
+    transform: scale(1.12); /* Pops OUT towards you (gets bigger) */
   }
   70% {
-    transform: translateY(6px);   /* Drops slightly downward below the baseline */
+    transform: scale(0.97); /* Shrinks slightly past normal size */
   }
   90% {
-    transform: translateY(-3px);  /* Minor micro corrective bounce step */
+    transform: scale(1.02); /* Tiny micro-bounce out again */
   }
   100% {
-    transform: translateY(0);     /* Settle back to complete steady resting layout */
+    transform: scale(1);    /* Settles perfectly flat back into the screen */
   }
 }
 
-/* Handles the vanishing lens illusion when tracking elements directly */
 @keyframes searchIconDisappearPulse {
   0% {
     opacity: 1;
@@ -408,15 +408,15 @@ body,
   }
   30% {
     opacity: 0;
-    transform: scale(0.5); /* Instantly shrinks and vanishes completely out of focus */
+    transform: scale(0.5); 
   }
   70% {
     opacity: 0;
-    transform: scale(0.5); /* Quick temporal blind frames suspension drop hold */
+    transform: scale(0.5); 
   }
   100% {
     opacity: 1;
-    transform: scale(1);   /* Snaps cleanly back to baseline dimensions */
+    transform: scale(1); 
   }
 }
 /* ==========================================================================

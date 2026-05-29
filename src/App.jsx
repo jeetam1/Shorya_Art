@@ -259,30 +259,37 @@ export default function App() {
         
         {/* FIXED: Removed the broken useState hooks from here to unfreeze the React App */}
         {currentView.type === 'grid' && (
-  <div className="art-grid">
-    {gridItems.map((item) => (
-      <article 
-        key={item.id} 
-        className="portfolio-entry-card" 
-        onClick={() => window.location.hash = `#/artwork/${item.slug}`}
-      >
-        <div className="art-card-wrapper">
-          {/* Base Artwork Thumbnail Image */}
-          <img src={item.src} alt={item.title} className="art-card-img" />
-          
-          {/* Golden Orange Overlay Block containing the persistent text framework */}
-          <div className="card-hover-overlay">
-            <h3 className="card-hover-title">{item.title}</h3>
-            <p className="card-hover-summary">{item.medium || "Acrylic on Canvas"}</p>
-            <div className="card-hover-icon-circle">
-              <Search size={20} />
-            </div>
+          <div className="art-grid">
+            {gridItems.map((item) => (
+              <article 
+                key={item.id} 
+                className="portfolio-entry-card" 
+                onClick={() => window.location.hash = `#/artwork/${item.slug}`}
+              >
+                <div className="art-card-wrapper">
+                  {/* Base Image Asset */}
+                  <img src={item.src} alt={item.title} className="art-card-img" />
+                  
+                  {/* Golden Orange 3D Pop-Out Overlay */}
+                  <div className="card-hover-overlay">
+                    <h3 className="card-hover-title">{item.title}</h3>
+                    
+                    {/* Automatically limits description to exactly 8 words */}
+                    {/* We removed the JS .split() math. CSS will handle the lines now! */}
+<p className="card-hover-description">
+  {item.description || "Temporary dummy content placeholder goes here..."}
+</p>
+                    
+                    {/* Magnifying Glass Icon Circle */}
+                    <div className="card-hover-icon-circle">
+                      <Search size={20} />
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
-        </div>
-      </article>
-    ))}
-  </div>
-)}
+        )}
 
         {currentView.type === 'biography' && <Biography />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}

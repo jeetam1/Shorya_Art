@@ -268,9 +268,8 @@ body,
   flex-grow: 1 !important; 
   background-color: #000000;
 }
-
 /* ==========================================================================
-   5. PORTFOLIO CARDS GRID (HOME) - 3D POP-OUT BOUNCE MATCH
+   5. PORTFOLIO CARDS GRID (HOME) - FINAL 3D POP-OUT & LAYOUT
    ========================================================================== */
 .main-content {
   grid-column: 2 !important;
@@ -305,7 +304,7 @@ body,
   transform-origin: center center !important; /* Ensures it pops straight out towards you */
 }
 
-/* FIXED: Pops OUT of the screen towards you, bringing the z-index up so it overlaps neighbors */
+/* 3D POP OUT ANIMATION */
 .art-card-wrapper:hover {
   animation: cardFramePopMatch 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
   z-index: 50 !important; 
@@ -322,16 +321,14 @@ body,
 .card-hover-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: #e8960c !important; /* Golden Orange */
+  background: rgba(232, 150, 12, 0.95) !important; /* Golden Orange */
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
+  justify-content: flex-start !important; /* Aligns content from the top down */
   align-items: center !important;
-  padding: 24px 20px !important;
+  padding: 0 !important; /* Removed to allow full-width line */
   box-sizing: border-box !important;
   z-index: 10 !important;
-  
-  /* Instantly transparent -> opaque on hover */
   opacity: 0 !important;
   transition: opacity 0.15s ease-in-out !important;
 }
@@ -340,47 +337,90 @@ body,
   opacity: 1 !important;
 }
 
-/* TEXT CONTENT */
+/* ==========================================================================
+   TEXT CONTENT & TYPOGRAPHY
+   ========================================================================== */
 .card-hover-title {
+  width: 100% !important;
+  padding: 15px 20px 8px 20px !important;
+  box-sizing: border-box !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35) !important; /* Edge-to-edge line */
   color: #ffffff !important;
-  font-family: Georgia, serif !important;
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  text-align: center !important;
-  margin: 0 0 10px 0 !important;
-}
-
-.card-hover-summary {
-  color: rgba(255, 255, 255, 0.92) !important;
-  font-family: Georgia, serif !important;
-  font-size: 0.82rem !important;
-  line-height: 1.6 !important;
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
   text-align: center !important;
   margin: 0 !important;
+  
+  transform: translateY(15px);
+  opacity: 0;
+  transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s !important;
 }
 
-/* BLINKING SEARCH ICON */
-.card-hover-icon-circle {
-  width: 46px !important;
-  height: 46px !important;
-  border-radius: 50% !important;
-  background: #ffffff !important;
-  color: #e8960c !important; 
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-top: 18px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
-  opacity: 1 !important;
-  transition: transform 0.2s ease !important;
-}
-
-.card-hover-icon-circle:hover {
-  animation: searchIconDisappearPulse 1s infinite ease-in-out !important;
+.card-hover-description {
+  color: #ffffff !important;
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  padding: 20px 25px 0 25px !important;
+  margin: 0 !important;
+  
+  /* THE 2-LINE LIMIT MAGIC (Webkit Line Clamping) */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important; /* Forces it to exactly 2 lines */
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important; /* Hides anything past line 2 */
+  
+  /* Fade-in Animation */
+  transform: translateY(14px);
+  opacity: 0;
+  transition: transform 0.3s ease 0.15s, opacity 0.3s ease 0.15s !important;
 }
 
 /* ==========================================================================
-   ANIMATION KEYFRAMES (3D POP OUT)
+   BLINKING SEARCH ICON (HANDLE FLIPPED TO LEFT)
+   ========================================================================== */
+.card-hover-icon-circle {
+  width: 55px !important; /* Chunky circle */
+  height: 55px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #e8960c !important; /* Orange icon */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 25px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  
+  transform: translateY(15px);
+  opacity: 0;
+  transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s !important;
+}
+
+.card-hover-icon-circle svg {
+  width: 26px !important;
+  height: 26px !important;
+  stroke-width: 3px !important; /* Bolder icon */
+  transform: scaleX(-1) !important; /* Flips handle to the LEFT */
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+/* Trigger slide-up for text elements on card hover */
+.art-card-wrapper:hover .card-hover-title,
+.art-card-wrapper:hover .card-hover-description,
+.art-card-wrapper:hover .card-hover-icon-circle {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* TRIGGER: The interactive hide-and-seek blink effect ONLY on the SVG */
+.card-hover-icon-circle:hover svg {
+  animation: searchIconHideAndSeek 0.8s ease-in-out !important;
+}
+
+/* ==========================================================================
+   ANIMATION KEYFRAMES
    ========================================================================== */
 /* Zooms out towards you, then settles back into the screen */
 @keyframes cardFramePopMatch {
@@ -388,7 +428,7 @@ body,
     transform: scale(1);
   }
   40% {
-    transform: scale(1.12); /* Pops OUT towards you (gets bigger) */
+    transform: scale(1.12); /* Pops OUT towards you */
   }
   70% {
     transform: scale(0.97); /* Shrinks slightly past normal size */
@@ -397,26 +437,27 @@ body,
     transform: scale(1.02); /* Tiny micro-bounce out again */
   }
   100% {
-    transform: scale(1);    /* Settles perfectly flat back into the screen */
+    transform: scale(1);    /* Settles perfectly flat */
   }
 }
 
-@keyframes searchIconDisappearPulse {
-  0% {
-    opacity: 1;
-    transform: scale(1);
+/* Hide-and-seek animation targets the SVG, ensuring it maintains the horizontal flip */
+@keyframes searchIconHideAndSeek {
+  0% { 
+    opacity: 1; 
+    transform: scaleX(-1) scale(1); 
   }
-  30% {
-    opacity: 0;
-    transform: scale(0.5); 
+  15% { 
+    opacity: 0; 
+    transform: scaleX(-1) scale(0.5); /* Shrinks and disappears */
   }
-  70% {
-    opacity: 0;
-    transform: scale(0.5); 
+  75% { 
+    opacity: 0; 
+    transform: scaleX(-1) scale(0.5); /* Stays completely hidden */
   }
-  100% {
-    opacity: 1;
-    transform: scale(1); 
+  100% { 
+    opacity: 1; 
+    transform: scaleX(-1) scale(1); /* Pops back to full size */
   }
 }
 /* ==========================================================================

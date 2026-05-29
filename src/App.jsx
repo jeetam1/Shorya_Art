@@ -256,22 +256,33 @@ export default function App() {
 
       {/* CORE WORKSPACE DISPLAY LAYOUT ENGINE */}
       <main className="main-content">
+        
+        {/* FIXED: Removed the broken useState hooks from here to unfreeze the React App */}
         {currentView.type === 'grid' && (
-          <div className="art-grid">
-            {gridItems.map((item) => (
-              <article key={item.id} className="portfolio-entry-card" onClick={() => window.location.hash = `#/artwork/${item.slug}`}>
-                <div className="art-card-wrapper">
-                  <img src={item.src} alt={item.title} className="art-card-img" />
-                  <div className="card-hover-overlay">
-                    <h3 className="card-hover-title">{item.title}</h3>
-                    {item.summary && <p className="card-hover-summary">{item.summary}</p>}
-                    <div className="card-hover-icon-circle"><Search size={18} /></div>
-                  </div>
-                </div>
-              </article>
-            ))}
+  <div className="art-grid">
+    {gridItems.map((item) => (
+      <article 
+        key={item.id} 
+        className="portfolio-entry-card" 
+        onClick={() => window.location.hash = `#/artwork/${item.slug}`}
+      >
+        <div className="art-card-wrapper">
+          {/* Base Artwork Thumbnail Image */}
+          <img src={item.src} alt={item.title} className="art-card-img" />
+          
+          {/* Golden Orange Overlay Block containing the persistent text framework */}
+          <div className="card-hover-overlay">
+            <h3 className="card-hover-title">{item.title}</h3>
+            <p className="card-hover-summary">{item.medium || "Acrylic on Canvas"}</p>
+            <div className="card-hover-icon-circle">
+              <Search size={20} />
+            </div>
           </div>
-        )}
+        </div>
+      </article>
+    ))}
+  </div>
+)}
 
         {currentView.type === 'biography' && <Biography />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}

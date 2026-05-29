@@ -32,7 +32,7 @@ body,
 }
 
 /* ==========================================================================
-   2. SIDEBAR NAVIGATION SYSTEM STYLING (EXACT VIDEO MATCH)
+   2. SIDEBAR NAVIGATION SYSTEM STYLING
    ========================================================================== */
 .sidebar {
   grid-column: 1 !important;
@@ -102,6 +102,7 @@ body,
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out !important;
 }
 
+/* Green Highlight Navigation Row Hover Effect */
 .nav-menu li a:hover {
   background-color: #2e7d32 !important; 
   cursor: pointer !important;
@@ -130,7 +131,7 @@ body,
 }
 
 /* ==========================================================================
-   3. SIDEBAR DROPDOWN ACCORDION MECHANICS (EXACT VIDEO MATCH)
+   3. SIDEBAR DROPDOWN ACCORDION MECHANICS
    ========================================================================== */
 .sub-menu-wrapper {
   display: grid !important;
@@ -269,7 +270,7 @@ body,
 }
 
 /* ==========================================================================
-   5. PORTFOLIO CARDS GRID (HOME)
+   5. PORTFOLIO CARDS GRID (HOME) - REPLICA PHYSICS BOUNCE
    ========================================================================== */
 .main-content {
   grid-column: 2 !important;
@@ -287,57 +288,139 @@ body,
   background-color: #e8e8e8 !important;
 }
 
+/* Parent boundaries allow items to pop out of frame during the bounce swing */
+.portfolio-entry-card {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* THE CORE CONTAINER: Animates the unified image + overlay up and down together */
 .art-card-wrapper {
   width: 100% !important;    
   aspect-ratio: 4 / 3 !important; 
   position: relative !important;
   overflow: hidden !important;
   cursor: pointer !important;
+  background-color: #ffffff !important;
+  transform: translateY(0);
+}
+
+/* Trigger the complex physical spring bounce lifecycle on mouse entry */
+.art-card-wrapper:hover {
+  animation: cardFrameBounceMatch 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
 }
 
 .art-card-img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important; 
+  object-fit: cover !important;
 }
 
+/* THE COUCHING OVERLAY: Instantly covers the graphic frame area with Golden Orange color */
 .card-hover-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: rgba(247, 148, 29, 0.92) !important; 
+  background: #e8960c !important; /* Golden Orange hue matched from the video production layer */
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  padding: 24px 20px !important;
+  box-sizing: border-box !important;
+  z-index: 10 !important;
+  
+  /* Initial state: Transparent */
+  opacity: 0 !important;
+  transition: opacity 0.12s ease-in-out !important;
 }
 
+/* On hover, the orange box fully covers the photo instantly */
 .art-card-wrapper:hover .card-hover-overlay {
   opacity: 1 !important;
 }
 
+/* TYPOGRAPHY METRICS: Persistently visible throughout the animation cycle */
 .card-hover-title {
   color: #ffffff !important;
-  font-family: Arial, sans-serif !important;
-  font-size: 18px !important;
-  font-weight: bold !important;
+  font-family: Georgia, serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin: 0 0 10px 0 !important;
 }
 
+.card-hover-summary {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-family: Georgia, serif !important;
+  font-size: 0.82rem !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* THE SEARCH ICON: Disappears and reappears when directly targeted */
 .card-hover-icon-circle {
-  width: 44px;
-  height: 44px;
-  background-color: #ffffff;
-  color: #f7941d;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #e8960c !important; /* Core orange match color */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 18px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  opacity: 1 !important;
+  transition: transform 0.2s ease !important;
+}
+
+.card-hover-icon-circle:hover {
+  animation: searchIconDisappearPulse 1s infinite ease-in-out !important;
 }
 
 /* ==========================================================================
-   6. HIGH-FIDELITY REPLICA BANNER FRAME WORK (LOCKED AT LEFT BOTTOM)
+   HOVER LIFECYCLE KEYFRAMES DEFINITIONS
+   ========================================================================== */
+/* Bounces the entire wrapper node (image + orange overlay block together) */
+@keyframes cardFrameBounceMatch {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-22px); /* Shoots upward out of the frame canvas */
+  }
+  70% {
+    transform: translateY(6px);   /* Drops slightly downward below the baseline */
+  }
+  90% {
+    transform: translateY(-3px);  /* Minor micro corrective bounce step */
+  }
+  100% {
+    transform: translateY(0);     /* Settle back to complete steady resting layout */
+  }
+}
+
+/* Handles the vanishing lens illusion when tracking elements directly */
+@keyframes searchIconDisappearPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(0.5); /* Instantly shrinks and vanishes completely out of focus */
+  }
+  70% {
+    opacity: 0;
+    transform: scale(0.5); /* Quick temporal blind frames suspension drop hold */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);   /* Snaps cleanly back to baseline dimensions */
+  }
+}
+/* ==========================================================================
+   6. HIGH-FIDELITY REPLICA BANNER FRAME WORK
    ========================================================================== */
 .shorya-custom-header-strip-container {
   width: 100% !important;
@@ -752,7 +835,7 @@ body,
 }
 
 /* ==========================================================================
-   25. OFFICIAL VIDEO-MATCHED EVENTS TIMELINE LAYOUT (LIVE REPLICA MATCH)
+   25. OFFICIAL TIMELINE EVENTS CONVERSION
    ========================================================================== */
 .shorya-events-view-root {
   width: 100% !important;
@@ -873,7 +956,7 @@ body,
 }
 
 /* ==========================================================================
-   26. OFFICIAL VIDEO-MATCHED NEWSPAPER ARTICLES TIMELINE (LIVE REPLICA)
+   26. OFFICIAL NEWSPAPER ARTICLES GRAPHIC SYSTEM
    ========================================================================== */
 .shorya-media-view-root {
   width: 100% !important;
@@ -983,7 +1066,7 @@ body,
 }
 
 /* ==========================================================================
-   27. OFFICIAL VIDEO-MATCHED MAGAZINES ROW TIMELINE INDEX (EXACT REPLICA)
+   27. OFFICIAL MAGAZINES ROW ARCHITECTURE
    ========================================================================== */
 .shorya-magazines-view-root {
   width: 100% !important;
@@ -1062,9 +1145,7 @@ body,
   margin: 35px 0 15px 0 !important;
 }
 
-/* ==========================================================================
-   27.1 LAST ROW SPECIAL HINDI ENTRY OVERRIDES (IMAGE SIZING & BADGE STRIP)
-   ========================================================================== */
+/* 27.1 LAST ROW SPECIAL HINDI ENTRY OVERRIDES */
 .shorya-last-row-layout {
   gap: 40px !important;
 }
@@ -1082,8 +1163,8 @@ body,
 
 .shorya-magazine-custom-badge-heading {
   align-self: flex-start !important;
-  background-color: #f7cd46 !important; 
-  color: #26559a !important;            
+  background-color: #4baed4 !important; /* Authentic sky blue indicator frame header */
+  color: #ffffff !important;            
   font-family: 'Open Sans', Arial, sans-serif !important;
   font-size: 18px !important;
   font-weight: 700 !important;
@@ -1094,9 +1175,6 @@ body,
   white-space: nowrap !important;
 }
 
-/* ==========================================================================
-   27.2 RESPONSIVE MOBILE VIEWPORT CONTROLS
-   ========================================================================== */
 @media (max-width: 768px) {
   .shorya-magazine-split-layout {
     flex-direction: column !important; 
@@ -1115,7 +1193,345 @@ body,
 }
 
 /* ==========================================================================
-   28. HIGH-FIDELITY MOBILE VIEW CONVERSION SYSTEM (DOMINANT LOGO UPDATE)
+   29. OFFICIAL WEB ARTICLES SYSTEM INDEX
+   ========================================================================== */
+.shorya-web-articles-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-web-articles-list-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  padding: 50px 0px 60px 45px !important; 
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-web-article-row-card {
+  width: 100% !important;
+  margin-bottom: 55px !important; 
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-web-article-split-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 40px !important; 
+  align-items: center !important; 
+  width: 100% !important;
+}
+
+.shorya-web-article-badge-box {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.shorya-web-article-badge-frame {
+  width: 100% !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+.shorya-web-article-badge-img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.shorya-web-article-text-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 650px !important; 
+}
+
+.shorya-web-article-paragraph-value {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 15px !important; 
+  line-height: 1.7 !important;
+  color: #444444 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+@media (max-width: 768px) {
+  .shorya-web-article-split-layout {
+    flex-direction: column !important; 
+    align-items: flex-start !important;
+    gap: 15px !important;
+  }
+  .shorya-web-article-badge-box {
+    width: 120px !important;
+    min-width: 120px !important;
+  }
+  .shorya-web-articles-list-container {
+    padding: 30px 20px !important;
+  }
+}
+
+/* ==========================================================================
+   30. OFFICIAL VIDEOS TIMELINE MANAGER
+   ========================================================================== */
+.shorya-videos-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-videos-list-container {
+  width: 100% !important;
+  max-width: 690px !important; 
+  padding: 40px 0px 60px 45px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-video-card-item {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; 
+}
+
+.shorya-video-publisher-logo-row {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+.shorya-video-publisher-badge-img {
+  height: auto !important;
+  max-height: 55px !important; 
+  max-width: 160px !important;
+  object-fit: contain !important;
+}
+
+.shorya-video-player-aspect-wrapper {
+  width: 100% !important;
+  max-width: 480px !important; 
+  aspect-ratio: 16 / 9 !important;
+  position: relative !important;
+  border: 1px solid #e8e8e8 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+  background-color: #000000 !important;
+}
+
+.shorya-video-iframe-element {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.shorya-video-caption-container {
+  width: 100% !important;
+  max-width: 480px !important; 
+  margin-top: 18px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.shorya-video-caption-text-value {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  color: #444444 !important;
+  text-align: center !important; 
+  margin: 0 !important;
+}
+
+.shorya-video-dashed-divider-line {
+  width: 100% !important;
+  border: 0 !important;
+  border-top: 1px dashed #dddddd !important;
+  margin: 40px 0 !important;
+}
+
+/* 30.1 LAZY PLACEHOLDERS STYLING MODIFIERS */
+.shorya-video-placeholder-trigger-hull {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+.shorya-video-preview-thumbnail-asset {
+  width: 100% !important;
+  height: 120% !important; 
+  object-fit: cover !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.shorya-video-custom-play-button-overlay {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 68px !important;
+  height: 48px !important;
+  background-color: rgba(33, 33, 33, 0.8) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 5 !important;
+}
+
+.shorya-video-placeholder-trigger-hull:hover .shorya-video-custom-play-button-overlay {
+  background-color: #ff0000 !important;
+}
+
+.shorya-video-play-triangle-vector {
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  border-left: 18px solid #ffffff !important;
+  margin-left: 4px !important;
+}
+
+@media (max-width: 768px) {
+  .shorya-videos-list-container { padding: 30px 20px !important; }
+  .shorya-video-player-aspect-wrapper,
+  .shorya-video-caption-container { max-width: 100% !important; }
+}
+
+/* ==========================================================================
+   31. OFFICIAL LOOK THE WORLD IS TALKING GRAPHIC ARRAYS
+   ========================================================================== */
+.shorya-look-talking-view-root {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-talking-cards-grid-container {
+  width: 100% !important;
+  max-width: 680px !important; 
+  padding: 40px 0px 60px 45px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important; 
+}
+
+.shorya-talking-quote-card-item {
+  width: 100% !important;
+  background-color: #f4f6f8 !important; /* Soft gray-blue fluid tracking background tint */
+  border: 1px solid #c8c8c8 !important; 
+  padding: 20px 24px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.shorya-talking-card-top-indicator-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  border-bottom: 1px solid #eef0f2 !important; 
+  padding-bottom: 10px !important;
+  margin-bottom: 18px !important;
+}
+
+.shorya-talking-quote-mark-icon {
+  font-family: Georgia, serif !important;
+  font-size: 44px !important;
+  line-height: 1 !important;
+  color: #90a4ae !important; 
+  font-weight: bold !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.shorya-talking-card-main-label {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #333333 !important;
+  margin: 0 !important;
+}
+
+.shorya-talking-card-split-body-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 25px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+}
+
+.shorya-talking-card-brand-img-box {
+  width: 165px !important;
+  min-width: 165px !important;
+  max-width: 165px !important;
+  border: 1px solid #e0e0e0 !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.shorya-talking-card-publisher-badge-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.shorya-talking-card-narrative-text-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.shorya-talking-card-short-quote {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.75 !important;
+  color: #555555 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.shorya-talking-card-author-signature {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #222222 !important;
+  text-align: right !important; 
+  display: block !important;
+}
+
+@media (max-width: 768px) {
+  .shorya-talking-cards-grid-container { padding: 30px 20px !important; }
+  .shorya-talking-card-split-body-layout { flex-direction: column !important; align-items: flex-start !important; gap: 15px !important; }
+  .shorya-talking-card-brand-img-box { width: 135px !important; min-width: 135px !important; }
+}
+
+/* ==========================================================================
+   32. DYNAMIC MOBILE VIEW SYSTEM BREAKPOINT DEFINITIONS
    ========================================================================== */
 .mobile-menu-toggle-bar {
   display: none !important;
@@ -1138,27 +1554,25 @@ body,
     flex-direction: column !important;
   }
 
-  /* FIXED: Adjusted container to accommodate the larger logo size */
   .logo-container {
     width: 100% !important;
-    height: auto !important; /* FIXED: Removed strict 10.5cm height restrictor token value matrix */
-    max-height: none !important; /* FIXED: Removed max-height constraint */
+    height: auto !important; 
+    max-height: none !important; 
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     background-color: #000000;
     overflow: hidden;
-    padding: 30px 0 !important; /* Adds standard breathing room space padding layout */
+    padding: 30px 0 !important; 
   }
 
-  /* FIXED: Large mobile logo scaling settings */
   .brand-logo-img {
     width: auto !important;
-    max-width: 90% !important; /* Ensures the logo stays contained on narrow screens while maximized */
-    height: auto !important; /* FIXED: Removed strict 140px height marker value to unlock dynamic scaling */
+    max-width: 90% !important; 
+    height: auto !important; 
     object-fit: contain !important;
     display: block !important;
-    image-rendering: -webkit-optimize-contrast !important; /* Crisp blueprint rendering context */
+    image-rendering: -webkit-optimize-contrast !important; 
   }
 
   .mobile-menu-toggle-bar {
@@ -1229,371 +1643,24 @@ body,
 }
 
 /* ==========================================================================
-   29. OFFICIAL VIDEO-MATCHED WEB ARTICLES INDEX
+   33. GLOBAL KEYFRAMES INTERACTION TRACKERS
    ========================================================================== */
-.shorya-web-articles-view-root {
-  width: 100% !important;
-  background-color: #ffffff !important;
-  display: flex !important;
-  flex-direction: column !important;
+@keyframes overlaySlideSpring {
+  0% { transform: translateY(100%); }
+  70% { transform: translateY(-8%); }
+  85% { transform: translateY(4%); }
+  100% { transform: translateY(0); }
 }
 
-.shorya-web-articles-list-container {
-  width: 100% !important;
-  max-width: 1140px !important;
-  padding: 50px 0px 60px 45px !important; /* Matches exactly with your Sidebar text indents */
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
+@keyframes textReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.shorya-web-article-row-card {
-  width: 100% !important;
-  margin-bottom: 55px !important; /* Spacious layout padding split matching original design */
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.shorya-web-article-split-layout {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 40px !important; /* Perfect gap footprint between badges and text content strings */
-  align-items: center !important; /* Centers elements cleanly along the line layout path */
-  width: 100% !important;
-}
-
-/* LEFT SIDE: BRAND PUBLISHER BADGES */
-.shorya-web-article-badge-box {
-  width: 150px !important;
-  min-width: 150px !important;
-  max-width: 150px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-}
-
-.shorya-web-article-badge-frame {
-  width: 100% !important;
-  height: auto !important;
-  overflow: hidden !important;
-}
-
-.shorya-web-article-badge-img {
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-
-/* RIGHT SIDE: QUOTE/NARRATIVE SPEECH BLOCKS */
-.shorya-web-article-text-box {
-  flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  max-width: 650px !important; /* Sets clear word constraints */
-}
-
-.shorya-web-article-paragraph-value {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 15px !important; /* Clear, high-contrast reading scale font size */
-  line-height: 1.7 !important;
-  color: #444444 !important;
-  margin: 0 !important;
-  text-align: left !important;
-}
-
-/* MOBILE SYSTEM ADAPTER MEDIA QUERY SCREEN SPLIT */
-@media (max-width: 768px) {
-  .shorya-web-article-split-layout {
-    flex-direction: column !important; /* Automatically flips content sequence into neat vertical rows */
-    align-items: flex-start !important;
-    gap: 15px !important;
-  }
-  
-  .shorya-web-article-badge-box {
-    width: 120px !important;
-    min-width: 120px !important;
-  }
-  
-  .shorya-web-articles-list-container {
-    padding: 30px 20px !important;
-  }
-}
-
-/* ==========================================================================
-   30. OFFICIAL VIDEO-MATCHED VIDEOS COMPONENT STYLING (LIVE REPLICA)
-   ========================================================================== */
-.shorya-videos-view-root {
-  width: 100% !important;
-  background-color: #ffffff !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.shorya-videos-list-container {
-  width: 100% !important;
-  max-width: 690px !important; /* Perfect reading constraint layout column aligned with Events page */
-  padding: 40px 0px 60px 45px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.shorya-video-card-item {
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important; /* Centers video canvas and logs elements perfectly */
-}
-
-/* TOP ROW: PUBLISHER LOGO BADGE CONTAINER */
-.shorya-video-publisher-logo-row {
-  width: 100% !important;
-  display: flex !important;
-  justify-content: center !important;
-  margin-bottom: 25px !important;
-}
-
-.shorya-video-publisher-badge-img {
-  height: auto !important;
-  max-height: 55px !important; /* Exact proportional balance matching live screenshots */
-  max-width: 160px !important;
-  object-fit: contain !important;
-}
-
-/* MIDDLE ROW: INTERACTIVE IFRAME SANDBOX CHASSIS */
-.shorya-video-player-aspect-wrapper {
-  width: 100% !important;
-  max-width: 480px !important; /* Precise 480px dimension layout matched to image_2ff922.jpg */
-  aspect-ratio: 16 / 9 !important;
-  position: relative !important;
-  border: 1px solid #e8e8e8 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
-  background-color: #000000 !important;
-}
-
-.shorya-video-iframe-element {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* BOTTOM ROW: TEXT METRICS WRAPPING CONFIGURATION */
-.shorya-video-caption-container {
-  width: 100% !important;
-  max-width: 480px !important; /* Restricts text bounds directly under iframe footprint dimensions */
-  margin-top: 18px !important;
-  display: flex !important;
-  justify-content: center !important;
-}
-
-.shorya-video-caption-text-value {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 13.5px !important;
-  line-height: 1.7 !important;
-  color: #444444 !important;
-  text-align: center !important; /* Centers the description block */
-  margin: 0 !important;
-}
-
-/* REPETITIVE SEPARATOR SPACER LINE */
-.shorya-video-dashed-divider-line {
-  width: 100% !important;
-  border: 0 !important;
-  border-top: 1px dashed #dddddd !important;
-  margin: 40px 0 !important;
-}
-
-/* MOBILE SYSTEM ADAPTER MEDIA BREAKPOINTS */
-@media (max-width: 768px) {
-  .shorya-videos-list-container {
-    padding: 30px 20px !important;
-  }
-  .shorya-video-player-aspect-wrapper,
-  .shorya-video-caption-container {
-    max-width: 100% !important;
-  }
-}
-/* ==========================================================================
-   30.1 PERFORMANCE OPTIMIZED VIDEO PLACEHOLDER INTERFACES
-   ========================================================================== */
-.shorya-video-placeholder-trigger-hull {
-  width: 100% !important;
-  height: 100% !important;
-  position: relative !important;
-  cursor: pointer !important;
-  overflow: hidden !important;
-  display: block !important;
-}
-
-.shorya-video-preview-thumbnail-asset {
-  width: 100% !important;
-  height: 120% !important; /* Slight zoom compensation to crop YouTube black bars */
-  object-fit: cover !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-}
-
-/* Red YouTube play icon box replacement layer wrapper */
-.shorya-video-custom-play-button-overlay {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 68px !important;
-  height: 48px !important;
-  background-color: rgba(33, 33, 33, 0.8) !important;
-  border-radius: 12px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  z-index: 5 !important;
-}
-
-/* Turns pure red when mouse floats on top of the container card frame */
-.shorya-video-placeholder-trigger-hull:hover .shorya-video-custom-play-button-overlay {
-  background-color: #ff0000 !important;
-}
-
-/* Inline geometric white arrow construction elements */
-.shorya-video-play-triangle-vector {
-  width: 0 !important;
-  height: 0 !important;
-  border-top: 10px solid transparent !important;
-  border-bottom: 10px solid transparent !important;
-  border-left: 18px solid #ffffff !important;
-  margin-left: 4px !important;
-}
-
-/* ==========================================================================
-   31. OFFICIAL LOOK THE WORLD IS TALKING GRAPHIC COMPONENT MATRIX
-   ========================================================================== */
-.shorya-look-talking-view-root {
-  width: 100% !important;
-  background-color: #ffffff !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.shorya-talking-cards-grid-container {
-  width: 100% !important;
-  max-width: 680px !important; /* Forces uniform column reading boundary just like live site */
-  padding: 40px 0px 60px 45px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 30px !important; /* Perfect spacing gap down the timeline stack */
-}
-
-/* CONTAINER COMPONENT: CLEAN BORDER BOX SHROUDS */
-/* CONTAINER COMPONENT: CHASSIS BOX WITH BACKGROUND TINT OVERLAY */
-.shorya-talking-quote-card-item {
-  width: 100% !important;
-  background-color: #f4f6f8 !important; /* FIXED: Soft gray-blue fluid color background fill layer */
-  border: 1px solid #c8c8c8 !important; 
-  padding: 20px 24px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* HEADER SUB-BAR CONFIGURATION */
-.shorya-talking-card-top-indicator-row {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  width: 100% !important;
-  border-bottom: 1px solid #eef0f2 !important; /* Separation row line */
-  padding-bottom: 10px !important;
-  margin-bottom: 18px !important;
-}
-
-.shorya-talking-quote-mark-icon {
-  font-family: Georgia, serif !important;
-  font-size: 44px !important;
-  line-height: 1 !important;
-  color: #90a4ae !important; /* Premium muted steel blue quote marker color */
-  font-weight: bold !important;
-  height: 24px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.shorya-talking-card-main-label {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 19px !important;
-  font-weight: 700 !important;
-  color: #333333 !important;
-  margin: 0 !important;
-}
-
-/* SPLIT BODY SCHEMATIC DESIGNS */
-.shorya-talking-card-split-body-layout {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 25px !important;
-  align-items: flex-start !important;
-  width: 100% !important;
-}
-
-.shorya-talking-card-brand-img-box {
-  width: 165px !important;
-  min-width: 165px !important;
-  max-width: 165px !important;
-  border: 1px solid #e0e0e0 !important;
-  background-color: #ffffff !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
-}
-
-.shorya-talking-card-publisher-badge-img {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  object-fit: contain !important;
-}
-
-.shorya-talking-card-narrative-text-box {
-  flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 12px !important;
-}
-
-.shorya-talking-card-short-quote {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 13.5px !important;
-  line-height: 1.75 !important;
-  color: #555555 !important;
-  margin: 0 !important;
-  text-align: left !important;
-}
-
-.shorya-talking-card-author-signature {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  color: #222222 !important;
-  text-align: right !important; /* Aligns author names flush to the right margin */
-  display: block !important;
-}
-
-/* MOBILE ADAPTER MEDIA DEVICE QUERY REFLECTION RULES */
-@media (max-width: 768px) {
-  .shorya-talking-cards-grid-container {
-    padding: 30px 20px !important;
-  }
-  .shorya-talking-card-split-body-layout {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 15px !important;
-  }
-  .shorya-talking-card-brand-img-box {
-    width: 135px !important;
-    min-width: 135px !important;
-  }
+@keyframes searchBlink {
+  0% { opacity: 1; transform: scale(1); }
+  25% { opacity: 0; transform: scale(0.6); }
+  40% { opacity: 1; transform: scale(1.15); }
+  60% { opacity: 0; transform: scale(0.7); }
+  100% { opacity: 1; transform: scale(1); }
 }

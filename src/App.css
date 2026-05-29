@@ -877,7 +877,9 @@ body,
   will-change: transform;
   
   /* Fast, responsive easing */
-  transition: opacity 0.1s ease-in-out !important;
+  /* transition: opacity 0.1s ease-in-out !important; */
+  image-rendering: -webkit-optimize-contrast !important; /* Sharper rendering for Webkit */
+  image-rendering: crisp-edges !important;
 }
 
 /* Ensure the container is ready for the lens */

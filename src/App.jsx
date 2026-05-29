@@ -148,7 +148,8 @@ export default function App() {
       top: `${magnifier.y - (lensSize / 2)}px`,
       backgroundImage: `url(${currentView.data.src})`,
       backgroundPosition: `${pctX}% ${pctY}%`,
-      backgroundSize: `${width * 2.5}px ${height * 2.5}px` // 2.5x zoom level
+      backgroundSize: `${width * 1.5}px ${height * 1.5}px`, // 2.5x zoom level
+      imageRendering: 'high-quality'
     };
   };
 

@@ -134,16 +134,21 @@ export default function App() {
 
   const getMagnifierStyles = () => {
     if (!containerRef.current) return {};
-    const width = containerRef.current.offsetWidth;
-    const height = containerRef.current.offsetHeight;
+    
+    // We set a fixed size for the lens to 250px
+    const lensSize = 150; 
+    
+    // Calculate the percentage position
+    const { width, height } = containerRef.current.getBoundingClientRect();
     const pctX = (magnifier.x / width) * 100;
     const pctY = (magnifier.y / height) * 100;
 
     return {
-      left: `${magnifier.x - 75}px`,
-      top: `${magnifier.y - 75}px`,
+      left: `${magnifier.x - (lensSize / 2)}px`,
+      top: `${magnifier.y - (lensSize / 2)}px`,
       backgroundImage: `url(${currentView.data.src})`,
-      backgroundPosition: `${pctX}% ${pctY}%`
+      backgroundPosition: `${pctX}% ${pctY}%`,
+      backgroundSize: `${width * 2.5}px ${height * 2.5}px` // 2.5x zoom level
     };
   };
 

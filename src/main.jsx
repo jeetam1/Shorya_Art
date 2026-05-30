@@ -1,12 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-
-// MAKE SURE THIS TEMPLATE IMPORT IS REMOVED OR COMMENTED OUT:
-// import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom' /* 1. MUST IMPORT THIS */
+import App from './App.jsx'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter> {/* 2. MUST WRAP APP IN THIS */}
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
-);
+)

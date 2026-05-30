@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Minus, Search } from 'lucide-react';
 import { gridItems } from './data/gridData';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
@@ -13,6 +15,7 @@ import LookWorldTalking from './components/LookWorldTalking';
 import TwitterMentions from './components/TwitterMentions';
 import HuffingtonPost from './components/HuffingtonPost'; 
 import TedX from './components/TedX'; 
+
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -21,7 +24,9 @@ export default function App() {
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
-
+  
+  const navigate = useNavigate();
+  const location = useLocation();
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
   const commentSectionRef = useRef(null); 
@@ -33,96 +38,78 @@ export default function App() {
   };
 
   useEffect(() => {
-    const handleUrlRouting = () => {
-      const currentHash = window.location.hash;
+    const path = location.pathname;
+    
+    if (!path || path === '/' || path === '/home') {
+      setCurrentView({ type: 'grid', data: null });
+      setActiveTab('Home');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/biography') {
+      setCurrentView({ type: 'biography', data: null });
+      setActiveTab('Biography');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/artist-statement') {
+      setCurrentView({ type: 'artist-statement', data: null });
+      setActiveTab("Artist's Statement");
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/gallery/acrylic-on-canvas') {
+      setCurrentView({ type: 'acrylic-on-canvas', data: null });
+      setActiveTab('Acrylic on canvas');
+      setExpandedMenu('Gallery');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/events') {
+      setCurrentView({ type: 'events', data: null });
+      setActiveTab('Events');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/media/newspaper-articles') {
+      setCurrentView({ type: 'newspaper-articles', data: null });
+      setActiveTab('Newspapers Articles');
+      setExpandedMenu('Media');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/media/magazines') { 
+      setCurrentView({ type: 'magazines', data: null });
+      setActiveTab('Magazines');
+      setExpandedMenu('Media');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/media/web-articles') {
+      setCurrentView({ type: 'web-articles', data: null });
+      setActiveTab('Web Articles');
+      setExpandedMenu('Media');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/media/videos') {
+      setCurrentView({ type: 'videos', data: null });
+      setActiveTab('Videos');
+      setExpandedMenu('Media');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/look-world-talking') {
+      setCurrentView({ type: 'look-world-talking', data: null });
+      setActiveTab('Look the world is talking1');
+      setExpandedMenu('Look the world is talking');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path === '/look-world-talking/twitter-mentions') {
+      setCurrentView({ type: 'twitter-mentions', data: null });
+      setActiveTab('Twitter Mentions');
+      setExpandedMenu('Look the world is talking');
+      setMagnifier(prev => ({ ...prev, show: false }));
+    } else if (path.startsWith('/artwork/')) {
+      const urlSlug = path.replace('/artwork/', '');
+      const match = gridItems.find(item => item.slug === urlSlug);
       
-      if (!currentHash || currentHash === '#home') {
-        setCurrentView({ type: 'grid', data: null });
-        setActiveTab('Home');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/biography') {
-        setCurrentView({ type: 'biography', data: null });
-        setActiveTab('Biography');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/artist-statement') {
-        setCurrentView({ type: 'artist-statement', data: null });
-        setActiveTab("Artist's Statement");
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/gallery/acrylic-on-canvas') {
-        setCurrentView({ type: 'acrylic-on-canvas', data: null });
-        setActiveTab('Acrylic on canvas');
-        setExpandedMenu('Gallery');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/events') {
-        setCurrentView({ type: 'events', data: null });
-        setActiveTab('Events');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/media/newspaper-articles') {
-        setCurrentView({ type: 'newspaper-articles', data: null });
-        setActiveTab('Newspapers Articles');
-        setExpandedMenu('Media');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/media/magazines') { 
-        setCurrentView({ type: 'magazines', data: null });
-        setActiveTab('Magazines');
-        setExpandedMenu('Media');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/media/web-articles') {
-        setCurrentView({ type: 'web-articles', data: null });
-        setActiveTab('Web Articles');
-        setExpandedMenu('Media');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/media/videos') {
-        setCurrentView({ type: 'videos', data: null });
-        setActiveTab('Videos');
-        setExpandedMenu('Media');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/look-world-talking') {
-        setCurrentView({ type: 'look-world-talking', data: null });
-        setActiveTab('Look the world is talking1');
-        setExpandedMenu('Look the world is talking');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      } else if (currentHash === '#/look-world-talking/twitter-mentions') {
-        setCurrentView({ type: 'twitter-mentions', data: null });
-        setActiveTab('Twitter Mentions');
-        setExpandedMenu('Look the world is talking');
-        setMagnifier(prev => ({ ...prev, show: false }));
-        window.scrollTo(0, 0);
-      }else if (currentHash.startsWith('#/artwork/')) {
-        const urlSlug = currentHash.replace('#/artwork/', '');
-        const match = gridItems.find(item => item.slug === urlSlug);
-        
-        if (match) {
-          /* CLEAN UNIFIED ROUTING LOGIC ENGINE */
-          if (match.customLayout === 'huffington') {
-            setCurrentView({ type: 'huffington-post', data: match });
-          } else if (match.customLayout === 'tedx') {
-            setCurrentView({ type: 'tedx-presentation', data: match }); 
-          } else {
-            setCurrentView({ type: 'detail', data: match });
-          }
-          
-          setActiveTab('Gallery');
-          setMagnifier(prev => ({ ...prev, show: false }));
-          window.scrollTo(0, 0);
+      if (match) {
+        if (match.customLayout === 'huffington') {
+          setCurrentView({ type: 'huffington-post', data: match });
+        } else if (match.customLayout === 'tedx') {
+          setCurrentView({ type: 'tedx-presentation', data: match }); 
+        } else {
+          setCurrentView({ type: 'detail', data: match });
         }
+        setActiveTab('Gallery');
+        setMagnifier(prev => ({ ...prev, show: false }));
       }
-    };
-
-    window.addEventListener('hashchange', handleUrlRouting);
-    handleUrlRouting(); 
-    return () => window.removeEventListener('hashchange', handleUrlRouting);
-  }, []);
+    }
+    
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const handleMenuClick = (item) => {
     if (item.hasSub) {
@@ -131,15 +118,11 @@ export default function App() {
       setActiveTab(item.name);
       setExpandedMenu(null);
       setIsMobileMenuOpen(false); 
-      if (item.name === 'Biography') {
-        window.location.hash = '#/biography';
-      } else if (item.name === "Artist's Statement") {
-        window.location.hash = '#/artist-statement';
-      } else if (item.name === 'Events') {
-        window.location.hash = '#/events';
-      } else {
-        window.location.hash = '#home';
-      }
+      
+      if (item.name === 'Biography') navigate('/biography');
+      else if (item.name === "Artist's Statement") navigate('/artist-statement');
+      else if (item.name === 'Events') navigate('/events');
+      else navigate('/');
     }
   };
 
@@ -178,11 +161,10 @@ export default function App() {
       
       {/* SIDEBAR NAVIGATION PANEL */}
       <aside className="sidebar">
-        <div className="logo-container" onClick={() => { window.location.hash = '#home'; setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
+        <div className="logo-container" onClick={() => { navigate('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
         </div>
 
-        {/* Mobile Menu Trigger Strip */}
         <div className="mobile-menu-toggle-bar" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <span className="mobile-toggle-title-text">Navigation Menu</span>
           <span className="mobile-toggle-icon-symbol">{isMobileMenuOpen ? '–' : '+'}</span>
@@ -201,8 +183,8 @@ export default function App() {
                 <React.Fragment key={item.name}>
                   <li className={`${isActive ? 'active' : ''}`} onClick={() => handleMenuClick(item)}>
                     <a 
-                      href={item.name === 'Biography' ? '#/biography' : item.name === "Artist's Statement" ? '#/artist-statement' : item.name === 'Events' ? '#/events' : (item.hasSub ? undefined : '#home')}
-                      onClick={(e) => item.hasSub && e.preventDefault()}
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); if(item.hasSub === false) handleMenuClick(item); }}
                     >
                       <span className="nav-text">{item.name}</span>
                       {item.hasSub && (isExpanded ? <Minus className="nav-icon" size={14} /> : <Plus className="nav-icon" size={14} />)}
@@ -219,44 +201,17 @@ export default function App() {
                             e.stopPropagation();
                             setActiveTab(sub);
                             setIsMobileMenuOpen(false); 
-                            if (sub === 'Acrylic on canvas') {
-                              window.location.hash = '#/gallery/acrylic-on-canvas';
-                            } else if (sub === 'Newspapers Articles') {
-                              window.location.hash = '#/media/newspaper-articles';
-                            } else if (sub === 'Magazines') { 
-                              window.location.hash = '#/media/magazines';
-                            } else if (sub === 'Web Articles') {
-                              window.location.hash = '#/media/web-articles';
-                            } else if (sub === 'Videos') {
-                              window.location.hash = '#/media/videos';
-                            } else if (sub === 'Look the world is talking1') {
-                              window.location.hash = '#/look-world-talking';
-                            }else if (sub === 'Twitter Mentions') {
-                              window.location.hash = '#/look-world-talking/twitter-mentions'; // <-- ADD THIS
-                            }
-
+                            
+                            if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
+                            else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
+                            else if (sub === 'Magazines') navigate('/media/magazines');
+                            else if (sub === 'Web Articles') navigate('/media/web-articles');
+                            else if (sub === 'Videos') navigate('/media/videos');
+                            else if (sub === 'Look the world is talking1') navigate('/look-world-talking');
+                            else if (sub === 'Twitter Mentions') navigate('/look-world-talking/twitter-mentions');
                           }}
                         >
-                          <a 
-                            href={
-                              sub === 'Acrylic on canvas' 
-                                ? '#/gallery/acrylic-on-canvas' 
-                                : sub === 'Newspapers Articles' 
-                                  ? '#/media/newspaper-articles' 
-                                  : sub === 'Magazines' 
-                                    ? '#/media/magazines' 
-                                    : sub === 'Web Articles' 
-                                      ? '#/media/web-articles' 
-                                      : sub === 'Videos' 
-                                        ? '#/media/videos' 
-                                        : sub === 'Look the world is talking1' 
-                                          ? '#/look-world-talking'
-                                          : sub === 'Twitter Mentions'
-                                            ? '#/look-world-talking/twitter-mentions' // <-- ADD THIS
-                                            : '#home'
-                                         
-                            }
-                          >
+                          <a href="#" onClick={(e) => e.preventDefault()}>
                             <span className="sub-nav-text">{sub}</span>
                           </a>
                         </li>
@@ -285,7 +240,6 @@ export default function App() {
         <div className="sidebar-empty-basement"></div>
       </aside>
 
-      {/* CORE WORKSPACE DISPLAY LAYOUT ENGINE */}
       <main className="main-content">
         
         {currentView.type === 'grid' && (
@@ -295,11 +249,10 @@ export default function App() {
                 key={item.id} 
                 className="portfolio-entry-card" 
                 onClick={() => {
-                  /* THE CLICK DISPATCH ENGINE: Captures custom layouts instantly */
                   if (item.directLink) {
-                    window.location.hash = item.directLink;
+                    navigate(item.directLink.replace('#', '')); // Strip hash if it exists in data
                   } else {
-                    window.location.hash = `#/artwork/${item.slug}`;
+                    navigate(`/artwork/${item.slug}`);
                   }
                 }}
               >

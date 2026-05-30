@@ -10,6 +10,7 @@ import Magazines from './components/Magazines';
 import WebArticles from './components/WebArticles';
 import Videos from './components/Videos'; 
 import LookWorldTalking from './components/LookWorldTalking';
+import TwitterMentions from './components/TwitterMentions';
 import HuffingtonPost from './components/HuffingtonPost'; 
 import TedX from './components/TedX'; 
 import './App.css';
@@ -91,7 +92,13 @@ export default function App() {
         setExpandedMenu('Look the world is talking');
         setMagnifier(prev => ({ ...prev, show: false }));
         window.scrollTo(0, 0);
-      } else if (currentHash.startsWith('#/artwork/')) {
+      } else if (currentHash === '#/look-world-talking/twitter-mentions') {
+        setCurrentView({ type: 'twitter-mentions', data: null });
+        setActiveTab('Twitter Mentions');
+        setExpandedMenu('Look the world is talking');
+        setMagnifier(prev => ({ ...prev, show: false }));
+        window.scrollTo(0, 0);
+      }else if (currentHash.startsWith('#/artwork/')) {
         const urlSlug = currentHash.replace('#/artwork/', '');
         const match = gridItems.find(item => item.slug === urlSlug);
         
@@ -224,7 +231,10 @@ export default function App() {
                               window.location.hash = '#/media/videos';
                             } else if (sub === 'Look the world is talking1') {
                               window.location.hash = '#/look-world-talking';
+                            }else if (sub === 'Twitter Mentions') {
+                              window.location.hash = '#/look-world-talking/twitter-mentions'; // <-- ADD THIS
                             }
+
                           }}
                         >
                           <a 
@@ -240,8 +250,11 @@ export default function App() {
                                       : sub === 'Videos' 
                                         ? '#/media/videos' 
                                         : sub === 'Look the world is talking1' 
-                                          ? '#/look-world-talking' 
-                                          : '#home'
+                                          ? '#/look-world-talking'
+                                          : sub === 'Twitter Mentions'
+                                            ? '#/look-world-talking/twitter-mentions' // <-- ADD THIS
+                                            : '#home'
+                                         
                             }
                           >
                             <span className="sub-nav-text">{sub}</span>
@@ -318,6 +331,7 @@ export default function App() {
         {currentView.type === 'web-articles' && <WebArticles />}
         {currentView.type === 'videos' && <Videos />}
         {currentView.type === 'look-world-talking' && <LookWorldTalking />}
+        {currentView.type === 'twitter-mentions' && <TwitterMentions />}
         {currentView.type === 'tedx-presentation' && <TedX />}
         
         {currentView.type === 'detail' && (

@@ -87,22 +87,22 @@ export const gridItems = [
   },
   {
     id: 8,
-    slug: "sunset-waves",
-    title: "Sunset Waves",
-    summary: "Warm crimson gradients reflecting off fluid textural motions...",
-    description: "Warm crimson gradients reflecting off fluid textural motions captured at dusk thresholds.",
+    slug: "Blushing",
+    title: "Blushing",
+    summary: "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!",
+    description: "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!",
     medium: "Acrylic on canvas",
-    size: "24\" x 24\"",
-    src: "/9.jpg"
+    size: "36\" x 24\"",
+    src: "/888.jpg"
   },
   {
     id: 9,
-    slug: "deep-thoughts",
-    title: "Deep Thoughts",
-    summary: "A complex labyrinth of heavy palette strokes and dark fields...",
-    description: "A complex labyrinth of heavy palette strokes and dark fields provoking introspective visual states.",
-    medium: "Mixed Media",
-    size: "3' X 5'",
+    slug: "Colours-of-Life",
+    title: "Colours of Life I",
+    summary: "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile.",
+    description: "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile.",
+    medium: "Acrylic on Canvas",
+    size: "36' X 24'",
     src: "/10.jpg"
   },
   {

@@ -14,33 +14,40 @@ export const gridItems = [
   },
   {
     id: 2,
-    slug: "colours-of-life-i",
-    title: "Colours of Life I",
-    summary: "The colors of life surround us. The garden has so many colors...",
-    description: "The colors of life surround us. The garden has so many colors to explore and discover.",
-    medium: "Acrylic on canvas",
-    size: "3' X 4'",
+    slug: "the-guardian",
+    title: "The Guardian",
+    isArticle: true, 
+    articleImageWidth: "350px", 
+    
+    /* ADD THIS: The magic switch that turns on the comment box */
+    allowComments: true, 
+    
+    summary: "“…Only five and already he has a signature style..” Guardian",
+    description: "Shorya Mahanot, Asia’s youngest abstract painter, could become a global figure in the art\nworld, believes his proud father.",
+    linkText: "theGuardian.com",
+    linkUrl: "https://www.theguardian.com", 
     src: "/2.jpg"
   },
   {
     id: 3,
-    slug: "abstract-ocean",
-    title: "Abstract Ocean",
-    summary: "Diving deep into turquoise layers and sweeping visual currents...",
-    description: "Diving deep into turquoise layers and sweeping visual currents to explore oceanic depth patterns.",
+    slug: "Pretty-Dreams",
+    title: "Pretty Dreams",
+    summary: "My friends, my family, they all come into my pretty dreams.",
+    description: "My friends, my family, they all come into my pretty dreams.",
     medium: "Acrylic on canvas",
     size: "30\" x 40\"",
     src: "/3.jpg"
   },
   {
     id: 4,
-    slug: "modern-horizon",
-    title: "Modern Horizon",
-    summary: "Where linear geometry intersects with raw landscape tones...",
-    description: "Where linear geometry intersects with raw landscape tones in a contemporary display environment.",
-    medium: "Mixed Media",
-    size: "3' X 3'",
-    src: "/4.jpg"
+    slug: "the-huffington-post",
+    title: "The Huffington Post",
+    
+    /* ADD THIS FLAG: Tells React to look for a custom file */
+    customLayout: 'huffington', 
+    
+    src: "/4.jpg", // The image shown on the grid
+    description: "Read the full interview...", // Shown on hover
   },
   {
     id: 5,

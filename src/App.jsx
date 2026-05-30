@@ -12,7 +12,9 @@ import Videos from './components/Videos';
 import LookWorldTalking from './components/LookWorldTalking';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+// import LookWorldTalking from './components/LookWorldTalking';
+import HuffingtonPost from './components/HuffingtonPost'; // ADD THIS LINE
+import './App.css';
 export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
@@ -21,7 +23,13 @@ export default function App() {
 
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
-
+const commentSectionRef = useRef(null); 
+  
+  const scrollToComments = () => {
+    if (commentSectionRef.current) {
+      commentSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   useEffect(() => {
     const handleUrlRouting = () => {
       const currentHash = window.location.hash;
@@ -87,6 +95,23 @@ export default function App() {
         const match = gridItems.find(item => item.slug === urlSlug);
         
         if (match) {
+          // CHECK FOR CUSTOM LAYOUT
+          if (match.customLayout === 'huffington') {
+            setCurrentView({ type: 'huffington-post', data: match });
+          } else {
+            setCurrentView({ type: 'detail', data: match });
+          }
+          
+          setActiveTab('Gallery');
+          setMagnifier(prev => ({ ...prev, show: false }));
+          window.scrollTo(0, 0);
+        }
+      } 
+      else if (currentHash.startsWith('#/artwork/')) {
+        const urlSlug = currentHash.replace('#/artwork/', '');
+        const match = gridItems.find(item => item.slug === urlSlug);
+        
+        if (match) {
           setCurrentView({ type: 'detail', data: match });
           setActiveTab('Gallery');
           setMagnifier(prev => ({ ...prev, show: false }));
@@ -148,7 +173,7 @@ export default function App() {
       top: `${magnifier.y - (lensSize / 2)}px`,
       backgroundImage: `url(${currentView.data.src})`,
       backgroundPosition: `${pctX}% ${pctY}%`,
-      backgroundSize: `${width * 1.5}px ${height * 1.5}px`, // 2.5x zoom level
+      backgroundSize: `${width * 1.2}px ${height * 1.2}px`, // 2.5x zoom level
       imageRendering: 'high-quality'
     };
   };
@@ -298,6 +323,7 @@ export default function App() {
         )}
 
         {currentView.type === 'biography' && <Biography />}
+        {currentView.type === 'huffington-post' && <HuffingtonPost />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
@@ -311,26 +337,115 @@ export default function App() {
           <div className="artwork-detail-page">
             <header className="detail-page-header">
               <h1 className="artwork-main-title">{currentView.data.title}</h1>
-              <div className="artwork-meta-subheader">Posted | <span>0 comments</span></div>
-            </header>
-            <div className="detail-page-content-body">
-              <div className="detail-image-container" ref={containerRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMagnifier(prev => ({ ...prev, show: false }))}>
-                <img src={currentView.data.src} alt={currentView.data.title} className="detail-large-img" />
-                {magnifier.show && containerRef.current && <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />}
+              <div className="artwork-meta-subheader">
+                Posted | 
+                
+                {/* Conditionally makes it a clickable link ONLY if the comment box exists */}
+                {currentView.data.allowComments ? (
+                  <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
+                ) : (
+                  <span> 0 comments</span>
+                )}
+                
               </div>
+            </header>
+    
+            
+            <div className="detail-page-content-body">
+              
+              {/* IMAGE CONTAINER */}
+              <div 
+                className={`detail-image-container ${currentView.data.isArticle ? 'is-article-view' : ''}`} 
+                ref={!currentView.data.isArticle ? containerRef : null} 
+                onMouseMove={!currentView.data.isArticle ? handleMouseMove : null} 
+                onMouseLeave={!currentView.data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
+              >
+                <img 
+                  src={currentView.data.src} 
+                  alt={currentView.data.title} 
+                  className="detail-large-img" 
+                />
+                
+                {/* Only show the glass if it's NOT an article */}
+                {!currentView.data.isArticle && magnifier.show && containerRef.current && (
+                  <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
+                )}
+              </div>
+
+              {/* TEXT AREA: Swaps between Article Layout and Artwork Layout */}
               <div className="detail-text-description-area">
-                <p className="artwork-description-paragraph">{currentView.data.description}</p>
-                <ul className="artwork-technical-bullet-list">
-                  <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
-                  <li><strong>Size: {currentView.data.size}</strong></li>
-                </ul>
+                {currentView.data.isArticle ? (
+                  
+                  /* --- ARTICLE TEXT LAYOUT --- */
+                  <div className="article-content-layout">
+                    <p className="article-quote-text">{currentView.data.summary}</p>
+                    <p className="article-body-text">{currentView.data.description}</p>
+                    {currentView.data.linkText && (
+                      <p className="article-link-text">
+                        To read full article visit <a href={currentView.data.linkUrl} target="_blank" rel="noreferrer">{currentView.data.linkText}</a>
+                      </p>
+                    )}
+                  </div>
+
+                ) : (
+                  
+                  /* --- ARTWORK BULLET LAYOUT --- */
+                  <>
+                    <p className="artwork-description-paragraph">{currentView.data.description}</p>
+                    <ul className="artwork-technical-bullet-list">
+                      <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
+                      <li><strong>Size: {currentView.data.size}</strong></li>
+                    </ul>
+                  </>
+
+                )}
               </div>
             </div>
+
+            {/* --- NEW COMMENT SECTION (Properly hidden on non-article pages!) --- */}
+            {currentView.data.allowComments && (
+              <div className="comment-section-container" ref={commentSectionRef}>
+                <h2 className="comment-heading">Submit a Comment</h2>
+                <p className="comment-subtext">Your email address will not be published. Required fields are marked *</p>
+                
+                <form className="comment-form" onSubmit={(e) => e.preventDefault()}>
+                  <div className="form-group full-width">
+                    <textarea placeholder="Comment" className="comment-textarea" rows="8" required></textarea>
+                  </div>
+                  
+                  <div className="form-group half-width">
+                    <input type="text" placeholder="Name *" className="comment-input" required />
+                  </div>
+                  
+                  <div className="form-group half-width">
+                    <input type="email" placeholder="Email *" className="comment-input" required />
+                  </div>
+                  
+                  <div className="form-group half-width">
+                    <input type="text" placeholder="Website" className="comment-input" />
+                  </div>
+                  
+                  <div className="form-group checkbox-group">
+                    <input type="checkbox" id="save-info-checkbox" className="comment-checkbox" />
+                    <label htmlFor="save-info-checkbox" className="comment-checkbox-label">
+                      Save my name, email, and website in this browser for the next time I comment.
+                    </label>
+                  </div>
+                  
+                  <div className="submit-btn-wrapper">
+                    <button type="submit" className="comment-submit-btn">Submit</button>
+                  </div>
+                </form>
+              </div>
+            )}
+            {/* --- END COMMENT SECTION --- */}
+
+            {/* ONE SINGLE FOOTER AT THE VERY BOTTOM OF THE DETAIL PAGE */}
             <footer className="detail-page-footer-signature">Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span></footer>
           </div>
         )}
+        
       </main>
-
     </div>
   );
 }

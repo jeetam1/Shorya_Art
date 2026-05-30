@@ -1786,3 +1786,158 @@ body,
   from { transform: scale(0.85); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+/* ==========================================================================
+   TEDX INTEGRATED VIDEO & TIMELINE ARCHITECTURE (EXACT MATCH)
+   ========================================================================== */
+.custom-tedx-page {
+  padding-top: 15px !important;
+}
+
+.custom-tedx-page,
+.custom-tedx-page h2,
+.custom-tedx-page h3,
+.custom-tedx-page p,
+.custom-tedx-page span,
+.custom-tedx-page label {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+.tedx-content-flow {
+  max-width: 650px !important; /* Locks width perfectly to match video snapshot size */
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Video Frame Settings */
+.tedx-video-player-wrapper {
+  width: 100% !important;
+  max-width: 530px !important; /* Keeps the iframe perfectly proportional */
+  aspect-ratio: 16 / 9 !important;
+  margin-bottom: 12px !important;
+  background-color: #000000 !important;
+}
+
+.tedx-video-iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border: none !important;
+}
+
+.tedx-video-caption-text {
+  font-size: 13.5px !important;
+  color: #444444 !important;
+  margin: 0 0 45px 0 !important;
+  line-height: 1.6 !important;
+}
+
+.tedx-description-split-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 30px !important;
+  align-items: flex-start !important;
+  margin-bottom: 45px !important;
+  width: 100% !important;
+}
+
+.tedx-info-text-column {
+  flex: 1 !important;
+}
+
+.tedx-section-heading {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color: #222222 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.tedx-body-paragraph-text {
+  font-size: 14.5px !important;
+  line-height: 1.75 !important;
+  color: #444444 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.tedx-branding-logo-box {
+  width: 200px !important; /* Gives the TEDx text logo proportional presence */
+  min-width: 200px !important;
+  padding-top: 25px !important;
+}
+
+.tedx-fluid-logo {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.tedx-gallery-title-header {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  color: #222222 !important;
+  margin: 0 0 25px 0 !important;
+}
+
+/* FIXED: Changed to exact 2-column matrix layout */
+.tedx-thumbnail-matrix-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 15px !important;
+  width: 100% !important;
+  max-width: 530px !important; /* Matches video line layout */
+  margin-bottom: 50px !important;
+}
+
+.tedx-matrix-thumbnail-card {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background-color: #ffffff !important;
+}
+
+.tedx-matrix-image-clipping-box {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.tedx-matrix-img-asset {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+@media (max-width: 640px) {
+  .tedx-description-split-row {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .tedx-branding-logo-box {
+    width: 150px !important;
+    min-width: 150px !important;
+    padding-top: 0 !important;
+  }
+  .tedx-thumbnail-matrix-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* Styling for the new page title and meta subheader */
+/* ==========================================================================
+   TEDX TYPOGRAPHY ALIGNMENT MATCH
+   ========================================================================== */
+.tedx-main-title-heading {
+  font-family: Arial, sans-serif !important; /* Changes the font family to match */
+  font-size: 38px !important;
+  font-weight: bold !important;
+  color: #444444 !important; /* Softer dark charcoal color */
+  margin: 0 0 12px 0 !important;
+  letter-spacing: -1px !important; /* Tighter letter tracking */
+  line-height: 1.1 !important;
+}
+
+.tedx-meta-subheader-text {
+  font-family: Arial, sans-serif !important;
+  font-size: 14.5px !important;
+  color: #666666 !important;
+  margin: 0 0 35px 0 !important;
+  letter-spacing: -0.2px !important;
+}

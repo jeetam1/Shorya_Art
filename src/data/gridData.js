@@ -51,33 +51,39 @@ export const gridItems = [
   },
   {
     id: 5,
-    slug: "in-the-sea",
-    title: "In The Sea",
-    summary: "We wonder what goes on in the depths of the sea. We imagine...",
-    description: "We wonder what goes on in the depths of the sea. We imagine it and the colors come through.",
-    medium: "Acrylic on Canvas",
-    size: "18\" x 24\"",
+    slug: "Artist's-Biography",
+    title: "Artist's Biography",
+    
+    /* ADD THIS LINE: Tells React to skip the detail page and go straight to Biography */
+    directLink: '#/biography', 
+    
+    summary: "World’s youngest signature style abstract artist.",
+    description: "World’s youngest signature style abstract artist.",
+    
     src: "/5.jpg"
   },
   {
     id: 6,
-    slug: "nature-canvas",
-    title: "Nature Canvas",
-    summary: "Earth tones blending into soft, textured visual backdrops...",
-    description: "Earth tones blending into soft, textured visual backdrops representing organic morning shifts.",
+    slug: "In-The-Sea",
+    title: "In The Sea",
+    summary: "We wonder what goes on in the depths of the sea. We imagine it and the colors come through",
+    description: "We wonder what goes on in the depths of the sea. We imagine it and the colors come through",
     medium: "Acrylic on canvas",
-    size: "40\" x 40\"",
+    size: "18\" x 24\"",
+    Age: "4",
     src: "/6.jpg"
   },
   {
     id: 7,
-    slug: "bright-light",
+    slug: "Bright-Light",
     title: "Bright Light",
-    summary: "High-contrast geometric illumination bursting from solid darkness...",
-    description: "High-contrast geometric illumination bursting from solid darkness to create depth fields.",
+    customLayout: 'tedx',
+    
+    summary: "The story of my life\’ – see my TEDx speech about 7 years of my Abstract Art Journey.",
+    description: "The story of my life\’ – see my TEDx speech about 7 years of my Abstract Art Journey.",
     medium: "Oil on canvas",
     size: "2' X 4'",
-    src: "/8.jpg"
+    src: "/30.jpg"
   },
   {
     id: 8,

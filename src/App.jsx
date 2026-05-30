@@ -10,11 +10,11 @@ import Magazines from './components/Magazines';
 import WebArticles from './components/WebArticles';
 import Videos from './components/Videos'; 
 import LookWorldTalking from './components/LookWorldTalking';
+import HuffingtonPost from './components/HuffingtonPost'; 
+import TedX from './components/TedX'; 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-// import LookWorldTalking from './components/LookWorldTalking';
-import HuffingtonPost from './components/HuffingtonPost'; // ADD THIS LINE
-import './App.css';
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
@@ -23,13 +23,14 @@ export default function App() {
 
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
-const commentSectionRef = useRef(null); 
+  const commentSectionRef = useRef(null); 
   
   const scrollToComments = () => {
     if (commentSectionRef.current) {
       commentSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
   useEffect(() => {
     const handleUrlRouting = () => {
       const currentHash = window.location.hash;
@@ -95,24 +96,15 @@ const commentSectionRef = useRef(null);
         const match = gridItems.find(item => item.slug === urlSlug);
         
         if (match) {
-          // CHECK FOR CUSTOM LAYOUT
+          /* CLEAN UNIFIED ROUTING LOGIC ENGINE */
           if (match.customLayout === 'huffington') {
             setCurrentView({ type: 'huffington-post', data: match });
+          } else if (match.customLayout === 'tedx') {
+            setCurrentView({ type: 'tedx-presentation', data: match }); 
           } else {
             setCurrentView({ type: 'detail', data: match });
           }
           
-          setActiveTab('Gallery');
-          setMagnifier(prev => ({ ...prev, show: false }));
-          window.scrollTo(0, 0);
-        }
-      } 
-      else if (currentHash.startsWith('#/artwork/')) {
-        const urlSlug = currentHash.replace('#/artwork/', '');
-        const match = gridItems.find(item => item.slug === urlSlug);
-        
-        if (match) {
-          setCurrentView({ type: 'detail', data: match });
           setActiveTab('Gallery');
           setMagnifier(prev => ({ ...prev, show: false }));
           window.scrollTo(0, 0);
@@ -159,11 +151,7 @@ const commentSectionRef = useRef(null);
 
   const getMagnifierStyles = () => {
     if (!containerRef.current) return {};
-    
-    // We set a fixed size for the lens to 250px
     const lensSize = 150; 
-    
-    // Calculate the percentage position
     const { width, height } = containerRef.current.getBoundingClientRect();
     const pctX = (magnifier.x / width) * 100;
     const pctY = (magnifier.y / height) * 100;
@@ -173,7 +161,7 @@ const commentSectionRef = useRef(null);
       top: `${magnifier.y - (lensSize / 2)}px`,
       backgroundImage: `url(${currentView.data.src})`,
       backgroundPosition: `${pctX}% ${pctY}%`,
-      backgroundSize: `${width * 1.2}px ${height * 1.2}px`, // 2.5x zoom level
+      backgroundSize: `${width * 1.2}px ${height * 1.2}px`, 
       imageRendering: 'high-quality'
     };
   };
@@ -197,7 +185,6 @@ const commentSectionRef = useRef(null);
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
-              
               const isActive = activeTab === item.name || 
                                (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
                                (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
@@ -288,30 +275,29 @@ const commentSectionRef = useRef(null);
       {/* CORE WORKSPACE DISPLAY LAYOUT ENGINE */}
       <main className="main-content">
         
-        {/* FIXED: Removed the broken useState hooks from here to unfreeze the React App */}
         {currentView.type === 'grid' && (
           <div className="art-grid">
             {gridItems.map((item) => (
               <article 
                 key={item.id} 
                 className="portfolio-entry-card" 
-                onClick={() => window.location.hash = `#/artwork/${item.slug}`}
+                onClick={() => {
+                  /* THE CLICK DISPATCH ENGINE: Captures custom layouts instantly */
+                  if (item.directLink) {
+                    window.location.hash = item.directLink;
+                  } else {
+                    window.location.hash = `#/artwork/${item.slug}`;
+                  }
+                }}
               >
                 <div className="art-card-wrapper">
-                  {/* Base Image Asset */}
                   <img src={item.src} alt={item.title} className="art-card-img" />
                   
-                  {/* Golden Orange 3D Pop-Out Overlay */}
                   <div className="card-hover-overlay">
                     <h3 className="card-hover-title">{item.title}</h3>
-                    
-                    {/* Automatically limits description to exactly 8 words */}
-                    {/* We removed the JS .split() math. CSS will handle the lines now! */}
-<p className="card-hover-description">
-  {item.description || "Temporary dummy content placeholder goes here..."}
-</p>
-                    
-                    {/* Magnifying Glass Icon Circle */}
+                    <p className="card-hover-description">
+                      {item.description || "Temporary dummy content placeholder goes here..."}
+                    </p>
                     <div className="card-hover-icon-circle">
                       <Search size={20} />
                     </div>
@@ -332,28 +318,23 @@ const commentSectionRef = useRef(null);
         {currentView.type === 'web-articles' && <WebArticles />}
         {currentView.type === 'videos' && <Videos />}
         {currentView.type === 'look-world-talking' && <LookWorldTalking />}
-
+        {currentView.type === 'tedx-presentation' && <TedX />}
+        
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">
               <h1 className="artwork-main-title">{currentView.data.title}</h1>
               <div className="artwork-meta-subheader">
                 Posted | 
-                
-                {/* Conditionally makes it a clickable link ONLY if the comment box exists */}
                 {currentView.data.allowComments ? (
                   <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
                 ) : (
                   <span> 0 comments</span>
                 )}
-                
               </div>
             </header>
     
-            
             <div className="detail-page-content-body">
-              
-              {/* IMAGE CONTAINER */}
               <div 
                 className={`detail-image-container ${currentView.data.isArticle ? 'is-article-view' : ''}`} 
                 ref={!currentView.data.isArticle ? containerRef : null} 
@@ -365,18 +346,13 @@ const commentSectionRef = useRef(null);
                   alt={currentView.data.title} 
                   className="detail-large-img" 
                 />
-                
-                {/* Only show the glass if it's NOT an article */}
                 {!currentView.data.isArticle && magnifier.show && containerRef.current && (
                   <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
                 )}
               </div>
 
-              {/* TEXT AREA: Swaps between Article Layout and Artwork Layout */}
               <div className="detail-text-description-area">
                 {currentView.data.isArticle ? (
-                  
-                  /* --- ARTICLE TEXT LAYOUT --- */
                   <div className="article-content-layout">
                     <p className="article-quote-text">{currentView.data.summary}</p>
                     <p className="article-body-text">{currentView.data.description}</p>
@@ -386,23 +362,23 @@ const commentSectionRef = useRef(null);
                       </p>
                     )}
                   </div>
-
                 ) : (
-                  
-                  /* --- ARTWORK BULLET LAYOUT --- */
                   <>
                     <p className="artwork-description-paragraph">{currentView.data.description}</p>
                     <ul className="artwork-technical-bullet-list">
                       <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
-                      <li><strong>Size: {currentView.data.size}</strong></li>
+                      {currentView.data.size && (
+                        <li><strong>Size: {currentView.data.size}</strong></li>
+                      )}
+                      {currentView.data.age && (
+                        <li><strong>Age: {currentView.data.age}</strong></li>
+                      )}                    
                     </ul>
                   </>
-
                 )}
               </div>
             </div>
 
-            {/* --- NEW COMMENT SECTION (Properly hidden on non-article pages!) --- */}
             {currentView.data.allowComments && (
               <div className="comment-section-container" ref={commentSectionRef}>
                 <h2 className="comment-heading">Submit a Comment</h2>
@@ -412,35 +388,28 @@ const commentSectionRef = useRef(null);
                   <div className="form-group full-width">
                     <textarea placeholder="Comment" className="comment-textarea" rows="8" required></textarea>
                   </div>
-                  
                   <div className="form-group half-width">
                     <input type="text" placeholder="Name *" className="comment-input" required />
                   </div>
-                  
                   <div className="form-group half-width">
                     <input type="email" placeholder="Email *" className="comment-input" required />
                   </div>
-                  
                   <div className="form-group half-width">
                     <input type="text" placeholder="Website" className="comment-input" />
                   </div>
-                  
                   <div className="form-group checkbox-group">
                     <input type="checkbox" id="save-info-checkbox" className="comment-checkbox" />
                     <label htmlFor="save-info-checkbox" className="comment-checkbox-label">
                       Save my name, email, and website in this browser for the next time I comment.
                     </label>
                   </div>
-                  
                   <div className="submit-btn-wrapper">
                     <button type="submit" className="comment-submit-btn">Submit</button>
                   </div>
                 </form>
               </div>
             )}
-            {/* --- END COMMENT SECTION --- */}
 
-            {/* ONE SINGLE FOOTER AT THE VERY BOTTOM OF THE DETAIL PAGE */}
             <footer className="detail-page-footer-signature">Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span></footer>
           </div>
         )}

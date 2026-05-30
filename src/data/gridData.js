@@ -125,16 +125,16 @@ export const gridItems = [
     size: "30\" x 30\"",
     src: "/12.jpg"
   },
-  {
-    id: 12,
-    slug: "the-core-painting",
-    title: "The Core Painting",
-    summary: "The absolute foundational balance point of raw aesthetic energy...",
-    description: "The absolute foundational balance point of raw aesthetic energy and structural center points.",
-    medium: "Oil on canvas",
-    size: "4' X 4'",
-    src: "/7.jpg"
-  },
+  // {
+  //   id: 12,
+  //   slug: "the-core-painting",
+  //   title: "The Core Painting",
+  //   summary: "The absolute foundational balance point of raw aesthetic energy...",
+  //   description: "The absolute foundational balance point of raw aesthetic energy and structural center points.",
+  //   medium: "Oil on canvas",
+  //   size: "4' X 4'",
+  //   src: "/7.jpg"
+  // },
 
   // ==========================================================================
   // SECOND LOOP (ITEMS 13 - 24)
@@ -147,7 +147,7 @@ export const gridItems = [
     description: "Alternative spatial exploration into mountains and vast horizons using premium cold shades.",
     medium: "Acrylic on canvas",
     size: "2' X 3'",
-    src: "/1.jpg"
+    src: "/13.jpg"
   },
   {
     id: 14,
@@ -157,7 +157,7 @@ export const gridItems = [
     description: "A profound reflection on structure and scale, bringing out signature textures and heavy layers.",
     medium: "Oil on canvas",
     size: "24\" x 36\"",
-    src: "/2.jpg"
+    src: "/14.png"
   },
   {
     id: 15,
@@ -167,7 +167,7 @@ export const gridItems = [
     description: "Extended flow variations across deep marine brush techniques and turquoise canvas bases.",
     medium: "Acrylic on canvas",
     size: "30\" x 40\"",
-    src: "/3.jpg"
+    src: "/15.jpg"
   },
   {
     id: 16,
@@ -177,7 +177,7 @@ export const gridItems = [
     description: "A focused study on the horizontal baseline segment layers using modern metallic pigments.",
     medium: "Mixed Media",
     size: "3' X 3'",
-    src: "/4.jpg"
+    src: "/16.jpg"
   },
   {
     id: 17,
@@ -187,7 +187,7 @@ export const gridItems = [
     description: "A secondary look underneath fluid visual surface elements, expanding raw movement fields.",
     medium: "Acrylic on Canvas",
     size: "18\" x 24\"",
-    src: "/5.jpg"
+    src: "/17.jpg"
   },
   {
     id: 18,
@@ -197,7 +197,7 @@ export const gridItems = [
     description: "Re-evaluating rich forest floor patterns with warm earth strokes and textured palette knives.",
     medium: "Acrylic on canvas",
     size: "40\" x 40\"",
-    src: "/6.jpg"
+    src: "/18.jpg"
   },
   {
     id: 19,
@@ -207,7 +207,7 @@ export const gridItems = [
     description: "Shifting light focus fields along high-contrast focal bands against raw black layouts.",
     medium: "Oil on canvas",
     size: "2' X 4'",
-    src: "/7.jpg"
+    src: "/19.jpg"
   },
   {
     id: 20,
@@ -217,7 +217,7 @@ export const gridItems = [
     description: "Dusk wave tracking utilizing deep magenta fluid properties over solid geometry grids.",
     medium: "Acrylic on canvas",
     size: "24\" x 24\"",
-    src: "/8.jpg"
+    src: "/20.jpg"
   },
   {
     id: 21,
@@ -227,7 +227,7 @@ export const gridItems = [
     description: "A deeper descent into visual mental complexity using heavy impasto texturing methods.",
     medium: "Mixed Media",
     size: "3' X 5'",
-    src: "/9.jpg"
+    src: "/21.jpg"
   },
   {
     id: 22,
@@ -237,7 +237,7 @@ export const gridItems = [
     description: "Asymmetrical balance patterns mapped across broad panels with high-fidelity color fields.",
     medium: "Acrylic on canvas",
     size: "36\" x 48\"",
-    src: "/10.jpg"
+    src: "/22.jpg"
   },
   {
     id: 23,
@@ -247,7 +247,7 @@ export const gridItems = [
     description: "High-energy expressive paint applications crossing paths cleanly on a heavy-weight template.",
     medium: "Acrylic on canvas",
     size: "30\" x 30\"",
-    src: "/11.jpg"
+    src: "/23.jpg"
   },
   {
     id: 24,
@@ -257,7 +257,7 @@ export const gridItems = [
     description: "The second variance layout inspecting central aesthetic points and micro-texture elements.",
     medium: "Oil on canvas",
     size: "4' X 4'",
-    src: "/12.jpg"
+    src: "/24.jpg"
   },
 
   // ==========================================================================
@@ -271,7 +271,7 @@ export const gridItems = [
     description: "Final atmospheric landscape variations using broad geometric panels and deep value shades.",
     medium: "Acrylic on canvas",
     size: "2' X 3'",
-    src: "/1.jpg"
+    src: "/25.jpg"
   },
   {
     id: 26,
@@ -281,7 +281,7 @@ export const gridItems = [
     description: "The final layer review tracking massive abstract figure structures and rich charcoal additions.",
     medium: "Oil on canvas",
     size: "24\" x 36\"",
-    src: "/2.jpg"
+    src: "/26.jpg"
   },
   {
     id: 27,
@@ -291,7 +291,7 @@ export const gridItems = [
     description: "Concluding exploration into oceanic visuals and high-speed motion strokes.",
     medium: "Acrylic on canvas",
     size: "30\" x 40\"",
-    src: "/3.jpg"
+    src: "/27.jpg"
   },
   {
     id: 28,
@@ -301,86 +301,87 @@ export const gridItems = [
     description: "A definitive geometric summary mapping horizontal space grids using deep matte textures.",
     medium: "Mixed Media",
     size: "3' X 3'",
-    src: "/4.jpg"
-  },
-  {
-    id: 29,
-    slug: "in-the-sea-c2",
-    title: "In The Sea (Copy 2)",
-    summary: "Final deep-water concepts breaking up linear alignment tracks...",
-    description: "Final deep-water concepts breaking up linear alignment tracks with fluid pouring mediums.",
-    medium: "Acrylic on Canvas",
-    size: "18\" x 24\"",
-    src: "/5.jpg"
-  },
-  {
-    id: 30,
-    slug: "nature-canvas-c2",
-    title: "Nature Canvas (Copy 2)",
-    summary: "Organic structural patterns finalized inside broad paint fields...",
-    description: "Organic structural patterns finalized inside broad paint fields with premium earth tones.",
-    medium: "Acrylic on canvas",
-    size: "40\" x 40\"",
-    src: "/6.jpg"
-  },
-  {
-    id: 31,
-    slug: "bright-light-c2",
-    title: "Bright Light (Copy 2)",
-    summary: "Concluding structural light study tracing high-intensity core nodes...",
-    description: "Concluding structural light study tracing high-intensity core nodes in thick oil layers.",
-    medium: "Oil on canvas",
-    size: "2' X 4'",
-    src: "/7.jpg"
-  },
-  {
-    id: 32,
-    slug: "sunset-waves-c2",
-    title: "Sunset Waves (Copy 2)",
-    summary: "The final dusk spectrum exploration capturing ambient field hues...",
-    description: "The final dusk spectrum exploration capturing ambient field hues over fine woven linen.",
-    medium: "Acrylic on canvas",
-    size: "24\" x 24\"",
-    src: "/8.jpg"
-  },
-  {
-    id: 33,
-    slug: "deep-thoughts-c2",
-    title: "Deep Thoughts (Copy 2)",
-    summary: "The final complex configuration layout of intersecting emotional paint paths...",
-    description: "The final complex configuration layout of intersecting emotional paint paths and raw media tones.",
-    medium: "Mixed Media",
-    size: "3' X 5'",
-    src: "/9.jpg"
-  },
-  {
-    id: 34,
-    slug: "abstract-view-c2",
-    title: "Abstract View (Copy 2)",
-    summary: "Definitive secondary perspective tracking clean primary balances...",
-    description: "Definitive secondary perspective tracking clean primary balances across wide canvas profiles.",
-    medium: "Acrylic on canvas",
-    size: "36\" x 48\"",
-    src: "/10.jpg"
-  },
-  {
-    id: 35,
-    slug: "vibrant-strokes-c2",
-    title: "Vibrant Strokes (Copy 2)",
-    summary: "The closing macro-stroke exploration tracing dynamic gestural rhythms...",
-    description: "The closing macro-stroke exploration tracing dynamic gestural rhythms and speed motions.",
-    medium: "Acrylic on canvas",
-    size: "30\" x 30\"",
-    src: "/11.jpg"
-  },
-  {
-    id: 36,
-    slug: "the-core-c2",
-    title: "The Core Painting (Copy 2)",
-    summary: "The ultimate focal center master panel closing the gallery series...",
-    description: "The ultimate focal center master panel closing the gallery series with premium textured glazes.",
-    medium: "Oil on canvas",
-    size: "4' X 4'",
-    src: "/12.jpg"
+    src: "/28.jpg"
   }
 ];
+//   {
+//     id: 29,
+//     slug: "in-the-sea-c2",
+//     title: "In The Sea (Copy 2)",
+//     summary: "Final deep-water concepts breaking up linear alignment tracks...",
+//     description: "Final deep-water concepts breaking up linear alignment tracks with fluid pouring mediums.",
+//     medium: "Acrylic on Canvas",
+//     size: "18\" x 24\"",
+//     src: "/5.jpg"
+//   },
+//   {
+//     id: 30,
+//     slug: "nature-canvas-c2",
+//     title: "Nature Canvas (Copy 2)",
+//     summary: "Organic structural patterns finalized inside broad paint fields...",
+//     description: "Organic structural patterns finalized inside broad paint fields with premium earth tones.",
+//     medium: "Acrylic on canvas",
+//     size: "40\" x 40\"",
+//     src: "/6.jpg"
+//   },
+//   {
+//     id: 31,
+//     slug: "bright-light-c2",
+//     title: "Bright Light (Copy 2)",
+//     summary: "Concluding structural light study tracing high-intensity core nodes...",
+//     description: "Concluding structural light study tracing high-intensity core nodes in thick oil layers.",
+//     medium: "Oil on canvas",
+//     size: "2' X 4'",
+//     src: "/7.jpg"
+//   },
+//   {
+//     id: 32,
+//     slug: "sunset-waves-c2",
+//     title: "Sunset Waves (Copy 2)",
+//     summary: "The final dusk spectrum exploration capturing ambient field hues...",
+//     description: "The final dusk spectrum exploration capturing ambient field hues over fine woven linen.",
+//     medium: "Acrylic on canvas",
+//     size: "24\" x 24\"",
+//     src: "/8.jpg"
+//   },
+//   {
+//     id: 33,
+//     slug: "deep-thoughts-c2",
+//     title: "Deep Thoughts (Copy 2)",
+//     summary: "The final complex configuration layout of intersecting emotional paint paths...",
+//     description: "The final complex configuration layout of intersecting emotional paint paths and raw media tones.",
+//     medium: "Mixed Media",
+//     size: "3' X 5'",
+//     src: "/9.jpg"
+//   },
+//   {
+//     id: 34,
+//     slug: "abstract-view-c2",
+//     title: "Abstract View (Copy 2)",
+//     summary: "Definitive secondary perspective tracking clean primary balances...",
+//     description: "Definitive secondary perspective tracking clean primary balances across wide canvas profiles.",
+//     medium: "Acrylic on canvas",
+//     size: "36\" x 48\"",
+//     src: "/10.jpg"
+//   },
+//   {
+//     id: 35,
+//     slug: "vibrant-strokes-c2",
+//     title: "Vibrant Strokes (Copy 2)",
+//     summary: "The closing macro-stroke exploration tracing dynamic gestural rhythms...",
+//     description: "The closing macro-stroke exploration tracing dynamic gestural rhythms and speed motions.",
+//     medium: "Acrylic on canvas",
+//     size: "30\" x 30\"",
+//     src: "/11.jpg"
+//   },
+//   {
+//     id: 36,
+//     slug: "the-core-c2",
+//     title: "The Core Painting (Copy 2)",
+//     summary: "The ultimate focal center master panel closing the gallery series...",
+//     description: "The ultimate focal center master panel closing the gallery series with premium textured glazes.",
+//     medium: "Oil on canvas",
+//     size: "4' X 4'",
+//     src: "/12.jpg"
+//   }
+// ];

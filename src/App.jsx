@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Minus, Search } from 'lucide-react';
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import Awards from './components/Awards';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
@@ -91,7 +91,12 @@ export default function App() {
       setActiveTab('Twitter Mentions');
       setExpandedMenu('Look the world is talking');
       setMagnifier(prev => ({ ...prev, show: false }));
-    } else if (path.startsWith('/artwork/')) {
+    } else if (path === '/awards-certificates') {
+     setCurrentView({ type: 'awards', data: null });
+     setActiveTab('Awards & Certificates');
+     setMagnifier(prev => ({ ...prev, show: false }));
+    }
+    else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
       const match = gridItems.find(item => item.slug === urlSlug);
       
@@ -122,6 +127,7 @@ export default function App() {
       if (item.name === 'Biography') navigate('/biography');
       else if (item.name === "Artist's Statement") navigate('/artist-statement');
       else if (item.name === 'Events') navigate('/events');
+      else if (item.name === 'Awards & Certificates') navigate('/awards-certificates');
       else navigate('/');
     }
   };
@@ -286,7 +292,7 @@ export default function App() {
         {currentView.type === 'look-world-talking' && <LookWorldTalking />}
         {currentView.type === 'twitter-mentions' && <TwitterMentions />}
         {currentView.type === 'tedx-presentation' && <TedX />}
-        
+        {currentView.type === 'awards' && <Awards />}
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">

@@ -2090,3 +2090,94 @@ body,
   color: #888888 !important;
   font-style: italic !important;
 }
+
+
+
+/* ==========================================================================
+   AWARDS & CERTIFICATES PAGE 
+   ========================================================================== */
+.awards-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1 !important; 
+}
+
+/* --- OVERLAP HEADER LAYOUT --- */
+.awards-header-section {
+  position: relative;
+  width: 100%;
+  height: 400px; 
+  margin-bottom: 40px;
+}
+
+.awards-banner-strip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%; 
+  height: 350px; 
+  /* Background image is now handled via inline React style! */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.awards-title-box {
+  position: absolute;
+  bottom: 20px; 
+  left: 0;
+  background-color: white;
+  padding: 30px 40px 30px 40px; 
+  z-index: 2; 
+}
+
+.awards-main-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 42px !important;
+  font-weight: 800 !important;
+  color: #444 !important;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* --- CONTENT & IMAGE SIZING --- */
+.awards-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 0 20px 80px 20px;
+}
+
+.award-section {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 60px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.award-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  margin-bottom: 25px !important;
+}
+
+.award-image {
+  max-width: 450px; 
+  width: 100%;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.award-text {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: #555 !important;
+  text-align: left !important; 
+  max-width: 650px;
+}

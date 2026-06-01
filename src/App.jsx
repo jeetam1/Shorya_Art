@@ -15,7 +15,8 @@ import LookWorldTalking from './components/LookWorldTalking';
 import TwitterMentions from './components/TwitterMentions';
 import HuffingtonPost from './components/HuffingtonPost'; 
 import TedX from './components/TedX'; 
-
+import Contact from './components/Contact';
+import ArtworkDetail from './components/ArtworkDetail';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -24,6 +25,14 @@ export default function App() {
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
+  
+  // --- UPGRADED: Array state to hold up to 3 comments, saved locally ---
+  const [comments, setComments] = useState(() => {
+    const savedComments = localStorage.getItem('shoryaComments');
+    return savedComments ? JSON.parse(savedComments) : [];
+  });
+  
+  const [isCommentSubmitted, setIsCommentSubmitted] = useState(false);
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,58 +52,49 @@ export default function App() {
     if (!path || path === '/' || path === '/home') {
       setCurrentView({ type: 'grid', data: null });
       setActiveTab('Home');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/biography') {
       setCurrentView({ type: 'biography', data: null });
       setActiveTab('Biography');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/artist-statement') {
       setCurrentView({ type: 'artist-statement', data: null });
       setActiveTab("Artist's Statement");
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/gallery/acrylic-on-canvas') {
       setCurrentView({ type: 'acrylic-on-canvas', data: null });
       setActiveTab('Acrylic on canvas');
       setExpandedMenu('Gallery');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/events') {
       setCurrentView({ type: 'events', data: null });
       setActiveTab('Events');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/media/newspaper-articles') {
       setCurrentView({ type: 'newspaper-articles', data: null });
       setActiveTab('Newspapers Articles');
       setExpandedMenu('Media');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/media/magazines') { 
       setCurrentView({ type: 'magazines', data: null });
       setActiveTab('Magazines');
       setExpandedMenu('Media');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/media/web-articles') {
       setCurrentView({ type: 'web-articles', data: null });
       setActiveTab('Web Articles');
       setExpandedMenu('Media');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/media/videos') {
       setCurrentView({ type: 'videos', data: null });
       setActiveTab('Videos');
       setExpandedMenu('Media');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/look-world-talking') {
       setCurrentView({ type: 'look-world-talking', data: null });
       setActiveTab('Look the world is talking1');
       setExpandedMenu('Look the world is talking');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/look-world-talking/twitter-mentions') {
       setCurrentView({ type: 'twitter-mentions', data: null });
       setActiveTab('Twitter Mentions');
       setExpandedMenu('Look the world is talking');
-      setMagnifier(prev => ({ ...prev, show: false }));
     } else if (path === '/awards-certificates') {
-     setCurrentView({ type: 'awards', data: null });
-     setActiveTab('Awards & Certificates');
-     setMagnifier(prev => ({ ...prev, show: false }));
+      setCurrentView({ type: 'awards', data: null });
+      setActiveTab('Awards & Certificates');
+    } else if (path === '/contact') {
+      setCurrentView({ type: 'contact', data: null });
+      setActiveTab('Contact');
     }
     else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
@@ -109,10 +109,11 @@ export default function App() {
           setCurrentView({ type: 'detail', data: match });
         }
         setActiveTab('Gallery');
-        setMagnifier(prev => ({ ...prev, show: false }));
       }
     }
     
+    setMagnifier(prev => ({ ...prev, show: false }));
+    setIsCommentSubmitted(false); 
     window.scrollTo(0, 0);
   }, [location]);
 
@@ -128,6 +129,7 @@ export default function App() {
       else if (item.name === "Artist's Statement") navigate('/artist-statement');
       else if (item.name === 'Events') navigate('/events');
       else if (item.name === 'Awards & Certificates') navigate('/awards-certificates');
+      else if (item.name === 'Contact') navigate('/contact');
       else navigate('/');
     }
   };
@@ -162,10 +164,30 @@ export default function App() {
     };
   };
 
+  // --- UPGRADED: Function to manage the 3-comment queue ---
+  const addNewComment = (newCommentString) => {
+    setComments((prevComments) => {
+      // Add the new comment to the front, and keep only the first 3
+      const updatedQueue = [newCommentString, ...prevComments].slice(0, 3);
+      // Save it to browser storage so it survives page refreshes
+      localStorage.setItem('shoryaComments', JSON.stringify(updatedQueue));
+      return updatedQueue;
+    });
+  };
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    const commentBox = e.target.elements.commentBody.value;
+    const nameBox = e.target.elements.authorName.value;
+    
+    if (commentBox && nameBox) {
+      addNewComment(`"${commentBox}" - ${nameBox}`);
+      setIsCommentSubmitted(true);
+    }
+  };
+
   return (
     <div className="app-container">
-      
-      {/* SIDEBAR NAVIGATION PANEL */}
       <aside className="sidebar">
         <div className="logo-container" onClick={() => { navigate('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
@@ -241,8 +263,22 @@ export default function App() {
               <a href="#youtube" className="social-img-btn yt-bg"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
-          <div className="sidebar-twitter-section"><span className="twitter-panel-text">Tweets by Shoryamahanot</span></div>
+          <div className="sidebar-twitter-section">
+            <span className="twitter-panel-text">Tweets by Shoryamahanot</span>
+          </div>
+
+          {/* --- UPGRADED: Maps through the 3 comments --- */}
+          {comments.length > 0 && (
+            <div className="sidebar-ticker-container">
+              <div className="moving-comment-text">
+                {comments.map((commentText, index) => (
+                  <span key={index} className="ticker-item">{commentText}</span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
+        
         <div className="sidebar-empty-basement"></div>
       </aside>
 
@@ -256,7 +292,7 @@ export default function App() {
                 className="portfolio-entry-card" 
                 onClick={() => {
                   if (item.directLink) {
-                    navigate(item.directLink.replace('#', '')); // Strip hash if it exists in data
+                    navigate(item.directLink.replace('#', '')); 
                   } else {
                     navigate(`/artwork/${item.slug}`);
                   }
@@ -280,8 +316,9 @@ export default function App() {
           </div>
         )}
 
+        {/* Notice how addNewComment is now passed as the prop to your components! */}
         {currentView.type === 'biography' && <Biography />}
-        {currentView.type === 'huffington-post' && <HuffingtonPost />}
+        {currentView.type === 'huffington-post' && <HuffingtonPost setLatestComment={addNewComment} />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
@@ -291,8 +328,10 @@ export default function App() {
         {currentView.type === 'videos' && <Videos />}
         {currentView.type === 'look-world-talking' && <LookWorldTalking />}
         {currentView.type === 'twitter-mentions' && <TwitterMentions />}
-        {currentView.type === 'tedx-presentation' && <TedX />}
+        {currentView.type === 'tedx-presentation' && <TedX setLatestComment={addNewComment} />}
         {currentView.type === 'awards' && <Awards />}
+        {currentView.type === 'contact' && <Contact />}
+        
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">
@@ -357,29 +396,36 @@ export default function App() {
                 <h2 className="comment-heading">Submit a Comment</h2>
                 <p className="comment-subtext">Your email address will not be published. Required fields are marked *</p>
                 
-                <form className="comment-form" onSubmit={(e) => e.preventDefault()}>
-                  <div className="form-group full-width">
-                    <textarea placeholder="Comment" className="comment-textarea" rows="8" required></textarea>
+                {isCommentSubmitted ? (
+                  <div style={{ padding: '25px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif' }}>
+                    <h3 style={{ margin: '0 0 10px 0', fontSize: '20px', color: '#15803d' }}>Success!</h3>
+                    <p style={{ margin: 0, fontSize: '15px' }}>Your comment has been successfully submitted and is now moving in the sidebar.</p>
                   </div>
-                  <div className="form-group half-width">
-                    <input type="text" placeholder="Name *" className="comment-input" required />
-                  </div>
-                  <div className="form-group half-width">
-                    <input type="email" placeholder="Email *" className="comment-input" required />
-                  </div>
-                  <div className="form-group half-width">
-                    <input type="text" placeholder="Website" className="comment-input" />
-                  </div>
-                  <div className="form-group checkbox-group">
-                    <input type="checkbox" id="save-info-checkbox" className="comment-checkbox" />
-                    <label htmlFor="save-info-checkbox" className="comment-checkbox-label">
-                      Save my name, email, and website in this browser for the next time I comment.
-                    </label>
-                  </div>
-                  <div className="submit-btn-wrapper">
-                    <button type="submit" className="comment-submit-btn">Submit</button>
-                  </div>
-                </form>
+                ) : (
+                  <form className="comment-form" onSubmit={handleCommentSubmit}>
+                    <div className="form-group full-width">
+                      <textarea name="commentBody" placeholder="Comment" className="comment-textarea" rows="8" required></textarea>
+                    </div>
+                    <div className="form-group half-width">
+                      <input name="authorName" type="text" placeholder="Name *" className="comment-input" required />
+                    </div>
+                    <div className="form-group half-width">
+                      <input type="email" placeholder="Email *" className="comment-input" required />
+                    </div>
+                    <div className="form-group half-width">
+                      <input type="text" placeholder="Website" className="comment-input" />
+                    </div>
+                    <div className="form-group checkbox-group">
+                      <input type="checkbox" id="save-info-checkbox" className="comment-checkbox" />
+                      <label htmlFor="save-info-checkbox" className="comment-checkbox-label">
+                        Save my name, email, and website in this browser for the next time I comment.
+                      </label>
+                    </div>
+                    <div className="submit-btn-wrapper">
+                      <button type="submit" className="comment-submit-btn">Submit</button>
+                    </div>
+                  </form>
+                )}
               </div>
             )}
 

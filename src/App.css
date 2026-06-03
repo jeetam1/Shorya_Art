@@ -161,7 +161,7 @@ body,
   display: flex !important;
   align-items: center !important; 
   justify-content: center !important; 
-  transition: background-color 0.2s ease !important;
+  transition: background-color 0.2s ease, border-left 0.2s ease !important;
   cursor: pointer !important;
 }
 
@@ -169,8 +169,10 @@ body,
   background-color: #c9842b !important;
 }
 
+/* --- THE FIX: Highly Visible Active Submenu State --- */
 .sub-menu-list li.sub-item.sub-item-active {
-  background-color: #b5731e !important;
+  background-color: #1a1a1a !important; /* Distinct dark background */
+  /* border-left: 4px solid #df9939 !important; Prominent orange indicator line */
 }
 
 .sub-menu-list li.sub-item a {
@@ -190,11 +192,18 @@ body,
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  transition: color 0.2s ease !important;
+  transition: color 0.2s ease, font-weight 0.2s ease, letter-spacing 0.2s ease !important;
 }
 
 .sub-menu-list li.sub-item:hover .sub-nav-text {
   color: #ffffff !important;
+}
+
+/* Makes the text of the active submenu bold and orange */
+.sub-menu-list li.sub-item.sub-item-active .sub-nav-text {
+  color: #df9939 !important; 
+  /* font-weight: 800 !important;
+  letter-spacing: 0.5px !important; */
 }
 
 /* ==========================================================================
@@ -277,6 +286,7 @@ body,
   width: 100% !important;
   min-height: 100vh !important;
   background-color: #ffffff !important;
+  padding-bottom: 14px !important;
   display: flex !important;
   flex-direction: column !important;
 }
@@ -284,7 +294,7 @@ body,
 .art-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1px !important; 
+  /* gap: 1px !important;  */
   background-color: #e8e8e8 !important;
 }
 

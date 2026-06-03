@@ -66,7 +66,7 @@ export default function TedX({ setLatestComment }) {
         {isSubmitted ? (
           <div style={{ padding: '25px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif' }}>
             <h3 style={{ margin: '0 0 10px 0', fontSize: '20px', color: '#15803d' }}>Success!</h3>
-            <p style={{ margin: 0, fontSize: '15px' }}>Your comment has been successfully submitted and is now moving in the sidebar.</p>
+            <p style={{ margin: 0, fontSize: '15px' }}>Your comment has been successfully submitted.</p>
           </div>
         ) : (
           <form className="comment-form" onSubmit={handleCommentSubmit}>

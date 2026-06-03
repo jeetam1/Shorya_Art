@@ -16,7 +16,6 @@ import TwitterMentions from './components/TwitterMentions';
 import HuffingtonPost from './components/HuffingtonPost'; 
 import TedX from './components/TedX'; 
 import Contact from './components/Contact';
-import ArtworkDetail from './components/ArtworkDetail';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -263,11 +262,9 @@ export default function App() {
               <a href="#youtube" className="social-img-btn yt-bg"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
-          <div className="sidebar-twitter-section">
-            <span className="twitter-panel-text">Tweets by Shoryamahanot</span>
-          </div>
+          {/* Twitter mentions section was successfully removed from here */}
 
-          {/* --- UPGRADED: Maps through the 3 comments --- */}
+          {/* --- UPGRADED: Maps through the 3 comments ---
           {comments.length > 0 && (
             <div className="sidebar-ticker-container">
               <div className="moving-comment-text">
@@ -276,7 +273,7 @@ export default function App() {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
         </div>
         
         <div className="sidebar-empty-basement"></div>
@@ -399,7 +396,7 @@ export default function App() {
                 {isCommentSubmitted ? (
                   <div style={{ padding: '25px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif' }}>
                     <h3 style={{ margin: '0 0 10px 0', fontSize: '20px', color: '#15803d' }}>Success!</h3>
-                    <p style={{ margin: 0, fontSize: '15px' }}>Your comment has been successfully submitted and is now moving in the sidebar.</p>
+                    <p style={{ margin: 0, fontSize: '15px' }}>Your comment has been successfully submitted.</p>
                   </div>
                 ) : (
                   <form className="comment-form" onSubmit={handleCommentSubmit}>

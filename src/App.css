@@ -472,7 +472,8 @@ body,
 .shorya-biography-body-scaffold-layout {
   width: 100% !important;
   max-width: 820px !important;
-  padding: 40px 60px 60px 50px !important;
+  /* FIXED: Adjusted left/right padding to 40px equally so the text and images can center accurately without being pushed to the right */
+  padding: 40px 40px 60px 40px !important; 
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
@@ -481,7 +482,7 @@ body,
 .shorya-main-portrait-frame-wrapper {
   width: 100% !important;
   max-width: 530px !important;
-  margin: 10px 0 25px 0 !important;
+  margin: 10px auto 25px auto !important; /* FIXED: Centered profile image block */
   border: 1px solid #f2f2f2 !important;
   cursor: pointer;
 }
@@ -497,7 +498,7 @@ body,
   font-size: 15px !important;
   line-height: 1.7 !important;
   color: #222222 !important;
-  margin: 0 0 25px 0 !important;
+  margin: 0 auto 25px auto !important;
 }
 
 .shorya-paragraph-section-sub-heading-marker {
@@ -505,7 +506,7 @@ body,
   font-size: 22px !important;
   font-weight: bold !important;
   color: #111111 !important;
-  margin: 35px 0 15px 0 !important;
+  margin: 35px auto 15px auto !important;
 }
 
 .shorya-paragraph-text-standard-value {
@@ -513,12 +514,12 @@ body,
   font-size: 15px !important;
   line-height: 1.65 !important;
   color: #444444 !important;
-  margin: 0 0 15px 0 !important;
+  margin: 0 auto 15px auto !important;
 }
 
 .shorya-timeline-infographic-holder-box {
   width: 100% !important;
-  margin: 40px 0 !important;
+  margin: 40px auto !important; /* FIXED: Centered timeline canvas container */
   border: 1px solid #eeeeee !important;
   cursor: pointer;
 }
@@ -534,7 +535,7 @@ body,
   font-size: 26px !important;
   font-weight: 500 !important;
   color: #222222 !important;
-  margin: 45px 0 25px 0 !important;
+  margin: 45px auto 25px auto !important;
   border-bottom: 1px solid #eeeeee !important;
   padding-bottom: 10px !important;
 }
@@ -542,7 +543,7 @@ body,
 .shorya-single-artwork-presentation-row-block {
   width: 100% !important;
   max-width: 580px !important;
-  margin: 20px 0 40px 0 !important;
+  margin: 20px auto 40px auto !important; /* FIXED: Centered middle core artwork block */
 }
 
 .shorya-single-artwork-inner-card-frame {
@@ -583,7 +584,7 @@ body,
 .shorya-academics-vertical-grid-stack {
   display: flex !important;
   flex-direction: column !important;
-  gap: 60px !important;
+  gap: 40px !important; /* FIXED: Tightened the large gap spacing between university blocks */
   width: 100% !important;
   margin-top: 30px !important;
 }
@@ -596,36 +597,29 @@ body,
 }
 
 .shorya-academic-institution-logo-bounding-box {
-  width: 80px !important;
-  height: 80px !important;
+  width: 300px !important; /* FIXED: Adjusted base size parameters to fit your new width requirements */
+  height: auto !important;  /* FIXED: Released fixed height constraint to prevent excessive top/bottom blank gaps */
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 10px !important; /* FIXED: Reduced excessive spacing directly below the university logos */
 }
 
 .shorya-academic-institution-vector-logo {
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 130px !important; /* FIXED: Matched the height limitation scale constraint to your component rules */
   object-fit: contain !important;
 }
 
 .shorya-academic-institution-title-text-label {
-  font-family: 'Times New Roman', Georgia, serif !important;
-  font-size: 24px !important;
-  font-weight: bold !important;
-  color: #111111 !important;
-  letter-spacing: 0.5px !important;
-  text-transform: uppercase !important;
-  margin: 0 0 25px 0 !important;
-  text-align: center !important;
+  display: none !important; /* REMOVED: Text fallback removal rule matched to CSS layer just in case */
 }
 
 .shorya-academic-certificate-canvas-frame {
   width: 100% !important;
   max-width: 580px !important;
-  border: 1px solid #e5e5e5 !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #e5e5e5 !important; /* FIXED: Clean, light border frame added seamlessly */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important; /* FIXED: Smoothed shadows to preserve clean borders */
   cursor: pointer !important;
   background-color: #ffffff;
 }
@@ -636,7 +630,6 @@ body,
   display: block !important;
   image-rendering: -webkit-optimize-contrast !important;
 }
-
 /* ==========================================================================
    8. FIXED NARROW GALLERY ARCHITECTURE
    ========================================================================== */

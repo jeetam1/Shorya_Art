@@ -111,28 +111,27 @@ export default function Videos() {
   return (
     <div className="shorya-videos-view-root">
       
-      {/* HEADER BANNER STRIP */}
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      {/* HEADER BANNER STRIP - Kept left-aligned */}
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Videos</h1>
         </div>
       </div>
 
-      {/* CORE TIMELINE CONTAINER */}
-      <div className="shorya-videos-list-container">
+      {/* CORE TIMELINE CONTAINER - Forced to center and overrode uneven CSS padding */}
+      <div className="shorya-videos-list-container" style={{ margin: '0 auto', padding: '40px 20px 60px 20px', alignItems: 'center' }}>
         {videosData.map((video, index) => (
-          <div key={index} className="shorya-video-card-item">
+          <div key={index} className="shorya-video-card-item" style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
             
             {/* Publisher Logo Identifier Box */}
-            <div className="shorya-video-publisher-logo-row">
-              {/* FIXED: Conditionally displays logo wrapper element only if a logo path metric property exists */}
+            <div className="shorya-video-publisher-logo-row" style={{ display: 'flex', justifyContent: 'center', marginBottom: '25px' }}>
               {video.logoSrc && (
                 <img src={video.logoSrc} alt={video.logoAlt || "Publisher Logo"} className="shorya-video-publisher-badge-img" />
               )}
             </div>
 
-            {/* Video Player Performance Sandbox Frame Chassis */}
-            <div className="shorya-video-player-aspect-wrapper">
+            {/* Video Player Sandbox Frame Chassis */}
+            <div className="shorya-video-player-aspect-wrapper" style={{ margin: '0 auto' }}>
               {activeVideos[index] ? (
                 <iframe
                   src={`${video.embedUrl}?autoplay=1`}
@@ -157,19 +156,21 @@ export default function Videos() {
             </div>
 
             {/* Text Quote/Caption Block */}
-            <div className="shorya-video-caption-container">
+            <div className="shorya-video-caption-container" style={{ margin: '18px auto 0 auto', textAlign: 'center' }}>
               <p className="shorya-video-caption-text-value">{video.caption}</p>
             </div>
 
             {/* Dash Partition Divider line spacer */}
-            {index < videosData.length - 1 && <hr className="shorya-video-dashed-divider-line" />}
+            {index < videosData.length - 1 && (
+              <hr className="shorya-video-dashed-divider-line" style={{ width: '100%', margin: '40px auto' }} />
+            )}
 
           </div>
         ))}
       </div>
 
-      {/* FOOTER BLOCK SIGNATURE */}
-      <footer className="shorya-view-footer-signature-line">
+      {/* FOOTER BLOCK SIGNATURE - Forced to center */}
+      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center' }}>
         Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
       </footer>
     </div>

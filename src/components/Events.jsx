@@ -130,18 +130,19 @@ export default function Events() {
       </div>
 
       {/* TIMELINE LIST CASCADE CONTAINER */}
-      <div className="shorya-events-timeline-container" style={{ margin: "0" }}>
+      <div className="shorya-events-timeline-container">
         {eventTimelineData.map((event, index) => (
-          <div key={index} className="shorya-event-timeline-card" style={{ width: "100%", maxWidth: "768px" }}>
+          
+          <div key={index} className="shorya-event-timeline-card">
             
-            {/* Year Header - Left aligned */}
+            {/* Year Header */}
             <h2 className="shorya-event-year-header">
               {event.year}
             </h2>
             
             {/* CONDITIONAL COMPONENT RENDER BLOCK FOR IFRAMES vs IMAGES vs AUDIO NODES */}
             {event.youtubeId ? (
-              <div style={{ position: 'relative', width: '100%', maxWidth: '768px', aspectRatio: '16/9', marginBottom: '20px', border: '1px solid #e8e8e8' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', marginBottom: '16px', border: '1px solid #e8e8e8' }}>
                 <iframe
                   width="100%"
                   height="100%"
@@ -154,7 +155,7 @@ export default function Events() {
                 />
               </div>
             ) : event.audioSrc ? (
-              <div style={{ width: '100%', maxWidth: '768px', marginBottom: '20px', background: '#fafafa', padding: '15px', border: '1px solid #e8e8e8', borderRadius: '4px' }}>
+              <div style={{ width: '100%', marginBottom: '16px', background: '#fafafa', padding: '15px', border: '1px solid #e8e8e8', borderRadius: '4px', boxSizing: 'border-box' }}>
                 <audio controls style={{ width: '100%' }}>
                   <source src={event.audioSrc} type="audio/mpeg" />
                   Your browser does not support the audio element.
@@ -166,49 +167,53 @@ export default function Events() {
               </div>
             )}
 
-            {/* FORCE CENTER STYLE RULES BY SHORT-CIRCUITING STYLESHEET WITH INLINE CSS !IMPORTANT */}
-            <h3 
-              className="shorya-event-content-title" 
-              style={{ 
-                textCombineUpright: "none",
-                textAlign: "center", 
-                width: "100%", 
-                maxWidth: "768px", 
-                margin: "15px 0 20px 0",
-                display: "block"
-              }}
-              ref={(el) => {
-                if (el) el.style.setProperty('text-align', 'center', 'important');
-              }}
-            >
+            {/* Title */}
+            <h3 className="shorya-event-content-title">
               {event.title}
             </h3>
 
-            {/* Split Info Row */}
-            <div className="shorya-event-split-info-row" style={{ width: "100%" }}>
+            {/* Split Info Row -> SIDE-BY-SIDE (Logo Left, Text Right) */}
+            <div className="shorya-event-split-info-row">
+              
+              {/* Brand Logo Box */}
               <div className="shorya-event-brand-logo-box">
                 <img src={event.logoSrc} alt="Event Identity Logo" className="shorya-event-brand-logo-asset" />
               </div>
+
+              {/* Description Text */}
               <div className="shorya-event-description-text-block">
-                <p className="shorya-event-body-paragraph-text">{event.desc}</p>
-                <a href="#/read-more" className="shorya-event-readmore-link-action" onClick={(e) => e.preventDefault()}>Read More...</a>
+                <p className="shorya-event-body-paragraph-text">
+                  {event.desc}
+                </p>
+                <a href="#/read-more" className="shorya-event-readmore-link-action" onClick={(e) => e.preventDefault()}>
+                  Read More...
+                </a>
               </div>
+
             </div>
+
+            {/* Partition Line after EACH content block */}
+            {index < eventTimelineData.length - 1 && (
+              <hr style={{ width: '100%', border: 'none', borderBottom: '1px dashed #dddddd', margin: '40px 0 0 0' }} />
+            )}
 
           </div>
         ))}
       </div>
 
-      {/* POPUP LIGHTBOX ENGINES */}
+      {/* POPUP LIGHTBOX ENGINE */}
       {modalImage && (
         <div style={{
           position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.85)",
-          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 99999
+          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 99999, cursor: "zoom-out"
         }} onClick={() => setModalImage(null)}>
-          <img src={modalImage} alt="Enlarged view" style={{ maxWidth: "90%", maxHeight: "90%", objectFit: "contain", border: "4px solid #fff" }} />
+          <div onClick={(e) => e.stopPropagation()}>
+            <img src={modalImage} alt="Enlarged view" style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #fff", boxShadow: "0 10px 40px rgba(0,0,0,0.5)" }} />
+          </div>
         </div>
       )}
 
+      {/* FOOTER */}
       <footer className="shorya-view-footer-signature-line">
         Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
       </footer>

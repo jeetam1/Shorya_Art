@@ -873,11 +873,13 @@ body,
 
 .shorya-events-timeline-container {
   width: 100% !important;
-  max-width: 690px !important; 
-  padding: 40px 0px 60px 45px !important; 
+  max-width: 850px !important; /* Widened slightly so the 850px row fits perfectly */
+  margin: 0 auto !important; /* Forces the entire container to the absolute center of the page */
+  padding: 40px 20px 60px 20px !important; /* Fixed uneven padding so it sits dead center */
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
+  align-items: center !important; /* Forces all cards inside to center */
 }
 
 .shorya-event-timeline-card {
@@ -885,6 +887,7 @@ body,
   margin-bottom: 50px !important;
   display: flex !important;
   flex-direction: column !important;
+  align-items: center !important; /* Centers the image, title, and split row */
 }
 
 .shorya-event-year-header {
@@ -892,7 +895,8 @@ body,
   font-size: 26px !important; 
   font-weight: 700 !important;
   color: #222222 !important;
-  margin: 0 0 20px 0 !important;
+  margin: 0 auto 20px auto !important; /* Centered margin */
+  text-align: center !important; /* Centered text */
   letter-spacing: -0.5px !important;
 }
 
@@ -903,7 +907,7 @@ body,
   border: 1px solid #e8e8e8 !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
   cursor: pointer !important;
-  margin-bottom: 16px !important;
+  margin: 0 auto 16px auto !important; /* Centered margin */
   overflow: hidden !important;
   background-color: #ffffff !important;
 }
@@ -917,28 +921,36 @@ body,
 
 .shorya-event-content-title {
   font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 14px !important; 
+  font-size: 20px !important;  
   font-weight: 700 !important;
-  color: #333333 !important;
-  margin: 10px 0 20px 0 !important;
+  color: #111111 !important;
+  margin: 15px auto 25px auto !important; 
+  text-align: center !important; 
+  width: 100% !important;
+  display: block !important;
 }
 
 .shorya-event-split-info-row {
   display: flex !important;
-  gap: 25px !important;
+  flex-direction: row !important; 
+  gap: 30px !important;
   align-items: flex-start !important;
+  justify-content: center !important; 
   width: 100% !important;
-  max-width: 570px !important; 
+  max-width: 850px !important; 
+  margin: 0 auto !important; /* Centered margin */
 }
 
 .shorya-event-brand-logo-box {
-  width: 110px !important;
-  min-width: 110px !important;
-  max-width: 110px !important;
+  width: 150px !important;       /* Confirmed 150px */
+  min-width: 150px !important;   /* Confirmed 150px */
+  max-width: 150px !important;   /* Confirmed 150px */
   border: 1px solid #f0f0f0 !important;
-  padding: 6px !important;
+  padding: 4px !important;
   background-color: #ffffff !important;
   box-sizing: border-box !important;
+  display: flex !important;
+  justify-content: center !important; /* Centers the image inside the box */
 }
 
 .shorya-event-brand-logo-asset {
@@ -952,6 +964,7 @@ body,
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
+  text-align: left !important;
 }
 
 .shorya-event-body-paragraph-text {

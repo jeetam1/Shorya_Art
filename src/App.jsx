@@ -15,7 +15,17 @@ import LookWorldTalking from './components/LookWorldTalking';
 import TwitterMentions from './components/TwitterMentions';
 import HuffingtonPost from './components/HuffingtonPost'; 
 import TedX from './components/TedX'; 
+import HoltzmanGallery from './components/HoltzmanGallery';
+import Pogo from './components/Pogo';
+import ArtExpo from './components/ArtExpo';
+import SpectrumMiami from './components/SpectrumMiami';
+import CelebrityChefGala from './components/CelebrityChefGala';
+import KalidasSanskrit from './components/KalidasSanskrit';
 import Contact from './components/Contact';
+import TajMahalPalace from './components/TajMahalPalace'; 
+import Nestle from './components/Nestle';
+import NDTV from './components/NDTV';
+import RKLaxman from './components/RKLaxman'; // <--- 1. ADDED IMPORT HERE
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -25,7 +35,7 @@ export default function App() {
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
   
-  // --- UPGRADED: Array state to hold up to 3 comments, saved locally ---
+  // Array state to hold up to 3 comments, saved locally
   const [comments, setComments] = useState(() => {
     const savedComments = localStorage.getItem('shoryaComments');
     return savedComments ? JSON.parse(savedComments) : [];
@@ -72,6 +82,31 @@ export default function App() {
       setCurrentView({ type: 'magazines', data: null });
       setActiveTab('Magazines');
       setExpandedMenu('Media');
+      } else if (path === '/pogo' || path === '/event-c') {
+      setCurrentView({ type: 'pogo', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/kalidas-sanskrit' || path === '/event-d') {
+      setCurrentView({ type: 'kalidas', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/celebrity-chef-gala' || path === '/event-e') {
+      setCurrentView({ type: 'celebrity-chef', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/spectrum-miami' || path === '/event-f') {
+      setCurrentView({ type: 'spectrum-miami', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/art-expo' || path === '/event-g') {
+      setCurrentView({ type: 'art-expo', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/holtzman-gallery' || path === '/event-j') {
+      setCurrentView({ type: 'holtzman', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/ndtv' || path === '/event-k') {
+      setCurrentView({ type: 'ndtv', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/nestle' || path === '/event-h') {
+      setCurrentView({ type: 'nestle', data: null });
+      setActiveTab('Events'); 
+    
     } else if (path === '/media/web-articles') {
       setCurrentView({ type: 'web-articles', data: null });
       setActiveTab('Web Articles');
@@ -94,6 +129,13 @@ export default function App() {
     } else if (path === '/contact') {
       setCurrentView({ type: 'contact', data: null });
       setActiveTab('Contact');
+    } else if (path === '/TajMahalPalace' || path === '/taj-mahal') {
+      setCurrentView({ type: 'taj-mahal', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/rk-laxman' || path === '/event-b') {
+      // <--- 2. ADDED NEW ROUTE FOR R.K. LAXMAN PAGE
+      setCurrentView({ type: 'rk-laxman', data: null });
+      setActiveTab('Events'); // Keeps the 'Events' tab active in the sidebar
     }
     else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
@@ -163,12 +205,9 @@ export default function App() {
     };
   };
 
-  // --- UPGRADED: Function to manage the 3-comment queue ---
   const addNewComment = (newCommentString) => {
     setComments((prevComments) => {
-      // Add the new comment to the front, and keep only the first 3
       const updatedQueue = [newCommentString, ...prevComments].slice(0, 3);
-      // Save it to browser storage so it survives page refreshes
       localStorage.setItem('shoryaComments', JSON.stringify(updatedQueue));
       return updatedQueue;
     });
@@ -262,18 +301,6 @@ export default function App() {
               <a href="#youtube" className="social-img-btn yt-bg"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
-          {/* Twitter mentions section was successfully removed from here */}
-
-          {/* --- UPGRADED: Maps through the 3 comments ---
-          {comments.length > 0 && (
-            <div className="sidebar-ticker-container">
-              <div className="moving-comment-text">
-                {comments.map((commentText, index) => (
-                  <span key={index} className="ticker-item">{commentText}</span>
-                ))}
-              </div>
-            </div>
-          )} */}
         </div>
         
         <div className="sidebar-empty-basement"></div>
@@ -313,7 +340,6 @@ export default function App() {
           </div>
         )}
 
-        {/* Notice how addNewComment is now passed as the prop to your components! */}
         {currentView.type === 'biography' && <Biography />}
         {currentView.type === 'huffington-post' && <HuffingtonPost setLatestComment={addNewComment} />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
@@ -328,7 +354,17 @@ export default function App() {
         {currentView.type === 'tedx-presentation' && <TedX setLatestComment={addNewComment} />}
         {currentView.type === 'awards' && <Awards />}
         {currentView.type === 'contact' && <Contact />}
-        
+        {currentView.type === 'celebrity-chef' && <CelebrityChefGala />}
+        {currentView.type === 'taj-mahal' && <TajMahalPalace />}
+        {currentView.type === 'pogo' && <Pogo />}
+        {currentView.type === 'spectrum-miami' && <SpectrumMiami />}
+        {currentView.type === 'kalidas' && <KalidasSanskrit />}
+        {currentView.type === 'art-expo' && <ArtExpo />}
+        {currentView.type === 'holtzman' && <HoltzmanGallery />}
+        {/* <--- 3. ADDED THE NEW COMPONENT RENDER HERE */}
+        {currentView.type === 'rk-laxman' && <RKLaxman />}
+        {currentView.type === 'ndtv' && <NDTV />}
+        {currentView.type === 'nestle' && <Nestle />}
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">

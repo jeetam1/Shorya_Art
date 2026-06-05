@@ -1,78 +1,142 @@
 import React from 'react';
 
 export default function WebArticles() {
-  // Verbatim chronological sequence extracted from your 2026 media video clip
+  // Verbatim chronological sequence extracted from your media data
   const webArticlesData = [
-    { src: "/50.png", alt: "SBS Radio", text: "“Shorya is God-gifted”" },
-    { src: "/51.png", alt: "Business Insider", text: "“This five-year-old prodigy, Shaurya Mahanot proves to the nation that art is a form of expression which cannot be stopped.”" },
-    { src: "/52.png", alt: "Canyon Creek", text: "“Shorya is a 6-year-old boy and one of the world's youngest abstract artists.”" },
-    { src: "/53.jpg", alt: "ht", text: "“From bold brushstrokes to covering parts of a canvas with chart paper and letting colour drip over, Mahanot uses techniques he was never taught.”" },
-    { src: "/54.png", alt: "BookOfAchievers", text: "BookOfAchievers overwhelmed by this young talent." },
-    { src: "/55.jpg", alt: "Top Ten New", text: "Child Prodigy Of India To Shock You With His Talent." },
-    { src: "/56.png", alt: "WJ", text: "...Of course, five is incredibly young, but if what Shorya is doing is good, it should be shown to the people." },
-    { src: "/57.jpg", alt: "Indias Hindu", text: "Confident, Inspired Artist..." },
-    { src: "/58.jpg", alt: "Abdul Kalam Fan Club", text: "Shorya Mahanot is one perfect living example of what Picasso remarked about children. A 'wunderkind'..." },
-    { src: "/59.png", alt: "Speaking Tree", text: "The flair with which he paints can outdo any renowned painter or artist." },
-    { src: "/60.jpg", alt: "Mojarto", text: "...some of the child art prodigies from across the world who learnt to art before the talk." },
-    { src: "/61.png", alt: "Times of India", text: "Shorya Mahanot a 7-year-old creates abstract expressionist paintings that group the expressive forces of nature with color and life." },
-    { src: "/62.jpeg", alt: "Parent Circle", text: "Charming, Adorable, Curious...Add prodigy, confident, inspired, artist..." },
-    { src: "/63.png", alt: "Art of the False", text: "Art Has No Age." },
-    { src: "/64.png", alt: "Famous Cine Blog", text: "Like Pollock, he creates nonfigurative expressionist paintings that steer the expressive forces of chronicle with colouration and motion." },
-    { src: "/65.png", alt: "Desh Apnayen", text: "The Spirit of the Indian Child." },
-    { src: "/67.png", alt: "Accion Preferente", text: "Different language." },
-    { src: "/67.png", alt: "DNA After Hrs", text: "...those who watched him paint were left speechless" },
-    { src: "/68.jpg", alt: "Mid Day", text: "Child prodigy Shorya Mahanot from Neemuch in Madhya Pradesh receives blessings from the legendary cartoonist RK Laxman." },
-    { src: "/69.png", alt: "Audio Gorgeous", text: "Like Pollock, he creates abstract expressionist paintings that channel the expressive forces of life with color and motion. Unlike Pollock, however, Mahanot is six years old." },
-    { src: "/70.png", alt: "Kalki Group", text: "His view is compared in similarity with Sir John Pollock which places him on this world arena of higher appreciation." },
-    { src: "/71.png", alt: "Proudly India", text: "Meet India's five-year-old 'Picasso'." },
-    { src: "/72.png", alt: "Blogthela", text: "...He gravitated towards abstract works, very much like Jackson Pollock, who incidentally happens to be this young prodigy's role model." },
-    { src: "/73.jpg", alt: "PW", text: "The painting of this 10 year old are sold at the price of 45,000 dollars and has been placed alongside the legendary artists like Anthony Quinn, Burt Young, John Lennon etc." },
-    { src: "/74.jpg", alt: "Career India", text: "By the age of 4, he had made 100 acrylic paintings..." },
-    { src: "/75.jpg", alt: "IFF", text: "...an astounding painter, who is usually compared to the legendary artist, Jackson Pollock, because of the similarity in their style of works." },
-    { src: "/76.png", alt: "ProEves", text: "When asked about Pollock in an interview, Shorya replied, \"He also makes paintings like me.\"" },
-    { src: "/86.png", alt: "BuzzFeed", text: "...His beautiful abstract work has been compared to Jackson Pollock's and has earned him international acclaim." },
-    { src: "/78.png", alt: "ScoopWhoop", text: "...When asked about Pollock in an interview, Shorya replied, \"He also makes paintings like me.\"" },
-    { src: "/79.jpeg", alt: "The Times of India", text: "R.K. Laxman...blessed Shorya and gifted him with an autographed painting..." },
-    { src: "/80.jpg", alt: "Hindustan Times", text: "Doodle with a difference." }
-  ];
+    { src: "/50.png", alt: "SBS Radio", text: "“…one of the world’s youngest abstract artists and painting prodigy. Shorya is returning to the U.S. to participate and exhibit his works at the First Annual SPECTRUM New York.”" },
+    { src: "/51.png", alt: "Business Insider", text: "“Shorya is God-gifted”" },
+    { src: "/52.png", alt: "Canyon Creek", text: "“This five-year-old prodigy, Shaurya Mahanot proves to the nation that art is a form of expression which cannot be stopped.”" },
+    { src: "/53.jpg", alt: "ht", text: "“Shorya is a 6-year-old boy and one of the world’s youngest abstract artists.” " },
+    { src: "/54.png", alt: "BookOfAchievers", text: "“From bold brushstrokes to covering parts of a canvas with chart paper and letting colour drip over, Mahanot uses techniques he was never taught.”" },
+    { src: "/55.jpg", alt: "Top Ten New", text: "“His family had never seen art like this before — there were shades of Jackson Pollock”" },
+    { src: "/56.png", alt: "WJ", text: "Calm, composed and completely unperturbed by the attention…engrossed in colours and textures in front of him." },
+    { src: "/57.jpg", alt: "Indias Hindu", text: "Mahanot didn’t let his young age prevent him from expressing himself in the brightest of colors." },
+    { src: "/58.jpg", alt: "Abdul Kalam Fan Club", text: "The Claridge has swapped its casino for some culture…more than 50 artists who hail from around the world, and right in Atlantic City…from abstract expressionist art from an 8-year-old boy named Shorya Mahanot." },
+    { src: "/59.png", alt: "Speaking Tree", text: "Known as a young Jackson Pollock, he specializes in abstract art and his work has already earned him international acclaim." },
+    { src: "/060.jpg", alt: "Mojarto", text: "…Known for his mind-boggling abstract paintings, the little one is making waves on many art platforms." },
+    { src: "/60.jpg", alt: "Times of India", text: "…There’s definitely an old soul in a child’s body." },
+    { src: "/61.png", alt: "Parent Circle", text: "This 10-year-old boy can say a story without using a single word." },
+    { src: "/62.jpeg", alt: "Art of the False", text: "Being compared to the likes of Picasso and Pollock at the tender age of four, Shorya Mahanot from Madhya Pradesh is the youngest abstract artist in Asia." },
+    { src: "/063.png", alt: "Famous Cine Blog", text: "The Little Muse Who Splashed Sunlight While Passing By." },
+    { src: "/064.png", alt: "Desh Apnayen", text: "When he showcased some of his Art along-side some well know artists like Yaacov Agam and Burt Young. The Artist community was overwhelmed by this young talent." },
+    { src: "/065.png", alt: "Accion Preferente", text: "Child Prodigy Of India To Shock You With his Talent." },
+    { src: "/67.png", alt: "DNA After Hrs", text: "…Of course, five is incredibly young, but if what Shorya is doing is good, it should be shown to the people."},
+    { src: "/68.png", alt: "Mid Day", text: "Confident, Inspired Artist…" },
+    { src: "/69.png", alt: "Audio Gorgeous", text: "Shorya Mahanot is one perfect living example of what Picasso remarked about children. A ‘wunderkind…" },
+    { src: "/70.png", alt: "Kalki Group", text: "“The flair with which he paints can outdo any renowned painter or artist.”" },
+    { src: "/72.png", alt: "Proudly India", text: "“…some of the child art prodigies from across the world who learnt to art before the talk.”" },
+    { src: "/73.jpg", alt: "Blogthela", text: "“Shorya Mahanot a 7- year-old creates abstract expressionist paintings that group the expressive forces of nature with color and life.”" },
+    { src: "/074.png", alt: "PW", text: "“Charming, adorable, Curious…add prodigy, confident, inspired, artist…”" },
+    { src: "/74.jpg", alt: "Career India", text: "“Art Has No Age.”" },
+    { src: "/75.jpg", alt: "IFF", text: "“Like Pollock, he creates nonfigurative expressionist paintings that steer the expressive forces of chronicle with colouration and motion.”" },
+    { src: "/76.png", alt: "ProEves", text: "“The Spirit of the Indian Child.”" },
+    { src: "/78.png", alt: "BuzzFeed", text: "“Different language.”" },
+    { src: "/79.jpeg", alt: "ScoopWhoop", text: "“…those who watched him paint were left speechless”" },
+    { src: "/80.jpg", alt: "The Times of India", text: "“Child prodigy Shorya Mahanot from Neemuch in Madhya Pradesh receives blessings from the legendary cartoonist RK Laxman.”" },
+    { src: "1080.jpg", alt: "Hindustan Times", text: "“Like Pollok, he creates abstract expressionist paintings that channel the expressive forces of life with color and motion. Unlike Pollock, however, Mahanot is six years old.”" },
+    { src: "/180.jpg", alt: "Hindustan Times", text: "“His view is compared in similarity with Sir John Pollock which places him on this world arena of higher appreciation.”" },
+    { src: "/280.jpg", alt: "Hindustan Times", text: "“Meet India’s five-year-old ‘Picasso’.”" },
+    { src: "/380.jpg", alt: "Hindustan Times", text: "““Madhya Pradesh’s Shorya Mahanot, 11, known as the “World’s Youngest Signature Style Abstract Artist” and “India’s Child Picasso” is merely 11 years old…”" },
+    { src: "/580.jpg", alt: "Hindustan Times", text: "“…he gravitated towards abstract works, very much like Jackson Pollock, who incidentally happens to be this young prodigy’s role model.”" },
+    { src: "/680.png", alt: "Hindustan Times", text: "“The painting of this 10 year are sold at the price of 45,000 dollars and has been placed alongside the legendary artists like Anthony Quinn, Burt Young, John Lennon etc.”" },
+    { src: "/7080.jpg", alt: "Hindustan Times", text: "“By the age 4, he had made 100 acrylic paintings…”" },
+    { src: "/1081.png", alt: "Hindustan Times", text: "“….an astounding painter, who is usually compared to the legendary artist, Jackson Pollock, because of the similarity in their style of works.”" },
+    { src: "/1082.png", alt: "Hindustan Times", text: "“When asked about Pollock in an interview, Shorya replied, “He also makes paintings like me.”" },
+    { src: "/1083.png", alt: "Hindustan Times", text: "“…His beautiful abstract work has been compared to Jackson Pollock’s and has earned him international acclaim.”" },
+    { src: "/1084.png", alt: "Hindustan Times", text: "“…When asked about Pollock in an interview, Shorya replied, “He also makes paintings like me.”" },
+    { src: "/1085.jpeg", alt: "Hindustan Times", text: "“R.K. Laxman…blessed Shorya and gifted him with an autographed painting…”" },
+    { src: "/1086.png", alt: "Hindustan Times", text: "“Doodle with a difference.”" },
+    { src: "/1087.jpg", alt: "Hindustan Times", text: "“Industry”" },
+    { src: "/1088.jpg", alt: "Hindustan Times", text: "“Contemporary abstract artists watch out! Shorya Mahanot is creating works that are easily mistakable for a Jackson Pollock….. and he is only 6!”" },
+    { src: "/1089.jpg", alt: "Hindustan Times", text: "“Xuất hiện “tiểu Picasso” của Ấn Độ”" },
+    { src: "/1090.jpg", alt: "Hindustan Times", text: "“… he’s nine-years-old, and is going to teach Ranveer Singh and Sourav Ganguly how to paint.”" },
+    { src: "/1091.jpg", alt: "Hindustan Times", text: "“California Antique shops stores”" },
+    { src: "/1092.png", alt: "Hindustan Times", text: "“…even amazed the great Indian cartoonist RK Laxman who accepted Mahanot as his disciple.”" },
+    // { src: "/80.jpg", alt: "Hindustan Times", text: "“”" }
+    // { src: "/80.jpg", alt: "Hindustan Times", text: "“”" }
+    // { src: "/80.jpg", alt: "Hindustan Times", text: "“”" }
 
+  ];
   return (
-    <div className="shorya-web-articles-view-root">
+    <div style={{ width: '100%', overflowX: 'hidden' }}>
       
-      {/* HEADER BANNER FRAME */}
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      {/* 1. HEADER BANNER FRAME */}
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Web Articles</h1>
         </div>
       </div>
 
-      {/* ARTICLES SCROLL COLUMN SCAFOLD */}
-      <div className="shorya-web-articles-list-container">
-        {webArticlesData.map((article, index) => (
-          <div key={index} className="shorya-web-article-row-card">
-            <div className="shorya-web-article-split-layout">
-              
-              {/* Left Publisher Badge Box */}
-              <div className="shorya-web-article-badge-box">
-                <div className="shorya-web-article-badge-frame">
-                  <img src={article.src} alt={article.alt} className="shorya-web-article-badge-img" />
-                </div>
-              </div>
+      {/* 2. CORE LAYOUT */}
+      <div style={{ width: '100%', padding: '50px 8%', boxSizing: 'border-box', backgroundColor: '#ffffff' }}>
+        
+        {webArticlesData.map((article, index) => {
+          // Logic: Evens (0, 2, 4) = Image on Left. Odds (1, 3, 5) = Image on Right.
+          const isImageLeft = index % 2 === 0;
 
-              {/* Right Verbatim Text Block */}
-              <div className="shorya-web-article-text-box">
-                <p className="shorya-web-article-paragraph-value">{article.text}</p>
-              </div>
+          return (
+            <div key={index} style={{ width: '100%', marginBottom: '40px' }}>
+              
+              {isImageLeft ? (
+                /* =========================================
+                   LAYOUT A: IMAGE ON THE LEFT
+                   ========================================= */
+                // HOW TO MANAGE: Change "gap: '60px'" below to push text closer to or further from the image!
+                <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-start', alignItems: 'center', gap: '60px' }}>
+                  
+                  {/* Left Side: Image Box */}
+                  <div style={{ width: '250px', flexShrink: 0, display: 'flex', justifyContent: 'flex-start' }}>
+                    <img src={article.src} alt={article.alt} style={{ maxWidth: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+
+                  {/* Right Side: Text Box */}
+                  {/* HOW TO MANAGE: Change "maxWidth: '700px'" to make the text line longer or shorter */}
+                  <div style={{ maxWidth: '700px' }}>
+                    <p className="shorya-web-article-paragraph-value" style={{ margin: 0, textAlign: 'left' }}>
+                      {article.text}
+                    </p>
+                  </div>
+
+                </div>
+              ) : (
+                /* =========================================
+                   LAYOUT B: IMAGE ON THE RIGHT
+                   ========================================= */
+                // HOW TO MANAGE: Change "gap: '60px'" below to push text closer to or further from the image!
+                <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end', alignItems: 'center', gap: '60px' }}>
+                  
+                  {/* Left Side: Text Box */}
+                  {/* HOW TO MANAGE: Change "maxWidth: '700px'" to make the text line longer or shorter */}
+                  <div style={{ maxWidth: '700px' }}>
+                    <p className="shorya-web-article-paragraph-value" style={{ margin: 0, textAlign: 'right' }}>
+                      {article.text}
+                    </p>
+                  </div>
+
+                  {/* Right Side: Image Box */}
+                  <div style={{ width: '250px', flexShrink: 0, display: 'flex', justifyContent: 'flex-end' }}>
+                    <img src={article.src} alt={article.alt} style={{ maxWidth: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+
+                </div>
+              )}
+
+              {/* Separation Line Divider */}
+              {index < webArticlesData.length - 1 && (
+                <hr style={{ width: '100%', border: 'none', borderBottom: '1px solid #eaeaea', margin: '40px 0 0 0' }} />
+              )}
 
             </div>
-          </div>
-        ))}
+          );
+        })}
+
       </div>
 
-      {/* FOOTER SIGNATURE PANEL */}
-      <footer className="shorya-view-footer-signature-line">
+      {/* 3. FOOTER SIGNATURE PANEL */}
+      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center' }}>
         Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
       </footer>
+
     </div>
   );
 }

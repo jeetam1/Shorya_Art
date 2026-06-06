@@ -1,13 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import HTMLFlipBook from 'react-pageflip';
+
+// 1. Create a custom Page component required by react-pageflip
+const FlipBookPage = React.forwardRef((props, ref) => {
+  return (
+    <div className="shorya-flip-page" ref={ref}>
+      <img 
+        src={props.image} 
+        alt="Magazine Page" 
+        style={{ width: '100%', height: '100%', objectFit: 'fill', backgroundColor: '#ffffff' }} 
+      />
+    </div>
+  );
+});
 
 export default function Magazines() {
-  const [modalImage, setModalImage] = useState(null);
+  const [activeModal, setActiveModal] = useState({ type: null, src: null, pdfUrl: null });
+  const flipBookRef = useRef(null);
 
-  // Exact data sequence using your correct /550.jpg to /556.jpg naming scheme
+  // Exact data sequence
   const magazinesData = [
     {
       title: "INDUSTRY STATEN ISLAND",
       coverSrc: "/550.jpg",
+      isFlipbook: true, 
+      pdfSrc: "/Industry-Magazine.pdf", // Ensure you have this file in your public folder for the download button
+      
+      // UPDATED: Using your new exact file names
+      flipbookPages: [
+        "/Industry-Magazine_page-0001.jpg", 
+        "/Industry-Magazine_page-0002.jpg", 
+        "/Industry-Magazine_page-0003.jpg", 
+        "/Industry-Magazine_page-0004.jpg" // Added the 4th to keep the book even, remove if you only have 3!
+      ],
+      
       text: "With every painting, Shorya's signature style as an abstract expressionist artist evolves. Shorya works in acrylics in a heavy impasto technique that has been compared to Jackson Pollock's \"drip painting\" or \"action painting\". Like Pollock, Shorya spreads his canvas on the floor and begins composing with masterful strokes in multiple layers and deliberate consideration of color composition and the symmetry between his brushstrokes, dripping and pouring. With the amazing skill of a conductor leading an orchestra, as well as the joyfulness of his youth, a magical world is revealed."
     },
     {
@@ -37,7 +63,7 @@ export default function Magazines() {
     },
     {
       title: "Showtime (Hindi)",
-      heading: "..और सपने कर दिखाया", // Added heading property exclusively for the final badge layout view
+      heading: "..और सपने कर दिखाया", 
       coverSrc: "/556.jpg",
       text: "शौर्य जब मात्र चार साल के थे तो मुम्बई के होटल ताज के चैम्बर्स टेरेस में उनकी 24 कलाकृतियाँ प्रदर्शित की गई थीं। इन पेन्टिंग्स को जो भी देखता, विश्वास नहीं कर पाता की वे एक छोटे से बच्चे ने बनाई हैं। विश्वास दिलाने के लिए पिता को वीडियो दिखाना पड़ता। दुनिया का यह पहला बच्चा है, जिसे न्यूयार्क की सुप्रसिद्ध आर्ट गैलरी वार्ड-नासे में पूरे एक साल के लिए एक वाल दी गयी, जहाँ शौर्य की चित्रकला हर कला प्रेमी का ध्यान खींचती है।"
     }
@@ -60,12 +86,20 @@ export default function Magazines() {
 
           return (
             <div key={index} className="shorya-magazine-row-card">
-              
-              {/* Dynamic structural injection layout conditional statement for the last index element */}
               <div className={`shorya-magazine-split-layout ${isLastItem ? 'shorya-last-row-layout' : ''}`}>
                 
                 {/* Left Column: Interactive Magazine Cover */}
-                <div className="shorya-magazine-cover-box" onClick={() => setModalImage(item.coverSrc)}>
+                <div 
+                  className="shorya-magazine-cover-box" 
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    if (item.isFlipbook) {
+                      setActiveModal({ type: 'flipbook', pages: item.flipbookPages, pdfUrl: item.pdfSrc });
+                    } else {
+                      setActiveModal({ type: 'image', src: item.coverSrc });
+                    }
+                  }}
+                >
                   <div className="shorya-magazine-image-frame">
                     <img src={item.coverSrc} alt={`${item.title} cover snapshot`} className="shorya-magazine-cover-img" />
                   </div>
@@ -73,7 +107,6 @@ export default function Magazines() {
 
                 {/* Right Column: Narrative Description Text Block */}
                 <div className="shorya-magazine-text-content-box">
-                  {/* Render the custom yellow banner text badge header only if it exists in data item metadata */}
                   {item.heading && (
                     <div className="shorya-magazine-custom-badge-heading">
                       {item.heading}
@@ -92,21 +125,71 @@ export default function Magazines() {
         })}
       </div>
 
-      {/* POPUP LIGHTBOX SYSTEM */}
-      {modalImage && (
-        <div 
-          style={{
-            position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.85)",
-            display: "flex", alignItems: "center", justifyContent: "center", zIndex: 99999,
-            cursor: "zoom-out"
-          }} 
-          onClick={() => setModalImage(null)}
-        >
-          <img 
-            src={modalImage} 
-            alt="Enlarged magazine high res page asset" 
-            style={{ maxWidth: "90%", maxHeight: "90%", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.6)" }} 
-          />
+      {/* DYNAMIC POPUP LIGHTBOX SYSTEM */}
+      {activeModal.type && (
+        <div className="shorya-flipbook-modal-overlay" onClick={() => setActiveModal({ type: null })}>
+          
+          {/* Close Button */}
+          <button 
+            className="shorya-flipbook-close-btn"
+            onClick={() => setActiveModal({ type: null })}
+          >
+            ✖
+          </button>
+
+          {/* Interactive Container - stops click from closing modal */}
+          <div className="shorya-flipbook-viewer-area" onClick={(e) => e.stopPropagation()}>
+            
+            {activeModal.type === 'flipbook' ? (
+              <div className="shorya-flipbook-container">
+                {/* The 3D Flipbook Component */}
+                <HTMLFlipBook 
+                  width={400} 
+                  height={550} 
+                  size="stretch"
+                  minWidth={315}
+                  maxWidth={500}
+                  minHeight={400}
+                  maxHeight={700}
+                  maxShadowOpacity={0.5}
+                  showCover={true} 
+                  usePortrait={false} 
+                  mobileScrollSupport={true}
+                  className="shorya-interactive-flipbook"
+                  ref={flipBookRef}
+                >
+                  {activeModal.pages.map((pageSrc, idx) => (
+                    <FlipBookPage key={idx} image={pageSrc} />
+                  ))}
+                </HTMLFlipBook>
+
+                {/* Bottom Control Bar with Download Button */}
+                <div className="shorya-flipbook-control-bar">
+                  <button onClick={() => flipBookRef.current.pageFlip().flipPrev()}>◀ Prev</button>
+                  <span>3D FlipBook Viewer</span>
+                  <button onClick={() => flipBookRef.current.pageFlip().flipNext()}>Next ▶</button>
+                  
+                  {/* Download PDF Button */}
+                  {activeModal.pdfUrl && (
+                    <a 
+                      href={activeModal.pdfUrl} 
+                      download 
+                      className="shorya-flipbook-download-link"
+                    >
+                      ⬇ Download
+                    </a>
+                  )}
+                </div>
+              </div>
+            ) : (
+              /* Standard Image Viewer fallback for other magazines */
+              <img 
+                src={activeModal.src} 
+                alt="Enlarged magazine high res page asset" 
+                style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.6)" }} 
+              />
+            )}
+          </div>
         </div>
       )}
 

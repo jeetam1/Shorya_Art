@@ -1,7 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function NewspaperArticles() {
   const [modalImage, setModalImage] = useState(null);
+  const [isZoomed, setIsZoomed] = useState(false);
+  
+  // States for drag-to-pan functionality
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [scrollStart, setScrollStart] = useState({ left: 0, top: 0 });
+  const scrollContainerRef = useRef(null);
+
+  const handleCloseModal = () => {
+    setModalImage(null);
+    setIsZoomed(false);
+  };
+
+  const handleImageClick = (e) => {
+    // Prevent zooming if the user was just dragging to read the text
+    if (isDragging) {
+      setIsDragging(false);
+      return;
+    }
+    setIsZoomed(!isZoomed);
+  };
+
+  const handleMouseDown = (e) => {
+    if (!isZoomed) return;
+    setDragStart({ x: e.clientX, y: e.clientY });
+    setScrollStart({
+      left: scrollContainerRef.current.scrollLeft,
+      top: scrollContainerRef.current.scrollTop
+    });
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isZoomed || e.buttons !== 1) return; // Only trigger if left mouse button is held down
+    
+    const dx = e.clientX - dragStart.x;
+    const dy = e.clientY - dragStart.y;
+    
+    // If the mouse moves more than 5 pixels, register it as a drag rather than a click
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+      setIsDragging(true);
+    }
+
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = scrollStart.left - dx;
+      scrollContainerRef.current.scrollTop = scrollStart.top - dy;
+    }
+  };
 
   // Structural array setup handling your multi-year newspaper data mapping
   const articlesData = [
@@ -121,7 +169,10 @@ export default function NewspaperArticles() {
           </div>
 
           {/* Bottom Row: Newspaper Clipping Scans Centered below text */}
-          <div className="shorya-media-right-clipping-col" onClick={() => setModalImage(article.clippingSrc)}>
+          <div className="shorya-media-right-clipping-col" onClick={() => {
+            setModalImage(article.clippingSrc);
+            setIsZoomed(false); // Reset zoom when opening a new one
+          }}>
             <div className="shorya-media-clipping-frame">
               <img src={article.clippingSrc} alt="Newspaper clipping snapshot document" className="shorya-media-clipping-img" />
             </div>
@@ -134,21 +185,34 @@ export default function NewspaperArticles() {
       ))}
     </div>
 
-    {/* LIGHTBOX MODAL CHASSIS */}
+    {/* LIGHTBOX MODAL CHASSIS WITH DRAG-TO-PAN AND ZOOM */}
     {modalImage && (
-      <div 
-        style={{
-          position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.85)",
-          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 99999,
-          cursor: "zoom-out"
-        }} 
-        onClick={() => setModalImage(null)}
-      >
-        <img 
-          src={modalImage} 
-          alt="Enlarged view blueprint scanner" 
-          style={{ maxWidth: "90%", maxHeight: "90%", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.5)" }} 
-        />
+      <div className="shorya-modal-overlay" onClick={handleCloseModal}>
+        
+        {/* CROSS (CLOSE) OPTION */}
+        <button onClick={handleCloseModal} className="shorya-modal-cross-btn">
+          ✕ Close
+        </button>
+
+        {/* SCROLLABLE / DRAGGABLE AREA */}
+        <div 
+          ref={scrollContainerRef}
+          className={`shorya-modal-scroll-container ${isZoomed ? 'is-zoomed' : ''}`}
+          onClick={(e) => e.stopPropagation()} // Stop click from closing modal
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={() => setTimeout(() => setIsDragging(false), 0)}
+          onMouseLeave={() => setIsDragging(false)}
+        >
+          <img 
+            src={modalImage} 
+            alt="Enlarged view blueprint scanner" 
+            className={`shorya-modal-image ${isZoomed ? 'zoomed-in' : 'zoomed-out'}`}
+            onClick={handleImageClick}
+            draggable={false} // Prevents HTML5 ghost image dragging
+          />
+        </div>
+
       </div>
     )}
 

@@ -100,7 +100,7 @@ export default function Events() {
       youtubeId: "16jmQN8CGZ0",
       logoSrc: "/728.jpg",
       desc: "In 2017, Shorya's art and mind got a wide reach with TEDx JSSATE. The world knew the artist Shorya and his work but not his journey and his story. He talked about his imagination, his passion and his approach towards art which was simply magical and has inspired many young artists since then. It has given him the confidence to go on the stage and talk his mind, a rare privilege to young artists.",
-      linkPath: "#/event-m"
+      linkPath: "/TEDX"
     },
     {
       
@@ -108,7 +108,7 @@ export default function Events() {
       imgSrc: "/712.jpg",
       logoSrc: "/724.jpg",
       desc: "Future Decoded 2017 was an event by Microsoft which was graced by more than 1700 global thought leaders and CEOs, right from Satya Nadella (CEO, Microsoft) and Norm Judah (CTO, Microsoft) and other such eminent speakers. In the presence of such leaders, Shorya painted his first digital painting on Surface Pro 4. It was when the world of abstract art watched a beautiful transition from tradition to modernity.",
-      linkPath: "#/event-l"
+      linkPath: "/microsoft-future-decoded"
     },
 
     
@@ -118,7 +118,7 @@ export default function Events() {
       audioSrc: "/audio.mp3",
       logoSrc: "/725.png",
       desc: "India's ‘Child Picasso’ found his voice on Australian Radio. On the land down under, he again underlined why he loved painting and why he would pursue it as a professional artist. Shorya is quite vocal about his dreams now. In recent collaborations, he has gone on the stage, behind the microphone and before the camera. Everywhere he has proven his popular epithet of world's youngest signature style abstract artist.",
-      linkPath: "#/event-n"
+      linkPath: "/sbs-radio"
     },
     {
       year: "Year - 2019",
@@ -126,7 +126,7 @@ export default function Events() {
       youtubeId: "M82JWOjGADA",
       logoSrc: "/726.jpg",
       desc: "Every recognition coming Shorya's way is defining his way better and better. In early 2019, Shorya was shortlisted in an assembled honour roll of the most impressive, young superstars and talents to watch out for – young who are transforming the society with their skills and expertise – and was aptly named as SBI YONO 20 under Twenty. Shorya Mahanot is redefining the art world as we see it.",
-      linkPath: "#/event-o"
+      
     },
     {
       
@@ -134,7 +134,7 @@ export default function Events() {
       youtubeId: "53SrXl92020",
       logoSrc: "/727.png",
       desc: "Holtzman Gallery was celebrating its new location and home for contemporary art at Ocean Casino Resort. No doubt, Shorya has always been a part of this exciting journey, the mentorship he has got Mr David Holtzman himself has shaped his thoughts and inspired him to create more and more. We shall see more of Shorya in 2020.",
-      linkPath: "#/event-p"
+      
     }
   ];
 

@@ -9,6 +9,9 @@ import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
 import Magazines from './components/Magazines'; 
+import Ted from './components/Ted';
+import MicrosoftFutureDecoded from './components/MicrosoftFutureDecoded';
+import SBSRadio from './components/SBSRadio';
 import WebArticles from './components/WebArticles';
 import Videos from './components/Videos'; 
 import LookWorldTalking from './components/LookWorldTalking';
@@ -105,6 +108,15 @@ export default function App() {
       setActiveTab('Events'); 
     } else if (path === '/nestle' || path === '/event-h') {
       setCurrentView({ type: 'nestle', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/TEDX' || path === '/ted') {
+      setCurrentView({ type: 'tedx-event-page', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/microsoft-future-decoded' || path === '/event-i') {
+      setCurrentView({ type: 'microsoft', data: null });
+      setActiveTab('Events'); 
+    } else if (path === '/sbs-radio' || path === '/event-m') {
+      setCurrentView({ type: 'sbs-radio', data: null });
       setActiveTab('Events'); 
     
     } else if (path === '/media/web-articles') {
@@ -364,7 +376,10 @@ export default function App() {
         {/* <--- 3. ADDED THE NEW COMPONENT RENDER HERE */}
         {currentView.type === 'rk-laxman' && <RKLaxman />}
         {currentView.type === 'ndtv' && <NDTV />}
+        {currentView.type === 'tedx-event-page' && <Ted setLatestComment={addNewComment} />}
         {currentView.type === 'nestle' && <Nestle />}
+        {currentView.type === 'sbs-radio' && <SBSRadio setLatestComment={addNewComment} />}
+        {currentView.type === 'microsoft' && <MicrosoftFutureDecoded />}
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">

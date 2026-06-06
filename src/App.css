@@ -1000,7 +1000,8 @@ body,
 .shorya-media-articles-container {
   width: 100% !important;
   max-width: 690px !important; 
-  padding: 40px 0px 60px 45px !important;
+  margin: 0 auto !important; /* Centers the list */
+  padding: 40px 20px 60px 20px !important; 
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1020,15 +1021,6 @@ body,
   align-items: flex-start !important;
   width: 100% !important;
   margin-bottom: 25px !important;
-}
-
-.shorya-media-left-meta-col {
-  width: auto !important;
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 30px !important;
-  align-items: flex-start !important;
-  flex: 1 !important;
 }
 
 .shorya-media-brand-logo-frame {
@@ -1087,13 +1079,102 @@ body,
   margin: 20px 0 40px 0 !important;
 }
 
+/* ==========================================================================
+   27. NEWSPAPER MODAL PAN & ZOOM STYLES
+   ========================================================================== */
+.shorya-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.85);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+}
+
+.shorya-modal-cross-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 100000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.shorya-modal-cross-btn:hover {
+  background-color: #ff4d4f;
+  color: white;
+  transform: scale(1.05);
+}
+
+.shorya-modal-scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When zoomed in, allow scrolling from the top left corners */
+.shorya-modal-scroll-container.is-zoomed {
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: grab; /* Hand cursor for panning */
+}
+
+.shorya-modal-scroll-container.is-zoomed:active {
+  cursor: grabbing; /* Gripping hand when clicked */
+}
+
+.shorya-modal-image {
+  border: 3px solid #ffffff;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transition: width 0.3s ease, max-width 0.3s ease;
+}
+
+/* Standard Modal View */
+.shorya-modal-image.zoomed-out {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: zoom-in; /* Magnifying glass with plus */
+}
+
+/* Huge view for reading text */
+.shorya-modal-image.zoomed-in {
+  width: 150vw; /* Massively enlarges the paper */
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out; /* Magnifying glass with minus */
+  margin: auto;
+}
+
 @media (max-width: 640px) {
-  .shorya-media-left-meta-col {
+  .shorya-media-split-row {
     flex-direction: column !important;
     gap: 15px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .shorya-media-description-body-text {
+    text-align: center !important;
   }
   .shorya-media-articles-container {
     padding: 30px 20px !important;
+  }
+  .shorya-modal-cross-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
   }
 }
 

@@ -46,43 +46,49 @@ export default function LookWorldTalking() {
   ];
 
   return (
-    <div className="shorya-look-talking-view-root">
+    <div className="shorya-look-talking-view-root" style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'center' }}>
       
       {/* HEADER BANNER STRIP */}
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", width: '100%', justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Look the world is talking</h1>
         </div>
       </div>
 
-      {/* CORE CARDS WRAPPER GRID */}
-      <div className="shorya-talking-cards-grid-container">
+      {/* CORE CARDS WRAPPER GRID - CENTERED */}
+      <div className="shorya-talking-cards-grid-container" style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '40px' }}>
         {quotesData.map((card, index) => (
-          <div key={index} className="shorya-talking-quote-card-item">
+          <div key={index} className="shorya-talking-quote-card-item" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             
             {/* Header section with styling vector symbol */}
-            <div className="shorya-talking-card-top-indicator-row">
-              <span className="shorya-talking-quote-mark-icon">“</span>
-              <h2 className="shorya-talking-card-main-label">{card.label}</h2>
+            <div className="shorya-talking-card-top-indicator-row" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span className="shorya-talking-quote-mark-icon" style={{ fontSize: '30px', color: '#888', lineHeight: '1' }}>“</span>
+              <h2 className="shorya-talking-card-main-label" style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '20px', fontWeight: '700', color: '#333333', margin: '0' }}>{card.label}</h2>
             </div>
 
             {/* Split body: Left image brand / Right description */}
-            <div className="shorya-talking-card-split-body-layout">
-              <div className="shorya-talking-card-brand-img-box">
-                <img src={card.src} alt={card.author} className="shorya-talking-card-publisher-badge-img" />
+            <div className="shorya-talking-card-split-body-layout" style={{ display: 'flex', gap: '25px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              <div className="shorya-talking-card-brand-img-box" style={{ flex: '0 0 150px' }}>
+                <img src={card.src} alt={card.author} className="shorya-talking-card-publisher-badge-img" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
               </div>
               
-              <div className="shorya-talking-card-narrative-text-box">
-                <p className="shorya-talking-card-short-quote">{card.short}</p>
-                <span className="shorya-talking-card-author-signature">{card.author}</span>
+              <div className="shorya-talking-card-narrative-text-box" style={{ flex: '1', minWidth: '250px' }}>
+                <p className="shorya-talking-card-short-quote" style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '15px', color: '#555555', lineHeight: '1.6', margin: '0 0 10px 0', fontStyle: 'italic' }}>{card.short}</p>
+                <span className="shorya-talking-card-author-signature" style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '13px', color: '#888888', fontWeight: '600', textTransform: 'uppercase' }}>— {card.author}</span>
               </div>
             </div>
+
+            {/* Optional Divider Line between cards */}
+            {index < quotesData.length - 1 && (
+              <hr style={{ width: '100%', border: '0', borderBottom: '1px dashed #e5e5e5', marginTop: '20px' }} />
+            )}
 
           </div>
         ))}
       </div>
 
-      <footer className="shorya-view-footer-signature-line">
+      {/* FOOTER */}
+      <footer className="shorya-view-footer-signature-line" style={{ width: '100%', textAlign: 'center', marginTop: 'auto' }}>
         Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
       </footer>
     </div>

@@ -6,21 +6,22 @@ export default function Videos() {
     {
       id: "16jmQN8CGZ0",
       embedUrl: "https://www.youtube.com/embed/16jmQN8CGZ0",
-      caption: "“He dreams of painting and he paints his dreams”",
+      caption: "“Shorya Mahanot, the youngest signature style abstract artist tells the world about his Abstract Art Journey.”",
       logoSrc: "/30.jpg",
       logoAlt: "Pogo Logo"
     },
     {
       id: "_9QnU8MJo00",
       embedUrl: "https://www.youtube.com/embed/_9QnU8MJo00",
-      caption: "“He might be shy but he is never afraid to showcase his talent on the canvas. Watch how Pogo discovered an amazing child in Shorya.”",
-      logoSrc: "/31.png",
+      caption: "“Give a child a canvas to paint and he will expand the universe with every brushstroke.”",
+      
       logoAlt: "Pogo Logo"
     },
     {
       id: "fonfz2PUcAY",
       embedUrl: "https://www.youtube.com/embed/fonfz2PUcAY",
-      caption: "“How do you visualize a special day in the life of a child? Getting applauded by veterans and finding a stage where only stalwarts have gone? Watch to find out.”",
+      caption: "“What happened when the prince of abstract art me the king of cartoons? A magical, blissful turn of events for sure.”",
+      logoSrc: "/31.png",
       //logoAlt: "CNN IBN Logo"
     },
     {

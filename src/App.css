@@ -2067,7 +2067,7 @@ body,
   text-decoration: underline !important;
 }
 
-/* ==========================================================================
+//* ==========================================================================
    AWARDS & CERTIFICATES PAGE 
    ========================================================================== */
 .awards-page-container {
@@ -2123,7 +2123,7 @@ body,
 .award-section {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center; /* Changed from left to center */
   margin-bottom: 60px;
   max-width: 800px;
   width: 100%;
@@ -2135,6 +2135,7 @@ body,
   font-weight: 700 !important;
   color: #333 !important;
   margin-bottom: 25px !important;
+  text-align: center; /* Added to ensure title is centered */
 }
 
 .award-image {
@@ -2149,10 +2150,10 @@ body,
   font-size: 15px !important;
   line-height: 1.8 !important;
   color: #555 !important;
-  text-align: left !important; 
+  text-align: center !important; /* Changed from left to center */
   max-width: 650px;
+  margin: 0 auto; /* Added to keep the text block perfectly centered */
 }
-
 /* ==========================================================================
    CONTACT PAGE
    ========================================================================== */
@@ -2202,6 +2203,11 @@ body,
 .contact-content-wrapper {
   padding: 0 40px 80px 40px;
   max-width: 900px;
+  margin: 0 auto; /* Centers the entire wrapper horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content inside the wrapper */
+  width: 100%;
 }
 
 .contact-info-block {
@@ -2210,6 +2216,7 @@ body,
   font-size: 15px;
   color: #333;
   line-height: 1.8;
+  text-align: center; /* Centers the contact text and email */
 }
 
 .contact-info-block p {
@@ -2234,7 +2241,7 @@ body,
 
 .contact-form-layout {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* Centers the form inputs and captcha side-by-side */
   gap: 60px;
   width: 100%;
   flex-wrap: wrap;
@@ -2243,7 +2250,7 @@ body,
 .contact-main-inputs {
   display: flex;
   flex-direction: column;
-  width: 70%; 
+  width: 100%; 
   max-width: 500px;
 }
 
@@ -2277,6 +2284,7 @@ body,
   font-size: 15px;
   color: #333;
   padding-top: 5px;
+  align-items: center; /* Centers the Captcha block horizontally */
 }
 
 .captcha-label {
@@ -2301,7 +2309,7 @@ body,
 
 .contact-actions-row {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: center; /* Centers the Submit and Reset buttons */
   gap: 15px;
   margin-top: 5px;
 }
@@ -2323,7 +2331,6 @@ body,
   background-color: #f5f5f5;
   border-color: #aaa;
 }
-
 /* ==========================================================================
    ARTWORK DETAIL & COMMENT FORM (THE CLEANED VERSION)
    ========================================================================== */
@@ -2745,5 +2752,177 @@ body,
 @media (max-width: 768px) {
   .shorya-side-arrow-left, .shorya-side-arrow-right {
     display: none;
+  }
+}
+/* ==========================================================================
+   READER's DIGEST PAGE STYLES (No Boxed Background/Boundaries)
+   ========================================================================== */
+.rd-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1 !important; 
+  background-color: #ffffff; /* Seamless background matching the main app canvas */
+}
+
+.rd-content-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 20px 80px 20px;
+  background-color: transparent; /* Removes the white container box */
+  box-shadow: none; /* Removes the box shadow border outline completely */
+}
+
+.rd-main-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: #333 !important;
+  margin: 0 0 10px 0;
+}
+
+.rd-meta {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 13px !important;
+  color: #888 !important;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rd-sub-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #444 !important;
+  margin-bottom: 25px;
+}
+
+.rd-text-image-block {
+  margin-bottom: 40px;
+  overflow: hidden; 
+}
+
+.rd-paragraph {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+  color: #555 !important;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.rd-inline-image-left {
+  float: left;
+  margin: 0 25px 15px 0;
+  max-width: 300px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.rd-inline-image-center {
+  display: block;
+  margin: 30px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* COMMENT SECTION */
+.rd-comment-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.rd-reply-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  margin-bottom: 5px;
+}
+
+.rd-reply-note {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.rd-form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.rd-form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.rd-form-group input,
+.rd-form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background-color: #fafafa;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.rd-form-group input:focus,
+.rd-form-group textarea:focus {
+  border-color: #999;
+}
+
+.rd-form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.rd-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.rd-checkbox-group label {
+  font-size: 14px;
+  color: #666;
+}
+
+.rd-submit-btn {
+  padding: 12px 30px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.rd-submit-btn:hover {
+  background-color: #555;
+}
+
+@media (max-width: 768px) {
+  .rd-inline-image-left {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+  }
+  .rd-form-row {
+    flex-direction: column;
+    gap: 0;
   }
 }

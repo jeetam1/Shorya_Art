@@ -2579,13 +2579,16 @@ body,
   margin-top: 20px;
 }
 
+/* ==========================================================================
+   28. 3D FLIPBOOK MODAL STYLES
+   ========================================================================== */
 .shorya-flipbook-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(30, 30, 30, 0.95);
+  /* Reverted to the previous dark background! */
+  background-color: rgba(30, 30, 30, 0.95); 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   z-index: 99999;
 }
 
@@ -2593,6 +2596,7 @@ body,
   position: absolute;
   top: 20px;
   right: 30px;
+  /* Reverted close button to match the dark theme */
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255,255,255,0.2);
   color: white;
@@ -2601,64 +2605,145 @@ body,
   z-index: 100000;
   padding: 8px 12px;
   border-radius: 4px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .shorya-flipbook-close-btn:hover {
   background: #ff4d4f;
+  transform: scale(1.1);
 }
 
+/* Side Navigation Arrows - Adjusted colors for dark background */
+.shorya-side-arrow-left,
+.shorya-side-arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 60px;
+  color: #888888; /* Soft grey */
+  cursor: pointer;
+  z-index: 100000;
+  transition: color 0.2s, transform 0.2s;
+  padding: 20px;
+}
+
+.shorya-side-arrow-left:hover,
+.shorya-side-arrow-right:hover {
+  color: #ffffff; /* Bright white on hover */
+  transform: translateY(-50%) scale(1.1);
+}
+
+.shorya-side-arrow-left {
+  left: 20px;
+}
+
+.shorya-side-arrow-right {
+  right: 20px;
+}
+/* Interactive Viewer Area */
 .shorya-flipbook-viewer-area {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent native scrollbars; we are using 2D panning now */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+}
+
+.shorya-flipbook-viewer-area.is-zoomed {
+  cursor: grab;
+}
+
+.shorya-flipbook-viewer-area.is-zoomed:active {
+  cursor: grabbing;
 }
 
 .shorya-flipbook-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 1000px;
   height: 80vh;
+  transform-origin: center center;
 }
 
 .shorya-flip-page {
   background-color: white;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
-  border: 1px solid #ddd;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.15); 
 }
 
+/* Updated Control Bar - White Background & Dark Text */
 .shorya-flipbook-control-bar {
-  margin-top: 30px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
-  border-radius: 6px;
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.95); /* Bright white background */
+  padding: 12px 25px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 30px;
-  color: #cccccc;
+  gap: 25px;
+  color: #333333; /* Dark text for contrast */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15); /* Soft shadow to lift it off the white page */
+  border: 1px solid rgba(0,0,0,0.1); /* Subtle outline */
+  z-index: 100000;
 }
 
 .shorya-flipbook-control-bar button {
   background: none;
   border: none;
-  color: #ffffff;
-  cursor: pointer;
-}
-.shorya-flipbook-download-link {
-  color: #ffcc00;
-  text-decoration: none;
+  color: #333333; /* Dark buttons */
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
+  cursor: pointer;
   padding: 5px 10px;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  margin-left: 10px;
   transition: color 0.2s;
 }
 
+.shorya-flipbook-control-bar button:hover {
+  color: #0066cc; /* Blue hover effect */
+}
+
+.shorya-flipbook-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-right: 1px solid rgba(0,0,0,0.2); /* Darkened separator */
+  padding-right: 20px;
+}
+
+.shorya-page-counter-display {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  min-width: 90px;
+  text-align: center;
+}
+
+.shorya-flipbook-download-link {
+  color: #d97706; /* High contrast amber/orange for the download button */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2); /* Darkened separator */
+  transition: all 0.2s;
+}
+
 .shorya-flipbook-download-link:hover {
-  color: #ffffff;
+  color: #b45309;
+  background-color: rgba(217, 119, 6, 0.1);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .shorya-side-arrow-left, .shorya-side-arrow-right {
+    display: none;
+  }
 }

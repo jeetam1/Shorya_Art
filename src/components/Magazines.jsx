@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-// Custom Page Component 
+// Optimized Custom Page Component with Native Lazy Loading
 const FlipBookPage = React.forwardRef((props, ref) => {
   return (
     <div className="shorya-flip-page" ref={ref} style={{ overflow: 'hidden', backgroundColor: '#ffffff' }}>
@@ -11,7 +11,8 @@ const FlipBookPage = React.forwardRef((props, ref) => {
         <img 
           src={props.image} 
           alt="Magazine Page" 
-          style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} 
+          loading="lazy" 
+          style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} 
         />
       )}
     </div>
@@ -19,7 +20,8 @@ const FlipBookPage = React.forwardRef((props, ref) => {
 });
 
 export default function Magazines() {
-  const [activeModal, setActiveModal] = useState({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null });
+  const [activeModal, setActiveModal] = useState({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] });
+  const [isMobile, setIsMobile] = useState(false);
   
   const flipBookRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(0); 
@@ -29,11 +31,18 @@ export default function Magazines() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const onPageFlip = (e) => {
     setCurrentPage(e.data); 
     const flipSound = new Audio('/page-flip.mp3');
-    flipSound.volume = 0.5;
-    flipSound.play().catch(err => console.log('Audio play prevented:', err));
+    flipSound.volume = 0.3;
+    flipSound.play().catch(err => console.log('Audio playback prevented:', err));
   };
 
   const handlePrevPage = () => {
@@ -51,7 +60,6 @@ export default function Magazines() {
   };
 
   const handleZoomIn = () => setZoom(prev => Math.min(prev + 0.5, 3));
-  
   const handleZoomOut = () => {
     setZoom(prev => {
       const newZoom = Math.max(prev - 0.5, 1);
@@ -75,7 +83,8 @@ export default function Magazines() {
 
   // Keeps the active page perfectly centered
   const getCenterShift = () => {
-    if (!activeModal.pages) return '0%';
+    if (isMobile) return '0%'; // Never shift on mobile, keep it dead center
+    if (!activeModal.pages || activeModal.pages.length === 0) return '0%';
     if (currentPage === 0) return '-25%'; 
     if (currentPage >= activeModal.pages.length - 1) return '25%'; 
     return '0%'; 
@@ -94,7 +103,7 @@ export default function Magazines() {
         ...Array.from({ length: 3 }, (_, i) => `/Industry/Industry-Magazine_page-${String(i + 1).padStart(4, '0')}.jpg`),
         "blank"
       ],
-      text: "With every painting, Shorya's signature style as an abstract expressionist artist evolves. Shorya works in acrylics in a heavy impasto technique that has been compared to Jackson Pollock's \"drip painting\" or \"action painting\". Like Pollock, Shorya spreads his canvas on the floor and begins composing with masterful strokes in multiple layers and deliberate consideration of color composition and the symmetry between his brushstrokes, dripping and pouring. With the amazing skill of a conductor leading an orchestra, as well as the joyfulness of his youth, a magical world is revealed."
+      text: "With every painting, Shorya's signature style as an abstract expressionist artist evolves. Shorya works in acrylics in a heavy impasto technique that has been compared to Jackson Pollock's \"drip painting\" or \"action painting\"."
     },
     {
       title: "THE WORLD OF SOCIETY",
@@ -114,7 +123,7 @@ export default function Magazines() {
         ...Array.from({ length: 166 }, (_, i) => `/Readers_digest/rd_page-${String(i + 1).padStart(4, '0')}.jpg`),
         "blank" 
       ],
-      text: "His family had never seen an art like this before — there were shades of Jackson Pollock — and his father, Aditya, was beyond ecstatic. One of the world's youngest signature style abstract artist, with several solo exhibitions under his belt, he has participated at the artexpo in New York and Microsoft's Future Decoded in Mumbai, selling painting worth $40,000 in all. Now 12, Shorya also has honour to do a live demonstration for the late cartoonist R.K. Laxman at the age of five. Shorya gushed, \"He blessed me and encouraged me to paint.\""
+      text: "His family had never seen an art like this before — there were shades of Jackson Pollock — and his father, Aditya, was beyond ecstatic. One of the world's youngest signature style abstract artist, with several solo exhibitions under his belt, he has participated at the artexpo in New York and Microsoft's Future Decoded in Mumbai."
     },
     {
       title: "imagine",
@@ -125,7 +134,7 @@ export default function Magazines() {
         ...Array.from({ length: 40 }, (_, i) => `/Imagine/i_page-${String(i + 1).padStart(4, '0')}.jpg`),
         "blank"
       ],
-      text: "\"Don't be Afraid.\" Shorya has just one thing to say... 'if you have the creativity, then this world is a canvas to your imagination.' Rightly so, Young art master Shorya has transformed his imagination into world-class masterpieces."
+      text: "\"Don't be Afraid.\" Shorya has just one thing to say... 'if you have the creativity, then this world is a canvas to your imagination.'"
     },
     {
       title: "child",
@@ -136,7 +145,7 @@ export default function Magazines() {
         ...Array.from({ length: 9 }, (_, i) => `/child_Magazines/Child-Magazine_page-${String(i + 1).padStart(4, '0')}.jpg`),
         "blank" 
       ],
-      text: "\"We discovered a pattern in his paintings. It was surprising to see a child of his age creating a signature style and we don't want any external influence on his works\", says his proud father Aditya Mahanot. Shorya discovered his penchant for painting when he was just 3 years old. Since then, he has created around 200 paintings and 21 of them have already been sold."
+      text: "Shorya discovered his penchant for painting when he was just 3 years old. Since then, he has created around 200 paintings and 21 of them have already been sold."
     },
     {
       title: "art expo 2013",
@@ -147,14 +156,13 @@ export default function Magazines() {
         ...Array.from({ length: 5 }, (_, i) => `/Art_Expo/ArtExpo-2013_page-${String(i + 1).padStart(4, '0')}.jpg`),
         "blank"
       ],
-      text: "Pollock-like paint smatterings and bold, geometric forms cover the canvases of India's youngest abstract artist. Shorya's painting exudes a visual sophistication and balance that belies his years. What's more, they seem to hold some degree of emotional complexity – or at least, a powerful juxtaposition of innocence and confidence."
+      text: "Pollock-like paint smatterings and bold, geometric forms cover the canvases of India's youngest abstract artist. Shorya's painting exudes a visual sophistication and balance."
     },
     {
       title: "Showtime (Hindi)",
-      heading: "..और सपने कर दिखाया", 
       coverSrc: "/556.jpg",
       isFlipbook: false, 
-      text: "शौर्य जब मात्र चार साल के थे तो मुम्बई के होटल ताज के चैम्बर्स टेरेस में उनकी 24 कलाकृतियाँ प्रदर्शित की गई थीं। इन पेन्टिंग्स को जो भी देखता, विश्वास नहीं कर पाता की वे एक छोटे से बच्चे ने बनाई हैं। विश्वास दिलाने के लिए पिता को वीडियो दिखाना पड़ता। दुनिया का यह पहला बच्चा है, जिसे न्यूयार्क की सुप्रसिद्ध आर्ट गैलरी वार्ड-नासे में पूरे एक साल के लिए एक वाल दी गयी, जहाँ शौर्य की चित्रकला हर कला प्रेमी का ध्यान खींचती है।"
+      text: "शौर्य जब मात्र चार साल के थे तो मुम्बई के होटल ताज के चैम्बर्स टेरेस में उनकी 24 कलाकृतियाँ प्रदर्शित की गई थीं।"
     }
   ];
 
@@ -191,21 +199,24 @@ export default function Magazines() {
                       setPan({ x: 0, y: 0 }); 
                       setCurrentPage(0); 
                     } else {
-                      setActiveModal({ type: 'image', src: item.coverSrc });
+                      setActiveModal({ type: 'image', src: item.coverSrc, pages: [] });
                     }
                   }}
                 >
                   <div className="shorya-magazine-image-frame" style={{ cursor: 'pointer' }}>
-                    <img src={item.coverSrc} alt={`${item.title} cover`} className="shorya-magazine-cover-img" style={{ cursor: 'pointer' }} />
+                    <img src={item.coverSrc} alt={`${item.title} cover`} loading="lazy" className="shorya-magazine-cover-img" style={{ cursor: 'pointer' }} />
                   </div>
                 </div>
 
                 <div className="shorya-magazine-text-content-box">
-                  {item.heading && (
-                    <div className="shorya-magazine-custom-badge-heading">
-                      {item.heading}
-                    </div>
-                  )}
+                  <h3 className="shorya-magazine-row-title" style={{ cursor: 'pointer' }} onClick={() => {
+                    if (item.isFlipbook) {
+                      setActiveModal({ type: 'flipbook', pages: item.flipbookPages, pdfUrl: item.pdfSrc, jumpFromIndex: item.jumpFromIndex, jumpToIndex: item.jumpToIndex });
+                      setZoom(1); setPan({ x: 0, y: 0 }); setCurrentPage(0);
+                    } else {
+                      setActiveModal({ type: 'image', src: item.coverSrc, pages: [] });
+                    }
+                  }}>{item.title}</h3>
                   <p className="shorya-magazine-paragraph-text-value">{item.text}</p>
                 </div>
 
@@ -217,18 +228,14 @@ export default function Magazines() {
       </div>
 
       {activeModal.type && (
-        <div className="shorya-flipbook-modal-overlay" onClick={() => setActiveModal({ type: null })}>
+        <div className="shorya-flipbook-modal-overlay" onClick={() => setActiveModal({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] })}>
           
-          <button className="shorya-flipbook-close-btn" onClick={() => setActiveModal({ type: null })}>✖</button>
+          <button className="shorya-flipbook-close-btn" onClick={() => setActiveModal({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] })}>✖</button>
 
-          {activeModal.type === 'flipbook' && (
+          {activeModal.type === 'flipbook' && !isMobile && (
             <>
-              <button className="shorya-side-arrow-left" onClick={(e) => { e.stopPropagation(); handlePrevPage(); }}>
-                &#10094;
-              </button>
-              <button className="shorya-side-arrow-right" onClick={(e) => { e.stopPropagation(); handleNextPage(); }}>
-                &#10095;
-              </button>
+              <button className="shorya-side-arrow-left" onClick={(e) => { e.stopPropagation(); handlePrevPage(); }}>&#10094;</button>
+              <button className="shorya-side-arrow-right" onClick={(e) => { e.stopPropagation(); handleNextPage(); }}>&#10095;</button>
             </>
           )}
 
@@ -272,25 +279,25 @@ export default function Magazines() {
                     transition: 'transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1)' 
                   }}
                 >
-                  {/* SIZES REDUCED BACK TO PERFECT LAPTOP VIEWING SIZES */}
+                  {/* DYNAMIC SIZING: Automatically scales down for mobile and ensures touch swiping works! */}
                   <HTMLFlipBook 
-                    width={400} 
-                    height={550} 
+                    width={isMobile ? 320 : 400} 
+                    height={isMobile ? 450 : 550} 
                     size="stretch"
-                    minWidth={315}
-                    maxWidth={500} 
-                    minHeight={400}
+                    minWidth={isMobile ? 280 : 315}
+                    maxWidth={isMobile ? 380 : 500} 
+                    minHeight={isMobile ? 400 : 400}
                     maxHeight={700}
                     maxShadowOpacity={0.5}
                     showCover={true} 
-                    usePortrait={false} 
-                    useMouseEvents={false} 
+                    usePortrait={isMobile} // CRITICAL: Flips 1 page at a time on mobile to stay readable
+                    useMouseEvents={true}  // CRITICAL: Allows user to swipe their finger to flip pages
                     mobileScrollSupport={true}
                     onFlip={onPageFlip} 
                     className="shorya-interactive-flipbook"
                     ref={flipBookRef}
                   >
-                    {activeModal.pages.map((pageSrc, idx) => (
+                    {(activeModal.pages || []).map((pageSrc, idx) => (
                       <FlipBookPage key={idx} image={pageSrc} />
                     ))}
                   </HTMLFlipBook>
@@ -300,6 +307,7 @@ export default function Magazines() {
               <img 
                 src={activeModal.src} 
                 alt="Enlarged magazine" 
+                className="shorya-static-modal-img"
                 style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.6)" }} 
               />
             )}
@@ -307,15 +315,14 @@ export default function Magazines() {
 
           {activeModal.type === 'flipbook' && (
             <div className="shorya-flipbook-control-bar" onClick={(e) => e.stopPropagation()}>
-              
               <div className="shorya-flipbook-zoom-controls">
                 <button onClick={handleZoomOut} title="Zoom Out">➖</button>
-                <span>Zoom</span>
+                <span style={{ fontSize: isMobile ? '12px' : '14px' }}>Zoom</span>
                 <button onClick={handleZoomIn} title="Zoom In">➕</button>
               </div>
 
-              <div className="shorya-page-counter-display">
-                Page {currentPage + 1} of {activeModal.pages.length}
+              <div className="shorya-page-counter-display" style={{ fontSize: isMobile ? '12px' : '14px' }}>
+                Page {currentPage + 1} of {activeModal.pages ? activeModal.pages.length : 0}
               </div>
               
               {activeModal.pdfUrl && (
@@ -323,8 +330,9 @@ export default function Magazines() {
                   href={activeModal.pdfUrl} 
                   download 
                   className="shorya-flipbook-download-link"
+                  style={{ fontSize: isMobile ? '12px' : '14px' }}
                 >
-                  ⬇ Download
+                  ⬇ PDF
                 </a>
               )}
             </div>
@@ -332,8 +340,6 @@ export default function Magazines() {
 
         </div>
       )}
-
-     
     </div>
   );
 }

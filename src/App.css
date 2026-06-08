@@ -1286,7 +1286,65 @@ body,
   letter-spacing: 0.5px !important;
   white-space: nowrap !important;
 }
+/* ==========================================================================
+   MOBILE RESPONSIVENESS AND REFLOW FOR MAGAZINES
+   ========================================================================== */
+.shorya-magazine-row-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #333;
+  margin: 0 0 15px 0;
+}
 
+@media (max-width: 768px) {
+  .shorya-magazine-split-layout {
+    display: flex;
+    flex-direction: column !important; 
+    align-items: center !important;
+    text-align: center !important;
+    gap: 25px !important;
+  }
+
+  .shorya-magazine-cover-box {
+    width: 100% !important;
+    max-width: 250px !important; /* Perfect size for mobile lists */
+  }
+
+  .shorya-magazine-cover-img {
+    width: 100% !important;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .shorya-magazine-text-content-box {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .shorya-magazine-paragraph-text-value {
+    text-align: center !important; 
+    font-size: 14.5px !important;
+  }
+
+  .shorya-flipbook-modal-overlay {
+    padding: 10px;
+  }
+
+  .shorya-static-modal-img {
+    max-width: 95vw !important;
+    max-height: 80vh !important;
+    object-fit: contain;
+    border: 2px solid #fff;
+  }
+
+  .shorya-flipbook-control-bar {
+    padding: 10px 15px !important;
+    justify-content: space-between !important;
+  }
+}
 /* ==========================================================================
    29. OFFICIAL WEB ARTICLES SYSTEM INDEX
    ========================================================================== */

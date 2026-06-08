@@ -12,7 +12,7 @@ export default function Yahoo() {
 
         {/* Yahoo Logo */}
         <div className="yahoo-logo-container">
-          <img src="/yahoo-logo.png" alt="Yahoo! News" className="yahoo-logo-img" />
+          <img src="/ab12.jpg" alt="Yahoo! News" className="yahoo-logo-img" />
         </div>
 
         {/* Centered Sub-Headline */}
@@ -29,13 +29,13 @@ export default function Yahoo() {
             </p>
           </div>
           <div className="yahoo-image-column">
-            <img src="/yahoo-shorya.jpg" alt="Shorya Mahanot smiling" className="yahoo-article-img" />
+            <img src="/ab13.png" alt="Shorya Mahanot smiling" className="yahoo-article-img" />
           </div>
         </div>
 
         {/* Link to article */}
         <div className="yahoo-read-more">
-          <strong>Continue reading here at </strong> <a href="#" className="yahoo-link">Yahoo!</a>
+          <strong>Continue reading here at </strong> <a href="https://in.search.yahoo.com" className="yahoo-link">Yahoo!</a>
         </div>
 
         {/* --- SHARED DYNAMIC COMMENT SECTION --- */}

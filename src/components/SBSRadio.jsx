@@ -16,12 +16,12 @@ export default function SBSRadio() {
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
         {/* Post Meta Data */}
-        <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '14px', color: '#888888', margin: '0 0 50px 0' }}>
+        <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '24px', color: '#888888', margin: '0 0 50px 0' }}>
           Posted | 0 comments
         </p>
 
         {/* CENTERED MEDIA SECTION (Image & Audio Player) */}
-        <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto 80px auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+        <div style={{ width: '100%', maxWidth: '300px', margin: '0 auto 80px auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
           
           <h2 style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '18px', fontWeight: '700', color: '#333333', textAlign: 'center', margin: '0' }}>
             Reaching to the land down under.

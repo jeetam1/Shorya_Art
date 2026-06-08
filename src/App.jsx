@@ -317,10 +317,14 @@ export default function App() {
         key={item.id} 
         className="portfolio-entry-card" 
         onClick={() => {
+          // --- SPECIAL GRID ROUTING INTERCEPTORS ---
           if (item.id === 10) {
             navigate('/readers-digest');
           } else if (item.id === 13) {
             navigate('/yahoo');
+          } else if (item.id === 14) {
+            // Intercepts image 14 click and pushes to the SBS Radio component view
+            navigate('/sbs-radio'); 
           } else if (item.directLink) {
             navigate(item.directLink.replace('#', '')); 
           } else {
@@ -333,12 +337,9 @@ export default function App() {
           
           <div className="card-hover-overlay">
             <h3 className="card-hover-title">{item.title}</h3>
-            
-            {/* CHANGED HERE: Now displays the item's custom summary value instead of description */}
             <p className="card-hover-description">
               {item.summary || "Temporary dummy content placeholder goes here..."}
             </p>
-            
             <div className="card-hover-icon-circle">
               <Search size={20} />
             </div>

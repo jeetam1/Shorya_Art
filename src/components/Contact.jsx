@@ -9,8 +9,6 @@ export default function Contact() {
   });
 
   const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, userAnswer: '' });
-  
-  // --- NEW: Tracks if the form is successfully submitted ---
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const generateCaptcha = () => {
@@ -40,14 +38,13 @@ export default function Contact() {
       return;
     }
 
-    // Success! Hide the form and show the message
     setIsSubmitted(true);
   };
 
   const handleReset = () => {
     setFormData({ name: '', email: '', subject: '', message: '' });
     generateCaptcha();
-    setIsSubmitted(false); // Brings the form back
+    setIsSubmitted(false); 
   };
 
   return (
@@ -67,7 +64,7 @@ export default function Contact() {
 
         {/* --- DYNAMIC RENDER: Shows Success Box OR The Form --- */}
         {isSubmitted ? (
-          <div style={{ padding: '30px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif' }}>
+          <div className="contact-success-box" style={{ padding: '30px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif', boxSizing: 'border-box' }}>
             <h3 style={{ margin: '0 0 10px 0', fontSize: '22px', color: '#15803d' }}>Thank you, {formData.name}!</h3>
             <p style={{ margin: 0, fontSize: '15px' }}>Your message has been successfully submitted. We will get back to you shortly.</p>
             <button onClick={handleReset} className="contact-btn" style={{ marginTop: '20px' }}>Send Another Message</button>
@@ -99,7 +96,6 @@ export default function Contact() {
         )}
 
       </div>
-      
     </div>
   );
 }

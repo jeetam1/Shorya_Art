@@ -580,7 +580,44 @@ body,
   font-weight: bold !important;
   border-radius: 2px;
 }
+/* Base Footer Style Configuration (Desktop Defaults) */
+.detail-page-footer-signature {
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #eaeaea;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
 
+.footer-signature-text {
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  color: #666666;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   MOBILE FOOTER RESPONSE ENHANCEMENT
+   ========================================================================== */
+@media (max-width: 768px) {
+  .detail-page-footer-signature {
+    padding: 20px 24px !important; /* Adds a defensive side cushion on narrow viewports */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-signature-text {
+    font-size: 12px !important; /* Scales text down slightly so it fits single lines cleanly */
+    width: 100% !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
+  }
+}
 .shorya-academics-vertical-grid-stack {
   display: flex !important;
   flex-direction: column !important;
@@ -1286,47 +1323,77 @@ body,
   letter-spacing: 0.5px !important;
   white-space: nowrap !important;
 }
-/* ==========================================================================
-   MOBILE RESPONSIVENESS AND REFLOW FOR MAGAZINES
-   ========================================================================== */
-.shorya-magazine-row-title {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 20px;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #333;
-  margin: 0 0 15px 0;
-}
-
 @media (max-width: 768px) {
+  /* CRITICAL FIX: Adds defensive side padding to force equal white space on the screen edges */
+  .shorya-magazines-list-container {
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .shorya-magazine-row-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 10px !important; /* Extra side cushion for individual items */
+  }
+
   .shorya-magazine-split-layout {
-    display: flex;
+    display: flex !important;
     flex-direction: column !important; 
-    align-items: center !important;
+    align-items: center !important;     
+    justify-content: center !important;
     text-align: center !important;
-    gap: 25px !important;
+    gap: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .shorya-magazine-cover-box {
     width: 100% !important;
-    max-width: 250px !important; /* Perfect size for mobile lists */
+    max-width: 240px !important; 
+    margin: 0 auto !important;   
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important;
+  }
+
+  .shorya-magazine-image-frame {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
   }
 
   .shorya-magazine-cover-img {
     width: 100% !important;
-    margin: 0 auto;
-    display: block;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin: 0 auto !important; 
+    display: block !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
   }
 
   .shorya-magazine-text-content-box {
     width: 100% !important;
-    padding: 0 !important;
+    max-width: 100% !important;
+    padding: 0 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;    
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .shorya-magazine-row-title {
+    text-align: center !important;
+    margin: 0 auto 10px auto !important;
+    width: 100% !important;
   }
 
   .shorya-magazine-paragraph-text-value {
     text-align: center !important; 
-    font-size: 14.5px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
   }
 
   .shorya-flipbook-modal-overlay {
@@ -1416,7 +1483,131 @@ body,
   margin: 0 !important;
   text-align: left !important;
 }
+/* ==========================================================================
+   WEB ARTICLES STYLING CORE STRUCTURE AND RESPONSIVE GRID REFLOW
+   ========================================================================== */
+.shorya-web-articles-root {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
 
+.shorya-articles-main-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 5%;
+  box-sizing: border-box;
+}
+
+.shorya-article-row-item {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.shorya-article-flex-box-layout {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Alternate Desktop Direction Alignments */
+.shorya-article-flex-box-layout.image-on-left {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.shorya-article-flex-box-layout.image-on-right {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.shorya-article-image-box {
+  width: 250px;
+  flex-shrink: 0;
+  display: flex;
+}
+
+.shorya-article-flex-box-layout.image-on-left .shorya-article-image-box {
+  justify-content: flex-start;
+}
+
+.shorya-article-flex-box-layout.image-on-right .shorya-article-image-box {
+  justify-content: flex-end;
+}
+
+.shorya-article-inline-responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.shorya-article-text-box {
+  max-width: 700px;
+  flex: 1;
+}
+
+.shorya-article-flex-box-layout.image-on-left .shorya-web-article-paragraph-value {
+  text-align: left;
+}
+
+.shorya-article-flex-box-layout.image-on-right .shorya-web-article-paragraph-value {
+  text-align: right;
+}
+
+.shorya-web-article-paragraph-value {
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444444;
+}
+
+.shorya-article-dashed-line-divider {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #eaeaea;
+  margin: 50px 0 0 0;
+}
+
+/* Mobile Media Viewport Processing Engine Override */
+@media (max-width: 768px) {
+  .shorya-articles-main-wrapper {
+    padding: 30px 24px !important;
+  }
+
+  .shorya-article-flex-box-layout {
+    flex-direction: column !important; /* Stack image above text on mobile */
+    gap: 20px !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .shorya-article-image-box {
+    width: 100% !important;
+    max-width: 200px !important; /* Keep logo sizes highly readable but constrained */
+    margin: 0 auto !important;
+    justify-content: center !important;
+  }
+
+  .shorya-article-text-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .shorya-web-article-paragraph-value {
+    text-align: center !important; /* Unified clean centered text on small screens */
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .shorya-article-dashed-line-divider {
+    margin: 35px 0 0 0 !important;
+  }
+}
 /* ==========================================================================
    30. OFFICIAL VIDEOS TIMELINE MANAGER
    ========================================================================== */
@@ -2388,6 +2579,81 @@ body,
 .contact-btn:hover {
   background-color: #f5f5f5;
   border-color: #aaa;
+}
+@media (max-width: 768px) {
+  /* Forces strict centering framework with equal defensive white space on screen edges */
+  .contact-content-wrapper {
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .contact-info-block {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto 30px auto !important;
+  }
+
+  .contact-form-block,
+  .contact-success-box {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+  }
+
+  .contact-form-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 25px !important;
+  }
+
+  .contact-main-inputs {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 15px !important;
+  }
+
+  .contact-actions-row {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-top: 10px !important;
+  }
+
+  .contact-captcha-section {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-top: 10px !important;
+  }
+
+  .captcha-input-row {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
 }
 /* ==========================================================================
    ARTWORK DETAIL & COMMENT FORM (THE CLEANED VERSION)

@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function WebArticles() {
-  // Verbatim chronological sequence extracted from your media data
   const webArticlesData = [
     { src: "/50.png", alt: "SBS Radio", text: "“…one of the world’s youngest abstract artists and painting prodigy. Shorya is returning to the U.S. to participate and exhibit his works at the First Annual SPECTRUM New York.”" },
     { src: "/51.png", alt: "Business Insider", text: "“Shorya is God-gifted”" },
@@ -51,14 +50,11 @@ export default function WebArticles() {
     { src: "/1089.jpg", alt: "Hindustan Times", text: "“Xuất hiện “tiểu Picasso” của Ấn Độ”" },
     { src: "/1090.jpg", alt: "Hindustan Times", text: "“… he’s nine-years-old, and is going to teach Ranveer Singh and Sourav Ganguly how to paint.”" },
     { src: "/1091.jpg", alt: "Hindustan Times", text: "“California Antique shops stores”" },
-    { src: "/1092.png", alt: "Hindustan Times", text: "“…even amazed the great Indian cartoonist RK Laxman who accepted Mahanot as his disciple.”" },
-    // { src: "/80.jpg", alt: "Hindustan Times", text: "“”" }
-    // { src: "/80.jpg", alt: "Hindustan Times", text: "“”" }
-    // { src: "/80.jpg", alt: "Hindustan Times", text: "“”" }
-
+    { src: "/1092.png", alt: "Hindustan Times", text: "“…even amazed the great Indian cartoonist RK Laxman who accepted Mahanot as his disciple.”" }
   ];
+
   return (
-    <div style={{ width: '100%', overflowX: 'hidden' }}>
+    <div className="shorya-web-articles-root">
       
       {/* 1. HEADER BANNER FRAME */}
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
@@ -67,69 +63,36 @@ export default function WebArticles() {
         </div>
       </div>
 
-      {/* 2. CORE LAYOUT */}
-      <div style={{ width: '100%', padding: '50px 8%', boxSizing: 'border-box', backgroundColor: '#ffffff' }}>
-        
+      {/* 2. CORE LAYOUT WRAPPER CONTAINER */}
+      <div className="shorya-articles-main-wrapper">
         {webArticlesData.map((article, index) => {
-          // Logic: Evens (0, 2, 4) = Image on Left. Odds (1, 3, 5) = Image on Right.
           const isImageLeft = index % 2 === 0;
 
           return (
-            <div key={index} style={{ width: '100%', marginBottom: '40px' }}>
-              
-              {isImageLeft ? (
-                /* =========================================
-                   LAYOUT A: IMAGE ON THE LEFT
-                   ========================================= */
-                // HOW TO MANAGE: Change "gap: '60px'" below to push text closer to or further from the image!
-                <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-start', alignItems: 'center', gap: '60px' }}>
-                  
-                  {/* Left Side: Image Box */}
-                  <div style={{ width: '250px', flexShrink: 0, display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src={article.src} alt={article.alt} style={{ maxWidth: '100%', height: 'auto', display: 'block' }} />
-                  </div>
-
-                  {/* Right Side: Text Box */}
-                  {/* HOW TO MANAGE: Change "maxWidth: '700px'" to make the text line longer or shorter */}
-                  <div style={{ maxWidth: '700px' }}>
-                    <p className="shorya-web-article-paragraph-value" style={{ margin: 0, textAlign: 'left' }}>
-                      {article.text}
-                    </p>
-                  </div>
-
+            <div key={index} className="shorya-article-row-item">
+              <div className={`shorya-article-flex-box-layout ${isImageLeft ? 'image-on-left' : 'image-on-right'}`}>
+                
+                {/* Image Element Box */}
+                <div className="shorya-article-image-box">
+                  <img src={article.src} alt={article.alt} loading="lazy" className="shorya-article-inline-responsive-img" />
                 </div>
-              ) : (
-                /* =========================================
-                   LAYOUT B: IMAGE ON THE RIGHT
-                   ========================================= */
-                // HOW TO MANAGE: Change "gap: '60px'" below to push text closer to or further from the image!
-                <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end', alignItems: 'center', gap: '60px' }}>
-                  
-                  {/* Left Side: Text Box */}
-                  {/* HOW TO MANAGE: Change "maxWidth: '700px'" to make the text line longer or shorter */}
-                  <div style={{ maxWidth: '700px' }}>
-                    <p className="shorya-web-article-paragraph-value" style={{ margin: 0, textAlign: 'right' }}>
-                      {article.text}
-                    </p>
-                  </div>
 
-                  {/* Right Side: Image Box */}
-                  <div style={{ width: '250px', flexShrink: 0, display: 'flex', justifyContent: 'flex-end' }}>
-                    <img src={article.src} alt={article.alt} style={{ maxWidth: '100%', height: 'auto', display: 'block' }} />
-                  </div>
-
+                {/* Text Content Box */}
+                <div className="shorya-article-text-box">
+                  <p className="shorya-web-article-paragraph-value">
+                    {article.text}
+                  </p>
                 </div>
-              )}
+
+              </div>
 
               {/* Separation Line Divider */}
               {index < webArticlesData.length - 1 && (
-                <hr style={{ width: '100%', border: 'none', borderBottom: '1px solid #eaeaea', margin: '40px 0 0 0' }} />
+                <hr className="shorya-article-dashed-line-divider" />
               )}
-
             </div>
           );
         })}
-
       </div>
     </div>
   );

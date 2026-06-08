@@ -100,9 +100,7 @@ export default function TwitterMentions() {
         </div>
       </div>
 
-      <footer className="detail-page-footer-signature" style={{ padding: '40px 0 30px 50px' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
+      
 
     </div>
   );

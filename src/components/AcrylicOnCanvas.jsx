@@ -51,9 +51,6 @@ export default function AcrylicOnCanvas() {
         </div>
       )}
 
-      <footer className="shorya-view-footer-signature-line">
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
     </div>
   );
 }

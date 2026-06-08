@@ -63,11 +63,6 @@ export default function ArtistStatement() {
         </div>
       )}
 
-      {/* STICKY BRAND FOOTLINE - Centered */}
-      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
-
     </div>
   );
 }

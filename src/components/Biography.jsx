@@ -44,31 +44,30 @@ export default function Biography() {
         </div>
 
         <div className="shorya-biography-paragraphs-stack-column" style={{ maxWidth: '800px' }}>
-  <p className="shorya-paragraph-text-lead-highlight">
-    <strong>ABSTRACT PAINTING</strong> has the power to address ideas and emotions from the deepest level of human consciousness. 
-    Shorya Mahanot from India has been astounding people’s minds with his masterful brushstrokes, 
-    colorful composition, and symmetry in abstract paintings, over the time of 10 years. 
-    Dubbed as 
-    {/* Changed color to blue and kept text decoration none */}
-    <a href="https://www.google.co.in/search?source=hp&ei=dOKyXIORL4rez7sPsJGK8A8&q=world+youngest+signature+style+abstract+artist&oq=Wor&gs_l=psy-ab.1.0.35i39l2j0i67l3j0i131j0l4.5773.6379..8306...1.0..0.216.677.0j3j1......0....1..gws-wiz.....0.tlXMYBWJXtQ" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#0066cc' }}> “World’s Youngest Signature Style Abstract Artist”</a> and 
-    <a href="https://www.theguardian.com/world/2012/jul/03/india-child-picasso-goggles-canvas" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#0066cc' }}> “India’s Child Picasso”</a>, 
-    Shorya has been winning laurels from a tender age of three with his luscious use of colors and expressiveness on the canvas. 
-    A featured artist at the 
-    <a href="https://holtzmangallery.com/" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}> 
-  <strong style={{ color: '#0066cc' }}> HOLTZMAN GALLERY</strong>
-</a> now, he had made his international debut in the U.S.A. in March 2013 when his paintings were selected as “Best of Art Expo 2013”.
-  </p>
+          <p className="shorya-paragraph-text-lead-highlight">
+            <strong>ABSTRACT PAINTING</strong> has the power to address ideas and emotions from the deepest level of human consciousness. 
+            Shorya Mahanot from India has been astounding people’s minds with his masterful brushstrokes, 
+            colorful composition, and symmetry in abstract paintings, over the time of 10 years. 
+            Dubbed as 
+            <a href="https://www.google.co.in/search?source=hp&ei=dOKyXIORL4rez7sPsJGK8A8&q=world+youngest+signature+style+abstract+artist&oq=Wor&gs_l=psy-ab.1.0.35i39l2j0i67l3j0i131j0l4.5773.6379..8306...1.0..0.216.677.0j3j1......0....1..gws-wiz.....0.tlXMYBWJXtQ" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#0066cc' }}> “World’s Youngest Signature Style Abstract Artist”</a> and 
+            <a href="https://www.theguardian.com/world/2012/jul/03/india-child-picasso-goggles-canvas" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#0066cc' }}> “India’s Child Picasso”</a>, 
+            Shorya has been winning laurels from a tender age of three with his luscious use of colors and expressiveness on the canvas. 
+            A featured artist at the 
+            <a href="https://holtzmangallery.com/" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}> 
+              <strong style={{ color: '#0066cc' }}> HOLTZMAN GALLERY</strong>
+            </a> now, he had made his international debut in the U.S.A. in March 2013 when his paintings were selected as “Best of Art Expo 2013”.
+          </p>
 
-  <h2 className="shorya-paragraph-section-sub-heading-marker">A tour de force in Abstract Art</h2>
+          <h2 className="shorya-paragraph-section-sub-heading-marker">A tour de force in Abstract Art</h2>
 
-  <p className="shorya-paragraph-text-standard-value">
-    Since then, Shorya has been a tour de force in the league of abstract artists with a unique signature style. 
-    His paintings have been exhibited at Spectrum, Miami and auctioned in events like Celebrity Chef Gala for Autism 
-    Speaks Foundation. Till date, his paintings have fetched $65,000 across different events and art exhibitions, over 
-    the world. Keeping up with new age and technology, the small wonder also collaborated by Microsoft to create abstract 
-    paintings digitally, a rare feat achieved at this young age. Appreciated by world media and international artists alike, 
-    Shorya, the abstract artist has become the next sensation in the art world.
-  </p>
+          <p className="shorya-paragraph-text-standard-value">
+            Since then, Shorya has been a tour de force in the league of abstract artists with a unique signature style. 
+            His paintings have been exhibited at Spectrum, Miami and auctioned in events like Celebrity Chef Gala for Autism 
+            Speaks Foundation. Till date, his paintings have fetched $65,000 across different events and art exhibitions, over 
+            the world. Keeping up with new age and technology, the small wonder also collaborated by Microsoft to create abstract 
+            paintings digitally, a rare feat achieved at this young age. Appreciated by world media and international artists alike, 
+            Shorya, the abstract artist has become the next sensation in the art world.
+          </p>
 
           <p className="shorya-paragraph-text-standard-value">
             There’s whirling chaos underneath the little wings of this old soul that emerges and imprints itself on the canvas 
@@ -108,22 +107,21 @@ export default function Biography() {
                 </div>
 
                 {/* CERTIFICATES */}
-                {/* 2. CERTIFICATES GROUPED UNDER THE 1 LOGO */}
-{accolade.certificates.map((certSrc, idx) => (
-  <div 
-    key={idx} 
-    className="shorya-academic-certificate-canvas-frame" 
-    onClick={() => setModalImage(certSrc)}
-    style={{ 
-      marginBottom: '35px',     /* Forces equal, consistent spacing below every single image */
-      marginLeft: 'auto', 
-      marginRight: 'auto', 
-      border: '1px solid #100f0f' /* Clean light gray outline */
-    }}
-  >
-    <img src={certSrc} alt="Certificate" className="shorya-academic-certificate-document-img" />
-  </div>
-))}
+                {accolade.certificates.map((certSrc, idx) => (
+                  <div 
+                    key={idx} 
+                    className="shorya-academic-certificate-canvas-frame" 
+                    onClick={() => setModalImage(certSrc)}
+                    style={{ 
+                      marginBottom: '35px', 
+                      marginLeft: 'auto', 
+                      marginRight: 'auto', 
+                      border: '1px solid #100f0f' 
+                    }}
+                  >
+                    <img src={certSrc} alt="Certificate" className="shorya-academic-certificate-document-img" />
+                  </div>
+                ))}
 
               </div>
             ))}
@@ -143,9 +141,6 @@ export default function Biography() {
         </div>
       )}
 
-      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
     </div>
   );
 }

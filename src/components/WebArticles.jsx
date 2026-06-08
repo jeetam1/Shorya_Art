@@ -131,12 +131,6 @@ export default function WebArticles() {
         })}
 
       </div>
-
-      {/* 3. FOOTER SIGNATURE PANEL */}
-      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
-
     </div>
   );
 }

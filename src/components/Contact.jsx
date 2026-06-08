@@ -99,9 +99,7 @@ export default function Contact() {
         )}
 
       </div>
-      <footer className="detail-page-footer-signature">
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
+      
     </div>
   );
 }

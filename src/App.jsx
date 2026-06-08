@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Minus, Search } from 'lucide-react';
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+// --- COMPONENTS ---
 import Awards from './components/Awards';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
@@ -28,7 +30,14 @@ import Contact from './components/Contact';
 import TajMahalPalace from './components/TajMahalPalace'; 
 import Nestle from './components/Nestle';
 import NDTV from './components/NDTV';
-import RKLaxman from './components/RKLaxman'; // <--- 1. ADDED IMPORT HERE
+import RKLaxman from './components/RKLaxman'; 
+import Yahoo from './components/Yahoo'; 
+import ReadersDigest from './components/ReadersDigest';
+
+// --- SHARED REUSABLE COMPONENTS ---
+import CommentSection from './components/CommentSection';
+import Footer from './components/Footer';
+
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -37,14 +46,6 @@ export default function App() {
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
-  
-  // Array state to hold up to 3 comments, saved locally
-  const [comments, setComments] = useState(() => {
-    const savedComments = localStorage.getItem('shoryaComments');
-    return savedComments ? JSON.parse(savedComments) : [];
-  });
-  
-  const [isCommentSubmitted, setIsCommentSubmitted] = useState(false);
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -85,7 +86,15 @@ export default function App() {
       setCurrentView({ type: 'magazines', data: null });
       setActiveTab('Magazines');
       setExpandedMenu('Media');
-      } else if (path === '/pogo' || path === '/event-c') {
+    } else if (path === '/media/yahoo' || path === '/yahoo') {
+      setCurrentView({ type: 'yahoo', data: null });
+      setActiveTab('Yahoo');
+      setExpandedMenu('Media');
+    } else if (path === '/media/readers-digest' || path === '/readers-digest') {
+      setCurrentView({ type: 'readers-digest', data: null });
+      setActiveTab("Reader's Digest");
+      setExpandedMenu('Media');
+    } else if (path === '/pogo' || path === '/event-c') {
       setCurrentView({ type: 'pogo', data: null });
       setActiveTab('Events'); 
     } else if (path === '/kalidas-sanskrit' || path === '/event-d') {
@@ -118,7 +127,6 @@ export default function App() {
     } else if (path === '/sbs-radio' || path === '/event-m') {
       setCurrentView({ type: 'sbs-radio', data: null });
       setActiveTab('Events'); 
-    
     } else if (path === '/media/web-articles') {
       setCurrentView({ type: 'web-articles', data: null });
       setActiveTab('Web Articles');
@@ -145,9 +153,8 @@ export default function App() {
       setCurrentView({ type: 'taj-mahal', data: null });
       setActiveTab('Events'); 
     } else if (path === '/rk-laxman' || path === '/event-b') {
-      // <--- 2. ADDED NEW ROUTE FOR R.K. LAXMAN PAGE
       setCurrentView({ type: 'rk-laxman', data: null });
-      setActiveTab('Events'); // Keeps the 'Events' tab active in the sidebar
+      setActiveTab('Events'); 
     }
     else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
@@ -166,7 +173,6 @@ export default function App() {
     }
     
     setMagnifier(prev => ({ ...prev, show: false }));
-    setIsCommentSubmitted(false); 
     window.scrollTo(0, 0);
   }, [location]);
 
@@ -217,25 +223,6 @@ export default function App() {
     };
   };
 
-  const addNewComment = (newCommentString) => {
-    setComments((prevComments) => {
-      const updatedQueue = [newCommentString, ...prevComments].slice(0, 3);
-      localStorage.setItem('shoryaComments', JSON.stringify(updatedQueue));
-      return updatedQueue;
-    });
-  };
-
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-    const commentBox = e.target.elements.commentBody.value;
-    const nameBox = e.target.elements.authorName.value;
-    
-    if (commentBox && nameBox) {
-      addNewComment(`"${commentBox}" - ${nameBox}`);
-      setIsCommentSubmitted(true);
-    }
-  };
-
   return (
     <div className="app-container">
       <aside className="sidebar">
@@ -254,7 +241,7 @@ export default function App() {
               const isExpanded = expandedMenu === item.name;
               const isActive = activeTab === item.name || 
                                (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
-                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
+                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Yahoo' || activeTab === "Reader's Digest" || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
                                (item.name === 'Look the world is talking' && (activeTab === 'Look the world is talking1' || activeTab === 'Twitter Mentions'));
               
               return (
@@ -283,6 +270,8 @@ export default function App() {
                             if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
                             else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
                             else if (sub === 'Magazines') navigate('/media/magazines');
+                            else if (sub === 'Yahoo') navigate('/yahoo');
+                            else if (sub === "Reader's Digest") navigate('/readers-digest');
                             else if (sub === 'Web Articles') navigate('/media/web-articles');
                             else if (sub === 'Videos') navigate('/media/videos');
                             else if (sub === 'Look the world is talking1') navigate('/look-world-talking');
@@ -320,50 +309,60 @@ export default function App() {
 
       <main className="main-content">
         
-        {currentView.type === 'grid' && (
-          <div className="art-grid">
-            {gridItems.map((item) => (
-              <article 
-                key={item.id} 
-                className="portfolio-entry-card" 
-                onClick={() => {
-                  if (item.directLink) {
-                    navigate(item.directLink.replace('#', '')); 
-                  } else {
-                    navigate(`/artwork/${item.slug}`);
-                  }
-                }}
-              >
-                <div className="art-card-wrapper">
-                  <img src={item.src} alt={item.title} className="art-card-img" />
-                  
-                  <div className="card-hover-overlay">
-                    <h3 className="card-hover-title">{item.title}</h3>
-                    <p className="card-hover-description">
-                      {item.description || "Temporary dummy content placeholder goes here..."}
-                    </p>
-                    <div className="card-hover-icon-circle">
-                      <Search size={20} />
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
+        {/* Look for this specific section in your home page grid view inside App.jsx */}
+{currentView.type === 'grid' && (
+  <div className="art-grid">
+    {gridItems.map((item) => (
+      <article 
+        key={item.id} 
+        className="portfolio-entry-card" 
+        onClick={() => {
+          if (item.id === 10) {
+            navigate('/readers-digest');
+          } else if (item.id === 13) {
+            navigate('/yahoo');
+          } else if (item.directLink) {
+            navigate(item.directLink.replace('#', '')); 
+          } else {
+            navigate(`/artwork/${item.slug}`);
+          }
+        }}
+      >
+        <div className="art-card-wrapper">
+          <img src={item.src} alt={item.title} className="art-card-img" />
+          
+          <div className="card-hover-overlay">
+            <h3 className="card-hover-title">{item.title}</h3>
+            
+            {/* CHANGED HERE: Now displays the item's custom summary value instead of description */}
+            <p className="card-hover-description">
+              {item.summary || "Temporary dummy content placeholder goes here..."}
+            </p>
+            
+            <div className="card-hover-icon-circle">
+              <Search size={20} />
+            </div>
           </div>
-        )}
+        </div>
+      </article>
+    ))}
+  </div>
+)}
 
         {currentView.type === 'biography' && <Biography />}
-        {currentView.type === 'huffington-post' && <HuffingtonPost setLatestComment={addNewComment} />}
+        {currentView.type === 'huffington-post' && <HuffingtonPost />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
         {currentView.type === 'magazines' && <Magazines />} 
+        {currentView.type === 'yahoo' && <Yahoo />}
+        {currentView.type === 'readers-digest' && <ReadersDigest />}
         {currentView.type === 'web-articles' && <WebArticles />}
         {currentView.type === 'videos' && <Videos />}
         {currentView.type === 'look-world-talking' && <LookWorldTalking />}
         {currentView.type === 'twitter-mentions' && <TwitterMentions />}
-        {currentView.type === 'tedx-presentation' && <TedX setLatestComment={addNewComment} />}
+        {currentView.type === 'tedx-presentation' && <TedX />}
         {currentView.type === 'awards' && <Awards />}
         {currentView.type === 'contact' && <Contact />}
         {currentView.type === 'celebrity-chef' && <CelebrityChefGala />}
@@ -373,13 +372,13 @@ export default function App() {
         {currentView.type === 'kalidas' && <KalidasSanskrit />}
         {currentView.type === 'art-expo' && <ArtExpo />}
         {currentView.type === 'holtzman' && <HoltzmanGallery />}
-        {/* <--- 3. ADDED THE NEW COMPONENT RENDER HERE */}
         {currentView.type === 'rk-laxman' && <RKLaxman />}
         {currentView.type === 'ndtv' && <NDTV />}
-        {currentView.type === 'tedx-event-page' && <Ted setLatestComment={addNewComment} />}
+        {currentView.type === 'tedx-event-page' && <Ted />}
         {currentView.type === 'nestle' && <Nestle />}
-        {currentView.type === 'sbs-radio' && <SBSRadio setLatestComment={addNewComment} />}
+        {currentView.type === 'sbs-radio' && <SBSRadio />}
         {currentView.type === 'microsoft' && <MicrosoftFutureDecoded />}
+        
         {currentView.type === 'detail' && (
           <div className="artwork-detail-page">
             <header className="detail-page-header">
@@ -425,62 +424,38 @@ export default function App() {
                 ) : (
                   <>
                     <p className="artwork-description-paragraph">{currentView.data.description}</p>
-                    <ul className="artwork-technical-bullet-list">
-                      <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
-                      {currentView.data.size && (
-                        <li><strong>Size: {currentView.data.size}</strong></li>
-                      )}
-                      {currentView.data.age && (
-                        <li><strong>Age: {currentView.data.age}</strong></li>
-                      )}                    
-                    </ul>
+                   <ul className="artwork-technical-bullet-list">
+  <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
+  
+  {currentView.data.size && (
+    <li><strong>Size: {currentView.data.size}</strong></li>
+  )}
+  
+  {/* ADDED: This block checks if the 'two' key exists and renders it perfectly */}
+  {currentView.data.two && (
+    <li><strong>Two {currentView.data.two}</strong></li>
+  )}
+  
+  {currentView.data.age && (
+    <li><strong>Age: {currentView.data.age}</strong></li>
+  )}                    
+</ul>
                   </>
                 )}
               </div>
             </div>
 
+            {/* Render the Common Shared Comment Box component safely via props */}
             {currentView.data.allowComments && (
-              <div className="comment-section-container" ref={commentSectionRef}>
-                <h2 className="comment-heading">Submit a Comment</h2>
-                <p className="comment-subtext">Your email address will not be published. Required fields are marked *</p>
-                
-                {isCommentSubmitted ? (
-                  <div style={{ padding: '25px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif' }}>
-                    <h3 style={{ margin: '0 0 10px 0', fontSize: '20px', color: '#15803d' }}>Success!</h3>
-                    <p style={{ margin: 0, fontSize: '15px' }}>Your comment has been successfully submitted.</p>
-                  </div>
-                ) : (
-                  <form className="comment-form" onSubmit={handleCommentSubmit}>
-                    <div className="form-group full-width">
-                      <textarea name="commentBody" placeholder="Comment" className="comment-textarea" rows="8" required></textarea>
-                    </div>
-                    <div className="form-group half-width">
-                      <input name="authorName" type="text" placeholder="Name *" className="comment-input" required />
-                    </div>
-                    <div className="form-group half-width">
-                      <input type="email" placeholder="Email *" className="comment-input" required />
-                    </div>
-                    <div className="form-group half-width">
-                      <input type="text" placeholder="Website" className="comment-input" />
-                    </div>
-                    <div className="form-group checkbox-group">
-                      <input type="checkbox" id="save-info-checkbox" className="comment-checkbox" />
-                      <label htmlFor="save-info-checkbox" className="comment-checkbox-label">
-                        Save my name, email, and website in this browser for the next time I comment.
-                      </label>
-                    </div>
-                    <div className="submit-btn-wrapper">
-                      <button type="submit" className="comment-submit-btn">Submit</button>
-                    </div>
-                  </form>
-                )}
+              <div ref={commentSectionRef}>
+                <CommentSection storageKey={`comments-artwork-${currentView.data.slug || currentView.data.id}`} />
               </div>
             )}
 
-            <footer className="detail-page-footer-signature">Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span></footer>
+            
           </div>
         )}
-        
+        {currentView.type !== 'grid' && <Footer />}
       </main>
     </div>
   );

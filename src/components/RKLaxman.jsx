@@ -130,10 +130,7 @@ export default function RKLaxman() {
 
       </div>
 
-      {/* FOOTER */}
-      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center', marginTop: 'auto' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
+      
       
     </div>
   );

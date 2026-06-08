@@ -1,29 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import CommentSection from './CommentSection'; // Adjust the import path if your file is in a different subdirectory
 
 export default function ReadersDigest() {
-  const [commentData, setCommentData] = useState({
-    comment: '',
-    name: '',
-    email: '',
-    website: '',
-    saveInfo: false
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setCommentData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
-
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you! Your comment has been submitted.");
-    // Reset form after submission
-    setCommentData({ comment: '', name: '', email: '', website: '', saveInfo: false });
-  };
-
   return (
     <div className="rd-page-container">
       <div className="rd-content-wrapper">
@@ -58,76 +36,10 @@ export default function ReadersDigest() {
           <img src="/ab3.jpg" alt="Abstract Art Feature" className="rd-inline-image-center" />
         </div>
 
-        {/* Comment Form Section */}
-        <div className="rd-comment-section">
-          <h3 className="rd-reply-title">Leave a Reply</h3>
-          <p className="rd-reply-note">Your email address will not be published. Required fields are marked *</p>
-
-          <form className="rd-comment-form" onSubmit={handleCommentSubmit}>
-            <div className="rd-form-group">
-              <label>Comment *</label>
-              <textarea 
-                name="comment" 
-                value={commentData.comment} 
-                onChange={handleInputChange} 
-                required 
-                rows="6"
-              ></textarea>
-            </div>
-
-            <div className="rd-form-row">
-              <div className="rd-form-group">
-                <label>Name *</label>
-                <input 
-                  type="text" 
-                  name="name" 
-                  value={commentData.name} 
-                  onChange={handleInputChange} 
-                  required 
-                />
-              </div>
-              <div className="rd-form-group">
-                <label>Email *</label>
-                <input 
-                  type="email" 
-                  name="email" 
-                  value={commentData.email} 
-                  onChange={handleInputChange} 
-                  required 
-                />
-              </div>
-              <div className="rd-form-group">
-                <label>Website</label>
-                <input 
-                  type="url" 
-                  name="website" 
-                  value={commentData.website} 
-                  onChange={handleInputChange} 
-                />
-              </div>
-            </div>
-
-            <div className="rd-checkbox-group">
-              <input 
-                type="checkbox" 
-                name="saveInfo" 
-                id="saveInfo"
-                checked={commentData.saveInfo}
-                onChange={handleInputChange}
-              />
-              <label htmlFor="saveInfo">Save my name, email, and website in this browser for the next time I comment.</label>
-            </div>
-
-            <button type="submit" className="rd-submit-btn">Post Comment</button>
-          </form>
-        </div>
+        {/* --- DYNAMIC COMMON SHARED COMMENT SECTION COMPONENT --- */}
+        <CommentSection storageKey="comments-readers-digest" />
 
       </div>
-
-      {/* Footer */}
-      <footer className="detail-page-footer-signature">
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
     </div>
   );
 }

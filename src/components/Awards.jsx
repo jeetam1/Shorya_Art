@@ -65,12 +65,6 @@ export default function Awards() {
         </section>
 
       </div>
-
-      {/* 3. DYNAMIC BOTTOM FOOTER */}
-      <footer className="detail-page-footer-signature">
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
-
     </div>
   );
 }

@@ -170,10 +170,7 @@ export default function Videos() {
         ))}
       </div>
 
-      {/* FOOTER BLOCK SIGNATURE - Forced to center */}
-      <footer className="shorya-view-footer-signature-line" style={{ textAlign: 'center' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
+      
     </div>
   );
 }

@@ -87,10 +87,7 @@ export default function LookWorldTalking() {
         ))}
       </div>
 
-      {/* FOOTER */}
-      <footer className="shorya-view-footer-signature-line" style={{ width: '100%', textAlign: 'center', marginTop: 'auto' }}>
-        Designed by Shreya Mahanot | &copy; <span>shoryamahanot.com</span>
-      </footer>
+      
     </div>
   );
 }

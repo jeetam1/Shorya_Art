@@ -924,7 +924,7 @@ body,
   margin-bottom: 50px !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important; /* Centers the image, title, and split row */
+  align-items: center !important; 
 }
 
 .shorya-event-year-header {

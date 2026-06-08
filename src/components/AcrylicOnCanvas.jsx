@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 export default function AcrylicOnCanvas() {
   const [modalImage, setModalImage] = useState(null);
 
-  // Generates exactly 33 structured artwork items (11 rows x 3 columns) cycling from 601 to 609
   const galleryItems = Array.from({ length: 33 }, (_, i) => {
     const imageNumber = 601 + (i % 9);
     return {
@@ -15,14 +14,12 @@ export default function AcrylicOnCanvas() {
   return (
     <div className="shorya-acrylic-canvas-view-root">
       
-      {/* 1. TOP BANNER STRIP - SET TO 602.JPG WITH LEFT-BOTTOM OVERLAP */}
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/602.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Acrylic on canvas</h1>
         </div>
       </div>
 
-      {/* 2. COMPACT PORTFOLIO EXHIBITION MATRIX CONTAINER */}
       <div className="shorya-compact-gallery-outer-wrapper">
         <div className="shorya-gallery-grid-three-columns-matrix">
           {galleryItems.map((item) => (
@@ -39,7 +36,7 @@ export default function AcrylicOnCanvas() {
         </div>
       </div>
 
-      {/* 3. LIGHTBOX POPUP OVERLAY */}
+      
       {modalImage && (
         <div className="shorya-lightbox-overlay-shroud" onClick={() => setModalImage(null)}>
           <div className="shorya-lightbox-modal-window" onClick={(e) => e.stopPropagation()}>

@@ -5,11 +5,11 @@ export default function Pogo() {
   // 1. EXPLICIT IMAGE ARRAY:
   // You can easily change any of these paths to .png or rename them here.
   const galleryImages = [
-    '/aaaa1.jpg', '/aaaa2.jpg', '/aaaa3.jpg', 
-    '/aaaa4.jpg', '/aaaa5.jpg', '/aaaa6.jpg', 
-    '/aaaa7.jpg', '/aaaa8.jpg', '/aaaa9.jpg', 
-    '/aaaa10.jpg', '/aaaa11.jpg'
-  ];
+  '/pogo-photos/aaaa1.jpg', '/pogo-photos/aaaa2.jpg', '/pogo-photos/aaaa3.jpg', 
+  '/pogo-photos/aaaa4.jpg', '/pogo-photos/aaaa5.jpg', '/pogo-photos/aaaa6.jpg', 
+  '/pogo-photos/aaaa7.jpg', '/pogo-photos/aaaa8.jpg', '/pogo-photos/aaaa9.jpg', 
+  '/pogo-photos/aaaa10.jpg', '/pogo-photos/aaaa11.jpg'
+];
 
   // 2. CHUNK THE 11 IMAGES INTO ROWS OF 3
   const gridRows = [];

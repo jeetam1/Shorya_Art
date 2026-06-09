@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentSection from './CommentSection'; // Adjust the import path if your file is in a different subdirectory
+import CommentSection from './CommentSection'; 
 
 export default function ReadersDigest() {
   return (
@@ -14,7 +14,8 @@ export default function ReadersDigest() {
 
         {/* First Section: Text wrapping around ab1.jpg */}
         <div className="rd-text-image-block">
-          <img src="/ab1.jpg" alt="Reader's Digest Logo" className="rd-inline-image-left" />
+          {/* Moved logo to float right so text wraps left */}
+          <img src="/ab1.jpg" alt="Reader's Digest Logo" className="rd-inline-image-right" />
           <p className="rd-paragraph">
             There simply isn't a single way to define or gauge intelligence. Smartness in kids is a sum of different cognitive abilities not just IQ. It spans across multiple areas: kinetic, musical, spatial, linguistic, logical-mathematical, interpersonal and intrapersonal. We often forget this and tend to benchmark children based on their grades in class. This Children's Day, let's learn how to spot true potential in our kids. For this Reader's Digest met with 5 young child prodigies and tried to uncover their story, here is a snapshot.
           </p>

@@ -28,7 +28,7 @@ export default function SBSRadio() {
           </h2>
 
           <img 
-            src="/a539.png" 
+            src="/events-photos/a539.png" 
             alt="SBS Radio Interview" 
             style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }} 
           />

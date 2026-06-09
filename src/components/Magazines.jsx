@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-// Optimized Custom Page Component with Native Lazy Loading
+
 const FlipBookPage = React.forwardRef((props, ref) => {
   return (
     <div className="shorya-flip-page" ref={ref} style={{ overflow: 'hidden', backgroundColor: '#ffffff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -90,9 +90,7 @@ export default function Magazines() {
     return '0%'; 
   };
 
-  // =======================================================================
-  // DYNAMIC MAGAZINE DATA
-  // =======================================================================
+ 
   const magazinesData = [
     {
       title: "INDUSTRY STATEN ISLAND",
@@ -183,7 +181,6 @@ export default function Magazines() {
           return (
             <div key={index} className="shorya-magazine-row-card" style={{ marginBottom: '40px' }}>
               
-              {/* CRITICAL FIX: Ensure the row is flexed and vertically centered */}
               <div 
                 className={`shorya-magazine-split-layout ${isLastItem ? 'shorya-last-row-layout' : ''}`}
                 style={{ display: 'flex', alignItems: 'center', gap: '30px' }}
@@ -214,7 +211,6 @@ export default function Magazines() {
                   </div>
                 </div>
 
-                {/* CRITICAL FIX: Text box flexes to center text cleanly next to the cover */}
                 <div className="shorya-magazine-text-content-box" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <h3 className="shorya-magazine-row-title" style={{ cursor: 'pointer' }} onClick={() => {
                     if (item.isFlipbook) {
@@ -234,7 +230,6 @@ export default function Magazines() {
         })}
       </div>
 
-      {/* MODAL / FLIPBOOK ENGINE */}
       {activeModal.type && (
         <div className="shorya-flipbook-modal-overlay" onClick={() => setActiveModal({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] })}>
           

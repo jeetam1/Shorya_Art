@@ -3,26 +3,26 @@ import React, { useState } from 'react';
 export default function Biography() {
   const [modalImage, setModalImage] = useState(null);
 
-  const academicAccolades = [
+ const academicAccolades = [
     { 
       id: 'harvard', 
-      logo: '/a1.png', 
-      certificates: ['/503.jpg'] 
+      logo: '/biography-photos/a2.png', 
+      certificates: ['/biography-photos/503.jpg'] 
     },
     { 
       id: 'mit', 
-      logo: '/a2.png', 
-      certificates: ['/505.jpg', '/506.jpg', '/504.jpg'] 
+      logo: '/biography-photos/a1.png', 
+      certificates: ['/biography-photos/505.jpg', '/biography-photos/506.jpg', '/biography-photos/504.jpg'] 
     },
     { 
       id: 'imperial', 
-      logo: '/a3.jpg', 
-      certificates: [ '/507.jpg', '/508.jpg', '/509.jpg'] 
+      logo: '/biography-photos/a3.jpg', 
+      certificates: [ '/biography-photos/507.jpg', '/biography-photos/508.jpg', '/biography-photos/509.jpg'] 
     },
     { 
       id: 'davidson', 
-      logo: '/a4.png', 
-      certificates: ['/510.jpg'] 
+      logo: '/biography-photos/a4.png', 
+      certificates: ['/biography-photos/510.jpg'] 
     }
   ];
 
@@ -30,7 +30,7 @@ export default function Biography() {
     <div className="shorya-biography-view-root">
       
       {/* HEADER STRIP */}
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/6.jpg')", justifyContent: 'flex-start' }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/biography-photos/6.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Biography</h1>
         </div>
@@ -40,7 +40,7 @@ export default function Biography() {
         
         {/* PORTRAIT */}
         <div className="shorya-main-portrait-frame-wrapper">
-          <img src="/511.jpg" alt="Shorya Portrait" className="shorya-main-portrait-img-element" />
+          <img src="/biography-photos/511.jpg" alt="Shorya Portrait" className="shorya-main-portrait-img-element" />
         </div>
 
         <div className="shorya-biography-paragraphs-stack-column" style={{ maxWidth: '800px' }}>
@@ -74,15 +74,15 @@ export default function Biography() {
             to create a legacy, one magnum opus at one time!
           </p>
 
-          <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/501.jpg')} style={{ margin: '40px auto', display: 'flex', justifyContent: 'center' }}>
-            <img src="/500.jpg" alt="Shorya Timeline Journey Infographic" className="shorya-timeline-infographic-asset-img" style={{ margin: '0 auto' }} />
+          <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/biography-photos/501.jpg')} style={{ margin: '40px auto', display: 'flex', justifyContent: 'center' }}>
+            <img src="/biography-photos/500.jpg" alt="Shorya Timeline Journey Infographic" className="shorya-timeline-infographic-asset-img" style={{ margin: '0 auto' }} />
           </div>
 
           <h2 className="shorya-secondary-scaffold-section-header">Shorya's art journey till date</h2>
 
           <div className="shorya-single-artwork-presentation-row-block" style={{ margin: '20px auto 40px auto', display: 'flex', justifyContent: 'center' }}>
-            <div className="shorya-single-artwork-inner-card-frame" onClick={() => setModalImage('/502.jpg')} style={{ margin: '0 auto' }}>
-              <img src="/502.jpg" alt="Sparks of Spring Artwork" className="shorya-single-artwork-img-asset" />
+            <div className="shorya-single-artwork-inner-card-frame" onClick={() => setModalImage('/biography-photos/502.jpg')} style={{ margin: '0 auto' }}>
+              <img src="/biography-photos/502.jpg" alt="Sparks of Spring Artwork" className="shorya-single-artwork-img-asset" />
               <div className="shorya-single-artwork-meta-footer-strip">
                 <span className="shorya-meta-txt-left">Sparks of Spring (Sold)</span>
                 <span className="shorya-meta-badge-center">2011</span>
@@ -129,7 +129,6 @@ export default function Biography() {
         </div>
       </div>
 
-      {/* LIGHTBOX */}
       {modalImage && (
         <div className="shorya-lightbox-overlay-shroud" onClick={() => setModalImage(null)}>
           <div className="shorya-lightbox-modal-window" onClick={(e) => e.stopPropagation()}>

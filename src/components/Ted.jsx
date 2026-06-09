@@ -4,9 +4,9 @@ import CommentSection from './CommentSection'; // Adjust path if it's placed ins
 export default function Ted() {
   // EXPLICIT IMAGE DEFINITIONS (Total 8 Images: a515.jpg to a522.jpg)
   const galleryImages = [
-    '/a515.jpg', '/a516.jpg', '/a517.jpg', '/a518.jpg',
-    '/a519.jpg', '/a520.jpg', '/a521.jpg', '/a522.jpg'
-  ];
+  '/events-photos/a515.jpg', '/events-photos/a516.jpg', '/events-photos/a517.jpg', '/events-photos/a518.jpg',
+  '/events-photos/a519.jpg', '/events-photos/a520.jpg', '/events-photos/a521.jpg', '/events-photos/a522.jpg'
+];
 
   // Chunk images into rows of 2
   const gridRows = [];

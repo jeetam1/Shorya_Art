@@ -14,37 +14,32 @@ export default function HuffingtonPost() {
           Artist Prodigy Shorya Mahanot May Just Be A Six-Year-Old Jackson Pollock.
         </h3>
         
-        {/* --- TOP SECTION: Text on Left, Image 1 on Right --- */}
         <div className="article-top-split">
           <div className="split-text-left">
             <p className="article-body-text">
-              Jackson Pollock devotees, meet Shorya Mahanot. Like Pollock, he creates abstract expressionist paintings that channel the expressive forces of life with color and motion.
+              Jackson Pollock devotees, meet <a href="https://shoryamahanot.com" className="teal-link">Shorya Mahanot</a>. Like Pollock, he creates abstract expressionist paintings that channel the expressive forces of life with color and motion.
             </p>
             <p className="article-body-text">
               Unlike Pollock, however, Mahanot is six years old. That’s right, we have another child prodigy on our hands:
             </p>
           </div>
           <div className="split-img-right">
-            <img src="/4.jpg" alt="The Huffington Post Logo" className="inline-article-img" />
+            <img src="/home-photos/4.jpg" alt="The Huffington Post Logo" className="inline-article-img" />
           </div>
         </div>
 
-        {/* --- IMAGE 2 --- */}
         <div className="article-inline-image-container">
-          <img src="/1000.jpeg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
+          <img src="/events-photos/1000.jpeg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
         </div>
 
-        {/* --- PARAGRAPH --- */}
         <p className="article-body-text">
           Like the brilliant minds and eager, tiny hands of miniature artistes before him, Mahanot didn’t let his young age prevent him from expressing himself in the brightest of colors. In an interview with the Huffington Post, Mahanot explained he was inspired after watching his older sisters paint, though while they worked with figurative images, he veered toward abstraction.
         </p>
 
-        {/* --- IMAGE 3 --- */}
         <div className="article-inline-image-container">
-          <img src="/1001.jpg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
+          <img src="/events-photos/1001.jpg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
         </div>
 
-        {/* --- REMAINING PARAGRAPHS --- */}
         <p className="article-body-text">
           Well, he didn’t exactly explain it like that — but he did say “my sisters.”
         </p>
@@ -66,7 +61,6 @@ export default function HuffingtonPost() {
         </p>
       </div>
 
-      {/* --- SHARED DYNAMIC COMMENT SECTION --- */}
       <CommentSection storageKey="comments-huffington-post" />
 
     </div>

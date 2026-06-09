@@ -4,8 +4,8 @@ export default function SpectrumMiami() {
   
   // EXPLICIT IMAGE DEFINITIONS
   // The first 3 images will be in the top row, the 4th will be full-width at the bottom.
-  const topRowImages = ['/a71.jpg', '/a72.jpeg', '/a73.jpeg'];
-  const fullWidthImage = '/a74.jpg';
+  const topRowImages = ['/events-photos/a71.jpg', '/events-photos/a72.jpeg', '/events-photos/a73.jpeg'];
+const fullWidthImage = '/events-photos/a74.jpg';
 
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

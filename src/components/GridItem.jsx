@@ -15,5 +15,4 @@ export const gridItems = [
     medium: 'Oil on Canvas',
     description: 'We wonder what goes on in the depths of the sea. We imagine it...' 
   },
-  // Add a description line to all your other items...
 ];

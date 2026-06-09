@@ -7,7 +7,7 @@ export default function TajMahalPalace() {
   // 2. Generate the array from 1 to 40, minus the excluded ones (Leaves 36 images)
   const galleryImages = Array.from({ length: 40 }, (_, index) => index + 1)
     .filter(num => !excludedImages.includes(num))
-    .map(num => `/aa${num}.jpg`);
+    .map(num => `/events-photos/aa${num}.jpg`); // UPDATED PATH
 
   // 3. Chunk the 36 images into exactly 12 Rows (3 images per row)
   const gridRows = [];
@@ -30,7 +30,8 @@ export default function TajMahalPalace() {
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       
       {/* STANDARD GLOBAL HEADER BANNER */}
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
+      {/* UPDATED PATH */}
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/events-photos/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Taj Mahal Palace Hotel</h1>
         </div>
@@ -58,8 +59,7 @@ export default function TajMahalPalace() {
           </div>
         </div>
 
-        {/* 
-          ========================================================================
+        {/* ========================================================================
           4. ⬇️ CHANGE IMAGE SIZES HERE: Adjust maxWidth (e.g., '600px', '800px') ⬇️ 
           ========================================================================
         */}
@@ -114,8 +114,9 @@ export default function TajMahalPalace() {
           <div 
             style={{ width: '100%', overflow: 'hidden', border: '1px solid #e2e2e2', marginTop: '10px' }}
           >
+            {/* UPDATED PATH */}
             <img 
-              src="/aa41.jpg" 
+              src="/events-photos/aa41.jpg" 
               alt="Final Wide View of Exhibition" 
               style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.3s ease' }}
               onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'} 
@@ -127,9 +128,6 @@ export default function TajMahalPalace() {
         {/* End of Gallery Sizing Wrapper */}
 
       </div>
-
-      
-      
     </div>
   );
 }

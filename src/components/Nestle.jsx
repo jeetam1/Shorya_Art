@@ -2,12 +2,11 @@ import React from 'react';
 
 export default function Nestle() {
   
-  // EXPLICIT IMAGE DEFINITIONS (Total 11 Images)
-  // You can easily change any of these paths to .png or rename them here.
-  const row1Images = ['/a610.jpg', '/a611.jpg', '/a612.jpg'];
-  const row2Images = ['/a613.jpg', '/a614.jpg', '/a615.jpg'];
-  const row3Images = ['/a616.jpg', '/a617.jpg', '/a618.jpg'];
-  const row4Images = ['/a619.jpg', '/a620.jpg']; // The 2 landscape images at the bottom
+ 
+  const row1Images = ['/events-photos/a610.jpg', '/events-photos/a611.jpg', '/events-photos/a612.jpg'];
+const row2Images = ['/events-photos/a613.jpg', '/events-photos/a614.jpg', '/events-photos/a615.jpg'];
+const row3Images = ['/events-photos/a616.jpg', '/events-photos/a617.jpg', '/events-photos/a618.jpg'];
+const row4Images = ['/events-photos/a619.jpg', '/events-photos/a620.jpg']; 
 
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -27,9 +26,7 @@ export default function Nestle() {
           The 'Exellencia' a series of events for doctors, sponsored and supported by Nestle.
         </p>
 
-        {/* ========================================================================
-            GALLERY SIZE WRAPPER (750px max width to perfectly match your other pages)
-            ======================================================================== */}
+        
         <div style={{ width: '100%', maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
 
           {/* Gallery Section Subtitle */}
@@ -74,7 +71,7 @@ export default function Nestle() {
           </div>
 
         </div> 
-        {/* End of Gallery Sizing Wrapper */}
+        
 
       </div>
 

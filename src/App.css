@@ -1864,59 +1864,29 @@ body,
 /* 2. CONSTRAIN THE ENTIRE ARTICLE WIDTH SO TEXT DOESN'T STRETCH */
 .custom-article-flow {
   padding-top: 10px !important;
-  max-width: 800px !important; 
+  max-width: 600px !important; 
   margin-left: 0 !important; 
 }
 
 /* 3. THE TITLE AND SUBHEADER */
-.custom-article-page {
-  font-size: 38px !important;
-  font-weight: 800 !important;
-  color: #333333 !important;
-  margin-bottom: 10px !important;
-}
-
 .detail-page-header {
   margin-top: 10px !important; 
 }
 
-.detail-page-footer-signature {
-  margin-top: auto !important; 
-  padding-top: 40px !important; 
-  padding-bottom: 30px !important; 
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  color: #333333 !important;
-  font-size: 16px !important;
-  text-align: center !important; 
-  width: 100% !important; 
-}
-
 .artwork-main-title {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
   font-size: 44px !important; 
   font-weight: 700 !important; 
-  color: #444444 !important; 
+  color: #333333 !important; 
   margin: 0 0 8px 0 !important; 
   letter-spacing: -1px !important; 
   line-height: 1.1 !important;
 }
 
 .artwork-meta-subheader {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
   font-size: 15px !important;
   color: #666666 !important; 
-  margin: 0 0 55px 0 !important; 
-  letter-spacing: 0px !important;
+  margin: 0 0 45px 0 !important; 
   font-weight: 400 !important;
-}
-
-/* 4. FIX THE ITALIC SUBTITLE */
-.article-italic-subtitle {
-  font-size: 17px !important;
-  font-weight: bold !important;
-  font-style: italic !important;
-  color: #444444 !important;
-  margin-bottom: 35px !important;
 }
 
 .artwork-meta-subheader span,
@@ -1930,23 +1900,34 @@ body,
   cursor: pointer !important;
 }
 
-/* 5. TOP SPLIT LAYOUT */
+/* 4. FIX THE ITALIC SUBTITLE */
+.article-italic-subtitle {
+  font-weight: 400 !important; /* CRITICAL: Strips the bold text */
+  font-style: italic !important;
+  font-size: 17px !important;
+  color: #333333 !important;
+  margin-bottom: 25px !important;
+  line-height: 1.5 !important;
+}
+
+/* 5. SPLIT LAYOUT */
 .article-top-split {
-  display: flex !important;
-  gap: 40px !important;
-  margin-bottom: 40px !important;
-  align-items: center !important; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 30px;
 }
 
 .split-text-left {
-  flex: 0 0 380px !important; 
-  max-width: 380px !important;
+  flex: 1;
 }
 
 .split-img-right {
-  flex: 1 !important;
-  display: flex !important;
-  justify-content: flex-start !important; 
+  flex-shrink: 0;
+  width: 280px; /* Keeps the Huffington Post logo scaled nicely */
+  display: flex;
+  justify-content: center;
 }
 
 .split-img-right .inline-article-img {
@@ -1956,18 +1937,20 @@ body,
   border: none !important;
 }
 
-/* 6. PARAGRAPH TEXT */
+/* 6. PARAGRAPH TEXT - STRIP ALL BOLDNESS */
 .custom-article-page .article-body-text {
-  font-size: 16px !important;
+  font-weight: 400 !important; /* CRITICAL FIX: Forces normal text weight */
+  font-size: 15px !important;  /* Match editorial reading size */
   line-height: 1.7 !important;
-  color: #333333 !important;
+  color: #444444 !important;
   margin-bottom: 25px !important;
 }
 
 /* 7. INLINE IMAGES */
 .article-inline-image-container {
   margin: 40px 0 !important;
-  text-align: left !important; 
+  display: flex;
+  justify-content: flex-start;
 }
 
 .full-width-article-img {
@@ -1980,9 +1963,9 @@ body,
 
 /* 8. TEAL LINK OVERRIDES */
 .custom-article-page .teal-link {
-  color: #6dc2c8 !important;
+  color: #53989c !important; /* Exact match to Huffington Post teal */
   text-decoration: none !important;
-  font-weight: bold !important;
+  font-weight: 400 !important; /* Removed bold from hyperlinks */
 }
 
 .custom-article-page .teal-link:hover {
@@ -1991,10 +1974,22 @@ body,
 
 /* 9. MOBILE FIXES */
 @media (max-width: 768px) {
-  .article-top-split { flex-direction: column !important; }
-  .split-text-left { flex: 1 !important; max-width: 100% !important; }
+  .article-top-split { 
+    flex-direction: column-reverse !important; /* Puts image above text gracefully on mobile */
+    gap: 25px !important;
+  }
+  .split-text-left { 
+    width: 100% !important; 
+  }
+  .split-img-right {
+    width: 100% !important;
+    max-width: 220px !important;
+    margin: 0 auto !important; /* Centers the Huffington Post logo */
+  }
+  .article-inline-image-container {
+    margin: 25px 0 !important;
+  }
 }
-
 /* ==========================================================================
    32. DYNAMIC MOBILE VIEW SYSTEM BREAKPOINT DEFINITIONS
    ========================================================================== */
@@ -3079,175 +3074,111 @@ body,
   }
 }
 /* ==========================================================================
-   READER's DIGEST PAGE STYLES (No Boxed Background/Boundaries)
+   READER's DIGEST PAGE STYLES (Match Original Layout)
    ========================================================================== */
 .rd-page-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex-grow: 1 !important; 
-  background-color: #ffffff; /* Seamless background matching the main app canvas */
+  display: block !important; /* CRITICAL: Breaks out of global flex/grid centering */
+  width: 100% !important;
+  text-align: left !important; /* CRITICAL: Kills any global centering immediately */
+  background-color: #ffffff !important; 
 }
 
+/* 1. ARTICLE WIDTH & LEFT ALIGNMENT */
 .rd-content-wrapper {
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 60px 20px 80px 20px;
-  background-color: transparent; /* Removes the white container box */
-  box-shadow: none; /* Removes the box shadow border outline completely */
+  max-width: 800px !important; 
+  width: 100% !important;
+  margin: 0 auto !important; /* Keeps the 800px block in the middle of wide screens */
+  padding: 30px 20px 80px 30px !important;
+  background-color: transparent !important; 
+  text-align: left !important; /* Double-tap to ensure text stays left */
+  box-sizing: border-box !important;
+}
+
+/* 2. HEADINGS & TITLES */
+.rd-main-title, 
+.rd-meta, 
+.rd-sub-title, 
+.rd-paragraph {
+  text-align: left !important; /* Absolutely forces left alignment on all text */
 }
 
 .rd-main-title {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 36px !important;
-  font-weight: 800 !important;
-  color: #333 !important;
-  margin: 0 0 10px 0;
+  font-size: 42px !important; 
+  font-weight: 800 !important; 
+  color: #333333 !important; 
+  margin: 0 0 5px 0 !important; 
+  letter-spacing: -1px !important; 
 }
 
+/* ... keep the rest of your CSS exactly the same ... */
 .rd-meta {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 13px !important;
-  color: #888 !important;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 14px !important;
+  color: #888888 !important; 
+  margin: 0 0 35px 0 !important; 
+  font-weight: 400 !important;
 }
 
 .rd-sub-title {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  color: #444 !important;
-  margin-bottom: 25px;
+  font-weight: 700 !important; /* CRITICAL: Bold, not italicized */
+  font-size: 18px !important;
+  color: #333333 !important;
+  margin-bottom: 20px !important;
 }
 
+/* 3. PARAGRAPH TEXT & FLOAT FIX */
 .rd-text-image-block {
-  margin-bottom: 40px;
-  overflow: hidden; 
+  margin-bottom: 30px !important;
+}
+
+/* Forces the block to contain floated images */
+.rd-text-image-block::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .rd-paragraph {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 16px !important;
-  line-height: 1.8 !important;
-  color: #555 !important;
-  text-align: justify;
-  margin-bottom: 20px;
+  font-weight: 400 !important; 
+  font-size: 14px !important;  
+  line-height: 1.7 !important;
+  color: #444444 !important;
+  text-align: left !important; 
+  margin-bottom: 20px !important;
 }
 
-.rd-inline-image-left {
-  float: left;
-  margin: 0 25px 15px 0;
-  max-width: 300px;
-  height: auto;
-  border-radius: 4px;
+/* 4. IMAGES */
+.rd-inline-image-right {
+  float: right !important; /* CRITICAL: Pushes logo to the right */
+  margin: 0 0 20px 30px !important;
+  width: 100% !important;
+  max-width: 250px !important; 
+  height: auto !important;
+  border: none !important;
 }
 
 .rd-inline-image-center {
   display: block;
-  margin: 30px auto;
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
+  margin: 40px 0 !important; /* Aligned to the left of the container */
+  width: 100% !important;
+  max-width: 800px !important; 
+  height: auto !important;
+  border: none !important;
 }
 
-/* COMMENT SECTION */
-.rd-comment-section {
-  margin-top: 60px;
-  padding-top: 40px;
-  border-top: 1px solid #eee;
-}
-
-.rd-reply-title {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  color: #333 !important;
-  margin-bottom: 5px;
-}
-
-.rd-reply-note {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 25px;
-}
-
-.rd-form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.rd-form-group label {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.rd-form-group input,
-.rd-form-group textarea {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  background-color: #fafafa;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.rd-form-group input:focus,
-.rd-form-group textarea:focus {
-  border-color: #999;
-}
-
-.rd-form-row {
-  display: flex;
-  gap: 20px;
-}
-
-.rd-checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.rd-checkbox-group label {
-  font-size: 14px;
-  color: #666;
-}
-
-.rd-submit-btn {
-  padding: 12px 30px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.rd-submit-btn:hover {
-  background-color: #555;
-}
-
+/* MOBILE FIXES */
 @media (max-width: 768px) {
-  .rd-inline-image-left {
-    float: none;
-    display: block;
-    margin: 0 auto 20px auto;
-    max-width: 100%;
+  .rd-content-wrapper {
+    padding: 30px 20px 60px 20px !important;
   }
-  .rd-form-row {
-    flex-direction: column;
-    gap: 0;
+  .rd-inline-image-right {
+    float: none !important; /* Removes float on small screens */
+    display: block !important;
+    margin: 0 auto 25px auto !important;
+    max-width: 100% !important;
   }
 }
 /* ==========================================================================
@@ -3454,5 +3385,50 @@ body,
 @media (max-width: 768px) {
   .yahoo-article-section {
     flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL REUSABLE BANNER STYLES (SHORTER HEIGHT, LARGER TEXT)
+   ========================================================================== */
+.shorya-custom-header-strip-container {
+  width: 100%;
+  height: 280px !important; /* Decreased further from 320px */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex !important;
+  align-items: flex-end !important; 
+  justify-content: flex-start !important; 
+  position: relative;
+}
+
+.shorya-custom-title-white-block {
+  background-color: #ffffff !important;
+  padding: 20px 45px 20px 30px !important; /* Adjusted to balance the larger text */
+  box-shadow: none !important; 
+}
+
+.shorya-custom-title-text-value {
+  margin: 0 !important;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 49px !important; /* Increased significantly from 34px */
+  font-weight: 800 !important; 
+  color: #444444 !important; 
+  text-transform: none !important; 
+  letter-spacing: -0.5px !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .shorya-custom-header-strip-container {
+    height: 160px !important; /* Decreased from 180px */
+  }
+  .shorya-custom-title-white-block {
+    padding: 15px 25px !important;
+  }
+  .shorya-custom-title-text-value {
+    font-size: 28px !important; /* Increased from 22px */
   }
 }

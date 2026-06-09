@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-
+import PageBanner from './PageBanner'; 
 export default function ArtistStatement() {
   const [modalImage, setModalImage] = useState(null);
 
   return (
     <div className="shorya-biography-view-root">
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/604.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Artist's Statement</h1>
-        </div>
-      </div>
+      <PageBanner title="Artist's Statement" bgImage="/604.jpg" />
 
       <div className="shorya-biography-body-scaffold-layout" style={{ margin: '0 auto', alignItems: 'center', textAlign: 'center' }}>
         
@@ -37,9 +33,9 @@ export default function ArtistStatement() {
             Painting for me is the excitement of seeing one colour getting mixed with another and becoming the third one. At times, it transforms into a colour that even I can't name. People tell me what I paint is simple and complex, at the same time. But I don't think so. These colours come from a world that is beyond a window where colours appear and disappear. A happy place for an artist like me maybe, but I can’t get them off my mind. And when these colours get down on the canvas, the world calls that as Shorya’s painting. People compare my paintings with what they know and say that I have a signature style but for me it’s just a beautiful feeling.
           </p>
 
-         <p style={{ color: '#111111', padding: '10px 0', fontSize: '16px', fontWeight: 'bold', textAlign: 'left' }}>
-  -Shorya
-</p>
+          <p style={{ color: '#111111', padding: '10px 0', fontSize: '16px', fontWeight: 'bold', textAlign: 'left' }}>
+            -Shorya
+          </p>
         </div>
 
       </div>

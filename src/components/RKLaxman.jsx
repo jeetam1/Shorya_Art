@@ -5,23 +5,23 @@ export default function RKLaxman() {
   // 1. EXPLICIT IMAGE ARRAY:
   // You can easily change any of these paths to .png or rename them below.
   const galleryImages = [
-    '/aaa1.jpg', '/aaa2.jpg', '/aaa3.jpg', 
-    '/aaa4.jpg', '/aaa5.jpg', '/aaa6.jpg', 
-    '/aaa7.jpg', '/aaa8.jpg', '/aaa9.jpg', 
-    '/aaa11.jpg', '/aaa11.jpg', '/aaa12.jpg', 
-    '/aaa13.jpg', '/aaa14.jpg', '/aaa15.jpg', 
-    '/aaa16.jpg', '/aaa17.jpg', '/aaa18.jpg', 
-    '/aaa19.jpg', '/aaa20.jpg', '/aaa21.jpg', 
-    '/aaa22.jpg', '/aaa23.jpg', '/aaa24.jpg', 
-    '/aaa25.jpg', '/aaa26.jpg', '/aaa27.jpg', 
-    '/aaa28.jpg', '/aaa29.png', '/aaa30.png', 
-    '/aaa31.png', '/aaa32.png', '/aaa33.jpg', 
-    '/aaa34.jpg', '/aaa35.jpg', '/aaa36.jpg', 
-    '/aaa37.jpg', '/aaa38.jpg', '/aaa39.jpg', 
-    '/aaa40.jpg', '/aaa41.jpg', '/aaa42.jpg', 
-    '/aaa43.jpg', '/aaa44.jpg', '/aaa45.jpg',
-    '/aaa46.jpg' // This 46th image will be used as the final full-width bottom image
-  ];
+  '/rk-photos/aaa1.jpg', '/rk-photos/aaa2.jpg', '/rk-photos/aaa3.jpg', 
+  '/rk-photos/aaa4.jpg', '/rk-photos/aaa5.jpg', '/rk-photos/aaa6.jpg', 
+  '/rk-photos/aaa7.jpg', '/rk-photos/aaa8.jpg', '/rk-photos/aaa9.jpg', 
+  '/rk-photos/aaa11.jpg', '/rk-photos/aaa11.jpg', '/rk-photos/aaa12.jpg', 
+  '/rk-photos/aaa13.jpg', '/rk-photos/aaa14.jpg', '/rk-photos/aaa15.jpg', 
+  '/rk-photos/aaa16.jpg', '/rk-photos/aaa17.jpg', '/rk-photos/aaa18.jpg', 
+  '/rk-photos/aaa19.jpg', '/rk-photos/aaa20.jpg', '/rk-photos/aaa21.jpg', 
+  '/rk-photos/aaa22.jpg', '/rk-photos/aaa23.jpg', '/rk-photos/aaa24.jpg', 
+  '/rk-photos/aaa25.jpg', '/rk-photos/aaa26.jpg', '/rk-photos/aaa27.jpg', 
+  '/rk-photos/aaa28.jpg', '/rk-photos/aaa29.png', '/rk-photos/aaa30.png', 
+  '/rk-photos/aaa31.png', '/rk-photos/aaa32.png', '/rk-photos/aaa33.jpg', 
+  '/rk-photos/aaa34.jpg', '/rk-photos/aaa35.jpg', '/rk-photos/aaa36.jpg', 
+  '/rk-photos/aaa37.jpg', '/rk-photos/aaa38.jpg', '/rk-photos/aaa39.jpg', 
+  '/rk-photos/aaa40.jpg', '/rk-photos/aaa41.jpg', '/rk-photos/aaa42.jpg', 
+  '/rk-photos/aaa43.jpg', '/rk-photos/aaa44.jpg', '/rk-photos/aaa45.jpg',
+  '/rk-photos/aaa46.jpg' // This 46th image will be used as the final full-width bottom image
+];
 
   // 2. CHUNK THE FIRST 45 IMAGES INTO ROWS OF 3
   const gridRows = [];

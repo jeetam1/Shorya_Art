@@ -2,27 +2,26 @@ import React from 'react';
 
 export default function NDTV() {
   
-  // EXPLICIT IMAGE DEFINITIONS (Total 11 Images)
-  // You can easily change any of these paths to .png or rename them here.
-  const row1Images = ['/a915.jpg', '/a916.jpg', '/a917.jpg'];
-  const row2Images = ['/a918.jpg', '/a919.jpg', '/a920.jpg'];
-  const row3Images = ['/a921.jpg', '/a922.jpg', '/a923.jpg'];
-  const row4Images = ['/a924.jpg', '/a925.jpg']; // The 2 tall portrait images at the bottom
+ 
+  const row1Images = ['/events-photos/a915.jpg', '/events-photos/a916.jpg', '/events-photos/a917.jpg'];
+const row2Images = ['/events-photos/a918.jpg', '/events-photos/a919.jpg', '/events-photos/a920.jpg'];
+const row3Images = ['/events-photos/a921.jpg', '/events-photos/a922.jpg', '/events-photos/a923.jpg'];
+const row4Images = ['/events-photos/a924.jpg', '/events-photos/a925.jpg']; 
 
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       
-      {/* STANDARD GLOBAL HEADER BANNER */}
+      
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">NDTV</h1>
         </div>
       </div>
 
-      {/* CORE CONTENT LAYOUT */}
+      
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
-        {/* Introductory Paragraph */}
+       
         <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '15px', color: '#444444', lineHeight: '1.7', margin: '0 auto 60px auto', width: '100%', textAlign: 'left' }}>
           Done a live demo on NDTV as part of "Support My School telethon"– A 6 hour live televised fundraiser aired across NDTV Network on 29 November 2015 with anchors: Sourav Ganguly, Vikram Chandra. The guests present were Mr. Rajkumar Hirani, Ms. Zarina Screwvala, Mr. Ranveer Singh.
         </p>
@@ -41,9 +40,7 @@ export default function NDTV() {
           </div>
         </div>
 
-        {/* ========================================================================
-            GALLERY SIZE WRAPPER (750px max width to perfectly match your other pages)
-            ======================================================================== */}
+        
         <div style={{ width: '100%', maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
 
           {/* Gallery Section Subtitle */}

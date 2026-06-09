@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Minus, Search } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react'; // Removed Search as it moved to Home.jsx
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 // --- COMPONENTS ---
+import Home from './components/Home'; 
 import Awards from './components/Awards';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
@@ -309,46 +310,8 @@ export default function App() {
 
       <main className="main-content">
         
-        {/* Look for this specific section in your home page grid view inside App.jsx */}
-{currentView.type === 'grid' && (
-  <div className="art-grid">
-    {gridItems.map((item) => (
-      <article 
-        key={item.id} 
-        className="portfolio-entry-card" 
-        onClick={() => {
-          // --- SPECIAL GRID ROUTING INTERCEPTORS ---
-          if (item.id === 10) {
-            navigate('/readers-digest');
-          } else if (item.id === 13) {
-            navigate('/yahoo');
-          } else if (item.id === 14) {
-            // Intercepts image 14 click and pushes to the SBS Radio component view
-            navigate('/sbs-radio'); 
-          } else if (item.directLink) {
-            navigate(item.directLink.replace('#', '')); 
-          } else {
-            navigate(`/artwork/${item.slug}`);
-          }
-        }}
-      >
-        <div className="art-card-wrapper">
-          <img src={item.src} alt={item.title} className="art-card-img" />
-          
-          <div className="card-hover-overlay">
-            <h3 className="card-hover-title">{item.title}</h3>
-            <p className="card-hover-description">
-              {item.summary || "Temporary dummy content placeholder goes here..."}
-            </p>
-            <div className="card-hover-icon-circle">
-              <Search size={20} />
-            </div>
-          </div>
-        </div>
-      </article>
-    ))}
-  </div>
-)}
+        {/* THE CLEANED UP HOME COMPONENT */}
+        {currentView.type === 'grid' && <Home />}
 
         {currentView.type === 'biography' && <Biography />}
         {currentView.type === 'huffington-post' && <HuffingtonPost />}
@@ -425,34 +388,31 @@ export default function App() {
                 ) : (
                   <>
                     <p className="artwork-description-paragraph">{currentView.data.description}</p>
-                   <ul className="artwork-technical-bullet-list">
-  <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
-  
-  {currentView.data.size && (
-    <li><strong>Size: {currentView.data.size}</strong></li>
-  )}
-  
-  {/* ADDED: This block checks if the 'two' key exists and renders it perfectly */}
-  {currentView.data.two && (
-    <li><strong>Two {currentView.data.two}</strong></li>
-  )}
-  
-  {currentView.data.age && (
-    <li><strong>Age: {currentView.data.age}</strong></li>
-  )}                    
-</ul>
+                    <ul className="artwork-technical-bullet-list">
+                      <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
+                      
+                      {currentView.data.size && (
+                        <li><strong>Size: {currentView.data.size}</strong></li>
+                      )}
+                      
+                      {currentView.data.two && (
+                        <li><strong>Two {currentView.data.two}</strong></li>
+                      )}
+                      
+                      {currentView.data.age && (
+                        <li><strong>Age: {currentView.data.age}</strong></li>
+                      )}                    
+                    </ul>
                   </>
                 )}
               </div>
             </div>
 
-            {/* Render the Common Shared Comment Box component safely via props */}
             {currentView.data.allowComments && (
               <div ref={commentSectionRef}>
                 <CommentSection storageKey={`comments-artwork-${currentView.data.slug || currentView.data.id}`} />
               </div>
             )}
-
             
           </div>
         )}

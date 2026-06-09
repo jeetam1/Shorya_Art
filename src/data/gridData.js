@@ -10,7 +10,7 @@ export const gridItems = [
     description: "I look at mountains and oceans. Where you stand can change the meaning of deep for you.",
     medium: "Acrylic on canvas",
     size: "2' X 3'",
-    src: "/1.jpg"
+    src: "/home-photos/1.jpg"
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ export const gridItems = [
     description: "Shorya Mahanot, Asia’s youngest abstract painter, could become a global figure in the art\nworld, believes his proud father.",
     linkText: "theGuardian.com",
     linkUrl: "https://www.theguardian.com", 
-    src: "/2.jpg"
+    src: "/home-photos/2.jpg"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ export const gridItems = [
     description: "My friends, my family, they all come into my pretty dreams.",
     medium: "Acrylic on canvas",
     size: "24\" x 34\"",
-    src: "/3.jpg"
+    src: "/home-photos/3.jpg"
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ export const gridItems = [
     title: "The Huffington Post",
     summary: "Artist Prodigy Shorya Mahanot May Just Be A Six-Year-Old Jackson Pollock.",
     customLayout: 'huffington', 
-    src: "/4.jpg",
+    src: "/home-photos/4.jpg",
     description: "Read the full interview...",
   },
   {
@@ -50,7 +50,7 @@ export const gridItems = [
     directLink: '#/biography', 
     summary: "World’s youngest signature style abstract artist.",
     description: "World’s youngest signature style abstract artist.",
-    src: "/5.jpg"
+    src: "/home-photos/5.jpg"
   },
   {
     id: 6,
@@ -61,7 +61,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "18\" x 24\"",
     age: "4",
-    src: "/6.jpg"
+    src: "/home-photos/6.jpg"
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ export const gridItems = [
     title: "TED X",
     customLayout: 'tedx',
     summary: "The story of my life’ – see my TEDx speech about 7 years of my Abstract Art Journey.",
-    src: "/30.jpg"
+    src: "/home-photos/30.jpg"
   },
   {
     id: 8,
@@ -80,7 +80,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "36\" x 24\"",
     age: "4",
-    src: "/888.jpg"
+    src: "/home-photos/29.jpg"
   },
   {
     id: 9,
@@ -91,7 +91,7 @@ export const gridItems = [
     medium: "Acrylic on Canvas",
     size: "36' X 24'",
     age: "4",
-    src: "/10.jpg"
+    src: "/home-photos/10.jpg"
   },
   {
     id: 10,
@@ -100,7 +100,7 @@ export const gridItems = [
     summary: "Growing Up Gifted There simply isn’t a single way to define or gauge",
     medium: "Acrylic on canvas",
     size: "36\" x 48\"",
-    src: "/11.jpg"
+    src: "/home-photos/11.jpg"
   },
   {
     id: 11,
@@ -111,7 +111,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "36\" x 24\"",
     age: "4",
-    src: "/12.jpg"
+    src: "/home-photos/12.jpg"
   },
 
   // ==========================================================================
@@ -122,14 +122,14 @@ export const gridItems = [
     slug: "Yahoo!",
     title: "Yahoo!",
     summary: "A few children who took people’s breath away, with their intelligence",
-    src: "/13.jpg"
+    src: "/home-photos/13.jpg"
   },
   {
     id: 14,
     slug: "SBS-Radio",
     title: "SBS Radio",
     summary: "Reaching to the land down under.Shorya’s Interview with SBS Radio Australia ",
-    src: "/14.png"
+    src: "/home-photos/14.png"
   },
   {
     id: 15,
@@ -140,7 +140,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "24\" x 18\"",
     age: "4",
-    src: "/15.jpg"
+    src: "/home-photos/15.jpg"
   },
   {
     id: 16,
@@ -151,7 +151,7 @@ export const gridItems = [
     medium: "Mixed Media",
     size: "36\" X 24\"",
     age: "4",
-    src: "/16.jpg"
+    src: "/home-photos/16.jpg"
   },
   {
     id: 17,
@@ -162,7 +162,7 @@ export const gridItems = [
     medium: "Acrylic on Canvas",
     size: "36\" x 24\"",
     age: "4",
-    src: "/17.jpg"
+    src: "/home-photos/17.jpg"
   },
   {
     id: 18,
@@ -173,7 +173,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "36\" X 24\"",
     age: "4",
-    src: "/18.jpg"
+    src: "/home-photos/18.jpg"
   },
   {
     id: 19,
@@ -184,7 +184,7 @@ export const gridItems = [
     medium: "Oil on canvas",
     size: "18\" X 24\"",
     age: "4",
-    src: "/19.jpg"
+    src: "/home-photos/19.jpg"
   },
   {
     id: 20,
@@ -195,7 +195,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "18\" x 24\"",
     age: "4",
-    src: "/20.jpg"
+    src: "/home-photos/20.jpg"
   },
   {
     id: 21,
@@ -206,7 +206,7 @@ export const gridItems = [
     medium: "Mixed Media",
     size: "18\" X 24\"",
     age: "3 1/2",
-    src: "/21.jpg"
+    src: "/home-photos/21.jpg"
   },
   {
     id: 22,
@@ -217,7 +217,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "24\" x 36\"",
     age: "5",
-    src: "/22.jpg"
+    src: "/home-photos/22.jpg"
   },
   {
     id: 23,
@@ -227,7 +227,7 @@ export const gridItems = [
     description: "My friends, my family, they all come into my pretty dreams.",
     medium: "Acrylic on canvas",
     size: "24\" x 34\"",
-    src: "/23.jpg"
+    src: "/home-photos/23.jpg"
   },
   {
     id: 24,
@@ -239,7 +239,7 @@ export const gridItems = [
     size: "24\" X 72\"",
     two: "24″ x 36″ canvases painted together",
     age: "6",
-    src: "/24.jpg"
+    src: "/home-photos/24.jpg"
   },
 
   // ==========================================================================
@@ -255,7 +255,7 @@ export const gridItems = [
     size: "72\" X 24\"",
     two: "24″ x 36″ Canvases painted together as one",
     age: "6",
-    src: "/25.jpg"
+    src: "/home-photos/25.jpg"
   },
   {
     id: 26,
@@ -266,7 +266,7 @@ export const gridItems = [
     medium: "Oil on canvas",
     size: "18\" X 24\"",
     age: "3 1/2",
-    src: "/26.jpg"
+    src: "/home-photos/26.jpg"
   },
   {
     id: 27,
@@ -277,7 +277,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "24\" x 36\"",
     age: "5",
-    src: "/27.jpg"
+    src: "/home-photos/27.jpg"
   },
   {
     id: 28,
@@ -288,6 +288,6 @@ export const gridItems = [
     medium: "Mixed Media",
     size: "36\" X 60\"",
     age: "6",
-    src: "/28.jpg"
+    src: "/home-photos/28.jpg"
   }
 ];

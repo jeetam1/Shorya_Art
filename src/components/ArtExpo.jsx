@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function ArtExpo() {
   
-  const row1Images = ['/a81.jpg', '/a82.jpg', '/a83.jpg'];
-  const row2Images = ['/a84.jpg', '/a85.jpg'];
+  const row1Images = ['/events-photos/a81.jpg', '/events-photos/a82.jpg', '/events-photos/a83.jpg'];
+const row2Images = ['/events-photos/a84.jpg', '/events-photos/a85.jpg'];
 
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

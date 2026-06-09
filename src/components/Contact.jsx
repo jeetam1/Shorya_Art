@@ -50,7 +50,7 @@ export default function Contact() {
   return (
     <div className="contact-page-container">
       <div className="contact-header-section">
-        <div className="contact-banner-strip" style={{ backgroundImage: "url('/6.jpg')" }}></div>
+        <div className="contact-banner-strip" style={{ backgroundImage: "url('/701.jpg')" }}></div>
         <div className="contact-title-box">
           <h1 className="contact-main-title">Contact</h1>
         </div>
@@ -62,7 +62,6 @@ export default function Contact() {
           <p><strong>Email us</strong> – <a href="mailto:shorya@shoryamahanot.com">shorya@shoryamahanot.com</a></p>
         </div>
 
-        {/* --- DYNAMIC RENDER: Shows Success Box OR The Form --- */}
         {isSubmitted ? (
           <div className="contact-success-box" style={{ padding: '30px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', color: '#166534', fontFamily: 'sans-serif', boxSizing: 'border-box' }}>
             <h3 style={{ margin: '0 0 10px 0', fontSize: '22px', color: '#15803d' }}>Thank you, {formData.name}!</h3>

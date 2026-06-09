@@ -2,7 +2,8 @@ import React from 'react';
 import CommentSection from './CommentSection'; // Adjust this path if it's inside your './components/' directory
 
 export default function TedX() {
-  const galleryImages = Array.from({ length: 8 }, (_, i) => `/${250 + i}.jpg`);
+  // UPDATED PATH: Added /events-photos/ to the dynamically generated gallery images
+  const galleryImages = Array.from({ length: 8 }, (_, i) => `/events-photos/${250 + i}.jpg`);
 
   return (
     <div className="artwork-detail-page custom-tedx-page">
@@ -31,7 +32,8 @@ export default function TedX() {
             <p className="tedx-body-paragraph-text">A TEDx event is a local gathering...</p>
           </div>
           <div className="tedx-branding-logo-box">
-            <img src="/30.jpg" alt="TEDx Logo" className="tedx-fluid-logo" />
+            {/* UPDATED PATH: Added /events-photos/ to the logo */}
+            <img src="/events-photos/30.jpg" alt="TEDx Logo" className="tedx-fluid-logo" />
           </div>
         </div>
 

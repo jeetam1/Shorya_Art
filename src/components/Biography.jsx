@@ -3,6 +3,16 @@ import React, { useState } from 'react';
 export default function Biography() {
   const [modalImage, setModalImage] = useState(null);
 
+  const getInstitutionName = (id) => {
+    switch (id) {
+      case 'harvard': return 'Harvard University';
+      case 'mit': return 'Massachusetts Institute of Technology';
+      case 'imperial': return 'Imperial College London';
+      case 'davidson': return 'Davidson Academy';
+      default: return 'Institution';
+    }
+  };
+
  const academicAccolades = [
     { 
       id: 'harvard', 
@@ -100,7 +110,7 @@ export default function Biography() {
                 <div className="shorya-academic-institution-logo-bounding-box" style={{ margin: '0 auto 10px auto', width: '300px', height: 'auto', display: 'flex', justifyContent: 'center' }}>
                   <img 
                     src={accolade.logo} 
-                    alt="Institution Logo" 
+                    alt={`${getInstitutionName(accolade.id)} Logo`} 
                     className="shorya-academic-institution-vector-logo" 
                     style={{ width: '100%', height: 'auto', maxHeight: '130px', objectFit: 'contain' }} 
                   />
@@ -119,7 +129,7 @@ export default function Biography() {
                       border: '1px solid #100f0f' 
                     }}
                   >
-                    <img src={certSrc} alt="Certificate" className="shorya-academic-certificate-document-img" />
+                    <img src={certSrc} alt={`${getInstitutionName(accolade.id)} Certificate`} className="shorya-academic-certificate-document-img" />
                   </div>
                 ))}
 

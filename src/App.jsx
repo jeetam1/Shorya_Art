@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Minus } from 'lucide-react'; // Removed Search as it moved to Home.jsx
+import { Plus, Minus } from 'lucide-react';
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -38,9 +38,125 @@ import ReadersDigest from './components/ReadersDigest';
 // --- SHARED REUSABLE COMPONENTS ---
 import CommentSection from './components/CommentSection';
 import Footer from './components/Footer';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
+const ROUTE_MAP = [
+  { paths: ['/', '/home'], type: 'grid', tab: 'Home' },
+  { paths: ['/biography'], type: 'biography', tab: 'Biography' },
+  { paths: ['/artist-statement'], type: 'artist-statement', tab: "Artist's Statement" },
+  { paths: ['/gallery/acrylic-on-canvas'], type: 'acrylic-on-canvas', tab: 'Acrylic on canvas', expand: 'Gallery' },
+  { paths: ['/events'], type: 'events', tab: 'Events' },
+  { paths: ['/media/newspaper-articles'], type: 'newspaper-articles', tab: 'Newspapers Articles', expand: 'Media' },
+  { paths: ['/media/magazines'], type: 'magazines', tab: 'Magazines', expand: 'Media' },
+  { paths: ['/media/yahoo', '/yahoo'], type: 'yahoo', tab: 'Yahoo', expand: 'Media' },
+  { paths: ['/media/readers-digest', '/readers-digest'], type: 'readers-digest', tab: "Reader's Digest", expand: 'Media' },
+  { paths: ['/pogo', '/event-c'], type: 'pogo', tab: 'Events' },
+  { paths: ['/kalidas-sanskrit', '/event-d'], type: 'kalidas', tab: 'Events' },
+  { paths: ['/celebrity-chef-gala', '/event-e'], type: 'celebrity-chef', tab: 'Events' },
+  { paths: ['/spectrum-miami', '/event-f'], type: 'spectrum-miami', tab: 'Events' },
+  { paths: ['/art-expo', '/event-g'], type: 'art-expo', tab: 'Events' },
+  { paths: ['/holtzman-gallery', '/event-j'], type: 'holtzman', tab: 'Events' },
+  { paths: ['/ndtv', '/event-k'], type: 'ndtv', tab: 'Events' },
+  { paths: ['/nestle', '/event-h'], type: 'nestle', tab: 'Events' },
+  { paths: ['/TEDX', '/ted'], type: 'tedx-event-page', tab: 'Events' },
+  { paths: ['/microsoft-future-decoded', '/event-i'], type: 'microsoft', tab: 'Events' },
+  { paths: ['/sbs-radio', '/event-m'], type: 'sbs-radio', tab: 'Events' },
+  { paths: ['/media/web-articles'], type: 'web-articles', tab: 'Web Articles', expand: 'Media' },
+  { paths: ['/media/videos'], type: 'videos', tab: 'Videos', expand: 'Media' },
+  { paths: ['/look-world-talking'], type: 'look-world-talking', tab: 'Look the world is talking1', expand: 'Look the world is talking' },
+  { paths: ['/look-world-talking/twitter-mentions'], type: 'twitter-mentions', tab: 'Twitter Mentions', expand: 'Look the world is talking' },
+  { paths: ['/awards-certificates'], type: 'awards', tab: 'Awards & Certificates' },
+  { paths: ['/contact'], type: 'contact', tab: 'Contact' },
+  { paths: ['/TajMahalPalace', '/taj-mahal'], type: 'taj-mahal', tab: 'Events' },
+  { paths: ['/rk-laxman', '/event-b'], type: 'rk-laxman', tab: 'Events' }
+];
+
+function ArtworkDetailView({
+  data,
+  scrollToComments,
+  containerRef,
+  handleMouseMove,
+  setMagnifier,
+  magnifier,
+  getMagnifierStyles,
+  commentSectionRef
+}) {
+  return (
+    <div className="artwork-detail-page">
+      <header className="detail-page-header">
+        <h1 className="artwork-main-title">{data.title}</h1>
+        <div className="artwork-meta-subheader">
+          Posted | 
+          {data.allowComments ? (
+            <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
+          ) : (
+            <span> 0 comments</span>
+          )}
+        </div>
+      </header>
+
+      <div className="detail-page-content-body">
+        <div 
+          className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''}`} 
+          ref={!data.isArticle ? containerRef : null} 
+          onMouseMove={!data.isArticle ? handleMouseMove : null} 
+          onMouseLeave={!data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
+        >
+          <img 
+            src={data.src} 
+            alt={data.title} 
+            className="detail-large-img" 
+          />
+          {!data.isArticle && magnifier.show && containerRef.current && (
+            <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
+          )}
+        </div>
+
+        <div className="detail-text-description-area">
+          {data.isArticle ? (
+            <div className="article-content-layout">
+              <p className="article-quote-text">{data.summary}</p>
+              <p className="article-body-text">{data.description}</p>
+              {data.linkText && (
+                <p className="article-link-text">
+                  To read full article visit <a href={data.linkUrl} target="_blank" rel="noopener noreferrer">{data.linkText}</a>
+                </p>
+              )}
+            </div>
+          ) : (
+            <>
+              <p className="artwork-description-paragraph">{data.description}</p>
+              <ul className="artwork-technical-bullet-list">
+                <li><strong>{data.medium || "Acrylic on Canvas"}</strong></li>
+                
+                {data.size && (
+                  <li><strong>Size: {data.size}</strong></li>
+                )}
+                
+                {data.two && (
+                  <li><strong>Two {data.two}</strong></li>
+                )}
+                
+                {data.age && (
+                  <li><strong>Age: {data.age}</strong></li>
+                )}                    
+              </ul>
+            </>
+          )}
+        </div>
+      </div>
+
+      {data.allowComments && (
+        <div ref={commentSectionRef}>
+          <CommentSection storageKey={`comments-artwork-${data.slug || data.id}`} />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
@@ -63,101 +179,15 @@ export default function App() {
   useEffect(() => {
     const path = location.pathname;
     
-    if (!path || path === '/' || path === '/home') {
-      setCurrentView({ type: 'grid', data: null });
-      setActiveTab('Home');
-    } else if (path === '/biography') {
-      setCurrentView({ type: 'biography', data: null });
-      setActiveTab('Biography');
-    } else if (path === '/artist-statement') {
-      setCurrentView({ type: 'artist-statement', data: null });
-      setActiveTab("Artist's Statement");
-    } else if (path === '/gallery/acrylic-on-canvas') {
-      setCurrentView({ type: 'acrylic-on-canvas', data: null });
-      setActiveTab('Acrylic on canvas');
-      setExpandedMenu('Gallery');
-    } else if (path === '/events') {
-      setCurrentView({ type: 'events', data: null });
-      setActiveTab('Events');
-    } else if (path === '/media/newspaper-articles') {
-      setCurrentView({ type: 'newspaper-articles', data: null });
-      setActiveTab('Newspapers Articles');
-      setExpandedMenu('Media');
-    } else if (path === '/media/magazines') { 
-      setCurrentView({ type: 'magazines', data: null });
-      setActiveTab('Magazines');
-      setExpandedMenu('Media');
-    } else if (path === '/media/yahoo' || path === '/yahoo') {
-      setCurrentView({ type: 'yahoo', data: null });
-      setActiveTab('Yahoo');
-      setExpandedMenu('Media');
-    } else if (path === '/media/readers-digest' || path === '/readers-digest') {
-      setCurrentView({ type: 'readers-digest', data: null });
-      setActiveTab("Reader's Digest");
-      setExpandedMenu('Media');
-    } else if (path === '/pogo' || path === '/event-c') {
-      setCurrentView({ type: 'pogo', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/kalidas-sanskrit' || path === '/event-d') {
-      setCurrentView({ type: 'kalidas', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/celebrity-chef-gala' || path === '/event-e') {
-      setCurrentView({ type: 'celebrity-chef', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/spectrum-miami' || path === '/event-f') {
-      setCurrentView({ type: 'spectrum-miami', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/art-expo' || path === '/event-g') {
-      setCurrentView({ type: 'art-expo', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/holtzman-gallery' || path === '/event-j') {
-      setCurrentView({ type: 'holtzman', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/ndtv' || path === '/event-k') {
-      setCurrentView({ type: 'ndtv', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/nestle' || path === '/event-h') {
-      setCurrentView({ type: 'nestle', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/TEDX' || path === '/ted') {
-      setCurrentView({ type: 'tedx-event-page', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/microsoft-future-decoded' || path === '/event-i') {
-      setCurrentView({ type: 'microsoft', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/sbs-radio' || path === '/event-m') {
-      setCurrentView({ type: 'sbs-radio', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/media/web-articles') {
-      setCurrentView({ type: 'web-articles', data: null });
-      setActiveTab('Web Articles');
-      setExpandedMenu('Media');
-    } else if (path === '/media/videos') {
-      setCurrentView({ type: 'videos', data: null });
-      setActiveTab('Videos');
-      setExpandedMenu('Media');
-    } else if (path === '/look-world-talking') {
-      setCurrentView({ type: 'look-world-talking', data: null });
-      setActiveTab('Look the world is talking1');
-      setExpandedMenu('Look the world is talking');
-    } else if (path === '/look-world-talking/twitter-mentions') {
-      setCurrentView({ type: 'twitter-mentions', data: null });
-      setActiveTab('Twitter Mentions');
-      setExpandedMenu('Look the world is talking');
-    } else if (path === '/awards-certificates') {
-      setCurrentView({ type: 'awards', data: null });
-      setActiveTab('Awards & Certificates');
-    } else if (path === '/contact') {
-      setCurrentView({ type: 'contact', data: null });
-      setActiveTab('Contact');
-    } else if (path === '/TajMahalPalace' || path === '/taj-mahal') {
-      setCurrentView({ type: 'taj-mahal', data: null });
-      setActiveTab('Events'); 
-    } else if (path === '/rk-laxman' || path === '/event-b') {
-      setCurrentView({ type: 'rk-laxman', data: null });
-      setActiveTab('Events'); 
-    }
-    else if (path.startsWith('/artwork/')) {
+    const matchedRoute = ROUTE_MAP.find(route => route.paths.includes(path));
+    
+    if (matchedRoute) {
+      setCurrentView({ type: matchedRoute.type, data: null });
+      setActiveTab(matchedRoute.tab);
+      if (matchedRoute.expand) {
+        setExpandedMenu(matchedRoute.expand);
+      }
+    } else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
       const match = gridItems.find(item => item.slug === urlSlug);
       
@@ -171,6 +201,10 @@ export default function App() {
         }
         setActiveTab('Gallery');
       }
+    } else {
+      // Default fallback to Home / Grid if no route matches
+      setCurrentView({ type: 'grid', data: null });
+      setActiveTab('Home');
     }
     
     setMagnifier(prev => ({ ...prev, show: false }));
@@ -227,16 +261,30 @@ export default function App() {
   return (
     <div className="app-container">
       <aside className="sidebar">
-        <div className="logo-container" onClick={() => { navigate('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
+        <div id="brand-logo" className="logo-container" onClick={() => { navigate('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
         </div>
 
-        <div className="mobile-menu-toggle-bar" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <div 
+          id="mobile-menu-toggle" 
+          className="mobile-menu-toggle-bar" 
+          role="button"
+          tabIndex={0}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+            }
+          }}
+        >
           <span className="mobile-toggle-title-text">Navigation Menu</span>
           <span className="mobile-toggle-icon-symbol">{isMobileMenuOpen ? '–' : '+'}</span>
         </div>
 
-        <nav className={`nav-menu ${isMobileMenuOpen ? 'mobile-expanded-view' : 'mobile-collapsed-view'}`}>
+        <nav className={`nav-menu ${isMobileMenuOpen ? 'mobile-expanded-view' : 'mobile-collapsed-view'}`} role="navigation" aria-label="Main Navigation">
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
@@ -245,11 +293,18 @@ export default function App() {
                                (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Yahoo' || activeTab === "Reader's Digest" || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
                                (item.name === 'Look the world is talking' && (activeTab === 'Look the world is talking1' || activeTab === 'Twitter Mentions'));
               
+              const itemSlug = item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
               return (
                 <React.Fragment key={item.name}>
-                  <li className={`${isActive ? 'active' : ''}`} onClick={() => handleMenuClick(item)}>
+                  <li 
+                    id={`nav-item-${itemSlug}`}
+                    className={`${isActive ? 'active' : ''}`} 
+                    onClick={() => handleMenuClick(item)}
+                  >
                     <a 
                       href="#"
+                      aria-expanded={item.hasSub ? isExpanded : undefined}
+                      aria-haspopup={item.hasSub ? "true" : undefined}
                       onClick={(e) => { e.preventDefault(); if(item.hasSub === false) handleMenuClick(item); }}
                     >
                       <span className="nav-text">{item.name}</span>
@@ -259,31 +314,35 @@ export default function App() {
 
                   <div className={`sub-menu-wrapper ${isExpanded ? 'is-open' : ''}`}>
                     <ul className="sub-menu-list">
-                      {item.hasSub && item.subItems.map((sub) => (
-                        <li 
-                          key={sub} 
-                          className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveTab(sub);
-                            setIsMobileMenuOpen(false); 
-                            
-                            if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
-                            else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
-                            else if (sub === 'Magazines') navigate('/media/magazines');
-                            else if (sub === 'Yahoo') navigate('/yahoo');
-                            else if (sub === "Reader's Digest") navigate('/readers-digest');
-                            else if (sub === 'Web Articles') navigate('/media/web-articles');
-                            else if (sub === 'Videos') navigate('/media/videos');
-                            else if (sub === 'Look the world is talking1') navigate('/look-world-talking');
-                            else if (sub === 'Twitter Mentions') navigate('/look-world-talking/twitter-mentions');
-                          }}
-                        >
-                          <a href="#" onClick={(e) => e.preventDefault()}>
-                            <span className="sub-nav-text">{sub}</span>
-                          </a>
-                        </li>
-                      ))}
+                      {item.hasSub && item.subItems.map((sub) => {
+                        const subSlug = sub.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                        return (
+                          <li 
+                            key={sub} 
+                            id={`sub-nav-item-${subSlug}`}
+                            className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveTab(sub);
+                              setIsMobileMenuOpen(false); 
+                              
+                              if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
+                              else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
+                              else if (sub === 'Magazines') navigate('/media/magazines');
+                              else if (sub === 'Yahoo') navigate('/yahoo');
+                              else if (sub === "Reader's Digest") navigate('/readers-digest');
+                              else if (sub === 'Web Articles') navigate('/media/web-articles');
+                              else if (sub === 'Videos') navigate('/media/videos');
+                              else if (sub === 'Look the world is talking1') navigate('/look-world-talking');
+                              else if (sub === 'Twitter Mentions') navigate('/look-world-talking/twitter-mentions');
+                            }}
+                          >
+                            <a href="#" onClick={(e) => e.preventDefault()}>
+                              <span className="sub-nav-text">{sub}</span>
+                            </a>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </React.Fragment>
@@ -296,11 +355,11 @@ export default function App() {
           <div className="sidebar-social-section">
             <span className="social-section-heading">Social Links</span>
             <div className="social-links-grid">
-              <a href="#facebook" className="social-img-btn fb-bg"><i className="fa-brands fa-facebook-f"></i></a>
-              <a href="#twitter" className="social-img-btn tw-bg"><i className="fa-brands fa-twitter"></i></a>
-              <a href="#instagram" className="social-img-btn insta-bg"><i className="fa-brands fa-instagram"></i></a>
-              <a href="#pinterest" className="social-img-btn pin-bg"><i className="fa-brands fa-pinterest-p"></i></a>
-              <a href="#youtube" className="social-img-btn yt-bg"><i className="fa-brands fa-youtube"></i></a>
+              <a id="social-fb" href="#facebook" aria-label="Facebook" className="social-img-btn fb-bg" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a>
+              <a id="social-tw" href="#twitter" aria-label="Twitter" className="social-img-btn tw-bg" rel="noopener noreferrer"><i className="fa-brands fa-twitter"></i></a>
+              <a id="social-ig" href="#instagram" aria-label="Instagram" className="social-img-btn insta-bg" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
+              <a id="social-pi" href="#pinterest" aria-label="Pinterest" className="social-img-btn pin-bg" rel="noopener noreferrer"><i className="fa-brands fa-pinterest-p"></i></a>
+              <a id="social-yt" href="#youtube" aria-label="YouTube" className="social-img-btn yt-bg" rel="noopener noreferrer"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -342,81 +401,24 @@ export default function App() {
         {currentView.type === 'nestle' && <Nestle />}
         {currentView.type === 'sbs-radio' && <SBSRadio />}
         {currentView.type === 'microsoft' && <MicrosoftFutureDecoded />}
-        
-        {currentView.type === 'detail' && (
-          <div className="artwork-detail-page">
-            <header className="detail-page-header">
-              <h1 className="artwork-main-title">{currentView.data.title}</h1>
-              <div className="artwork-meta-subheader">
-                Posted | 
-                {currentView.data.allowComments ? (
-                  <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
-                ) : (
-                  <span> 0 comments</span>
-                )}
-              </div>
-            </header>
-    
-            <div className="detail-page-content-body">
-              <div 
-                className={`detail-image-container ${currentView.data.isArticle ? 'is-article-view' : ''}`} 
-                ref={!currentView.data.isArticle ? containerRef : null} 
-                onMouseMove={!currentView.data.isArticle ? handleMouseMove : null} 
-                onMouseLeave={!currentView.data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
-              >
-                <img 
-                  src={currentView.data.src} 
-                  alt={currentView.data.title} 
-                  className="detail-large-img" 
-                />
-                {!currentView.data.isArticle && magnifier.show && containerRef.current && (
-                  <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
-                )}
-              </div>
-
-              <div className="detail-text-description-area">
-                {currentView.data.isArticle ? (
-                  <div className="article-content-layout">
-                    <p className="article-quote-text">{currentView.data.summary}</p>
-                    <p className="article-body-text">{currentView.data.description}</p>
-                    {currentView.data.linkText && (
-                      <p className="article-link-text">
-                        To read full article visit <a href={currentView.data.linkUrl} target="_blank" rel="noreferrer">{currentView.data.linkText}</a>
-                      </p>
-                    )}
-                  </div>
-                ) : (
-                  <>
-                    <p className="artwork-description-paragraph">{currentView.data.description}</p>
-                    <ul className="artwork-technical-bullet-list">
-                      <li><strong>{currentView.data.medium || "Acrylic on Canvas"}</strong></li>
-                      
-                      {currentView.data.size && (
-                        <li><strong>Size: {currentView.data.size}</strong></li>
-                      )}
-                      
-                      {currentView.data.two && (
-                        <li><strong>Two {currentView.data.two}</strong></li>
-                      )}
-                      
-                      {currentView.data.age && (
-                        <li><strong>Age: {currentView.data.age}</strong></li>
-                      )}                    
-                    </ul>
-                  </>
-                )}
-              </div>
-            </div>
-
-            {currentView.data.allowComments && (
-              <div ref={commentSectionRef}>
-                <CommentSection storageKey={`comments-artwork-${currentView.data.slug || currentView.data.id}`} />
-              </div>
-            )}
-            
-          </div>
+                {currentView.type === 'detail' && (
+          <ArtworkDetailView 
+            data={currentView.data}
+            scrollToComments={scrollToComments}
+            containerRef={containerRef}
+            handleMouseMove={handleMouseMove}
+            setMagnifier={setMagnifier}
+            magnifier={magnifier}
+            getMagnifierStyles={getMagnifierStyles}
+            commentSectionRef={commentSectionRef}
+          />
         )}
         {currentView.type !== 'grid' && <Footer />}
+
+        {/* Back to Top Button for Specific Pages */}
+        {['newspaper-articles', 'magazines', 'events', 'look-world-talking', 'twitter-mentions', 'biography', 'videos', 'web-articles'].includes(currentView.type) && (
+          <ScrollToTopButton />
+        )}
       </main>
     </div>
   );

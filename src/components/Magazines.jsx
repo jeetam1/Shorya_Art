@@ -2,16 +2,37 @@ import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
 
+const placeholderImg = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
 const FlipBookPage = React.forwardRef((props, ref) => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    if (shouldLoad) return;
+
+    if (props.pageIndex <= 10 || (props.jumpToIndex !== undefined && Math.abs(props.pageIndex - props.jumpToIndex) <= 10)) {
+      setShouldLoad(true);
+      return;
+    }
+
+    const handlePageChange = (e) => {
+      if (Math.abs(props.pageIndex - e.detail.currentPage) <= 10) {
+        setShouldLoad(true);
+      }
+    };
+    
+    window.addEventListener('flipbook-page-change', handlePageChange);
+    return () => window.removeEventListener('flipbook-page-change', handlePageChange);
+  }, [props.pageIndex, props.jumpToIndex, shouldLoad]);
+
   return (
     <div className="shorya-flip-page" ref={ref} style={{ overflow: 'hidden', backgroundColor: '#ffffff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       {props.image === "blank" ? (
         <div style={{ width: '100%', height: '100%', backgroundColor: '#ffffff' }} />
       ) : (
         <img 
-          src={props.image} 
+          src={shouldLoad ? props.image : placeholderImg} 
           alt="Magazine Page" 
-          loading="lazy" 
           style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', margin: '0 auto' }} 
         />
       )}
@@ -40,6 +61,7 @@ export default function Magazines() {
 
   const onPageFlip = (e) => {
     setCurrentPage(e.data); 
+    window.dispatchEvent(new CustomEvent('flipbook-page-change', { detail: { currentPage: e.data } }));
     const flipSound = new Audio('/page-flip.mp3');
     flipSound.volume = 0.5;
     flipSound.play().catch(err => console.log('Audio play prevented:', err));
@@ -311,7 +333,7 @@ export default function Magazines() {
                     style={{ margin: '0 auto' }}
                   >
                     {(activeModal.pages || []).map((pageSrc, idx) => (
-                      <FlipBookPage key={idx} image={pageSrc} />
+                      <FlipBookPage key={idx} image={pageSrc} pageIndex={idx} jumpToIndex={activeModal.jumpToIndex} />
                     ))}
                   </HTMLFlipBook>
                 </div>

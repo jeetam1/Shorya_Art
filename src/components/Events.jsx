@@ -188,7 +188,7 @@ export default function Events() {
             <div className="shorya-event-split-info-row">
               
               <div className="shorya-event-brand-logo-box">
-                <img src={event.logoSrc} alt="Event Identity Logo" className="shorya-event-brand-logo-asset" />
+                <img src={event.logoSrc} alt={`${event.title} Logo`} className="shorya-event-brand-logo-asset" />
               </div>
 
               <div className="shorya-event-description-text-block">
@@ -196,9 +196,11 @@ export default function Events() {
                   {event.desc}
                 </p>
                 
-                <a href={event.linkPath} className="shorya-event-readmore-link-action">
-                  Read More...
-                </a>
+                {event.linkPath && (
+                  <a href={event.linkPath} className="shorya-event-readmore-link-action" rel="noopener noreferrer">
+                    Read More...
+                  </a>
+                )}
               </div>
 
             </div>

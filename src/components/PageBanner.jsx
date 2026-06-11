@@ -1,6 +1,5 @@
 import React from 'react';
 
-// We pass 'title' and 'bgImage' as props so they can change on every page
 export default function PageBanner({ title, bgImage }) {
   return (
     <div 

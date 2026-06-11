@@ -26,12 +26,10 @@ export default function KalidasSanskrit() {
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
-        {/* Introductory Paragraph */}
         <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '15px', color: '#444444', lineHeight: '1.7', margin: '0 auto 60px auto', width: '100%', textAlign: 'left' }}>
           Solo show held in Ujjain at Kalidas Sanskrit Academy Gallery on 25th Oct'2012
         </p>
 
-        
         <div style={{ width: '100%', maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
 
           <h2 style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '22px', fontWeight: '700', color: '#333333', textAlign: 'center', margin: '0 auto 40px auto', lineHeight: '1.4' }}>
@@ -82,8 +80,6 @@ export default function KalidasSanskrit() {
 
       </div>
 
-      
-      
     </div>
   );
 }

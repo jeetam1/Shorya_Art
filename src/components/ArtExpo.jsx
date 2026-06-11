@@ -16,7 +16,6 @@ const row2Images = ['/events-photos/a84.jpg', '/events-photos/a85.jpg'];
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
-        {/* Introductory Paragraph */}
         <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '15px', color: '#444444', lineHeight: '1.7', margin: '0 auto 60px auto', width: '100%', textAlign: 'left' }}>
           His first debut show at Art Expo New York (U.S.A.) in March, 2013. Where his paintings were selected to appear their "Best of Artexpo 2013" exhibition
         </p>
@@ -53,7 +52,6 @@ const row2Images = ['/events-photos/a84.jpg', '/events-photos/a85.jpg'];
             ))}
           </div>
 
-          {/* ROW 2: 2-COLUMN GRID */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', width: '100%', marginBottom: '30px' }}>
             {row2Images.map((src, imgIndex) => (
               <div 

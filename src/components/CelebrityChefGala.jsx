@@ -52,7 +52,6 @@ const row2Images = ['/events-photos/a64.jpg', '/events-photos/a65.jpg'];
             ))}
           </div>
 
-          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', width: '100%', marginBottom: '30px' }}>
             {row2Images.map((src, imgIndex) => (
               <div 
@@ -77,12 +76,9 @@ const row2Images = ['/events-photos/a64.jpg', '/events-photos/a65.jpg'];
           </div>
 
         </div> 
-        
 
       </div>
 
-     
-      
     </div>
   );
 }

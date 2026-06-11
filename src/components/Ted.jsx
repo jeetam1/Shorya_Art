@@ -1,14 +1,13 @@
 import React from 'react';
-import CommentSection from './CommentSection'; // Adjust path if it's placed inside your './components/' directory
+import CommentSection from './CommentSection'; 
 
 export default function Ted() {
-  // EXPLICIT IMAGE DEFINITIONS (Total 8 Images: a515.jpg to a522.jpg)
+  
   const galleryImages = [
   '/events-photos/a515.jpg', '/events-photos/a516.jpg', '/events-photos/a517.jpg', '/events-photos/a518.jpg',
   '/events-photos/a519.jpg', '/events-photos/a520.jpg', '/events-photos/a521.jpg', '/events-photos/a522.jpg'
 ];
 
-  // Chunk images into rows of 2
   const gridRows = [];
   for (let i = 0; i < galleryImages.length; i += 2) {
     gridRows.push(galleryImages.slice(i, i + 2));
@@ -16,23 +15,19 @@ export default function Ted() {
 
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      
-      {/* STANDARD GLOBAL HEADER BANNER */}
+
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Ted X</h1>
         </div>
       </div>
 
-      {/* CORE CONTENT LAYOUT */}
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
-        {/* Post Meta Data */}
         <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '14px', color: '#888888', margin: '0 0 30px 0' }}>
           Posted | 0 comments
         </p>
 
-        {/* CENTERED YOUTUBE VIDEO PLAYER */}
         <div style={{ width: '100%', maxWidth: '700px', margin: '0 auto 10px auto', display: 'flex', justifyContent: 'center' }}>
           <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', boxShadow: '0 4px 20px rgba(0,0,0,0.15)', border: '1px solid #e5e5e5', backgroundColor: '#000000' }}>
             <iframe
@@ -45,13 +40,11 @@ export default function Ted() {
             ></iframe>
           </div>
         </div>
-        
-        {/* Video Caption */}
+
         <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '13px', color: '#666666', textAlign: 'center', fontStyle: 'italic', margin: '0 auto 50px auto' }}>
           "The story of my life" - see my TEDx speech about 7 years of my Abstract Art Journey.
         </p>
 
-        {/* TEXT & LOGO SECTION */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', marginBottom: '60px', alignItems: 'flex-start' }}>
           <div style={{ flex: '1 1 450px', fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '14.5px', color: '#444444', lineHeight: '1.7' }}>
             <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#333333', marginBottom: '15px' }}>
@@ -70,17 +63,12 @@ export default function Ted() {
           </div>
         </div>
 
-        {/* ========================================================================
-            GALLERY SIZE WRAPPER (750px max width)
-            ======================================================================== */}
         <div style={{ width: '100%', maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
 
-          {/* Gallery Section Subtitle */}
           <h2 style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '22px', fontWeight: '700', color: '#333333', textAlign: 'left', margin: '0 0 40px 0', lineHeight: '1.4' }}>
             Event Gallery of TEDx JSSATE
           </h2>
 
-          {/* 2-COLUMN DYNAMIC ROW RENDERER (Landscape Shape) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%', marginBottom: '60px' }}>
             {gridRows.map((rowImages, rowIndex) => (
               <div key={rowIndex} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', width: '100%' }}>
@@ -113,7 +101,6 @@ export default function Ted() {
 
         </div> 
 
-        {/* --- DYNAMIC COMMON SHARED COMMENT SECTION COMPONENT --- */}
         <CommentSection storageKey="comments-ted-event-page" />
 
       </div>

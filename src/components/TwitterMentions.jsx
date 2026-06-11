@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 export default function TwitterMentions() {
   const [visibleCount, setVisibleCount] = useState(2);
 
-  // RICH FALLBACK DATA: This displays beautiful text boxes BEFORE the Twitter script finishes loading
   const tweetData = [
     {
       id: "1010495566265143297",
@@ -36,7 +35,7 @@ export default function TwitterMentions() {
       author: "SeedlingSchoolsJpr (@SeedlingSchools)",
       date: "March 19, 2018"
     },
-    // Generic fallbacks for the remainder to save space, but they will still look like gray boxes!
+    
     { id: "356771400608006144", text1: "Loading Tweet...", author: "Twitter User", date: "View on Twitter" },
     { id: "1086123696769589248", text1: "Loading Tweet...", author: "Twitter User", date: "View on Twitter" },
     { id: "1091191914316017665", text1: "Loading Tweet...", author: "Twitter User", date: "View on Twitter" },
@@ -47,7 +46,6 @@ export default function TwitterMentions() {
     { id: "128675148537671680", text1: "Loading Tweet...", author: "Twitter User", date: "View on Twitter" }
   ];
 
-  // STAGGERED LOADER
   useEffect(() => {
     if (visibleCount < tweetData.length) {
       const timer = setTimeout(() => setVisibleCount(prev => prev + 2), 800);
@@ -55,7 +53,6 @@ export default function TwitterMentions() {
     }
   }, [visibleCount, tweetData.length]);
 
-  // INJECT TWITTER WIDGET SCRIPT
   useEffect(() => {
     if (!window.twttr) {
       const script = document.createElement("script");
@@ -82,8 +79,7 @@ export default function TwitterMentions() {
           
           {tweetData.slice(0, visibleCount).map((tweet) => (
             <div key={tweet.id} className="tweet-wrapper-box">
-              
-              {/* THE RAW HTML FALLBACK (Matches Standard Twitter Syntax) */}
+
               <blockquote className="twitter-tweet" data-conversation="none" data-dnt="true">
                 <p lang="en" dir="ltr">
                   {tweet.text1 && <span>{tweet.text1}</span>}
@@ -99,8 +95,6 @@ export default function TwitterMentions() {
 
         </div>
       </div>
-
-      
 
     </div>
   );

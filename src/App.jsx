@@ -3,24 +3,23 @@ import { Plus, Minus } from 'lucide-react';
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-// --- COMPONENTS ---
-import Home from './components/Home'; 
+import Home from './components/Home';
 import Awards from './components/Awards';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
-import Magazines from './components/Magazines'; 
+import Magazines from './components/Magazines';
 import Ted from './components/Ted';
 import MicrosoftFutureDecoded from './components/MicrosoftFutureDecoded';
 import SBSRadio from './components/SBSRadio';
 import WebArticles from './components/WebArticles';
-import Videos from './components/Videos'; 
+import Videos from './components/Videos';
 import LookWorldTalking from './components/LookWorldTalking';
 import TwitterMentions from './components/TwitterMentions';
-import HuffingtonPost from './components/HuffingtonPost'; 
-import TedX from './components/TedX'; 
+import HuffingtonPost from './components/HuffingtonPost';
+import TedX from './components/TedX';
 import HoltzmanGallery from './components/HoltzmanGallery';
 import Pogo from './components/Pogo';
 import ArtExpo from './components/ArtExpo';
@@ -28,14 +27,13 @@ import SpectrumMiami from './components/SpectrumMiami';
 import CelebrityChefGala from './components/CelebrityChefGala';
 import KalidasSanskrit from './components/KalidasSanskrit';
 import Contact from './components/Contact';
-import TajMahalPalace from './components/TajMahalPalace'; 
+import TajMahalPalace from './components/TajMahalPalace';
 import Nestle from './components/Nestle';
 import NDTV from './components/NDTV';
-import RKLaxman from './components/RKLaxman'; 
-import Yahoo from './components/Yahoo'; 
+import RKLaxman from './components/RKLaxman';
+import Yahoo from './components/Yahoo';
 import ReadersDigest from './components/ReadersDigest';
 
-// --- SHARED REUSABLE COMPONENTS ---
 import CommentSection from './components/CommentSection';
 import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
@@ -89,7 +87,7 @@ function ArtworkDetailView({
       <header className="detail-page-header">
         <h1 className="artwork-main-title">{data.title}</h1>
         <div className="artwork-meta-subheader">
-          Posted | 
+          Posted |
           {data.allowComments ? (
             <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
           ) : (
@@ -99,16 +97,16 @@ function ArtworkDetailView({
       </header>
 
       <div className="detail-page-content-body">
-        <div 
-          className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''}`} 
-          ref={!data.isArticle ? containerRef : null} 
-          onMouseMove={!data.isArticle ? handleMouseMove : null} 
+        <div
+          className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''}`}
+          ref={!data.isArticle ? containerRef : null}
+          onMouseMove={!data.isArticle ? handleMouseMove : null}
           onMouseLeave={!data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
         >
-          <img 
-            src={data.src} 
-            alt={data.title} 
-            className="detail-large-img" 
+          <img
+            src={data.src}
+            alt={data.title}
+            className="detail-large-img"
           />
           {!data.isArticle && magnifier.show && containerRef.current && (
             <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
@@ -131,18 +129,18 @@ function ArtworkDetailView({
               <p className="artwork-description-paragraph">{data.description}</p>
               <ul className="artwork-technical-bullet-list">
                 <li><strong>{data.medium || "Acrylic on Canvas"}</strong></li>
-                
+
                 {data.size && (
                   <li><strong>Size: {data.size}</strong></li>
                 )}
-                
+
                 {data.two && (
                   <li><strong>Two {data.two}</strong></li>
                 )}
-                
+
                 {data.age && (
                   <li><strong>Age: {data.age}</strong></li>
-                )}                    
+                )}
               </ul>
             </>
           )}
@@ -162,14 +160,14 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [currentView, setCurrentView] = useState({ type: 'grid', data: null });
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
   const containerRef = useRef(null);
-  const commentSectionRef = useRef(null); 
-  
+  const commentSectionRef = useRef(null);
+
   const scrollToComments = () => {
     if (commentSectionRef.current) {
       commentSectionRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -178,9 +176,9 @@ export default function App() {
 
   useEffect(() => {
     const path = location.pathname;
-    
+
     const matchedRoute = ROUTE_MAP.find(route => route.paths.includes(path));
-    
+
     if (matchedRoute) {
       setCurrentView({ type: matchedRoute.type, data: null });
       setActiveTab(matchedRoute.tab);
@@ -190,23 +188,23 @@ export default function App() {
     } else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
       const match = gridItems.find(item => item.slug === urlSlug);
-      
+
       if (match) {
         if (match.customLayout === 'huffington') {
           setCurrentView({ type: 'huffington-post', data: match });
         } else if (match.customLayout === 'tedx') {
-          setCurrentView({ type: 'tedx-presentation', data: match }); 
+          setCurrentView({ type: 'tedx-presentation', data: match });
         } else {
           setCurrentView({ type: 'detail', data: match });
         }
         setActiveTab('Gallery');
       }
     } else {
-      // Default fallback to Home / Grid if no route matches
+      
       setCurrentView({ type: 'grid', data: null });
       setActiveTab('Home');
     }
-    
+
     setMagnifier(prev => ({ ...prev, show: false }));
     window.scrollTo(0, 0);
   }, [location]);
@@ -217,8 +215,8 @@ export default function App() {
     } else {
       setActiveTab(item.name);
       setExpandedMenu(null);
-      setIsMobileMenuOpen(false); 
-      
+      setIsMobileMenuOpen(false);
+
       if (item.name === 'Biography') navigate('/biography');
       else if (item.name === "Artist's Statement") navigate('/artist-statement');
       else if (item.name === 'Events') navigate('/events');
@@ -243,17 +241,24 @@ export default function App() {
 
   const getMagnifierStyles = () => {
     if (!containerRef.current) return {};
-    const lensSize = 150; 
+    const lensSize = 180;
+    const zoomLevel = 2.5;
     const { width, height } = containerRef.current.getBoundingClientRect();
-    const pctX = (magnifier.x / width) * 100;
-    const pctY = (magnifier.y / height) * 100;
+
+    const bgWidth = width * zoomLevel;
+    const bgHeight = height * zoomLevel;
+
+    const bgPosX = -(magnifier.x * zoomLevel) + (lensSize / 2);
+    const bgPosY = -(magnifier.y * zoomLevel) + (lensSize / 2);
 
     return {
       left: `${magnifier.x - (lensSize / 2)}px`,
       top: `${magnifier.y - (lensSize / 2)}px`,
+      width: `${lensSize}px`,
+      height: `${lensSize}px`,
       backgroundImage: `url(${currentView.data.src})`,
-      backgroundPosition: `${pctX}% ${pctY}%`,
-      backgroundSize: `${width * 1.2}px ${height * 1.2}px`, 
+      backgroundPosition: `${bgPosX}px ${bgPosY}px`,
+      backgroundSize: `${bgWidth}px ${bgHeight}px`,
       imageRendering: 'high-quality'
     };
   };
@@ -265,9 +270,9 @@ export default function App() {
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
         </div>
 
-        <div 
-          id="mobile-menu-toggle" 
-          className="mobile-menu-toggle-bar" 
+        <div
+          id="mobile-menu-toggle"
+          className="mobile-menu-toggle-bar"
           role="button"
           tabIndex={0}
           aria-label="Toggle navigation menu"
@@ -288,24 +293,24 @@ export default function App() {
           <ul>
             {navItems.map((item) => {
               const isExpanded = expandedMenu === item.name;
-              const isActive = activeTab === item.name || 
-                               (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
-                               (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Yahoo' || activeTab === "Reader's Digest" || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
-                               (item.name === 'Look the world is talking' && (activeTab === 'Look the world is talking1' || activeTab === 'Twitter Mentions'));
-              
+              const isActive = activeTab === item.name ||
+                (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
+                (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Yahoo' || activeTab === "Reader's Digest" || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
+                (item.name === 'Look the world is talking' && (activeTab === 'Look the world is talking1' || activeTab === 'Twitter Mentions'));
+
               const itemSlug = item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
               return (
                 <React.Fragment key={item.name}>
-                  <li 
+                  <li
                     id={`nav-item-${itemSlug}`}
-                    className={`${isActive ? 'active' : ''}`} 
+                    className={`${isActive ? 'active' : ''}`}
                     onClick={() => handleMenuClick(item)}
                   >
-                    <a 
+                    <a
                       href="#"
                       aria-expanded={item.hasSub ? isExpanded : undefined}
                       aria-haspopup={item.hasSub ? "true" : undefined}
-                      onClick={(e) => { e.preventDefault(); if(item.hasSub === false) handleMenuClick(item); }}
+                      onClick={(e) => { e.preventDefault(); if (item.hasSub === false) handleMenuClick(item); }}
                     >
                       <span className="nav-text">{item.name}</span>
                       {item.hasSub && (isExpanded ? <Minus className="nav-icon" size={14} /> : <Plus className="nav-icon" size={14} />)}
@@ -317,15 +322,15 @@ export default function App() {
                       {item.hasSub && item.subItems.map((sub) => {
                         const subSlug = sub.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
                         return (
-                          <li 
-                            key={sub} 
+                          <li
+                            key={sub}
                             id={`sub-nav-item-${subSlug}`}
                             className={`sub-item ${activeTab === sub ? 'sub-item-active' : ''}`}
                             onClick={(e) => {
                               e.stopPropagation();
                               setActiveTab(sub);
-                              setIsMobileMenuOpen(false); 
-                              
+                              setIsMobileMenuOpen(false);
+
                               if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
                               else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
                               else if (sub === 'Magazines') navigate('/media/magazines');
@@ -363,13 +368,12 @@ export default function App() {
             </div>
           </div>
         </div>
-        
+
         <div className="sidebar-empty-basement"></div>
       </aside>
 
       <main className="main-content">
-        
-        {/* THE CLEANED UP HOME COMPONENT */}
+
         {currentView.type === 'grid' && <Home />}
 
         {currentView.type === 'biography' && <Biography />}
@@ -378,7 +382,7 @@ export default function App() {
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
-        {currentView.type === 'magazines' && <Magazines />} 
+        {currentView.type === 'magazines' && <Magazines />}
         {currentView.type === 'yahoo' && <Yahoo />}
         {currentView.type === 'readers-digest' && <ReadersDigest />}
         {currentView.type === 'web-articles' && <WebArticles />}
@@ -401,8 +405,8 @@ export default function App() {
         {currentView.type === 'nestle' && <Nestle />}
         {currentView.type === 'sbs-radio' && <SBSRadio />}
         {currentView.type === 'microsoft' && <MicrosoftFutureDecoded />}
-                {currentView.type === 'detail' && (
-          <ArtworkDetailView 
+        {currentView.type === 'detail' && (
+          <ArtworkDetailView
             data={currentView.data}
             scrollToComments={scrollToComments}
             containerRef={containerRef}
@@ -415,7 +419,6 @@ export default function App() {
         )}
         {currentView.type !== 'grid' && <Footer />}
 
-        {/* Back to Top Button for Specific Pages */}
         {['newspaper-articles', 'magazines', 'events', 'look-world-talking', 'twitter-mentions', 'biography', 'videos', 'web-articles'].includes(currentView.type) && (
           <ScrollToTopButton />
         )}

@@ -40,10 +40,8 @@ const finalImage = '/events-photos/a913.jpg';
 
         </div>
 
-       
         <div style={{ width: '100%', maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
 
-         
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px', width: '100%', marginBottom: '15px' }}>
             {row1Images.map((src, index) => (
               <div key={`r1-${index}`} style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', backgroundColor: '#f4f4f4', border: '1px solid #e2e2e2' }}>
@@ -52,7 +50,6 @@ const finalImage = '/events-photos/a913.jpg';
             ))}
           </div>
 
-         
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px', width: '100%', marginBottom: '15px' }}>
             {row2Images.map((src, index) => (
               <div key={`r2-${index}`} style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', backgroundColor: '#f4f4f4', border: '1px solid #e2e2e2' }}>
@@ -61,7 +58,6 @@ const finalImage = '/events-photos/a913.jpg';
             ))}
           </div>
 
-          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', width: '100%', marginBottom: '15px' }}>
             {row3Images.map((src, index) => (
               <div key={`r3-${index}`} style={{ width: '100%', aspectRatio: '3 / 4', overflow: 'hidden', backgroundColor: '#f4f4f4', border: '1px solid #e2e2e2' }}>
@@ -70,7 +66,6 @@ const finalImage = '/events-photos/a913.jpg';
             ))}
           </div>
 
-          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', width: '100%', marginBottom: '15px' }}>
             {row4Images.map((src, index) => (
               <div key={`r4-${index}`} style={{ width: '100%', aspectRatio: '3 / 4', overflow: 'hidden', backgroundColor: '#f4f4f4', border: '1px solid #e2e2e2' }}>
@@ -79,7 +74,6 @@ const finalImage = '/events-photos/a913.jpg';
             ))}
           </div>
 
-          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', width: '100%', marginBottom: '15px' }}>
             {row5Images.map((src, index) => (
               <div key={`r5-${index}`} style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', backgroundColor: '#f4f4f4', border: '1px solid #e2e2e2' }}>
@@ -88,18 +82,14 @@ const finalImage = '/events-photos/a913.jpg';
             ))}
           </div>
 
-          
           <div style={{ width: '100%', backgroundColor: '#ffffff', border: '1px solid #e2e2e2', marginBottom: '30px' }}>
             <img src={finalImage} alt="Final Wide View of Holtzman Gallery" style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
 
         </div> 
-        
 
       </div>
 
-      
-      
     </div>
   );
 }

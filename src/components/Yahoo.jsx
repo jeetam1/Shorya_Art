@@ -1,26 +1,22 @@
 import React from 'react';
-import CommentSection from './CommentSection'; // Adjust this path if your component is in the root directory
+import CommentSection from './CommentSection'; 
 
 export default function Yahoo() {
   return (
     <div className="yahoo-page-container">
       <div className="yahoo-content-wrapper">
-        
-        {/* Header Section */}
+
         <h1 className="yahoo-main-title">Yahoo!</h1>
         <p className="yahoo-meta">Posted | 0 comments</p>
 
-        {/* Yahoo Logo */}
         <div className="yahoo-logo-container">
           <img src="/ab12.jpg" alt="Yahoo! News" className="yahoo-logo-img" />
         </div>
 
-        {/* Centered Sub-Headline */}
         <h2 className="yahoo-sub-title">
           A few children who took people's breath away, with their intelligence:
         </h2>
 
-        {/* Content Section: Text Left, Image Right */}
         <div className="yahoo-article-section">
           <div className="yahoo-text-column">
             <h3 className="yahoo-list-title">1. Shorya Mahanot</h3>
@@ -33,12 +29,10 @@ export default function Yahoo() {
           </div>
         </div>
 
-        {/* Link to article */}
         <div className="yahoo-read-more">
           <strong>Continue reading here at </strong> <a href="https://in.search.yahoo.com" className="yahoo-link">Yahoo!</a>
         </div>
 
-        {/* --- SHARED DYNAMIC COMMENT SECTION --- */}
         <CommentSection storageKey="comments-yahoo" />
 
       </div>

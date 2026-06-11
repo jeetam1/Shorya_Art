@@ -1,8 +1,8 @@
 import React from 'react';
-import CommentSection from './CommentSection'; // Adjust this path if it's inside your './components/' directory
+import CommentSection from './CommentSection'; 
 
 export default function TedX() {
-  // UPDATED PATH: Added /events-photos/ to the dynamically generated gallery images
+  
   const galleryImages = Array.from({ length: 8 }, (_, i) => `/events-photos/${250 + i}.jpg`);
 
   return (
@@ -32,7 +32,7 @@ export default function TedX() {
             <p className="tedx-body-paragraph-text">A TEDx event is a local gathering...</p>
           </div>
           <div className="tedx-branding-logo-box">
-            {/* UPDATED PATH: Added /events-photos/ to the logo */}
+            
             <img src="/events-photos/30.jpg" alt="TEDx Logo" className="tedx-fluid-logo" />
           </div>
         </div>
@@ -49,7 +49,6 @@ export default function TedX() {
         </div>
       </div>
 
-      {/* --- SHARED UNIFIED COMMENT ENGINE --- */}
       <CommentSection storageKey="comments-tedx-presentation" />
 
     </div>

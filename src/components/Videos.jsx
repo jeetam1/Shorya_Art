@@ -33,7 +33,7 @@ export default function Videos() {
       id: "1OeIYzu3e_4",
       embedUrl: "https://www.youtube.com/embed/1OeIYzu3e_4",
       caption: "“He dreams of painting and he paints his dreams”",
-      // logoSrc: "/events-photos/31.png",
+      
       logoAlt: "CNN IBN Logo"
     },
     {
@@ -47,7 +47,7 @@ export default function Videos() {
       id: "0R-lT5ieXF4",
       embedUrl: "https://www.youtube.com/embed/0R-lT5ieXF4",
       caption: "“How do you visualize a special day in the life of a child? Getting applauded by veterans and finding a stage where only stalwarts have gone? Watch to find out.”",
-      // logoSrc: "/events-photos/34.png",
+      
       logoAlt: "ABP Maza Logo"
     },
     {
@@ -61,17 +61,17 @@ export default function Videos() {
       id: "8ju4wewKCzc",
       embedUrl: "https://www.youtube.com/embed/8ju4wewKCzc",
       caption: "“Give a child a canvas to paint and he will expand the universe with every brushstroke.”",
-      // logoSrc: "/events-photos/34.png",
+      
       logoAlt: "Expanding Universe"
     },
     {
       id: "-dG2EfbTTNI",
       embedUrl: "https://www.youtube.com/embed/-dG2EfbTTNI",
       caption: "“India's Five Year Old 'Picasso' - Shorya Mahanot”",
-      // logoSrc: "/events-photos/31.png",
+      
       logoAlt: "CNN IBN Logo"
     },
-    // ---- AFTER THIS POINT, CAPTIONS ARE HIDDEN IN THE UI ----
+    
     {
       id: "LbmrJ3wWkcs",
       embedUrl: "https://www.youtube.com/embed/LbmrJ3wWkcs",
@@ -160,18 +160,16 @@ export default function Videos() {
 
   return (
     <div className="shorya-videos-view-root">
-      
-      {/* HEADER BANNER STRIP */}
+
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/biography-photos/6.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Videos</h1>
         </div>
       </div>
 
-      {/* CORE TIMELINE CONTAINER */}
       <div className="shorya-videos-list-container" style={{ margin: '0 auto', padding: '40px 20px 60px 20px', alignItems: 'center' }}>
         {videosData.map((video, index) => {
-          // Determine if this item belongs to the upper 10 list (indices 0 to 9)
+          
           const isUpperTen = index < 10;
 
           return (
@@ -182,19 +180,17 @@ export default function Videos() {
                 width: '100%', 
                 maxWidth: '600px', 
                 margin: '0 auto',
-                // Tighter margin for lower videos to pack them tightly together
+                
                 marginBottom: isUpperTen ? '0px' : '20px' 
               }}
             >
-              
-              {/* Publisher Logo Identifier Box - Only rendered for Upper 10 */}
+
               {isUpperTen && video.logoSrc && (
                 <div className="shorya-video-publisher-logo-row" style={{ display: 'flex', justifyContent: 'center', marginBottom: '25px' }}>
                   <img src={video.logoSrc} alt={video.logoAlt || "Publisher Logo"} className="shorya-video-publisher-badge-img" />
                 </div>
               )}
 
-              {/* Video Player Sandbox Frame Chassis */}
               <div className="shorya-video-player-aspect-wrapper" style={{ margin: '0 auto' }}>
                 {activeVideos[index] ? (
                   <iframe
@@ -219,20 +215,18 @@ export default function Videos() {
                 )}
               </div>
 
-              {/* Text Quote/Caption Block - ONLY RENDERED FOR UPPER 10 VIDEOS */}
               {isUpperTen && (
                 <div className="shorya-video-caption-container" style={{ margin: '18px auto 0 auto', textAlign: 'center' }}>
                   <p className="shorya-video-caption-text-value">{video.caption}</p>
                 </div>
               )}
 
-              {/* DYNAMIC PARTITION LOGIC */}
               {index < videosData.length - 1 && (
                 isUpperTen ? (
-                  /* Generates wide vertical spacing and renders a separation line between upper 10 elements */
+                  
                   <hr className="shorya-video-dashed-divider-line" style={{ width: '100%', margin: '60px auto' }} />
                 ) : null 
-                  /* No spacer rendered at all after the 10th item for tight stacking */
+                  
               )}
 
             </div>

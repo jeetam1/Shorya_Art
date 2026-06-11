@@ -55,15 +55,13 @@ export default function WebArticles() {
 
   return (
     <div className="shorya-web-articles-root">
-      
-      {/* 1. HEADER BANNER FRAME */}
+
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Web Articles</h1>
         </div>
       </div>
 
-      {/* 2. CORE LAYOUT WRAPPER CONTAINER */}
       <div className="shorya-articles-main-wrapper">
         {webArticlesData.map((article, index) => {
           const isImageLeft = index % 2 === 0;
@@ -71,13 +69,11 @@ export default function WebArticles() {
           return (
             <div key={index} className="shorya-article-row-item">
               <div className={`shorya-article-flex-box-layout ${isImageLeft ? 'image-on-left' : 'image-on-right'}`}>
-                
-                {/* Image Element Box */}
+
                 <div className="shorya-article-image-box">
                   <img src={article.src} alt={article.alt} loading="lazy" className="shorya-article-inline-responsive-img" />
                 </div>
 
-                {/* Text Content Box */}
                 <div className="shorya-article-text-box">
                   <p className="shorya-web-article-paragraph-value">
                     {article.text}
@@ -86,7 +82,6 @@ export default function WebArticles() {
 
               </div>
 
-              {/* Separation Line Divider */}
               {index < webArticlesData.length - 1 && (
                 <hr className="shorya-article-dashed-line-divider" />
               )}

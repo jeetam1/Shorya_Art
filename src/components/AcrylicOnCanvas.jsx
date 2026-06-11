@@ -36,7 +36,6 @@ export default function AcrylicOnCanvas() {
         </div>
       </div>
 
-      
       {modalImage && (
         <div className="shorya-lightbox-overlay-shroud" onClick={() => setModalImage(null)}>
           <div className="shorya-lightbox-modal-window" onClick={(e) => e.stopPropagation()}>

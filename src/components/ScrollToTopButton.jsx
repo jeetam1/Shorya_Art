@@ -6,7 +6,7 @@ export default function ScrollToTopButton() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show the button when scrolled down 300px
+      
       if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {
@@ -15,7 +15,7 @@ export default function ScrollToTopButton() {
     };
 
     window.addEventListener('scroll', toggleVisibility);
-    // Trigger once on mount to handle initial scroll position
+    
     toggleVisibility();
 
     return () => window.removeEventListener('scroll', toggleVisibility);

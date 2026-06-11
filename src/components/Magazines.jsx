@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-
-const placeholderImg = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+const placeholderImg = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP";
 
 const FlipBookPage = React.forwardRef((props, ref) => {
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -103,7 +102,6 @@ export default function Magazines() {
 
   const handleMouseUp = () => setIsDragging(false);
 
-  // Keeps the active page perfectly centered
   const getCenterShift = () => {
     if (isMobile) return '0%'; 
     if (!activeModal.pages || activeModal.pages.length === 0) return '0%';
@@ -112,7 +110,6 @@ export default function Magazines() {
     return '0%'; 
   };
 
- 
   const magazinesData = [
     {
       title: "INDUSTRY STATEN ISLAND",
@@ -195,7 +192,6 @@ export default function Magazines() {
         </div>
       </div>
 
-      {/* CRITICAL FIX: Center-aligned the main list container to match other pages */}
       <div className="shorya-magazines-list-container" style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box' }}>
         {magazinesData.map((item, index) => {
           const isLastItem = index === magazinesData.length - 1;

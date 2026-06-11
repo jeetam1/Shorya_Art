@@ -1,26 +1,22 @@
 import React from 'react';
-import CommentSection from './CommentSection'; // Adjust path if placed inside your './components/' directory
+import CommentSection from './CommentSection'; 
 
 export default function SBSRadio() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      
-      {/* STANDARD GLOBAL HEADER BANNER */}
+
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">SBS Radio</h1>
         </div>
       </div>
 
-      {/* CORE CONTENT LAYOUT */}
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
-        {/* Post Meta Data */}
         <p style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '24px', color: '#888888', margin: '0 0 50px 0' }}>
           Posted | 0 comments
         </p>
 
-        {/* CENTERED MEDIA SECTION (Image & Audio Player) */}
         <div style={{ width: '100%', maxWidth: '300px', margin: '0 auto 80px auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
           
           <h2 style={{ fontFamily: "'Open Sans', Arial, sans-serif", fontSize: '18px', fontWeight: '700', color: '#333333', textAlign: 'center', margin: '0' }}>
@@ -44,7 +40,6 @@ export default function SBSRadio() {
 
         </div>
 
-        {/* --- DYNAMIC COMMON SHARED COMMENT SECTION COMPONENT --- */}
         <CommentSection storageKey="comments-sbs-radio-page" />
 
       </div>

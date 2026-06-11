@@ -16,8 +16,7 @@ export default function Awards() {
       </div>
 
       <div className="awards-content-wrapper">
-        
-        {/* Microsoft Section */}
+
         <section className="award-section">
           <h2 className="award-title">Microsoft</h2>
           <img src="/events-photos/35.jpg" alt="Microsoft Future Decoded" className="award-image" />
@@ -26,7 +25,6 @@ export default function Awards() {
           </p>
         </section>
 
-        {/* Celebrity Chef Gala Section */}
         <section className="award-section">
           <h2 className="award-title">Celebrity Chef Gala</h2>
           <img src="/events-photos/36.jpg" alt="Celebrity Chef Gala Certificate" className="award-image" />
@@ -35,7 +33,6 @@ export default function Awards() {
           </p>
         </section>
 
-        {/* Pogo Section */}
         <section className="award-section">
           <h2 className="award-title">Pogo</h2>
           <img src="/events-photos/37.jpg" alt="Pogo Amazing Kids Awards 2012" className="award-image" />
@@ -44,7 +41,6 @@ export default function Awards() {
           </p>
         </section>
 
-        {/* TEDx Section */}
         <section className="award-section">
           <h2 className="award-title">TEDx</h2>
           <img src="/events-photos/38.jpg" alt="TEDx Appreciation" className="award-image" />
@@ -53,7 +49,6 @@ export default function Awards() {
           </p>
         </section>
 
-        {/* R.K.Laxman Section */}
         <section className="award-section">
           <h2 className="award-title">R.K.Laxman</h2>
           <img src="/events-photos/39.png" alt="With R.K. Laxman" className="award-image" />

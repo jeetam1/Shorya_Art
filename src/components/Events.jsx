@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 export default function Events() {
   const [modalImage, setModalImage] = useState(null);
 
-  
   const eventTimelineData = [
     {
       year: "Year - 2011",
@@ -11,7 +10,7 @@ export default function Events() {
       imgSrc: "/events-photos/701.jpg",
       logoSrc: "/events-photos/713.jpg",
       desc: "The journey into the world of abstract art started with a solo exhibition at the exclusive Chambers Terrace, Hotel Taj Mahal Palace, Mumbai on 21st of October 2011. Only Barack Obama and World Cup winning Indian Cricket Team had experienced the magnificent view of the Gateway of India from up here; Shorya has been the youngest one to receive this honoured privilege to be invited and to present his art before art critics, artists and various dignitaries from different walks of life.",
-      linkPath: "/taj-mahal" 
+      linkPath: "/taj-mahal"
     },
     {
       year: "Year - 2012",
@@ -19,23 +18,23 @@ export default function Events() {
       imgSrc: "/events-photos/702.jpg",
       logoSrc: "/events-photos/714.jpg",
       desc: "Blessed by the legendary cartoonist Shri R.K.Laxman, this young artist got a chance to demonstrate his abstract art talents in a solo show before the legend himself. Shri R.K.Laxman, sitting on a chair, keenly watched the blooming of a young artist. 19th of June, 2012 will always be a fond memory for this artist.",
-      linkPath: "/rk-laxman" 
+      linkPath: "/rk-laxman"
     },
     {
-      
+
       title: "This Amazing kid gets Amazing kids award",
       imgSrc: "/events-photos/703.jpg",
       logoSrc: "/events-photos/715.jpg",
       desc: "It was November 2012 when this young artist received Pogo Television ‘Amazing Kids Award’ and featured in the commercial by turner broadcasting where he showcased his talent along with his shy nature. Few instances that established Shorya as a budding artist.",
-      linkPath: "/pogo" 
+      linkPath: "/pogo"
     },
     {
-      
+
       title: "Solo Show in Ujjain at Kalidas Sanskrit Academy",
       imgSrc: "/events-photos/704.jpg",
       logoSrc: "/events-photos/716.png",
       desc: "Another solo show and with more confidence - 25th October 2012. Shorya's paintings were installed at Kalidas Sanskrit Academy, Ujjain.",
-      linkPath: "/kalidas-sanskrit" 
+      linkPath: "/kalidas-sanskrit"
     },
     {
       year: "Year - 2013",
@@ -46,7 +45,7 @@ export default function Events() {
       linkPath: "/celebrity-chef-gala"
     },
     {
-      
+
       title: "More international exposure",
       imgSrc: "/events-photos/706.jpg",
       logoSrc: "/events-photos/718.jpg",
@@ -54,7 +53,7 @@ export default function Events() {
       linkPath: "/spectrum-miami"
     },
     {
-      
+
       title: "Best of the Art Expo 2013",
       imgSrc: "/events-photos/707.jpg",
       logoSrc: "/events-photos/719.jpg",
@@ -78,7 +77,7 @@ export default function Events() {
       linkPath: "/holtzman-gallery"
     },
     {
-      
+
       title: "Global Artist, Indian Celebrity",
       imgSrc: "/events-photos/710.jpg",
       logoSrc: "/events-photos/722.jpg",
@@ -102,7 +101,7 @@ export default function Events() {
       linkPath: "/TEDX"
     },
     {
-      
+
       title: "Decoding future",
       imgSrc: "/events-photos/712.jpg",
       logoSrc: "/events-photos/724.jpg",
@@ -110,7 +109,6 @@ export default function Events() {
       linkPath: "/microsoft-future-decoded"
     },
 
-    
     {
       year: "Year - 2018",
       title: "Reaching to the Land Down Under",
@@ -125,21 +123,21 @@ export default function Events() {
       youtubeId: "M82JWOjGADA",
       logoSrc: "/events-photos/726.jpg",
       desc: "Every recognition coming Shorya's way is defining his way better and better. In early 2019, Shorya was shortlisted in an assembled honour roll of the most impressive, young superstars and talents to watch out for – young who are transforming the society with their skills and expertise – and was aptly named as SBI YONO 20 under Twenty. Shorya Mahanot is redefining the art world as we see it.",
-      
+
     },
     {
-      
+
       title: "Holtzman Gallery (New)",
       youtubeId: "53SrXl92020",
       logoSrc: "/events-photos/727.png",
       desc: "Holtzman Gallery was celebrating its new location and home for contemporary art at Ocean Casino Resort. No doubt, Shorya has always been a part of this exciting journey, the mentorship he has got Mr David Holtzman himself has shaped his thoughts and inspired him to create more and more. We shall see more of Shorya in 2020.",
-      
+
     }
   ];
 
   return (
     <div className="shorya-events-view-root">
-      
+
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Events</h1>
@@ -148,13 +146,13 @@ export default function Events() {
 
       <div className="shorya-events-timeline-container">
         {eventTimelineData.map((event, index) => (
-          
+
           <div key={index} className="shorya-event-timeline-card">
-            
+
             <h2 className="shorya-event-year-header">
               {event.year}
             </h2>
-            
+
             {event.youtubeId ? (
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', marginBottom: '16px', border: '1px solid #e8e8e8' }}>
                 <iframe
@@ -186,7 +184,7 @@ export default function Events() {
             </h3>
 
             <div className="shorya-event-split-info-row">
-              
+
               <div className="shorya-event-brand-logo-box">
                 <img src={event.logoSrc} alt={`${event.title} Logo`} className="shorya-event-brand-logo-asset" />
               </div>
@@ -195,7 +193,7 @@ export default function Events() {
                 <p className="shorya-event-body-paragraph-text">
                   {event.desc}
                 </p>
-                
+
                 {event.linkPath && (
                   <a href={event.linkPath} className="shorya-event-readmore-link-action" rel="noopener noreferrer">
                     Read More...
@@ -224,7 +222,6 @@ export default function Events() {
         </div>
       )}
 
-      
     </div>
   );
 }

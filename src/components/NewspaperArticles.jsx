@@ -3,8 +3,7 @@ import React, { useState, useRef } from 'react';
 export default function NewspaperArticles() {
   const [modalImage, setModalImage] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  
-  // States for drag-to-pan functionality
+
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [scrollStart, setScrollStart] = useState({ left: 0, top: 0 });
@@ -16,7 +15,7 @@ export default function NewspaperArticles() {
   };
 
   const handleImageClick = (e) => {
-    // Prevent zooming if the user was just dragging to read the text
+    
     if (isDragging) {
       setIsDragging(false);
       return;
@@ -35,12 +34,11 @@ export default function NewspaperArticles() {
   };
 
   const handleMouseMove = (e) => {
-    if (!isZoomed || e.buttons !== 1) return; // Only trigger if left mouse button is held down
+    if (!isZoomed || e.buttons !== 1) return; 
     
     const dx = e.clientX - dragStart.x;
     const dy = e.clientY - dragStart.y;
-    
-    // If the mouse moves more than 5 pixels, register it as a drag rather than a click
+
     if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
       setIsDragging(true);
     }
@@ -51,7 +49,6 @@ export default function NewspaperArticles() {
     }
   };
 
-  // Structural array setup handling your multi-year newspaper data mapping
   const articlesData = [
   {
     brand: "the guardian",
@@ -147,20 +144,17 @@ export default function NewspaperArticles() {
 
   return (
   <div className="shorya-media-view-root">
-    
-    {/* HEADER BANNER BLOCK */}
+
     <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
       <div className="shorya-custom-title-white-block">
         <h1 className="shorya-custom-title-text-value">Newspaper Articles</h1>
       </div>
     </div>
 
-    {/* ARTICLES LAYOUT TIMELINE COLUMN */}
     <div className="shorya-media-articles-container">
       {articlesData.map((article, index) => (
         <div key={index} className="shorya-media-article-card">
-          
-          {/* Top Row: Brand Logo sits side-by-side with description text */}
+
           <div className="shorya-media-split-row">
             <div className="shorya-media-brand-logo-frame">
               <img src={article.brandSrc} alt={`${article.brand} logo`} className="shorya-media-brand-logo-img" />
@@ -168,37 +162,32 @@ export default function NewspaperArticles() {
             <p className="shorya-media-description-body-text">{article.text}</p>
           </div>
 
-          {/* Bottom Row: Newspaper Clipping Scans Centered below text */}
           <div className="shorya-media-right-clipping-col" onClick={() => {
             setModalImage(article.clippingSrc);
-            setIsZoomed(false); // Reset zoom when opening a new one
+            setIsZoomed(false); 
           }}>
             <div className="shorya-media-clipping-frame">
               <img src={article.clippingSrc} alt="Newspaper clipping snapshot document" className="shorya-media-clipping-img" />
             </div>
           </div>
 
-          {/* Separation Partition Line Divider */}
           {index < articlesData.length - 1 && <hr className="shorya-media-divider-line" />}
 
         </div>
       ))}
     </div>
 
-    {/* LIGHTBOX MODAL CHASSIS WITH DRAG-TO-PAN AND ZOOM */}
     {modalImage && (
       <div className="shorya-modal-overlay" onClick={handleCloseModal}>
-        
-        {/* CROSS (CLOSE) OPTION */}
+
         <button onClick={handleCloseModal} className="shorya-modal-cross-btn">
           ✕ Close
         </button>
 
-        {/* SCROLLABLE / DRAGGABLE AREA */}
         <div 
           ref={scrollContainerRef}
           className={`shorya-modal-scroll-container ${isZoomed ? 'is-zoomed' : ''}`}
-          onClick={(e) => e.stopPropagation()} // Stop click from closing modal
+          onClick={(e) => e.stopPropagation()} 
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={() => setTimeout(() => setIsDragging(false), 0)}
@@ -209,14 +198,13 @@ export default function NewspaperArticles() {
             alt="Enlarged view blueprint scanner" 
             className={`shorya-modal-image ${isZoomed ? 'zoomed-in' : 'zoomed-out'}`}
             onClick={handleImageClick}
-            draggable={false} // Prevents HTML5 ghost image dragging
+            draggable={false} 
           />
         </div>
 
       </div>
     )}
 
-    
   </div>
 );
 }

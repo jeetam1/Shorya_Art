@@ -1264,7 +1264,7 @@ body,
   white-space: nowrap !important;
 }
 
-@media (max-width: 768px) 
+@media (max-width: 768px) {
 
   .shorya-magazine-split-layout {
     display: flex !important;
@@ -2710,7 +2710,7 @@ body,
   border-color: #aaa;
 }
 
-@media (max-width: 768px) 
+@media (max-width: 768px){
 
 .ticker-item {
   color: #cccccc !important;
@@ -2727,6 +2727,8 @@ body,
   
   color: #df9939;
   
+}
+
 }
 
 @keyframes scrollLeft {

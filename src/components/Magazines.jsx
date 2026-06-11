@@ -19,7 +19,7 @@ const FlipBookPage = React.forwardRef((props, ref) => {
         setShouldLoad(true);
       }
     };
-    
+
     window.addEventListener('flipbook-page-change', handlePageChange);
     return () => window.removeEventListener('flipbook-page-change', handlePageChange);
   }, [props.pageIndex, props.jumpToIndex, shouldLoad]);
@@ -29,10 +29,10 @@ const FlipBookPage = React.forwardRef((props, ref) => {
       {props.image === "blank" ? (
         <div style={{ width: '100%', height: '100%', backgroundColor: '#ffffff' }} />
       ) : (
-        <img 
-          src={shouldLoad ? props.image : placeholderImg} 
-          alt="Magazine Page" 
-          style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', margin: '0 auto' }} 
+        <img
+          src={shouldLoad ? props.image : placeholderImg}
+          alt="Magazine Page"
+          style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', margin: '0 auto' }}
         />
       )}
     </div>
@@ -42,10 +42,10 @@ const FlipBookPage = React.forwardRef((props, ref) => {
 export default function Magazines() {
   const [activeModal, setActiveModal] = useState({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] });
   const [isMobile, setIsMobile] = useState(false);
-  
+
   const flipBookRef = useRef(null);
-  const [currentPage, setCurrentPage] = useState(0); 
-  
+  const [currentPage, setCurrentPage] = useState(0);
+
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -59,7 +59,7 @@ export default function Magazines() {
   }, []);
 
   const onPageFlip = (e) => {
-    setCurrentPage(e.data); 
+    setCurrentPage(e.data);
     window.dispatchEvent(new CustomEvent('flipbook-page-change', { detail: { currentPage: e.data } }));
     const flipSound = new Audio('/page-flip.mp3');
     flipSound.volume = 0.5;
@@ -84,10 +84,10 @@ export default function Magazines() {
   const handleZoomOut = () => {
     setZoom(prev => {
       const newZoom = Math.max(prev - 0.5, 1);
-      if (newZoom === 1) setPan({ x: 0, y: 0 }); 
+      if (newZoom === 1) setPan({ x: 0, y: 0 });
       return newZoom;
     });
-  }; 
+  };
 
   const handleMouseDown = (e) => {
     if (zoom <= 1) return;
@@ -103,19 +103,19 @@ export default function Magazines() {
   const handleMouseUp = () => setIsDragging(false);
 
   const getCenterShift = () => {
-    if (isMobile) return '0%'; 
+    if (isMobile) return '0%';
     if (!activeModal.pages || activeModal.pages.length === 0) return '0%';
-    if (currentPage === 0) return '-25%'; 
-    if (currentPage >= activeModal.pages.length - 1) return '25%'; 
-    return '0%'; 
+    if (currentPage === 0) return '-25%';
+    if (currentPage >= activeModal.pages.length - 1) return '25%';
+    return '0%';
   };
 
   const magazinesData = [
     {
       title: "INDUSTRY STATEN ISLAND",
       coverSrc: "/Industry/Industry-Magazine_page-0001.jpg",
-      isFlipbook: true, 
-      pdfSrc: "/Industry/Industry-Magazine.pdf", 
+      isFlipbook: true,
+      pdfSrc: "/Industry/Industry-Magazine.pdf",
       flipbookPages: [
         ...Array.from({ length: 3 }, (_, i) => `/Industry/Industry-Magazine_page-${String(i + 1).padStart(4, '0')}.jpg`),
         "blank"
@@ -124,8 +124,8 @@ export default function Magazines() {
     },
     {
       title: "THE WORLD OF SOCIETY",
-      coverSrc: "/551.jpg", 
-      isFlipbook: false, 
+      coverSrc: "/551.jpg",
+      isFlipbook: false,
       pdfSrc: null,
       text: "Dummy details added here temporarily. This magazine will be updated with the full interactive 3D flipbook and PDF download once the assets are processed and ready."
     },
@@ -134,11 +134,11 @@ export default function Magazines() {
       coverSrc: "/Readers_digest/rd_page-0001.jpg",
       isFlipbook: true,
       pdfSrc: "/Readers_digest/rd.pdf",
-      jumpFromIndex: 3, 
-      jumpToIndex: 99,  
+      jumpFromIndex: 3,
+      jumpToIndex: 99,
       flipbookPages: [
         ...Array.from({ length: 166 }, (_, i) => `/Readers_digest/rd_page-${String(i + 1).padStart(4, '0')}.jpg`),
-        "blank" 
+        "blank"
       ],
       text: "His family had never seen an art like this before — there were shades of Jackson Pollock — and his father, Aditya, was beyond ecstatic. One of the world's youngest signature style abstract artist, with several solo exhibitions under his belt, he has participated at the artexpo in New York and Microsoft's Future Decoded in Mumbai, selling painting worth $40,000 in all. Now 12, Shorya also has honour to do a live demonstration for the late cartoonist R.K. Laxman at the age of five. Shorya gushed, \"He blessed me and encouraged me to paint.\""
     },
@@ -160,7 +160,7 @@ export default function Magazines() {
       pdfSrc: "/child_Magazines/Child-Magazine.pdf",
       flipbookPages: [
         ...Array.from({ length: 9 }, (_, i) => `/child_Magazines/Child-Magazine_page-${String(i + 1).padStart(4, '0')}.jpg`),
-        "blank" 
+        "blank"
       ],
       text: "\"We discovered a pattern in his paintings. It was surprising to see a child of his age creating a signature style and we don't want any external influence on his works\", says his proud father Aditya Mahanot. Shorya discovered his penchant for painting when he was just 3 years old. Since then, he has created around 200 paintings and 21 of them have already been sold."
     },
@@ -178,14 +178,14 @@ export default function Magazines() {
     {
       title: "Showtime (Hindi)",
       coverSrc: "/556.jpg",
-      isFlipbook: false, 
+      isFlipbook: false,
       text: "शौर्य जब मात्र चार साल के थे तो मुम्बई के होटल ताज के चैम्बर्स टेरेस में उनकी 24 कलाकृतियाँ प्रदर्शित की गई थीं। इन पेन्टिंग्स को जो भी देखता, विश्वास नहीं कर पाता की वे एक छोटे से बच्चे ने बनाई हैं। विश्वास दिलाने के लिए पिता को वीडियो दिखाना पड़ता। दुनिया का यह पहला बच्चा है, जिसे न्यूयार्क की सुप्रसिद्ध आर्ट गैलरी वार्ड-नासे में पूरे एक साल के लिए एक वाल दी गयी, जहाँ शौर्य की चित्रकला हर कला प्रेमी का ध्यान खींचती है।"
     }
   ];
 
   return (
     <div className="shorya-magazines-view-root" style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      
+
       <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Magazines</h1>
@@ -198,27 +198,27 @@ export default function Magazines() {
 
           return (
             <div key={index} className="shorya-magazine-row-card" style={{ marginBottom: '40px' }}>
-              
-              <div 
+
+              <div
                 className={`shorya-magazine-split-layout ${isLastItem ? 'shorya-last-row-layout' : ''}`}
                 style={{ display: 'flex', alignItems: 'center', gap: '30px' }}
               >
-                
-                <div 
-                  className="shorya-magazine-cover-box" 
-                  style={{ cursor: 'pointer', flexShrink: 0 }} 
+
+                <div
+                  className="shorya-magazine-cover-box"
+                  style={{ cursor: 'pointer', flexShrink: 0 }}
                   onClick={() => {
                     if (item.isFlipbook) {
-                      setActiveModal({ 
-                        type: 'flipbook', 
-                        pages: item.flipbookPages, 
+                      setActiveModal({
+                        type: 'flipbook',
+                        pages: item.flipbookPages,
                         pdfUrl: item.pdfSrc,
-                        jumpFromIndex: item.jumpFromIndex, 
+                        jumpFromIndex: item.jumpFromIndex,
                         jumpToIndex: item.jumpToIndex
                       });
-                      setZoom(1); 
-                      setPan({ x: 0, y: 0 }); 
-                      setCurrentPage(0); 
+                      setZoom(1);
+                      setPan({ x: 0, y: 0 });
+                      setCurrentPage(0);
                     } else {
                       setActiveModal({ type: 'image', src: item.coverSrc, pages: [] });
                     }
@@ -250,7 +250,7 @@ export default function Magazines() {
 
       {activeModal.type && (
         <div className="shorya-flipbook-modal-overlay" onClick={() => setActiveModal({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] })}>
-          
+
           <button className="shorya-flipbook-close-btn" onClick={() => setActiveModal({ type: null, src: null, pdfUrl: null, jumpFromIndex: null, jumpToIndex: null, pages: [] })}>✖</button>
 
           {activeModal.type === 'flipbook' && !isMobile && (
@@ -264,8 +264,8 @@ export default function Magazines() {
             </>
           )}
 
-          <div 
-            className="shorya-flipbook-viewer-area" 
+          <div
+            className="shorya-flipbook-viewer-area"
             onClick={(e) => e.stopPropagation()}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -282,12 +282,12 @@ export default function Magazines() {
               boxSizing: 'border-box'
             }}
           >
-            
+
             {activeModal.type === 'flipbook' ? (
-              <div 
+              <div
                 className="shorya-zoom-pan-wrapper-layer"
-                style={{ 
-                  transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`, 
+                style={{
+                  transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
                   transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
                   transformOrigin: 'center center',
                   width: '100%',
@@ -297,33 +297,33 @@ export default function Magazines() {
                   alignItems: 'center'
                 }}
               >
-                <div 
+                <div
                   className="shorya-flipbook-container"
-                  style={{ 
+                  style={{
                     pointerEvents: zoom > 1 ? 'none' : 'auto',
                     transform: `translateX(${getCenterShift()})`,
                     transition: 'transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1)',
-                    margin: '0 auto', 
+                    margin: '0 auto',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     width: '100%'
                   }}
                 >
-                  <HTMLFlipBook 
-                    width={isMobile ? 320 : 400} 
-                    height={isMobile ? 450 : 550} 
+                  <HTMLFlipBook
+                    width={isMobile ? 320 : 400}
+                    height={isMobile ? 450 : 550}
                     size="stretch"
                     minWidth={isMobile ? 280 : 315}
-                    maxWidth={isMobile ? 380 : 500} 
+                    maxWidth={isMobile ? 380 : 500}
                     minHeight={isMobile ? 400 : 400}
                     maxHeight={700}
                     maxShadowOpacity={0.5}
-                    showCover={true} 
-                    usePortrait={isMobile} 
-                    useMouseEvents={true}  
+                    showCover={true}
+                    usePortrait={isMobile}
+                    useMouseEvents={true}
                     mobileScrollSupport={true}
-                    onFlip={onPageFlip} 
+                    onFlip={onPageFlip}
                     className="shorya-interactive-flipbook"
                     ref={flipBookRef}
                     style={{ margin: '0 auto' }}
@@ -335,11 +335,11 @@ export default function Magazines() {
                 </div>
               </div>
             ) : (
-              <img 
-                src={activeModal.src} 
-                alt="Enlarged magazine" 
+              <img
+                src={activeModal.src}
+                alt="Enlarged magazine"
                 className="shorya-static-modal-img"
-                style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.6)", margin: '0 auto' }} 
+                style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.6)", margin: '0 auto' }}
               />
             )}
           </div>
@@ -355,11 +355,11 @@ export default function Magazines() {
               <div className="shorya-page-counter-display" style={{ fontSize: isMobile ? '12px' : '14px' }}>
                 Page {currentPage + 1} of {activeModal.pages ? activeModal.pages.length : 0}
               </div>
-              
+
               {activeModal.pdfUrl && (
-                <a 
-                  href={activeModal.pdfUrl} 
-                  download 
+                <a
+                  href={activeModal.pdfUrl}
+                  download
                   className="shorya-flipbook-download-link"
                   style={{ fontSize: isMobile ? '12px' : '14px' }}
                 >

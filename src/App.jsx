@@ -156,6 +156,43 @@ function ArtworkDetailView({
   );
 }
 
+function getPageTitle(type, data) {
+  switch (type) {
+    case 'grid': return 'Home';
+    case 'biography': return 'Biography';
+    case 'huffington-post': return 'Huffington Post';
+    case 'artist-statement': return "Artist's Statement";
+    case 'acrylic-on-canvas': return 'Acrylic on Canvas';
+    case 'events': return 'Events';
+    case 'newspaper-articles': return 'Newspapers Articles';
+    case 'magazines': return 'Magazines';
+    case 'yahoo': return 'Yahoo';
+    case 'readers-digest': return "Reader's Digest";
+    case 'web-articles': return 'Web Articles';
+    case 'videos': return 'Videos';
+    case 'look-world-talking': return 'Look the world is talking';
+    case 'twitter-mentions': return 'Twitter Mentions';
+    case 'tedx-presentation': return 'TEDx Presentation';
+    case 'awards': return 'Awards & Certificates';
+    case 'contact': return 'Contact';
+    case 'celebrity-chef': return 'Celebrity Chef Gala';
+    case 'taj-mahal': return 'Taj Mahal Palace';
+    case 'pogo': return 'Pogo';
+    case 'spectrum-miami': return 'Spectrum Miami';
+    case 'kalidas': return 'Kalidas Sanskrit';
+    case 'art-expo': return 'Art Expo';
+    case 'holtzman': return 'Holtzman Gallery';
+    case 'rk-laxman': return 'R.K. Laxman';
+    case 'ndtv': return 'NDTV';
+    case 'tedx-event-page': return 'TEDx Event';
+    case 'nestle': return 'Nestle';
+    case 'sbs-radio': return 'SBS Radio';
+    case 'microsoft': return 'Microsoft Future Decoded';
+    case 'detail': return data ? data.title : 'Artwork Detail';
+    default: return 'Portfolio';
+  }
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('Home');
   const [expandedMenu, setExpandedMenu] = useState(null);
@@ -178,8 +215,11 @@ export default function App() {
     const path = location.pathname;
 
     const matchedRoute = ROUTE_MAP.find(route => route.paths.includes(path));
+    let viewType = 'grid';
+    let viewData = null;
 
     if (matchedRoute) {
+      viewType = matchedRoute.type;
       setCurrentView({ type: matchedRoute.type, data: null });
       setActiveTab(matchedRoute.tab);
       if (matchedRoute.expand) {
@@ -191,18 +231,26 @@ export default function App() {
 
       if (match) {
         if (match.customLayout === 'huffington') {
-          setCurrentView({ type: 'huffington-post', data: match });
+          viewType = 'huffington-post';
         } else if (match.customLayout === 'tedx') {
-          setCurrentView({ type: 'tedx-presentation', data: match });
+          viewType = 'tedx-presentation';
         } else {
-          setCurrentView({ type: 'detail', data: match });
+          viewType = 'detail';
         }
+        viewData = match;
+        setCurrentView({ type: viewType, data: match });
         setActiveTab('Gallery');
       }
     } else {
-      
       setCurrentView({ type: 'grid', data: null });
       setActiveTab('Home');
+    }
+
+    if (viewType === 'grid') {
+      document.title = 'Shorya Mahanot | Young Abstract Artist';
+    } else {
+      const pageTitle = getPageTitle(viewType, viewData);
+      document.title = `${pageTitle} | ShoryaMahanot`;
     }
 
     setMagnifier(prev => ({ ...prev, show: false }));

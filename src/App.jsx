@@ -312,7 +312,7 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${currentView.type === 'grid' ? 'home-layout' : ''}`}>
       <aside className="sidebar">
         <div id="brand-logo" className="logo-container" onClick={() => { navigate('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />

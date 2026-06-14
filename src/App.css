@@ -373,6 +373,7 @@ body,
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
   transform: translateY(15px);
   opacity: 0;
+  overflow: hidden !important;
   transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s !important;
 }
 
@@ -380,7 +381,7 @@ body,
   width: 26px !important;
   height: 26px !important;
   stroke-width: 3px !important;
-  transform: scaleX(-1) !important;
+  transform: scaleX(-1);
   transition: opacity 0.2s ease, transform 0.2s ease !important;
 }
 
@@ -392,7 +393,7 @@ body,
 }
 
 .card-hover-icon-circle:hover svg {
-  animation: searchIconHideAndSeek 0.8s ease-in-out !important;
+  animation: searchIconHideAndSeek 0.3s ease-in-out !important;
 }
 
 .shorya-biography-view-root {
@@ -2184,23 +2185,21 @@ body,
 
 @keyframes searchIconHideAndSeek {
   0% {
-    opacity: 1;
-    transform: scaleX(-1) scale(1);
+    transform: scaleX(-1) translateY(0);
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
   }
-
-  15% {
-    opacity: 0;
-    transform: scaleX(-1) scale(0.5);
+  40% {
+    transform: scaleX(-1) translateY(-45px);
   }
-
-  75% {
-    opacity: 0;
-    transform: scaleX(-1) scale(0.5);
+  41% {
+    transform: scaleX(-1) translateY(45px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
-
+  80% {
+    transform: scaleX(-1) translateY(0);
+  }
   100% {
-    opacity: 1;
-    transform: scaleX(-1) scale(1);
+    transform: scaleX(-1) translateY(0);
   }
 }
 

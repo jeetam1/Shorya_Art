@@ -61,7 +61,7 @@ export default function Magazines() {
   const onPageFlip = (e) => {
     setCurrentPage(e.data);
     window.dispatchEvent(new CustomEvent('flipbook-page-change', { detail: { currentPage: e.data } }));
-    const flipSound = new Audio('/page-flip.mp3');
+    const flipSound = new Audio('/audio/page-flip.mp3');
     flipSound.volume = 0.5;
     flipSound.play().catch(err => console.log('Audio play prevented:', err));
   };
@@ -124,7 +124,7 @@ export default function Magazines() {
     },
     {
       title: "THE WORLD OF SOCIETY",
-      coverSrc: "/551.jpg",
+      coverSrc: "/media/551.jpg",
       isFlipbook: false,
       pdfSrc: null,
       text: "Dummy details added here temporarily. This magazine will be updated with the full interactive 3D flipbook and PDF download once the assets are processed and ready."
@@ -177,7 +177,7 @@ export default function Magazines() {
     },
     {
       title: "Showtime (Hindi)",
-      coverSrc: "/556.jpg",
+      coverSrc: "/media/556.jpg",
       isFlipbook: false,
       text: "शौर्य जब मात्र चार साल के थे तो मुम्बई के होटल ताज के चैम्बर्स टेरेस में उनकी 24 कलाकृतियाँ प्रदर्शित की गई थीं। इन पेन्टिंग्स को जो भी देखता, विश्वास नहीं कर पाता की वे एक छोटे से बच्चे ने बनाई हैं। विश्वास दिलाने के लिए पिता को वीडियो दिखाना पड़ता। दुनिया का यह पहला बच्चा है, जिसे न्यूयार्क की सुप्रसिद्ध आर्ट गैलरी वार्ड-नासे में पूरे एक साल के लिए एक वाल दी गयी, जहाँ शौर्य की चित्रकला हर कला प्रेमी का ध्यान खींचती है।"
     }
@@ -186,7 +186,7 @@ export default function Magazines() {
   return (
     <div className="shorya-magazines-view-root" style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Magazines</h1>
         </div>

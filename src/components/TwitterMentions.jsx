@@ -68,7 +68,7 @@ export default function TwitterMentions() {
   return (
     <div className="shorya-twitter-view-root">
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Twitter Mentions</h1>
         </div>

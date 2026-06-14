@@ -10,7 +10,7 @@ const row4Images = ['/events-photos/a619.jpg', '/events-photos/a620.jpg'];
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Nestle</h1>
         </div>

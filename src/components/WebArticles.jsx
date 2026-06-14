@@ -56,7 +56,7 @@ export default function WebArticles() {
   return (
     <div className="shorya-web-articles-root">
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Web Articles</h1>
         </div>

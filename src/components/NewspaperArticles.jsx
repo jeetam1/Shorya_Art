@@ -145,7 +145,7 @@ export default function NewspaperArticles() {
   return (
   <div className="shorya-media-view-root">
 
-    <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+    <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
       <div className="shorya-custom-title-white-block">
         <h1 className="shorya-custom-title-text-value">Newspaper Articles</h1>
       </div>

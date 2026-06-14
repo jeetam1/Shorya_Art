@@ -138,7 +138,7 @@ export default function Events() {
   return (
     <div className="shorya-events-view-root">
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')" }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Events</h1>
         </div>

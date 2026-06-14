@@ -47,7 +47,7 @@ export default function LookWorldTalking() {
   return (
     <div className="shorya-look-talking-view-root" style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'center' }}>
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", width: '100%', justifyContent: 'flex-start' }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", width: '100%', justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Look the world is talking</h1>
         </div>

@@ -5,7 +5,7 @@ export default function SBSRadio() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/701.jpg')", justifyContent: 'flex-start' }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">SBS Radio</h1>
         </div>
@@ -30,7 +30,7 @@ export default function SBSRadio() {
           />
 
           <audio controls style={{ width: '100%', marginTop: '10px' }}>
-            <source src="/audio.mp3" type="audio/mpeg" />
+            <source src="/audio/audio.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
 

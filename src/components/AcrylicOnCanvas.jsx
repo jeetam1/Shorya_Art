@@ -7,14 +7,14 @@ export default function AcrylicOnCanvas() {
     const imageNumber = 601 + (i % 9);
     return {
       id: `shorya-acrylic-canvas-thumb-${i + 1}`,
-      src: `/${imageNumber}.jpg`
+      src: `/banners/${imageNumber}.jpg`
     };
   });
 
   return (
     <div className="shorya-acrylic-canvas-view-root">
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/602.jpg')" }}>
+      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/602.jpg')" }}>
         <div className="shorya-custom-title-white-block">
           <h1 className="shorya-custom-title-text-value">Acrylic on canvas</h1>
         </div>

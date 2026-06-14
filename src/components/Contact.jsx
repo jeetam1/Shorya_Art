@@ -50,7 +50,7 @@ export default function Contact() {
   return (
     <div className="contact-page-container">
       <div className="contact-header-section">
-        <div className="contact-banner-strip" style={{ backgroundImage: "url('/701.jpg')" }}></div>
+        <div className="contact-banner-strip" style={{ backgroundImage: "url('/banners/701.jpg')" }}></div>
         <div className="contact-title-box">
           <h1 className="contact-main-title">Contact</h1>
         </div>

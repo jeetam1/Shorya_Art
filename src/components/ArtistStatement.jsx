@@ -6,13 +6,13 @@ export default function ArtistStatement() {
   return (
     <div className="shorya-biography-view-root">
       
-      <PageBanner title="Artist's Statement" bgImage="/604.jpg" />
+      <PageBanner title="Artist's Statement" bgImage="/banners/604.jpg" />
 
       <div className="shorya-biography-body-scaffold-layout" style={{ margin: '0 auto', alignItems: 'center', textAlign: 'center' }}>
         
-        <div className="shorya-main-portrait-frame-wrapper" onClick={() => setModalImage('/600.jpg')} style={{ margin: '10px auto 25px auto', display: 'flex', justifyContent: 'center' }}>
+        <div className="shorya-main-portrait-frame-wrapper" onClick={() => setModalImage('/banners/600.jpg')} style={{ margin: '10px auto 25px auto', display: 'flex', justifyContent: 'center' }}>
           <img 
-            src="/600.jpg" 
+            src="/banners/600.jpg" 
             alt="Shorya Mahanot painting working asset" 
             className="shorya-main-portrait-img-element" 
           />

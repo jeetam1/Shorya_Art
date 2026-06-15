@@ -618,12 +618,21 @@ body,
   background-color: #ffffff !important;
   display: flex !important;
   flex-direction: column !important;
+  cursor: none !important;
+}
+
+.shorya-acrylic-canvas-view-root *,
+.shorya-acrylic-canvas-view-root a,
+.shorya-acrylic-canvas-view-root button,
+.shorya-lightbox-overlay-shroud,
+.shorya-lightbox-overlay-shroud * {
+  cursor: none !important;
 }
 
 .shorya-compact-gallery-outer-wrapper {
   width: 100% !important;
-  max-width: 580px !important;
-  padding: 40px 0px 60px 50px !important;
+  max-width: 1200px !important;
+  padding: 40px 50px 60px 50px !important;
   box-sizing: border-box !important;
   background-color: #ffffff !important;
 }
@@ -631,23 +640,29 @@ body,
 .shorya-gallery-grid-three-columns-matrix {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  gap: 15px 12px !important;
+  gap: 20px 20px !important;
   width: 100% !important;
 }
 
 .shorya-gallery-thumbnail-card-frame {
   width: 100% !important;
   background: #ffffff !important;
-  padding: 5px !important;
+  padding: 0px !important;
   box-sizing: border-box !important;
   border: 1px solid #e2e2e2 !important;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04) !important;
-  cursor: pointer !important;
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+  cursor: none !important;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .shorya-gallery-thumbnail-card-frame:hover {
-  transform: translateY(-2px) scale(1.02) !important;
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.28), -5px 10px 18px rgba(232, 150, 12, 0.22) !important;
+  border-color: #e8960c !important;
+}
+
+.shorya-gallery-thumbnail-card-frame:hover .shorya-gallery-thumbnail-img-asset {
+  transform: scale(1.08) !important;
 }
 
 .shorya-gallery-thumbnail-image-clipping-box {
@@ -662,7 +677,28 @@ body,
   object-fit: cover !important;
   display: block !important;
   image-rendering: -webkit-optimize-contrast !important;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
+
+/* Custom Trail Cursor Styles */
+.custom-cursor-ring {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #ff0000 !important;
+  border-radius: 50% !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
+  will-change: transform !important;
+  transform: translate3d(-100px, -100px, 0) scale(1);
+  opacity: 0;
+  background-color: transparent !important;
+  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+
 
 .shorya-lightbox-overlay-shroud {
   position: fixed !important;
@@ -675,46 +711,275 @@ body,
   z-index: 99999 !important;
 }
 
+.shorya-lightbox-overlay-shroud.open-animation {
+  animation: shroudFadeIn 0.15s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}
+
+.shorya-lightbox-overlay-shroud.close-animation {
+  animation: shroudFadeIn 0.15s cubic-bezier(0.25, 1, 0.5, 1) reverse forwards !important;
+}
+
+@keyframes shroudFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes shroudFadeOut {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
+
 .shorya-lightbox-modal-window {
   position: relative !important;
   width: 90vw !important;
   max-width: 1040px !important;
   max-height: 88vh !important;
-  background-color: #f7f6f2 !important;
-  padding: 12px !important;
+  background-color: #ffffff !important;
+  padding: 0px !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
   display: flex !important;
   flex-direction: column !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.shorya-lightbox-modal-window.open-animation {
+  animation: macOpenAnimation 0.15s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  will-change: transform, opacity !important;
+}
+
+.shorya-lightbox-modal-window.close-animation {
+  animation: macOpenAnimation 0.15s cubic-bezier(0.25, 1, 0.5, 1) reverse forwards !important;
+  will-change: transform, opacity !important;
+}
+
+@keyframes macOpenAnimation {
+  from {
+    transform: scale(0.05);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes macCloseAnimation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.05);
+    opacity: 0;
+  }
+}
+
+/* Restore normal system cursor pointers when lightbox is active */
+.shorya-acrylic-canvas-view-root.lightbox-active,
+.shorya-acrylic-canvas-view-root.lightbox-active * {
+  cursor: auto !important;
+}
+
+.shorya-acrylic-canvas-view-root.lightbox-active .shorya-lightbox-left-image-side {
+  cursor: crosshair !important;
+}
+
+.shorya-acrylic-canvas-view-root.lightbox-active .shorya-lightbox-close-trigger-btn {
+  cursor: pointer !important;
+}
+
+.shorya-acrylic-canvas-view-root.lightbox-active .custom-cursor-ring {
+  display: none !important;
 }
 
 .shorya-lightbox-close-trigger-btn {
   position: absolute !important;
-  top: -45px !important;
-  right: 0px !important;
-  background: none !important;
-  border: none !important;
-  color: #ffffff !important;
-  font-size: 38px !important;
-  cursor: pointer !important;
-}
-
-.shorya-lightbox-img-bounding-wrapper {
-  width: 100% !important;
-  height: 100% !important;
+  top: 15px !important;
+  right: 15px !important;
+  width: 36px !important;
+  height: 36px !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 50% !important;
+  color: #333333 !important;
+  font-size: 24px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  z-index: 1000 !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+
+.shorya-lightbox-close-trigger-btn:hover {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+}
+
+.shorya-lightbox-split-container {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 88vh !important;
+}
+
+.shorya-lightbox-left-image-side {
+  flex: 1.3 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #151515 !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.shorya-lightbox-image-wrapper {
+  position: relative !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+  max-height: 80vh !important;
+  box-sizing: border-box !important;
 }
 
 .shorya-lightbox-large-img-asset {
+  display: block !important;
   max-width: 100% !important;
-  max-height: 84vh !important;
+  max-height: 80vh !important;
   object-fit: contain !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+  border: none !important;
+  box-sizing: border-box !important;
 }
 
-.shorya-spring-zoom-animation {
-  animation: modalPopSpringScale 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
-  will-change: transform, opacity !important;
+.shorya-lightbox-right-content-side {
+  flex: 0.9 !important;
+  padding: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: #ffffff !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+.shorya-lightbox-artwork-title {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 12px 0 !important;
+  line-height: 1.3 !important;
+}
+
+.shorya-lightbox-artwork-meta {
+  display: flex !important;
+  gap: 8px !important;
+  margin-bottom: 20px !important;
+}
+
+.shorya-meta-badge {
+  background-color: #f3f3f3 !important;
+  color: #555555 !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.shorya-lightbox-divider {
+  border: 0 !important;
+  height: 1px !important;
+  background: #eaeaea !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.shorya-lightbox-artwork-description {
+  font-family: Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #444444 !important;
+  margin: 0 0 25px 0 !important;
+}
+
+.shorya-lightbox-technical-details {
+  margin-top: auto !important;
+  background: #fafafa !important;
+  padding: 20px !important;
+  border-radius: 6px !important;
+  border: 1px solid #eeeeee !important;
+}
+
+.shorya-tech-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 13.5px !important;
+  margin-bottom: 10px !important;
+  color: #444444 !important;
+}
+
+.shorya-tech-row:last-child {
+  margin-bottom: 0 !important;
+}
+
+.shorya-tech-row strong {
+  color: #111111 !important;
+}
+
+@media (max-width: 768px) {
+  .shorya-lightbox-split-container {
+    flex-direction: column !important;
+    max-height: 85vh !important;
+  }
+  
+  .shorya-lightbox-left-image-side {
+    flex: none !important;
+    height: 320px !important;
+    padding: 15px !important;
+  }
+
+  .shorya-lightbox-large-img-asset {
+    max-height: 280px !important;
+    border: 3px solid #ffffff !important;
+  }
+  
+  .shorya-lightbox-right-content-side {
+    flex: 1 !important;
+    padding: 25px 20px !important;
+  }
+
+  .shorya-lightbox-modal-window {
+    width: 95vw !important;
+    max-height: 90vh !important;
+  }
+
+  .shorya-lightbox-close-trigger-btn {
+    top: 10px !important;
+    right: 10px !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 20px !important;
+  }
 }
 
 @keyframes modalPopSpringScale {

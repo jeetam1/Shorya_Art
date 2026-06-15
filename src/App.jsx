@@ -408,11 +408,11 @@ export default function App() {
           <div className="sidebar-social-section">
             <span className="social-section-heading">Social Links</span>
             <div className="social-links-grid">
-              <a id="social-fb" href="#facebook" aria-label="Facebook" className="social-img-btn fb-bg" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a>
-              <a id="social-tw" href="#twitter" aria-label="Twitter" className="social-img-btn tw-bg" rel="noopener noreferrer"><i className="fa-brands fa-twitter"></i></a>
-              <a id="social-ig" href="#instagram" aria-label="Instagram" className="social-img-btn insta-bg" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
-              <a id="social-pi" href="#pinterest" aria-label="Pinterest" className="social-img-btn pin-bg" rel="noopener noreferrer"><i className="fa-brands fa-pinterest-p"></i></a>
-              <a id="social-yt" href="#youtube" aria-label="YouTube" className="social-img-btn yt-bg" rel="noopener noreferrer"><i className="fa-brands fa-youtube"></i></a>
+              <a id="social-fb" href="https://www.facebook.com/ShoryaMahanotArt/" target="_blank" aria-label="Facebook" className="social-img-btn fb-bg" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a>
+              <a id="social-tw" href="https://twitter.com/shoryamahanot/" target="_blank" aria-label="Twitter" className="social-img-btn tw-bg" rel="noopener noreferrer"><i className="fa-brands fa-x-twitter"></i></a>
+              <a id="social-ig" href="https://www.instagram.com/shoryamahanot_official/" target="_blank" aria-label="Instagram" className="social-img-btn insta-bg" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
+              <a id="social-li" href="https://www.linkedin.com/company/signature-style-abstract-artist/?originalSubdomain=in" target="_blank" aria-label="LinkedIn" className="social-img-btn linkedin-bg" rel="noopener noreferrer"><i className="fa-brands fa-linkedin-in"></i></a>
+              <a id="social-yt" href="https://www.youtube.com/watch?v=8ju4wewKCzc" target="_blank" aria-label="YouTube" className="social-img-btn yt-bg" rel="noopener noreferrer"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ export default function AcrylicOnCanvas() {
   const [isClosing, setIsClosing] = useState(false);
   const [modalOrigin, setModalOrigin] = useState(null);
   const [magnifier, setMagnifier] = useState({ x: 0, y: 0, show: false });
+  const [activeViewMode, setActiveViewMode] = useState('painting'); // 'painting' or 'mockup'
 
   const containerRef = useRef(null);
   const ringRef = useRef(null);
@@ -96,6 +97,7 @@ export default function AcrylicOnCanvas() {
 
     setModalOrigin({ x: cardCenterX, y: cardCenterY });
     setActiveImage(src);
+    setActiveViewMode('painting');
     setIsClosing(false);
   };
 
@@ -104,7 +106,8 @@ export default function AcrylicOnCanvas() {
     setTimeout(() => {
       setActiveImage(null);
       setIsClosing(false);
-    }, 250); // matches the shroud/modal fade/scale duration (150ms)
+      setActiveViewMode('painting');
+    }, 350); // matches the shroud/modal fade/scale duration (350ms)
   };
 
   const handleInteractiveEnter = () => {
@@ -126,6 +129,7 @@ export default function AcrylicOnCanvas() {
   };
 
   const handleMagnifierMouseMove = (e) => {
+    if (activeViewMode !== 'painting') return;
     if (!magnifierContainerRef.current) return;
     const { left, top, width, height } = magnifierContainerRef.current.getBoundingClientRect();
     const posX = e.clientX - left;
@@ -150,12 +154,14 @@ export default function AcrylicOnCanvas() {
     const bgPosX = -(magnifier.x * zoomLevel) + (lensSize / 2);
     const bgPosY = -(magnifier.y * zoomLevel) + (lensSize / 2);
 
+    const displayedImage = activeImage ? (activeViewMode === 'painting' ? activeImage : activeImage.replace('.jpg', '_mock.png')) : '';
+
     return {
       left: `${magnifier.x - (lensSize / 2)}px`,
       top: `${magnifier.y - (lensSize / 2)}px`,
       width: `${lensSize}px`,
       height: `${lensSize}px`,
-      backgroundImage: `url(${activeImage})`,
+      backgroundImage: `url(${displayedImage})`,
       backgroundPosition: `${bgPosX}px ${bgPosY}px`,
       backgroundSize: `${bgWidth}px ${bgHeight}px`,
       imageRendering: 'high-quality'
@@ -208,19 +214,39 @@ export default function AcrylicOnCanvas() {
             <div className="shorya-lightbox-split-container">
               <div 
                 className="shorya-lightbox-left-image-side"
-                style={{ cursor: 'crosshair' }}
+                style={{ cursor: activeViewMode === 'painting' ? 'crosshair' : 'default', display: 'flex', flexDirection: 'column', gap: '15px', justifyContent: 'center', alignItems: 'center' }}
               >
                 <div
                   className="shorya-lightbox-image-wrapper"
                   ref={magnifierContainerRef}
                   onMouseMove={handleMagnifierMouseMove}
                   onMouseLeave={() => setMagnifier(prev => ({ ...prev, show: false }))}
-                  style={{ position: 'relative', display: 'inline-block' }}
+                  style={{ position: 'relative' }}
                 >
-                  <img src={activeImage} alt="Enlarged Portfolio View" className="shorya-lightbox-large-img-asset" />
-                  {magnifier.show && magnifierContainerRef.current && (
+                  <img src={activeImage ? (activeViewMode === 'painting' ? activeImage : activeImage.replace('.jpg', '_mock.png')) : ''} alt="Enlarged Portfolio View" className="shorya-lightbox-large-img-asset" />
+                  {activeViewMode === 'painting' && magnifier.show && magnifierContainerRef.current && (
                     <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
                   )}
+                </div>
+
+                {/* Thumbnails preview bar */}
+                <div className="shorya-lightbox-preview-bar">
+                  <div 
+                    className={`shorya-preview-thumb-item ${activeViewMode === 'painting' ? 'active' : ''}`}
+                    onClick={() => setActiveViewMode('painting')}
+                    onMouseEnter={handleInteractiveEnter}
+                    onMouseLeave={handleInteractiveLeave}
+                  >
+                    <img src={activeImage} alt="Painting view" />
+                  </div>
+                  <div 
+                    className={`shorya-preview-thumb-item ${activeViewMode === 'mockup' ? 'active' : ''}`}
+                    onClick={() => setActiveViewMode('mockup')}
+                    onMouseEnter={handleInteractiveEnter}
+                    onMouseLeave={handleInteractiveLeave}
+                  >
+                    <img src={activeImage ? activeImage.replace('.jpg', '_mock.png') : ''} alt="Room view" />
+                  </div>
                 </div>
               </div>
               <div className="shorya-lightbox-right-content-side">

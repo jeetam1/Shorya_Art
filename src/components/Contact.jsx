@@ -15,8 +15,8 @@ export default function Contact() {
 
   const generateCaptcha = () => {
     setCaptcha({
-      num1: Math.floor(Math.random() * 10) + 1, 
-      num2: Math.floor(Math.random() * 10) + 1, 
+      num1: Math.floor(Math.random() * 10) + 1,
+      num2: Math.floor(Math.random() * 10) + 1,
       userAnswer: ''
     });
   };
@@ -31,13 +31,13 @@ export default function Contact() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const correctAnswer = captcha.num1 + captcha.num2;
 
     // Fixed: Added radix 10 to parseInt as a Javascript best practice
     if (parseInt(captcha.userAnswer, 10) !== correctAnswer) {
       alert("Incorrect Captcha! Please try again.");
-      setCaptcha((prev) => ({ ...prev, userAnswer: '' })); 
+      setCaptcha((prev) => ({ ...prev, userAnswer: '' }));
       return;
     }
 
@@ -45,15 +45,15 @@ export default function Contact() {
 
     const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id_here';
     const adminTemplateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
-    
+
     // Added: Second template ID for the auto-reply to the user
     const autoReplyTemplateID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || 'your_autoreply_template_id_here';
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
 
     // Simulate flow if the environment variables are not configured
     if (
-      serviceID === 'your_service_id_here' || 
-      adminTemplateID === 'your_template_id_here' || 
+      serviceID === 'your_service_id_here' ||
+      adminTemplateID === 'your_template_id_here' ||
       publicKey === 'your_public_key_here' ||
       !serviceID || !adminTemplateID || !publicKey
     ) {
@@ -76,7 +76,7 @@ export default function Contact() {
     try {
       // 1. Send Notification Email to Admin
       await emailjs.send(serviceID, adminTemplateID, templateParams, publicKey);
-      
+
       // 2. Send Auto-Reply Receipt Email to Customer
       await emailjs.send(serviceID, autoReplyTemplateID, templateParams, publicKey);
 
@@ -93,7 +93,7 @@ export default function Contact() {
   const handleReset = () => {
     setFormData({ name: '', email: '', message: '' });
     generateCaptcha();
-    setIsSubmitted(false); 
+    setIsSubmitted(false);
     setIsSending(false);
   };
 
@@ -120,7 +120,7 @@ export default function Contact() {
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" className="contact-input" required disabled={isSending} />
                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="contact-input" required disabled={isSending} />
                 <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Message" className="contact-textarea" required disabled={isSending}></textarea>
-                
+
                 <div className="contact-actions-row">
                   <button type="submit" className="contact-btn" disabled={isSending}>
                     {isSending ? 'SENDING...' : 'SUBMIT'}

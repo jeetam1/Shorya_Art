@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PageBanner from './PageBanner';
 
 export default function TwitterMentions() {
   const [visibleCount, setVisibleCount] = useState(2);
@@ -68,11 +69,7 @@ export default function TwitterMentions() {
   return (
     <div className="shorya-twitter-view-root">
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Twitter Mentions</h1>
-        </div>
-      </div>
+      <PageBanner title="Twitter Mentions" bgImage="/twitter-mention.jpg" />
 
       <div className="twitter-mentions-content-container">
         <div className="twitter-mentions-feed-list">

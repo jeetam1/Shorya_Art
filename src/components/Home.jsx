@@ -28,7 +28,7 @@ export default function Home() {
           }}
         >
           <div className="art-card-wrapper">
-            <img src={item.src} alt={item.title} className="art-card-img" />
+            <img loading="lazy" src={item.src} alt={item.title} className="art-card-img" />
             
             <div className="card-hover-overlay">
               <h3 className="card-hover-title">{item.title}</h3>

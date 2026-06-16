@@ -1,15 +1,12 @@
 import React from 'react';
 import CommentSection from './CommentSection'; 
+import PageBanner from './PageBanner';
 
 export default function SBSRadio() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">SBS Radio</h1>
-        </div>
-      </div>
+      <PageBanner title="SBS Radio" bgImage="/banners/701.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -23,8 +20,7 @@ export default function SBSRadio() {
             Reaching to the land down under.
           </h2>
 
-          <img 
-            src="/events-photos/a539.png" 
+          <img loading="lazy" src="/events-photos/a539.png" 
             alt="SBS Radio Interview" 
             style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }} 
           />

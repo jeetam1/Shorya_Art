@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function RKLaxman() {
 
@@ -31,11 +32,7 @@ export default function RKLaxman() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">R.K. Laxman</h1>
-        </div>
-      </div>
+      <PageBanner title="R.K. Laxman" bgImage="/RK.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -82,8 +79,7 @@ export default function RKLaxman() {
                         position: 'relative'
                       }}
                     >
-                      <img 
-                        src={src} 
+                      <img loading="lazy" src={src} 
                         alt={`R.K. Laxman Event Row ${rowIndex + 1} Image ${imgIndex + 1}`} 
                         style={{ 
                           width: '100%', 
@@ -102,8 +98,7 @@ export default function RKLaxman() {
           <div 
             style={{ width: '100%', overflow: 'hidden', border: '1px solid #e2e2e2', marginTop: '10px' }}
           >
-            <img 
-              src={finalImage} 
+            <img loading="lazy" src={finalImage} 
               alt="Final Wide View of Event" 
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />

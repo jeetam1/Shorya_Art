@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function CelebrityChefGala() {
   
@@ -8,11 +9,7 @@ const row2Images = ['/events-photos/a64.jpg', '/events-photos/a65.jpg'];
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Celebrity Chef Gala</h1>
-        </div>
-      </div>
+      <PageBanner title="Celebrity Chef Gala" bgImage="/Celebrity-chef-gala.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -38,8 +35,7 @@ const row2Images = ['/events-photos/a64.jpg', '/events-photos/a65.jpg'];
                   border: '1px solid #e2e2e2'
                 }}
               >
-                <img 
-                  src={src} 
+                <img loading="lazy" src={src} 
                   alt={`Celebrity Chef Gala Image ${imgIndex + 1}`} 
                   style={{ 
                     width: '100%', 
@@ -62,8 +58,7 @@ const row2Images = ['/events-photos/a64.jpg', '/events-photos/a65.jpg'];
                   border: '1px solid #e2e2e2'
                 }}
               >
-                <img 
-                  src={src} 
+                <img loading="lazy" src={src} 
                   alt={`Celebrity Chef Gala Tall Image ${imgIndex + 1}`} 
                   style={{ 
                     width: '100%', 

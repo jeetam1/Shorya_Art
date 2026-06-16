@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PageBanner from './PageBanner';
 
 export default function AcrylicOnCanvas() {
   const [activeImage, setActiveImage] = useState(null);
@@ -171,11 +172,7 @@ export default function AcrylicOnCanvas() {
   return (
     <div ref={containerRef} className={`shorya-acrylic-canvas-view-root ${activeImage ? 'lightbox-active' : ''}`}>
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/602.jpg')" }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Acrylic on canvas</h1>
-        </div>
-      </div>
+      <PageBanner title="Acrylic on canvas" bgImage="/acrylic_on_canvas.jpg" />
 
       <div className="shorya-compact-gallery-outer-wrapper">
         <div className="shorya-gallery-grid-three-columns-matrix">
@@ -188,7 +185,7 @@ export default function AcrylicOnCanvas() {
               onMouseLeave={handleInteractiveLeave}
             >
               <div className="shorya-gallery-thumbnail-image-clipping-box">
-                <img src={item.src} alt="Portfolio Work Piece" className="shorya-gallery-thumbnail-img-asset" />
+                <img loading="lazy" src={item.src} alt="Portfolio Work Piece" className="shorya-gallery-thumbnail-img-asset" />
               </div>
             </div>
           ))}
@@ -223,7 +220,7 @@ export default function AcrylicOnCanvas() {
                   onMouseLeave={() => setMagnifier(prev => ({ ...prev, show: false }))}
                   style={{ position: 'relative' }}
                 >
-                  <img src={activeImage ? (activeViewMode === 'painting' ? activeImage : activeImage.replace('.jpg', '_mock.png')) : ''} alt="Enlarged Portfolio View" className="shorya-lightbox-large-img-asset" />
+                  <img loading="lazy" src={activeImage ? (activeViewMode === 'painting' ? activeImage : activeImage.replace('.jpg', '_mock.png')) : ''} alt="Enlarged Portfolio View" className="shorya-lightbox-large-img-asset" />
                   {activeViewMode === 'painting' && magnifier.show && magnifierContainerRef.current && (
                     <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
                   )}
@@ -237,7 +234,7 @@ export default function AcrylicOnCanvas() {
                     onMouseEnter={handleInteractiveEnter}
                     onMouseLeave={handleInteractiveLeave}
                   >
-                    <img src={activeImage} alt="Painting view" />
+                    <img loading="lazy" src={activeImage} alt="Painting view" />
                   </div>
                   <div 
                     className={`shorya-preview-thumb-item ${activeViewMode === 'mockup' ? 'active' : ''}`}
@@ -245,7 +242,7 @@ export default function AcrylicOnCanvas() {
                     onMouseEnter={handleInteractiveEnter}
                     onMouseLeave={handleInteractiveLeave}
                   >
-                    <img src={activeImage ? activeImage.replace('.jpg', '_mock.png') : ''} alt="Room view" />
+                    <img loading="lazy" src={activeImage ? activeImage.replace('.jpg', '_mock.png') : ''} alt="Room view" />
                   </div>
                 </div>
               </div>

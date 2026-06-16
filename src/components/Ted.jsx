@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentSection from './CommentSection'; 
+import PageBanner from './PageBanner';
 
 export default function Ted() {
   
@@ -16,11 +17,7 @@ export default function Ted() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Ted X</h1>
-        </div>
-      </div>
+      <PageBanner title="Ted X" bgImage="/banners/701.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -59,7 +56,7 @@ export default function Ted() {
           </div>
           
           <div style={{ flex: '1 1 200px', display: 'flex', justifyContent: 'center' }}>
-            <img src="/events-photos/a523.jpg" alt="TEDx Logo" style={{ maxWidth: '240px', width: '100%', height: 'auto' }} />
+            <img loading="lazy" src="/events-photos/a523.jpg" alt="TEDx Logo" style={{ maxWidth: '240px', width: '100%', height: 'auto' }} />
           </div>
         </div>
 
@@ -83,8 +80,7 @@ export default function Ted() {
                       border: '1px solid #e2e2e2'
                     }}
                   >
-                    <img 
-                      src={src} 
+                    <img loading="lazy" src={src} 
                       alt={`TEDx Event Row ${rowIndex + 1} Image ${imgIndex + 1}`} 
                       style={{ 
                         width: '100%', 

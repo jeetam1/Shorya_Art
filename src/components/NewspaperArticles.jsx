@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PageBanner from './PageBanner';
 
 export default function NewspaperArticles() {
   const [modalImage, setModalImage] = useState(null);
@@ -145,11 +146,7 @@ export default function NewspaperArticles() {
   return (
   <div className="shorya-media-view-root">
 
-    <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
-      <div className="shorya-custom-title-white-block">
-        <h1 className="shorya-custom-title-text-value">Newspaper Articles</h1>
-      </div>
-    </div>
+    <PageBanner title="Newspaper Articles" bgImage="/newspaper_and_articles.jpg" />
 
     <div className="shorya-media-articles-container">
       {articlesData.map((article, index) => (
@@ -157,7 +154,7 @@ export default function NewspaperArticles() {
 
           <div className="shorya-media-split-row">
             <div className="shorya-media-brand-logo-frame">
-              <img src={article.brandSrc} alt={`${article.brand} logo`} className="shorya-media-brand-logo-img" />
+              <img loading="lazy" src={article.brandSrc} alt={`${article.brand} logo`} className="shorya-media-brand-logo-img" />
             </div>
             <p className="shorya-media-description-body-text">{article.text}</p>
           </div>
@@ -167,7 +164,7 @@ export default function NewspaperArticles() {
             setIsZoomed(false); 
           }}>
             <div className="shorya-media-clipping-frame">
-              <img src={article.clippingSrc} alt="Newspaper clipping snapshot document" className="shorya-media-clipping-img" />
+              <img loading="lazy" src={article.clippingSrc} alt="Newspaper clipping snapshot document" className="shorya-media-clipping-img" />
             </div>
           </div>
 
@@ -193,8 +190,7 @@ export default function NewspaperArticles() {
           onMouseUp={() => setTimeout(() => setIsDragging(false), 0)}
           onMouseLeave={() => setIsDragging(false)}
         >
-          <img 
-            src={modalImage} 
+          <img loading="lazy" src={modalImage} 
             alt="Enlarged view blueprint scanner" 
             className={`shorya-modal-image ${isZoomed ? 'zoomed-in' : 'zoomed-out'}`}
             onClick={handleImageClick}

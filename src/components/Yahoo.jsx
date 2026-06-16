@@ -10,7 +10,7 @@ export default function Yahoo() {
         <p className="yahoo-meta">Posted | 0 comments</p>
 
         <div className="yahoo-logo-container">
-          <img src="/media/ab12.jpg" alt="Yahoo! News" className="yahoo-logo-img" />
+          <img loading="lazy" src="/media/ab12.jpg" alt="Yahoo! News" className="yahoo-logo-img" />
         </div>
 
         <h2 className="yahoo-sub-title">
@@ -25,7 +25,7 @@ export default function Yahoo() {
             </p>
           </div>
           <div className="yahoo-image-column">
-            <img src="/media/ab13.png" alt="Shorya Mahanot smiling" className="yahoo-article-img" />
+            <img loading="lazy" src="/media/ab13.png" alt="Shorya Mahanot smiling" className="yahoo-article-img" />
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function ArtExpo() {
   
@@ -8,11 +9,7 @@ const row2Images = ['/events-photos/a84.jpg', '/events-photos/a85.jpg'];
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Art Expo</h1>
-        </div>
-      </div>
+      <PageBanner title="Art Expo" bgImage="/Art-Expo.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -38,8 +35,7 @@ const row2Images = ['/events-photos/a84.jpg', '/events-photos/a85.jpg'];
                   border: '1px solid #e2e2e2'
                 }}
               >
-                <img 
-                  src={src} 
+                <img loading="lazy" src={src} 
                   alt={`Art Expo Event Image ${imgIndex + 1}`} 
                   style={{ 
                     width: '100%', 
@@ -64,8 +60,7 @@ const row2Images = ['/events-photos/a84.jpg', '/events-photos/a85.jpg'];
                   border: '1px solid #e2e2e2'
                 }}
               >
-                <img 
-                  src={src} 
+                <img loading="lazy" src={src} 
                   alt={`Art Expo Event Image ${imgIndex + 4}`} 
                   style={{ 
                     width: '100%', 

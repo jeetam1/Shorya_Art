@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PageBanner from './PageBanner';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   });
 
@@ -42,19 +42,14 @@ export default function Contact() {
   };
 
   const handleReset = () => {
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', message: '' });
     generateCaptcha();
     setIsSubmitted(false); 
   };
 
   return (
     <div className="contact-page-container">
-      <div className="contact-header-section">
-        <div className="contact-banner-strip" style={{ backgroundImage: "url('/banners/701.jpg')" }}></div>
-        <div className="contact-title-box">
-          <h1 className="contact-main-title">Contact</h1>
-        </div>
-      </div>
+      <PageBanner title="Contact" bgImage="/contact.jpg" />
 
       <div className="contact-content-wrapper">
         <div className="contact-info-block">
@@ -74,7 +69,6 @@ export default function Contact() {
               <div className="contact-main-inputs">
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" className="contact-input" required />
                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="contact-input" required />
-                <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} placeholder="Subject" className="contact-input" required />
                 <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Message" className="contact-textarea" required></textarea>
                 
                 <div className="contact-actions-row">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageBanner from './PageBanner';
 
 export default function Videos() {
   const videosData = [
@@ -161,11 +162,7 @@ export default function Videos() {
   return (
     <div className="shorya-videos-view-root">
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/biography-photos/6.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Videos</h1>
-        </div>
-      </div>
+      <PageBanner title="Videos" bgImage="/videos.jpg" />
 
       <div className="shorya-videos-list-container" style={{ margin: '0 auto', padding: '40px 20px 60px 20px', alignItems: 'center' }}>
         {videosData.map((video, index) => {
@@ -187,7 +184,7 @@ export default function Videos() {
 
               {isUpperTen && video.logoSrc && (
                 <div className="shorya-video-publisher-logo-row" style={{ display: 'flex', justifyContent: 'center', marginBottom: '25px' }}>
-                  <img src={video.logoSrc} alt={video.logoAlt || "Publisher Logo"} className="shorya-video-publisher-badge-img" />
+                  <img loading="lazy" src={video.logoSrc} alt={video.logoAlt || "Publisher Logo"} className="shorya-video-publisher-badge-img" />
                 </div>
               )}
 
@@ -203,8 +200,7 @@ export default function Videos() {
                   ></iframe>
                 ) : (
                   <div className="shorya-video-placeholder-trigger-hull" onClick={() => loadVideo(index)}>
-                    <img 
-                      src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
+                    <img loading="lazy" src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
                       alt="Video thumbnail blueprint" 
                       className="shorya-video-preview-thumbnail-asset"
                     />

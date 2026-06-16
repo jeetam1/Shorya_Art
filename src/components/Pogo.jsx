@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function Pogo() {
 
@@ -19,11 +20,7 @@ export default function Pogo() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Pogo</h1>
-        </div>
-      </div>
+      <PageBanner title="Pogo" bgImage="/Pogo-1.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -69,8 +66,7 @@ export default function Pogo() {
                         border: '1px solid #e2e2e2'
                       }}
                     >
-                      <img 
-                        src={src} 
+                      <img loading="lazy" src={src} 
                         alt={`Pogo Event Row ${rowIndex + 1} Image ${imgIndex + 1}`} 
                         style={{ 
                           width: '100%', 

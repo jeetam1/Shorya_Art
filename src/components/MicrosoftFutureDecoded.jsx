@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function MicrosoftFutureDecoded() {
 
@@ -16,11 +17,7 @@ export default function MicrosoftFutureDecoded() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Microsoft Future Decoded</h1>
-        </div>
-      </div>
+      <PageBanner title="Microsoft Future Decoded" bgImage="/banners/701.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -48,8 +45,7 @@ export default function MicrosoftFutureDecoded() {
                       border: '1px solid #e2e2e2'
                     }}
                   >
-                    <img 
-                      src={src} 
+                    <img loading="lazy" src={src} 
                       alt={`Microsoft Future Decoded Event Image ${rowIndex * 3 + imgIndex + 1}`} 
                       style={{ 
                         width: '100%', 

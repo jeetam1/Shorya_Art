@@ -24,12 +24,12 @@ export default function HuffingtonPost() {
             </p>
           </div>
           <div className="split-img-right">
-            <img src="/home-photos/4.jpg" alt="The Huffington Post Logo" className="inline-article-img" />
+            <img loading="lazy" src="/home-photos/4.jpg" alt="The Huffington Post Logo" className="inline-article-img" />
           </div>
         </div>
 
         <div className="article-inline-image-container">
-          <img src="/events-photos/1000.jpeg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
+          <img loading="lazy" src="/events-photos/1000.jpeg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
         </div>
 
         <p className="article-body-text">
@@ -37,7 +37,7 @@ export default function HuffingtonPost() {
         </p>
 
         <div className="article-inline-image-container">
-          <img src="/events-photos/1001.jpg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
+          <img loading="lazy" src="/events-photos/1001.jpg" alt="Artwork Details" className="inline-article-img full-width-article-img" />
         </div>
 
         <p className="article-body-text">

@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function TajMahalPalace() {
   
@@ -26,11 +27,7 @@ export default function TajMahalPalace() {
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/events-photos/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Taj Mahal Palace Hotel</h1>
-        </div>
-      </div>
+      <PageBanner title="Taj Mahal Palace Hotel" bgImage="/Taj.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -76,8 +73,7 @@ export default function TajMahalPalace() {
                         position: 'relative'
                       }}
                     >
-                      <img 
-                        src={src} 
+                      <img loading="lazy" src={src} 
                         alt={`Exhibition Row ${rowIndex + 1} Image ${imgIndex + 1}`} 
                         style={{ 
                           width: '100%', 
@@ -100,8 +96,7 @@ export default function TajMahalPalace() {
             style={{ width: '100%', overflow: 'hidden', border: '1px solid #e2e2e2', marginTop: '10px' }}
           >
             
-            <img 
-              src="/events-photos/aa41.jpg" 
+            <img loading="lazy" src="/events-photos/aa41.jpg" 
               alt="Final Wide View of Exhibition" 
               style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.3s ease' }}
               onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'} 

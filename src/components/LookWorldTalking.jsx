@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function LookWorldTalking() {
  const quotesData = [
@@ -47,11 +48,7 @@ export default function LookWorldTalking() {
   return (
     <div className="shorya-look-talking-view-root" style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'center' }}>
       
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", width: '100%', justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Look the world is talking</h1>
-        </div>
-      </div>
+      <PageBanner title="Look the world is talking" bgImage="/look_the_world_is_talking.jpg" />
 
       <div className="shorya-talking-cards-grid-container" style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '40px' }}>
         {quotesData.map((card, index) => (
@@ -64,7 +61,7 @@ export default function LookWorldTalking() {
 
             <div className="shorya-talking-card-split-body-layout" style={{ display: 'flex', gap: '25px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
               <div className="shorya-talking-card-brand-img-box" style={{ flex: '0 0 150px' }}>
-                <img src={card.src} alt={card.author} className="shorya-talking-card-publisher-badge-img" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                <img loading="lazy" src={card.src} alt={card.author} className="shorya-talking-card-publisher-badge-img" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
               </div>
               
               <div className="shorya-talking-card-narrative-text-box" style={{ flex: '1', minWidth: '250px' }}>

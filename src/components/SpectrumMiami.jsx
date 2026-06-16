@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function SpectrumMiami() {
 
@@ -8,11 +9,7 @@ const fullWidthImage = '/events-photos/a74.jpg';
   return (
     <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Spectrum &ndash; Miami</h1>
-        </div>
-      </div>
+      <PageBanner title="Spectrum &ndash; Miami" bgImage="/banners/701.jpg" />
 
       <div style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
@@ -38,8 +35,7 @@ const fullWidthImage = '/events-photos/a74.jpg';
                   border: '1px solid #e2e2e2'
                 }}
               >
-                <img 
-                  src={src} 
+                <img loading="lazy" src={src} 
                   alt={`Spectrum Miami Event Image ${imgIndex + 1}`} 
                   style={{ 
                     width: '100%', 
@@ -53,8 +49,7 @@ const fullWidthImage = '/events-photos/a74.jpg';
           </div>
 
           <div style={{ width: '100%', backgroundColor: '#ffffff', border: '1px solid #e2e2e2', marginBottom: '30px' }}>
-            <img 
-              src={fullWidthImage} 
+            <img loading="lazy" src={fullWidthImage} 
               alt="Spectrum Miami Exhibition Floor" 
               style={{ 
                 width: '100%', 

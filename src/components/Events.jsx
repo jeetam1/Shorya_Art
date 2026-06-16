@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageBanner from './PageBanner';
 
 export default function Events() {
   const [modalImage, setModalImage] = useState(null);
@@ -138,11 +139,7 @@ export default function Events() {
   return (
     <div className="shorya-events-view-root">
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Events</h1>
-        </div>
-      </div>
+      <PageBanner title="Events" bgImage="/events.jpg" />
 
       <div className="shorya-events-timeline-container">
         {eventTimelineData.map((event, index) => (
@@ -175,7 +172,7 @@ export default function Events() {
               </div>
             ) : (
               <div className="shorya-event-main-image-frame" onClick={() => setModalImage(event.imgSrc)}>
-                <img src={event.imgSrc} alt={event.title} className="shorya-event-display-photo" />
+                <img loading="lazy" src={event.imgSrc} alt={event.title} className="shorya-event-display-photo" />
               </div>
             )}
 
@@ -186,7 +183,7 @@ export default function Events() {
             <div className="shorya-event-split-info-row">
 
               <div className="shorya-event-brand-logo-box">
-                <img src={event.logoSrc} alt={`${event.title} Logo`} className="shorya-event-brand-logo-asset" />
+                <img loading="lazy" src={event.logoSrc} alt={`${event.title} Logo`} className="shorya-event-brand-logo-asset" />
               </div>
 
               <div className="shorya-event-description-text-block">
@@ -217,7 +214,7 @@ export default function Events() {
           display: "flex", alignItems: "center", justifyContent: "center", zIndex: 99999, cursor: "zoom-out"
         }} onClick={() => setModalImage(null)}>
           <div onClick={(e) => e.stopPropagation()}>
-            <img src={modalImage} alt="Enlarged view" style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #fff", boxShadow: "0 10px 40px rgba(0,0,0,0.5)" }} />
+            <img loading="lazy" src={modalImage} alt="Enlarged view" style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #fff", boxShadow: "0 10px 40px rgba(0,0,0,0.5)" }} />
           </div>
         </div>
       )}

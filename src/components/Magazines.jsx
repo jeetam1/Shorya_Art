@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
+import PageBanner from './PageBanner';
 
 const placeholderImg = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP";
 
@@ -29,8 +30,7 @@ const FlipBookPage = React.forwardRef((props, ref) => {
       {props.image === "blank" ? (
         <div style={{ width: '100%', height: '100%', backgroundColor: '#ffffff' }} />
       ) : (
-        <img
-          src={shouldLoad ? props.image : placeholderImg}
+        <img loading="lazy" src={shouldLoad ? props.image : placeholderImg}
           alt="Magazine Page"
           style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', margin: '0 auto' }}
         />
@@ -186,11 +186,7 @@ export default function Magazines() {
   return (
     <div className="shorya-magazines-view-root" style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')" }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Magazines</h1>
-        </div>
-      </div>
+      <PageBanner title="Magazines" bgImage="/magazines.jpg" />
 
       <div className="shorya-magazines-list-container" style={{ width: '100%', maxWidth: '900px', margin: '50px auto', padding: '0 30px', boxSizing: 'border-box' }}>
         {magazinesData.map((item, index) => {
@@ -335,8 +331,7 @@ export default function Magazines() {
                 </div>
               </div>
             ) : (
-              <img
-                src={activeModal.src}
+              <img loading="lazy" src={activeModal.src}
                 alt="Enlarged magazine"
                 className="shorya-static-modal-img"
                 style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", border: "3px solid #ffffff", boxShadow: "0 10px 40px rgba(0,0,0,0.6)", margin: '0 auto' }}

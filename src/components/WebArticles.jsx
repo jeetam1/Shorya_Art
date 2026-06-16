@@ -1,4 +1,5 @@
 import React from 'react';
+import PageBanner from './PageBanner';
 
 export default function WebArticles() {
   const webArticlesData = [
@@ -56,11 +57,7 @@ export default function WebArticles() {
   return (
     <div className="shorya-web-articles-root">
 
-      <div className="shorya-custom-header-strip-container" style={{ backgroundImage: "url('/banners/701.jpg')", justifyContent: 'flex-start' }}>
-        <div className="shorya-custom-title-white-block">
-          <h1 className="shorya-custom-title-text-value">Web Articles</h1>
-        </div>
-      </div>
+      <PageBanner title="Web Articles" bgImage="/magazines.jpg" />
 
       <div className="shorya-articles-main-wrapper">
         {webArticlesData.map((article, index) => {

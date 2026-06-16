@@ -33,7 +33,7 @@ export default function TedX() {
           </div>
           <div className="tedx-branding-logo-box">
             
-            <img src="/events-photos/30.jpg" alt="TEDx Logo" className="tedx-fluid-logo" />
+            <img loading="lazy" src="/events-photos/30.jpg" alt="TEDx Logo" className="tedx-fluid-logo" />
           </div>
         </div>
 
@@ -42,7 +42,7 @@ export default function TedX() {
           {galleryImages.map((srcUrl, index) => (
             <div key={index} className="tedx-matrix-thumbnail-card">
               <div className="tedx-matrix-image-clipping-box">
-                <img src={srcUrl} alt={`TEDx ${index}`} className="tedx-matrix-img-asset" />
+                <img loading="lazy" src={srcUrl} alt={`TEDx ${index}`} className="tedx-matrix-img-asset" />
               </div>
             </div>
           ))}

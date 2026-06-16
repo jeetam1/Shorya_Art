@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PageBanner from './PageBanner';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ export default function Contact() {
 
   const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, userAnswer: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const generateCaptcha = () => {
     setCaptcha({
@@ -38,13 +40,51 @@ export default function Contact() {
       return;
     }
 
-    setIsSubmitted(true);
+    setIsSending(true);
+
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id_here';
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
+
+    // Simulate flow if the environment variables are not configured
+    if (
+      serviceID === 'your_service_id_here' || 
+      templateID === 'your_template_id_here' || 
+      publicKey === 'your_public_key_here' ||
+      !serviceID || !templateID || !publicKey
+    ) {
+      console.warn("EmailJS environment variables are not set or contain placeholders. Simulating submission success.");
+      setTimeout(() => {
+        setIsSending(false);
+        setIsSubmitted(true);
+      }, 1200);
+      return;
+    }
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+      .then((response) => {
+        console.log('EmailJS submission success:', response.status, response.text);
+        setIsSending(false);
+        setIsSubmitted(true);
+      })
+      .catch((err) => {
+        console.error('EmailJS submission error:', err);
+        alert(`Failed to send message: ${err.text || err.message || err || 'Unknown Error'}. Please check your credentials and try again.`);
+        setIsSending(false);
+      });
   };
 
   const handleReset = () => {
     setFormData({ name: '', email: '', message: '' });
     generateCaptcha();
     setIsSubmitted(false); 
+    setIsSending(false);
   };
 
   return (
@@ -67,13 +107,15 @@ export default function Contact() {
           <form className="contact-form-block" onSubmit={handleSubmit}>
             <div className="contact-form-layout">
               <div className="contact-main-inputs">
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" className="contact-input" required />
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="contact-input" required />
-                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Message" className="contact-textarea" required></textarea>
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" className="contact-input" required disabled={isSending} />
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="contact-input" required disabled={isSending} />
+                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Message" className="contact-textarea" required disabled={isSending}></textarea>
                 
                 <div className="contact-actions-row">
-                  <button type="submit" className="contact-btn">SUBMIT</button>
-                  <button type="button" className="contact-btn" onClick={handleReset}>RESET</button>
+                  <button type="submit" className="contact-btn" disabled={isSending}>
+                    {isSending ? 'SENDING...' : 'SUBMIT'}
+                  </button>
+                  <button type="button" className="contact-btn" onClick={handleReset} disabled={isSending}>RESET</button>
                 </div>
               </div>
 
@@ -81,7 +123,7 @@ export default function Contact() {
                 <label className="captcha-label">Captcha:</label>
                 <div className="captcha-input-row">
                   <span>{captcha.num1} + {captcha.num2} =</span>
-                  <input type="number" value={captcha.userAnswer} onChange={(e) => setCaptcha((prev) => ({ ...prev, userAnswer: e.target.value }))} className="captcha-input" required />
+                  <input type="number" value={captcha.userAnswer} onChange={(e) => setCaptcha((prev) => ({ ...prev, userAnswer: e.target.value }))} className="captcha-input" required disabled={isSending} />
                 </div>
               </div>
             </div>

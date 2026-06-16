@@ -265,7 +265,7 @@ body,
 
 .main-content {
   grid-column: 2 !important;
-  width: 100% !important;
+  min-width: 0 !important;
   min-height: 100vh !important;
   background-color: #ffffff !important;
   padding-bottom: 14px !important;
@@ -278,6 +278,18 @@ body,
   grid-template-columns: repeat(4, 1fr) !important;
 
   background-color: #e8e8e8 !important;
+}
+
+@media (max-width: 1300px) {
+  .art-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .art-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 .portfolio-entry-card {
@@ -2053,96 +2065,95 @@ body,
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 30px !important;
+  gap: 20px !important;
+  margin: 0 auto !important;
 }
 
-.shorya-talking-quote-card-item {
+/* Replicating Strong Testimonials dark default style */
+.shorya-talking-cards-grid-container .testimonial {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 10px 0 25px 0 !important;
   width: 100% !important;
-  background-color: #f4f6f8 !important;
-  border: 1px solid #c8c8c8 !important;
-  padding: 20px 24px !important;
   box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
 }
 
-.shorya-talking-card-top-indicator-row {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  width: 100% !important;
-  border-bottom: 1px solid #eef0f2 !important;
-  padding-bottom: 10px !important;
-  margin-bottom: 18px !important;
+.shorya-talking-cards-grid-container .testimonial-inner {
+  border: 1px solid #555555 !important;
+  background-color: #f2f2f2 !important;
+  padding: 20px !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
 }
 
-.shorya-talking-quote-mark-icon {
-  font-family: Georgia, serif !important;
-  font-size: 44px !important;
-  line-height: 1 !important;
-  color: #90a4ae !important;
-  font-weight: bold !important;
-  height: 24px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.shorya-talking-card-main-label {
-  font-family: 'Open Sans', Arial, sans-serif !important;
+.shorya-talking-cards-grid-container .testimonial-heading {
+  margin-top: 0 !important;
+  margin-bottom: 15px !important;
+  text-align: left !important;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif !important;
   font-size: 19px !important;
   font-weight: 700 !important;
   color: #333333 !important;
-  margin: 0 !important;
-}
-
-.shorya-talking-card-split-body-layout {
   display: flex !important;
-  flex-direction: row !important;
-  gap: 25px !important;
-  align-items: flex-start !important;
-  width: 100% !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
 
-.shorya-talking-card-brand-img-box {
-  width: 165px !important;
-  min-width: 165px !important;
-  max-width: 165px !important;
-  border: 1px solid #e0e0e0 !important;
-  background-color: #ffffff !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
+.shorya-talking-cards-grid-container .testimonial-quote-icon {
+  color: #888888 !important;
+  font-size: 26px !important;
+  line-height: 1 !important;
 }
 
-.shorya-talking-card-publisher-badge-img {
+.shorya-talking-cards-grid-container .testimonial-content {
   width: 100% !important;
-  height: auto !important;
+  margin-bottom: 15px !important;
+}
+
+.shorya-talking-cards-grid-container .testimonial-image {
+  margin-top: 0.25em !important;
+  margin-right: 1.25em !important;
+  margin-bottom: 0.5em !important;
+  float: left !important;
+  max-width: 260px !important;
+}
+
+.shorya-talking-cards-grid-container .testimonial-image img {
+  background: #ffffff !important;
+  border: 1px solid #cccccc !important;
+  padding: 6px !important;
   display: block !important;
-  object-fit: contain !important;
+  width: 100% !important;
+  max-width: 260px !important;
+  height: auto !important;
+  box-sizing: border-box !important;
 }
 
-.shorya-talking-card-narrative-text-box {
-  flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 12px !important;
-}
-
-.shorya-talking-card-short-quote {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 13.5px !important;
-  line-height: 1.75 !important;
-  color: #555555 !important;
+.shorya-talking-cards-grid-container .testimonial-quote-body-text {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif !important;
+  font-size: 14.5px !important;
+  line-height: 1.65 !important;
+  color: #333333 !important;
   margin: 0 !important;
   text-align: left !important;
+  white-space: pre-line !important;
 }
 
-.shorya-talking-card-author-signature {
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
+.shorya-talking-cards-grid-container .testimonial-field.testimonial-name {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
   color: #222222 !important;
   text-align: right !important;
-  display: block !important;
+  margin-top: 10px !important;
+  width: 100% !important;
+}
+
+.shorya-talking-cards-grid-container .clear {
+  clear: both !important;
+  height: 0 !important;
+  line-height: 0 !important;
 }
 
 .custom-article-page,
@@ -2393,7 +2404,7 @@ body,
   }
 
   .art-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .shorya-compact-gallery-outer-wrapper {
@@ -2455,15 +2466,20 @@ body,
     padding: 30px 20px !important;
   }
 
-  .shorya-talking-card-split-body-layout {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 15px !important;
+  .shorya-talking-cards-grid-container .testimonial-image {
+    float: none !important;
+    margin: 0 auto 15px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    max-width: 100% !important;
   }
 
-  .shorya-talking-card-brand-img-box {
-    width: 135px !important;
-    min-width: 135px !important;
+  .shorya-talking-cards-grid-container .testimonial-image img {
+    margin: 0 auto !important;
+  }
+
+  .shorya-talking-cards-grid-container .testimonial-quote-body-text {
+    text-align: left !important;
   }
 
   .article-top-split {
@@ -2473,6 +2489,9 @@ body,
 
 @media (max-width: 480px) {
   .shorya-gallery-grid-three-columns-matrix {
+    grid-template-columns: 1fr !important;
+  }
+  .art-grid {
     grid-template-columns: 1fr !important;
   }
 }

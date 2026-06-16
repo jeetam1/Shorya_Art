@@ -42,13 +42,19 @@ export default function Contact() {
 
     setIsSending(true);
 
-    // =========================================================
-    // INSERT YOUR ACTUAL EMAILJS KEYS INSIDE THE QUOTES BELOW
-    // =========================================================
-    const serviceID = 'YOUR_SERVICE_ID'; 
-    const adminTemplateID = 'YOUR_ADMIN_TEMPLATE_ID';
-    const autoReplyTemplateID = 'YOUR_AUTOREPLY_TEMPLATE_ID'; // (Optional)
-    const publicKey = 'YOUR_PUBLIC_KEY'; 
+    // Pulling keys securely directly from your .env file
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID; 
+    const adminTemplateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID; 
+    const autoReplyTemplateID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID; 
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY; 
+
+    // Safety check to ensure .env variables are loaded
+    if (!serviceID || !adminTemplateID || !publicKey) {
+      console.error("Missing EmailJS environment variables! Check your .env file.");
+      alert("System configuration error. Please contact the administrator.");
+      setIsSending(false);
+      return;
+    }
 
     const templateParams = {
       from_name: formData.name,
@@ -57,26 +63,33 @@ export default function Contact() {
     };
 
     try {
-      // 1. Send Notification Email to Admin
-      await emailjs.send(serviceID, adminTemplateID, templateParams, publicKey);
+      // 1. Send Notification Email to Admin and await the server response
+      const response = await emailjs.send(serviceID, adminTemplateID, templateParams, publicKey);
 
-      // 2. Send Auto-Reply Receipt Email to Customer
-      // Only runs if you actually provided an auto-reply template ID above
-      if (autoReplyTemplateID && autoReplyTemplateID !== 'YOUR_AUTOREPLY_TEMPLATE_ID') {
-        try {
-          await emailjs.send(serviceID, autoReplyTemplateID, templateParams, publicKey);
-        } catch (autoReplyErr) {
-          console.warn('Auto-reply email failed to send:', autoReplyErr);
+      // STRICT CHECK: Only show success screen if the server explicitly returns a 200 OK status
+      if (response.status === 200) {
+        
+        // 2. Send Auto-Reply Receipt Email to Customer (only if the variable exists in .env)
+        if (autoReplyTemplateID) {
+          try {
+            await emailjs.send(serviceID, autoReplyTemplateID, templateParams, publicKey);
+          } catch (autoReplyErr) {
+            console.warn('Auto-reply email failed to send:', autoReplyErr);
+          }
         }
-      }
 
-      console.log('EmailJS submission success');
-      setIsSending(false);
-      setIsSubmitted(true);
+        console.log('EmailJS submission confirmed by server');
+        setIsSending(false);
+        setIsSubmitted(true);
+      } else {
+        throw new Error('Server returned an unexpected status code.');
+      }
+      
     } catch (err) {
       console.error('EmailJS submission error:', err);
-      alert(`Failed to send message: ${err.text || err.message || 'Unknown Error'}.`);
+      alert('Failed to send message. Please check your internet connection and try again.');
       setIsSending(false);
+      setIsSubmitted(false);
     }
   };
 

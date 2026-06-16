@@ -47,7 +47,10 @@ export default function Biography() {
 
       <div className="shorya-biography-body-scaffold-layout" style={{ margin: '0 auto', alignItems: 'center', textAlign: 'center' }}>
 
-        <div className="shorya-main-portrait-frame-wrapper">
+        <div 
+          className="shorya-main-portrait-frame-wrapper" 
+          onClick={() => setModalImage('/biography-photos/511.jpg')}
+        >
           <img src="/biography-photos/511.jpg" alt="Shorya Portrait" className="shorya-main-portrait-img-element" />
         </div>
 

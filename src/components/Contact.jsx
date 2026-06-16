@@ -75,10 +75,16 @@ export default function Contact() {
 
     try {
       // 1. Send Notification Email to Admin
-      await emailjs.send(serviceID, adminTemplateID, templateParams, publicKey);
+      await emailjs.send(serviceID, adminTemplateID, templateParams, { publicKey });
 
-      // 2. Send Auto-Reply Receipt Email to Customer
-      await emailjs.send(serviceID, autoReplyTemplateID, templateParams, publicKey);
+      // 2. Send Auto-Reply Receipt Email to Customer (optional)
+      if (autoReplyTemplateID && autoReplyTemplateID !== 'your_autoreply_template_id_here') {
+        try {
+          await emailjs.send(serviceID, autoReplyTemplateID, templateParams, { publicKey });
+        } catch (autoReplyErr) {
+          console.warn('Auto-reply email failed to send:', autoReplyErr);
+        }
+      }
 
       console.log('EmailJS submission success');
       setIsSending(false);

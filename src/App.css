@@ -681,6 +681,7 @@ body,
   padding: 40px 50px 60px 50px !important;
   box-sizing: border-box !important;
   background-color: #ffffff !important;
+  margin: 0 auto !important;
 }
 
 .shorya-gallery-grid-three-columns-matrix {
@@ -733,7 +734,7 @@ body,
   left: 0 !important;
   width: 20px !important;
   height: 20px !important;
-  border: 2px solid #ff0000 !important;
+  border: 2px solid #000000 !important;
   border-radius: 50% !important;
   z-index: 999999 !important;
   pointer-events: none !important;
@@ -3778,4 +3779,23 @@ body,
     font-size: 28px !important;
 
   }
+}
+
+/* Global paragraph justify center alignment */
+.shorya-paragraph-text-lead-highlight,
+.shorya-paragraph-text-standard-value,
+.yahoo-paragraph,
+.shorya-web-article-paragraph-value,
+.tedx-body-paragraph-text,
+.rd-paragraph,
+.shorya-media-description-body-text,
+.shorya-magazine-paragraph-text-value,
+.article-body-text,
+.shorya-event-body-paragraph-text,
+.award-text,
+.shorya-lightbox-artwork-description,
+.artwork-description-paragraph,
+.article-quote-text {
+  text-align: justify !important;
+  text-align-last: center !important;
 }

@@ -85,7 +85,7 @@ export default function Biography() {
             to create a legacy, one magnum opus at one time!
           </p>
 
-          <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/biography-photos/501.jpg')} style={{ margin: '40px auto', display: 'flex', justifyContent: 'center' }}>
+          <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/biography-photos/500.jpg')} style={{ margin: '40px auto', display: 'flex', justifyContent: 'center' }}>
             <img src="/biography-photos/500.jpg" alt="Shorya Timeline Journey Infographic" className="shorya-timeline-infographic-asset-img" style={{ margin: '0 auto' }} />
           </div>
 

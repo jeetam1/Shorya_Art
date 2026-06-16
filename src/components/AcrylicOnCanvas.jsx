@@ -111,11 +111,11 @@ export default function AcrylicOnCanvas() {
   };
 
   const handleInteractiveEnter = () => {
-    cursorScale.current = 3; // Scale 20px circle to 60px diameter on hover
+    cursorScale.current = 2.2; // Reduced size from 3 to 2.2 on hover
     if (ringRef.current) {
-      ringRef.current.style.backgroundColor = 'rgba(255, 0, 0, 0.12)';
+      ringRef.current.style.backgroundColor = 'rgba(0, 0, 0, 0.08)';
       ringRef.current.style.borderWidth = '1.5px';
-      ringRef.current.style.borderColor = '#ff0000';
+      ringRef.current.style.borderColor = '#000000';
     }
   };
 
@@ -124,7 +124,7 @@ export default function AcrylicOnCanvas() {
     if (ringRef.current) {
       ringRef.current.style.backgroundColor = 'transparent';
       ringRef.current.style.borderWidth = '2px';
-      ringRef.current.style.borderColor = '#ff0000';
+      ringRef.current.style.borderColor = '#000000';
     }
   };
 

@@ -30,11 +30,12 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); 
     const correctAnswer = captcha.num1 + captcha.num2;
 
-    if (parseInt(captcha.userAnswer) !== correctAnswer) {
+    // Fixed: Added radix 10 to parseInt as a Javascript best practice
+    if (parseInt(captcha.userAnswer, 10) !== correctAnswer) {
       alert("Incorrect Captcha! Please try again.");
       setCaptcha((prev) => ({ ...prev, userAnswer: '' })); 
       return;
@@ -43,15 +44,18 @@ export default function Contact() {
     setIsSending(true);
 
     const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id_here';
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
+    const adminTemplateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
+    
+    // Added: Second template ID for the auto-reply to the user
+    const autoReplyTemplateID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || 'your_autoreply_template_id_here';
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
 
     // Simulate flow if the environment variables are not configured
     if (
       serviceID === 'your_service_id_here' || 
-      templateID === 'your_template_id_here' || 
+      adminTemplateID === 'your_template_id_here' || 
       publicKey === 'your_public_key_here' ||
-      !serviceID || !templateID || !publicKey
+      !serviceID || !adminTemplateID || !publicKey
     ) {
       console.warn("EmailJS environment variables are not set or contain placeholders. Simulating submission success.");
       setTimeout(() => {
@@ -69,17 +73,21 @@ export default function Contact() {
       message: formData.message,
     };
 
-    emailjs.send(serviceID, templateID, templateParams, publicKey)
-      .then((response) => {
-        console.log('EmailJS submission success:', response.status, response.text);
-        setIsSending(false);
-        setIsSubmitted(true);
-      })
-      .catch((err) => {
-        console.error('EmailJS submission error:', err);
-        alert(`Failed to send message: ${err.text || err.message || err || 'Unknown Error'}. Please check your credentials and try again.`);
-        setIsSending(false);
-      });
+    try {
+      // 1. Send Notification Email to Admin
+      await emailjs.send(serviceID, adminTemplateID, templateParams, publicKey);
+      
+      // 2. Send Auto-Reply Receipt Email to Customer
+      await emailjs.send(serviceID, autoReplyTemplateID, templateParams, publicKey);
+
+      console.log('EmailJS submission success');
+      setIsSending(false);
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('EmailJS submission error:', err);
+      alert(`Failed to send message: ${err.text || err.message || err || 'Unknown Error'}. Please check your credentials and try again.`);
+      setIsSending(false);
+    }
   };
 
   const handleReset = () => {

@@ -4,7 +4,7 @@ export default function ArtistStatement() {
   const [modalImage, setModalImage] = useState(null);
 
   return (
-    <div className="shorya-biography-view-root">
+    <div className="shorya-biography-view-root shorya-artist-statement-view-root">
       
       <PageBanner title="Artist's Statement" bgImage="/banners/604.jpg" />
 

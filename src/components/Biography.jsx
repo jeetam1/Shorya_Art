@@ -60,12 +60,12 @@ export default function Biography() {
             Shorya Mahanot from India has been astounding people’s minds with his masterful brushstrokes,
             colorful composition, and symmetry in abstract paintings, over the time of 10 years.
             Dubbed as
-            <a href="https://www.google.co.in/search?source=hp&ei=dOKyXIORL4rez7sPsJGK8A8&q=world+youngest+signature+style+abstract+artist&oq=Wor&gs_l=psy-ab.1.0.35i39l2j0i67l3j0i131j0l4.5773.6379..8306...1.0..0.216.677.0j3j1......0....1..gws-wiz.....0.tlXMYBWJXtQ" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#0066cc' }}> “World’s Youngest Signature Style Abstract Artist”</a> and
-            <a href="https://www.theguardian.com/world/2012/jul/03/india-child-picasso-goggles-canvas" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#0066cc' }}> “India’s Child Picasso”</a>,
+            <a href="https://www.google.co.in/search?source=hp&ei=dOKyXIORL4rez7sPsJGK8A8&q=world+youngest+signature+style+abstract+artist&oq=Wor&gs_l=psy-ab.1.0.35i39l2j0i67l3j0i131j0l4.5773.6379..8306...1.0..0.216.677.0j3j1......0....1..gws-wiz.....0.tlXMYBWJXtQ" target="_blank" rel="noreferrer" className="shorya-bio-link"> “World’s Youngest Signature Style Abstract Artist”</a> (Google Search Results) and
+            <a href="https://www.theguardian.com/world/2012/jul/03/india-child-picasso-goggles-canvas" target="_blank" rel="noreferrer" className="shorya-bio-link"> “India’s Child Picasso”</a> (The Guardian, July 2012, London Ed.),
             Shorya has been winning laurels from a tender age of three with his luscious use of colors and expressiveness on the canvas.
             A featured artist at the
-            <a href="https://holtzmangallery.com/" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
-              <strong style={{ color: '#0066cc' }}> HOLTZMAN GALLERY</strong>
+            <a href="https://holtzmangallery.com/" target="_blank" rel="noreferrer" className="shorya-bio-bold-link">
+              <strong> HOLTZMAN GALLERY</strong>
             </a> now, he had made his international debut in the U.S.A. in March 2013 when his paintings were selected as “Best of Art Expo 2013”.
           </p>
 

@@ -300,7 +300,7 @@ body,
   /* Original bounce animation: animation: cardFramePopMatch 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important; */
   animation: cardFramePopMatch 0.45s ease-in-out forwards !important;
   z-index: 50 !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.38) !important;
 }
 
 .art-card-img {
@@ -312,7 +312,7 @@ body,
 .card-hover-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: rgba(255, 149, 14, 0.96) !important;
+  background: rgba(255, 149, 14, 0.93) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
@@ -433,31 +433,61 @@ body,
 }
 
 .shorya-paragraph-text-lead-highlight {
-  font-family: Arial, sans-serif !important;
-  font-size: 15px !important;
-  line-height: 1.7 !important;
-  color: #222222 !important;
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+  color: #666666 !important;
   margin: 0 auto 25px auto !important;
   text-align: justify !important;
   text-align-last: center !important;
 }
 
 .shorya-paragraph-section-sub-heading-marker {
-  font-family: Arial, sans-serif !important;
+  font-family: 'Open Sans', Arial, sans-serif !important;
   font-size: 22px !important;
   font-weight: bold !important;
   color: #111111 !important;
   margin: 35px auto 15px auto !important;
+  text-align: left !important;
 }
 
 .shorya-paragraph-text-standard-value {
-  font-family: Arial, sans-serif !important;
-  font-size: 15px !important;
-  line-height: 1.65 !important;
-  color: #444444 !important;
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+  color: #666666 !important;
   margin: 0 auto 15px auto !important;
   text-align: justify !important;
   text-align-last: center !important;
+}
+
+/* Artist Statement overrides: darker font color and reduced font size */
+.shorya-artist-statement-view-root .shorya-paragraph-text-standard-value {
+  font-size: 14px !important;
+  color: #444444 !important;
+  margin-bottom: 25px !important;
+}
+
+/* Biography links: soft teal-blue as in second image */
+.shorya-bio-link {
+  text-decoration: none !important;
+  color: #4faab6 !important;
+  font-weight: 500 !important;
+}
+
+.shorya-bio-link:hover {
+  text-decoration: underline !important;
+  color: #3b8892 !important;
+}
+
+.shorya-bio-bold-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  font-weight: bold !important;
+}
+
+.shorya-bio-bold-link:hover {
+  text-decoration: underline !important;
 }
 
 .shorya-timeline-infographic-holder-box {
@@ -890,20 +920,18 @@ body,
 
 .shorya-lightbox-img-bounding-wrapper {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 50vh !important;
-  max-height: 88vh !important;
+  height: 80vh !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   background-color: #151515 !important;
-  padding: 0px !important;
+  padding: 20px !important;
   box-sizing: border-box !important;
 }
 
 .shorya-lightbox-img-bounding-wrapper .shorya-lightbox-large-img-asset {
-  max-width: 90% !important;
-  max-height: 82% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   width: auto !important;
   height: auto !important;
   object-fit: contain !important;
@@ -3716,7 +3744,7 @@ body,
 
 .shorya-custom-title-white-block {
   background-color: #ffffff !important;
-  padding: 20px 45px 20px 30px !important;
+  padding: 35px 95px 35px 50px !important;
   z-index: 2 !important;
   position: relative !important;
   border-top-right-radius: 4px !important;
@@ -3727,12 +3755,12 @@ body,
 
 .shorya-custom-title-text-value {
   margin: 0 !important;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 49px !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 42px !important;
   font-weight: 800 !important;
   color: #444444 !important;
   text-transform: none !important;
-  letter-spacing: -0.5px !important;
+  letter-spacing: -0.8px !important;
   line-height: 1 !important;
 }
 

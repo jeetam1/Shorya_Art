@@ -8,6 +8,7 @@ import Awards from './components/Awards';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
+import PhotoView from './components/PhotoView';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
 import Magazines from './components/Magazines';
@@ -43,12 +44,13 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ROUTE_MAP = [
   { paths: ['/', '/home'], type: 'grid', tab: 'Home' },
-  { paths: ['/biography'], type: 'biography', tab: 'Biography' },
-  { paths: ['/artist-statement'], type: 'artist-statement', tab: "Artist's Statement" },
-  { paths: ['/gallery/acrylic-on-canvas'], type: 'acrylic-on-canvas', tab: 'Acrylic on canvas', expand: 'Gallery' },
-  { paths: ['/events'], type: 'events', tab: 'Events' },
-  { paths: ['/media/newspaper-articles'], type: 'newspaper-articles', tab: 'Newspapers Articles', expand: 'Media' },
-  { paths: ['/media/magazines'], type: 'magazines', tab: 'Magazines', expand: 'Media' },
+  { paths: ['/biography', '/biography/'], type: 'biography', tab: 'Biography' },
+  { paths: ['/artist-statement', '/artists-statement', '/artists-statement/'], type: 'artist-statement', tab: "Artist's Statement" },
+  { paths: ['/gallery/acrylic-on-canvas', '/acrylic-on-canvas', '/acrylic-on-canvas/'], type: 'acrylic-on-canvas', tab: 'Acrylic on canvas', expand: 'Gallery' },
+  { paths: ['/gallery/photo-view', '/photo-view', '/photo-view/'], type: 'photo-view', tab: 'Photo View', expand: 'Gallery' },
+  { paths: ['/events', '/events/'], type: 'events', tab: 'Events' },
+  { paths: ['/media/newspaper-articles', '/newspapers-articles', '/newspapers-articles/'], type: 'newspaper-articles', tab: 'Newspapers Articles', expand: 'Media' },
+  { paths: ['/media/magazines', '/magazines', '/magazines/'], type: 'magazines', tab: 'Magazines', expand: 'Media' },
   { paths: ['/media/yahoo', '/yahoo'], type: 'yahoo', tab: 'Yahoo', expand: 'Media' },
   { paths: ['/media/readers-digest', '/readers-digest'], type: 'readers-digest', tab: "Reader's Digest", expand: 'Media' },
   { paths: ['/pogo', '/event-c'], type: 'pogo', tab: 'Events' },
@@ -62,12 +64,12 @@ const ROUTE_MAP = [
   { paths: ['/TEDX', '/ted'], type: 'tedx-event-page', tab: 'Events' },
   { paths: ['/microsoft-future-decoded', '/event-i'], type: 'microsoft', tab: 'Events' },
   { paths: ['/sbs-radio', '/event-m'], type: 'sbs-radio', tab: 'Events' },
-  { paths: ['/media/web-articles'], type: 'web-articles', tab: 'Web Articles', expand: 'Media' },
-  { paths: ['/media/videos'], type: 'videos', tab: 'Videos', expand: 'Media' },
-  { paths: ['/look-world-talking'], type: 'look-world-talking', tab: 'Look the world is talking1', expand: 'Look the world is talking' },
-  { paths: ['/look-world-talking/twitter-mentions'], type: 'twitter-mentions', tab: 'Twitter Mentions', expand: 'Look the world is talking' },
-  { paths: ['/awards-certificates'], type: 'awards', tab: 'Awards & Certificates' },
-  { paths: ['/contact'], type: 'contact', tab: 'Contact' },
+  { paths: ['/media/web-articles', '/web-articles', '/web-articles/'], type: 'web-articles', tab: 'Web Articles', expand: 'Media' },
+  { paths: ['/media/videos', '/audio-video', '/audio-video/'], type: 'videos', tab: 'Videos', expand: 'Media' },
+  { paths: ['/look-world-talking', '/look-the-world-is-talking', '/look-the-world-is-talking/'], type: 'look-world-talking', tab: 'Look the world is talking' },
+  { paths: ['/look-world-talking/twitter-mentions', '/twitter', '/twitter/'], type: 'twitter-mentions', tab: 'Twitter Mentions' },
+  { paths: ['/awards-certificates', '/certificates', '/certificates/'], type: 'awards', tab: 'Awards & Certificates' },
+  { paths: ['/contact', '/contact/'], type: 'contact', tab: 'Contact' },
   { paths: ['/TajMahalPalace', '/taj-mahal'], type: 'taj-mahal', tab: 'Events' },
   { paths: ['/rk-laxman', '/event-b'], type: 'rk-laxman', tab: 'Events' }
 ];
@@ -163,6 +165,7 @@ function getPageTitle(type, data) {
     case 'huffington-post': return 'Huffington Post';
     case 'artist-statement': return "Artist's Statement";
     case 'acrylic-on-canvas': return 'Acrylic on Canvas';
+    case 'photo-view': return 'Photo View';
     case 'events': return 'Events';
     case 'newspaper-articles': return 'Newspapers Articles';
     case 'magazines': return 'Magazines';
@@ -268,6 +271,8 @@ export default function App() {
       if (item.name === 'Biography') navigate('/biography');
       else if (item.name === "Artist's Statement") navigate('/artist-statement');
       else if (item.name === 'Events') navigate('/events');
+      else if (item.name === 'Look the world is talking') navigate('/look-world-talking');
+      else if (item.name === 'Twitter Mentions') navigate('/look-world-talking/twitter-mentions');
       else if (item.name === 'Awards & Certificates') navigate('/awards-certificates');
       else if (item.name === 'Contact') navigate('/contact');
       else navigate('/');
@@ -343,8 +348,7 @@ export default function App() {
               const isExpanded = expandedMenu === item.name;
               const isActive = activeTab === item.name ||
                 (item.name === 'Gallery' && activeTab === 'Acrylic on canvas') ||
-                (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Yahoo' || activeTab === "Reader's Digest" || activeTab === 'Web Articles' || activeTab === 'Videos')) ||
-                (item.name === 'Look the world is talking' && (activeTab === 'Look the world is talking1' || activeTab === 'Twitter Mentions'));
+                (item.name === 'Media' && (activeTab === 'Newspapers Articles' || activeTab === 'Magazines' || activeTab === 'Yahoo' || activeTab === "Reader's Digest" || activeTab === 'Web Articles' || activeTab === 'Videos'));
 
               const itemSlug = item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
               return (
@@ -380,14 +384,13 @@ export default function App() {
                               setIsMobileMenuOpen(false);
 
                               if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
+                              else if (sub === 'Photo View') navigate('/gallery/photo-view');
                               else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
                               else if (sub === 'Magazines') navigate('/media/magazines');
                               else if (sub === 'Yahoo') navigate('/yahoo');
                               else if (sub === "Reader's Digest") navigate('/readers-digest');
                               else if (sub === 'Web Articles') navigate('/media/web-articles');
                               else if (sub === 'Videos') navigate('/media/videos');
-                              else if (sub === 'Look the world is talking1') navigate('/look-world-talking');
-                              else if (sub === 'Twitter Mentions') navigate('/look-world-talking/twitter-mentions');
                             }}
                           >
                             <a href="#" onClick={(e) => e.preventDefault()}>
@@ -428,6 +431,7 @@ export default function App() {
         {currentView.type === 'huffington-post' && <HuffingtonPost />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
+        {currentView.type === 'photo-view' && <PhotoView />}
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
         {currentView.type === 'magazines' && <Magazines />}
@@ -479,10 +483,11 @@ const navItems = [
   { name: 'Home', hasSub: false },
   { name: 'Biography', hasSub: false },
   { name: 'Artist\'s Statement', hasSub: false },
-  { name: 'Gallery', hasSub: true, subItems: ['Acrylic on canvas'] },
+  { name: 'Gallery', hasSub: true, subItems: ['Acrylic on canvas', 'Photo View'] },
   { name: 'Events', hasSub: false },
   { name: 'Media', hasSub: true, subItems: ['Newspapers Articles', 'Magazines', 'Web Articles', 'Videos'] },
-  { name: 'Look the world is talking', hasSub: true, subItems: ['Look the world is talking1', 'Twitter Mentions'] },
+  { name: 'Look the world is talking', hasSub: false },
+  { name: 'Twitter Mentions', hasSub: false },
   { name: 'Awards & Certificates', hasSub: false },
   { name: 'Contact', hasSub: false }
 ];

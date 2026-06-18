@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageBanner from './PageBanner';
 import { testimonialsData } from '../data/testimonialsData';
 
 export default function LookWorldTalking() {
+  const [shuffledTestimonials, setShuffledTestimonials] = useState([]);
+
+  useEffect(() => {
+    const arr = [...testimonialsData];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    setShuffledTestimonials(arr);
+  }, []);
+
   return (
     <div className="shorya-look-talking-view-root">
       
@@ -11,7 +22,7 @@ export default function LookWorldTalking() {
       <div className="shorya-talking-cards-grid-container">
         <div className="strong-view default dark">
           <div className="strong-content strong-normal columns-1">
-            {testimonialsData.map((card, index) => (
+            {shuffledTestimonials.map((card, index) => (
               <div key={index} className="testimonial">
                 <div className="testimonial-inner">
                   {card.heading && (

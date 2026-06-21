@@ -234,7 +234,7 @@ export const gridItems = [
     size: "24\" X 72\"",
     two: "24″ x 36″ canvases painted together",
     age: "6",
-    src: "/home-photos/24.jpg"
+    src: "/Gallery-photos/32.jpg"
   },
 
   {

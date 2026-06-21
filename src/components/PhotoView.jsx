@@ -1,38 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-
-const galleryItems = [
-  { id: 1, name: "Untitled VI", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/1.jpg" },
-  { id: 2, name: "Untitled VII", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/2.jpg" },
-  { id: 3, name: "Untitled IX", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/3.jpg" },
-  { id: 4, name: "Untitled X", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/4.jpg" },
-  { id: 5, name: "Untitled XI", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/5.jpg" },
-  { id: 6, name: "Untitled XII", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/6.jpg" },
-  { id: 7, name: "Untitled XIII", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/7.jpg" },
-  { id: 8, name: "Untitled XIV", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/8.jpg" },
-  { id: 9, name: "Untitled XV", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/9.jpg" },
-  { id: 10, name: "Untitled XVI", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/10.jpg" },
-  { id: 11, name: "Colours of Life I", size: "36\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/11.jpg", description: "The colors of life surround us." },
-  { id: 12, name: "Sun Shine", size: "18\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/12.jpg", description: "I love the sunshine!" },
-  { id: 13, name: "Cloudy Dreams", size: "24\" x 72\"", year: "2012", age: "6", src: "/Gallery-photos/13.jpg", isWide: true, description: "The clouds pass by as I dream of ultramarine – my favorite color." },
-  { id: 14, name: "Tiny Soldiers", size: "24\" x 18\"", year: "2010", age: "4", src: "/Gallery-photos/14.jpg", description: "Tiny soldiers marching across the painting…" },
-  { id: 15, name: "Rainy Day", size: "18\" x 24\"", year: "2010", age: "3 1/2", src: "/Gallery-photos/15.jpg", description: "Puddles of water, rain on my window." },
-  { id: 16, name: "Fall Days", size: "18\" x 24\"", year: "2009", age: "3 1/2", src: "/Gallery-photos/16.jpg", description: "The tall trees shed their leaves." },
-  { id: 17, name: "Dawning Day", size: "36\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/17.jpg", description: "The bright sun awakes us to a new day." },
-  { id: 18, name: "In the deep II", size: "24\" x 36\"", year: "2011", age: "5", src: "/Gallery-photos/18.jpg", description: "I look at mountains and oceans." },
-  { id: 19, name: "Meteor Shower", size: "24\" x 36\"", year: "2011", age: "5", src: "/Gallery-photos/19.jpg", description: "Spectacular color rains across the sky." },
-  { id: 20, name: "Diving", size: "24\" x 36\"", year: "2011", age: "5", src: "/Gallery-photos/20.jpg", description: "Diving deep into the water." },
-  { id: 21, name: "Shouts and Whispers", size: "24\" x 72\"", year: "2012", age: "6", src: "/Gallery-photos/21.jpg", isWide: true, description: "When someone shouts is there really another message?" },
-  { id: 22, name: "Side by Side", size: "36\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/22.jpg", description: "We're standing side by side." },
-  { id: 23, name: "Sea Splash", size: "18\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/23.jpg", description: "The sea splashes against the sand." },
-  { id: 24, name: "In The Sea", size: "18\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/24.jpg", description: "We wonder what goes on in the depths." },
-  { id: 25, name: "Blushing", size: "36\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/25.jpg", description: "My sister is blushing." },
-  { id: 26, name: "Pretty Dreams", size: "24\" x 34\"", year: "2010", age: "5", src: "/Gallery-photos/26.jpg", description: "My friends, my family, they all come into my pretty dreams." },
-  { id: 27, name: "Windblown", size: "36\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/27.jpg", description: "The wind stirs up everything." },
-  { id: 28, name: "Moving Colour", size: "36\" x 60\"", year: "2012", age: "6", src: "/Gallery-photos/28.jpg", isWide: true, description: "Can you see the color moving through this painting?" },
-  { id: 29, name: "Untitled V", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/29.jpg" },
-  { id: 30, name: "Galaxy Dreams", size: "36\" x 24\"", year: "2010", age: "4", src: "/Gallery-photos/30.jpg", description: "What is out there – in space?" },
-  { id: 31, name: "Untitled VIII", size: "24\" x 18\"", year: "2020", age: "6", src: "/Gallery-photos/31.jpg" }
-];
+import { galleryItems } from '../data/galleryData';
 
 const defaultDescription = "This abstract painting features vibrant colors and expressive textures. Created using premium pigments on canvas.";
 

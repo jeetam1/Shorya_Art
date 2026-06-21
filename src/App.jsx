@@ -8,7 +8,8 @@ import Awards from './components/Awards';
 import Biography from './components/Biography';
 import ArtistStatement from './components/ArtistStatement';
 import AcrylicOnCanvas from './components/AcrylicOnCanvas';
-import PhotoView from './components/PhotoView';
+import { galleryItems } from './data/galleryData';
+// import PhotoView from './components/PhotoView';
 import Events from './components/Events';
 import NewspaperArticles from './components/NewspaperArticles';
 import Magazines from './components/Magazines';
@@ -47,7 +48,7 @@ const ROUTE_MAP = [
   { paths: ['/biography', '/biography/'], type: 'biography', tab: 'Biography' },
   { paths: ['/artist-statement', '/artists-statement', '/artists-statement/'], type: 'artist-statement', tab: "Artist's Statement" },
   { paths: ['/gallery/acrylic-on-canvas', '/acrylic-on-canvas', '/acrylic-on-canvas/'], type: 'acrylic-on-canvas', tab: 'Acrylic on canvas', expand: 'Gallery' },
-  { paths: ['/gallery/photo-view', '/photo-view', '/photo-view/'], type: 'photo-view', tab: 'Photo View', expand: 'Gallery' },
+  // { paths: ['/gallery/photo-view', '/photo-view', '/photo-view/'], type: 'photo-view', tab: 'Photo View', expand: 'Gallery' },
   { paths: ['/events', '/events/'], type: 'events', tab: 'Events' },
   { paths: ['/media/newspaper-articles', '/newspapers-articles', '/newspapers-articles/'], type: 'newspaper-articles', tab: 'Newspapers Articles', expand: 'Media' },
   { paths: ['/media/magazines', '/magazines', '/magazines/'], type: 'magazines', tab: 'Magazines', expand: 'Media' },
@@ -82,35 +83,39 @@ function ArtworkDetailView({
   setMagnifier,
   magnifier,
   getMagnifierStyles,
-  commentSectionRef
+  commentSectionRef,
+  fromGallery
 }) {
   return (
-    <div className="artwork-detail-page">
+    <div className={`artwork-detail-page ${fromGallery ? 'from-gallery-layout' : ''}`}>
       <header className="detail-page-header">
         <h1 className="artwork-main-title">{data.title}</h1>
-        <div className="artwork-meta-subheader">
-          Posted |
-          {data.allowComments ? (
-            <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
-          ) : (
-            <span> 0 comments</span>
-          )}
-        </div>
+        {fromGallery ? null : (
+          <div className="artwork-meta-subheader">
+            Posted |
+            {data.allowComments ? (
+              <span onClick={scrollToComments} className="clickable-comment-link"> 0 comments</span>
+            ) : (
+              <span> 0 comments</span>
+            )}
+          </div>
+        )}
       </header>
 
-      <div className="detail-page-content-body">
+      <div className={`detail-page-content-body ${fromGallery ? 'from-gallery-content' : ''}`}>
         <div
-          className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''}`}
-          ref={!data.isArticle ? containerRef : null}
-          onMouseMove={!data.isArticle ? handleMouseMove : null}
-          onMouseLeave={!data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
+          className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''} ${data.isWide ? 'is-wide-view' : ''}`}
+          ref={(!data.isArticle && !fromGallery) ? containerRef : null}
+          onMouseMove={(!data.isArticle && !fromGallery) ? handleMouseMove : null}
+          onMouseLeave={(!data.isArticle && !fromGallery) ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
+          style={{ cursor: fromGallery ? 'default' : 'crosshair' }}
         >
           <img
             src={data.src}
             alt={data.title}
             className="detail-large-img"
           />
-          {!data.isArticle && magnifier.show && containerRef.current && (
+          {!data.isArticle && !fromGallery && magnifier.show && containerRef.current && (
             <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
           )}
         </div>
@@ -126,9 +131,30 @@ function ArtworkDetailView({
                 </p>
               )}
             </div>
+          ) : fromGallery ? (
+            <>
+              {data.size && (
+                <div className="artwork-spec-size">
+                  {data.size}{data.two ? ' Diptych' : ''}
+                </div>
+              )}
+              {data.two && (
+                <div className="artwork-spec-two">
+                  {data.two.toLowerCase().includes('canvases')
+                    ? `Two ${data.two.split(/canvases/i)[0]}Canvases painted together as one`
+                    : data.two.startsWith('Two') ? data.two : `Two ${data.two}`}
+                </div>
+              )}
+              {data.age && (
+                <div className="artwork-spec-age">
+                  Age {data.age}
+                </div>
+              )}
+              <p className="artwork-description-paragraph-gallery">{data.description}</p>
+            </>
           ) : (
             <>
-              <p className="artwork-description-paragraph">{data.description}</p>
+              <p className="artwork-description-paragraph-original">{data.description}</p>
               <ul className="artwork-technical-bullet-list">
                 <li><strong>{data.medium || "Acrylic on Canvas"}</strong></li>
 
@@ -149,7 +175,7 @@ function ArtworkDetailView({
         </div>
       </div>
 
-      {data.allowComments && (
+      {!fromGallery && data.allowComments && (
         <div ref={commentSectionRef}>
           <CommentSection storageKey={`comments-artwork-${data.slug || data.id}`} />
         </div>
@@ -165,7 +191,7 @@ function getPageTitle(type, data) {
     case 'huffington-post': return 'Huffington Post';
     case 'artist-statement': return "Artist's Statement";
     case 'acrylic-on-canvas': return 'Acrylic on Canvas';
-    case 'photo-view': return 'Photo View';
+    // case 'photo-view': return 'Photo View';
     case 'events': return 'Events';
     case 'newspaper-articles': return 'Newspapers Articles';
     case 'magazines': return 'Magazines';
@@ -230,7 +256,27 @@ export default function App() {
       }
     } else if (path.startsWith('/artwork/')) {
       const urlSlug = path.replace('/artwork/', '');
-      const match = gridItems.find(item => item.slug === urlSlug);
+      let match = gridItems.find(item => item.slug === urlSlug || item.slug?.toLowerCase() === urlSlug.toLowerCase());
+
+      const galleryMatch = galleryItems.find(item => item.slug === urlSlug || item.slug?.toLowerCase() === urlSlug.toLowerCase());
+
+      if (!match && galleryMatch) {
+        match = {
+          id: galleryMatch.id,
+          slug: galleryMatch.slug,
+          title: galleryMatch.name,
+          src: galleryMatch.src,
+          description: galleryMatch.description || "This abstract painting features vibrant colors and expressive textures. Created using premium pigments on canvas, the composition explores Shorya's early signature style of abstract expressionism.",
+          medium: galleryMatch.medium || "Acrylic on Canvas",
+          size: galleryMatch.size,
+          age: galleryMatch.age,
+          allowComments: false,
+          isWide: galleryMatch.isWide
+        };
+      } else if (match && galleryMatch) {
+        match.isWide = galleryMatch.isWide;
+        match.src = galleryMatch.src;
+      }
 
       if (match) {
         if (match.customLayout === 'huffington') {
@@ -384,7 +430,7 @@ export default function App() {
                               setIsMobileMenuOpen(false);
 
                               if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
-                              else if (sub === 'Photo View') navigate('/gallery/photo-view');
+                              // else if (sub === 'Photo View') navigate('/gallery/photo-view');
                               else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
                               else if (sub === 'Magazines') navigate('/media/magazines');
                               else if (sub === 'Yahoo') navigate('/yahoo');
@@ -431,7 +477,7 @@ export default function App() {
         {currentView.type === 'huffington-post' && <HuffingtonPost />}
         {currentView.type === 'artist-statement' && <ArtistStatement />}
         {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
-        {currentView.type === 'photo-view' && <PhotoView />}
+        {/* {currentView.type === 'photo-view' && <PhotoView />} */}
         {currentView.type === 'events' && <Events />}
         {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
         {currentView.type === 'magazines' && <Magazines />}
@@ -467,6 +513,7 @@ export default function App() {
             magnifier={magnifier}
             getMagnifierStyles={getMagnifierStyles}
             commentSectionRef={commentSectionRef}
+            fromGallery={location.state?.fromGallery}
           />
         )}
         {currentView.type !== 'grid' && <Footer />}
@@ -483,7 +530,7 @@ const navItems = [
   { name: 'Home', hasSub: false },
   { name: 'Biography', hasSub: false },
   { name: 'Artist\'s Statement', hasSub: false },
-  { name: 'Gallery', hasSub: true, subItems: ['Acrylic on canvas', 'Photo View'] },
+  { name: 'Gallery', hasSub: true, subItems: ['Acrylic on canvas'] },
   { name: 'Events', hasSub: false },
   { name: 'Media', hasSub: true, subItems: ['Newspapers Articles', 'Magazines', 'Web Articles', 'Videos'] },
   { name: 'Look the world is talking', hasSub: false },

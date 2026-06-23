@@ -3,7 +3,7 @@ import PageBanner from './PageBanner';
 
 export default function NewspaperArticles() {
   const [modalImage, setModalImage] = useState(null);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1);
 
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -12,20 +12,12 @@ export default function NewspaperArticles() {
 
   const handleCloseModal = () => {
     setModalImage(null);
-    setIsZoomed(false);
+    setZoomScale(1);
   };
 
-  const handleImageClick = (e) => {
-    
-    if (isDragging) {
-      setIsDragging(false);
-      return;
-    }
-    setIsZoomed(!isZoomed);
-  };
 
   const handleMouseDown = (e) => {
-    if (!isZoomed) return;
+    if (zoomScale <= 1) return;
     setDragStart({ x: e.clientX, y: e.clientY });
     setScrollStart({
       left: scrollContainerRef.current.scrollLeft,
@@ -35,7 +27,7 @@ export default function NewspaperArticles() {
   };
 
   const handleMouseMove = (e) => {
-    if (!isZoomed || e.buttons !== 1) return; 
+    if (zoomScale <= 1 || e.buttons !== 1) return; 
     
     const dx = e.clientX - dragStart.x;
     const dy = e.clientY - dragStart.y;
@@ -48,6 +40,39 @@ export default function NewspaperArticles() {
       scrollContainerRef.current.scrollLeft = scrollStart.left - dx;
       scrollContainerRef.current.scrollTop = scrollStart.top - dy;
     }
+  };
+
+  const handleTouchStart = (e) => {
+    if (zoomScale <= 1) return;
+    const touch = e.touches[0];
+    setDragStart({ x: touch.clientX, y: touch.clientY });
+    setScrollStart({
+      left: scrollContainerRef.current.scrollLeft,
+      top: scrollContainerRef.current.scrollTop
+    });
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e) => {
+    if (zoomScale <= 1) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - dragStart.x;
+    const dy = touch.clientY - dragStart.y;
+
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+      setIsDragging(true);
+    }
+
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = scrollStart.left - dx;
+      scrollContainerRef.current.scrollTop = scrollStart.top - dy;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 50);
   };
 
   const articlesData = [
@@ -161,7 +186,7 @@ export default function NewspaperArticles() {
 
           <div className="shorya-media-right-clipping-col" onClick={() => {
             setModalImage(article.clippingSrc);
-            setIsZoomed(false); 
+            setZoomScale(1); 
           }}>
             <div className="shorya-media-clipping-frame">
               <img loading="lazy" src={article.clippingSrc} alt="Newspaper clipping snapshot document" className="shorya-media-clipping-img" />
@@ -183,19 +208,31 @@ export default function NewspaperArticles() {
 
         <div 
           ref={scrollContainerRef}
-          className={`shorya-modal-scroll-container ${isZoomed ? 'is-zoomed' : ''}`}
+          className={`shorya-modal-scroll-container ${zoomScale > 1 ? 'is-zoomed' : ''}`}
           onClick={(e) => e.stopPropagation()} 
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={() => setTimeout(() => setIsDragging(false), 0)}
           onMouseLeave={() => setIsDragging(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <img loading="lazy" src={modalImage} 
             alt="Enlarged view blueprint scanner" 
-            className={`shorya-modal-image ${isZoomed ? 'zoomed-in' : 'zoomed-out'}`}
-            onClick={handleImageClick}
+            className={`shorya-modal-image ${zoomScale > 1 ? 'zoomed-in' : 'zoomed-out'}`}
             draggable={false} 
+            style={{
+              width: zoomScale === 1 ? undefined : `${zoomScale * 90}vw`
+            }}
           />
+        </div>
+
+        <div className="shorya-modal-zoom-controls" onClick={(e) => e.stopPropagation()}>
+          <button onClick={() => setZoomScale(prev => Math.max(1, prev - 0.25))} disabled={zoomScale <= 1} className="zoom-btn">– Zoom Out</button>
+          <span className="zoom-level">{Math.round(zoomScale * 100)}%</span>
+          <button onClick={() => setZoomScale(prev => Math.min(3, prev + 0.25))} disabled={zoomScale >= 3} className="zoom-btn">+ Zoom In</button>
+          <button onClick={() => setZoomScale(1)} className="zoom-btn">Reset</button>
         </div>
 
       </div>

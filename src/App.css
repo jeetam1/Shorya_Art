@@ -235,6 +235,11 @@ body,
   justify-content: center !important;
   color: #ffffff;
   border-radius: 3px;
+  text-decoration: none !important;
+}
+
+.social-img-btn:hover {
+  text-decoration: none !important;
 }
 
 .fb-bg {
@@ -1679,7 +1684,7 @@ body,
   height: auto !important;
   border: 1px solid #e8e8e8 !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
-  cursor: pointer !important;
+  cursor: default !important;
   margin: 0 auto 16px auto !important;
 
   overflow: hidden !important;
@@ -1839,7 +1844,7 @@ body,
   max-width: 320px !important;
   border: 1px solid #e2e2e2 !important;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04) !important;
-  cursor: zoom-in !important;
+  cursor: pointer !important;
   overflow: hidden !important;
   background-color: #ffffff !important;
 }
@@ -1921,7 +1926,7 @@ body,
   max-width: 90vw;
   max-height: 90vh;
   object-fit: contain;
-  cursor: zoom-in;
+  cursor: default;
 
 }
 
@@ -1930,9 +1935,60 @@ body,
 
   max-width: none;
   max-height: none;
-  cursor: zoom-out;
+  cursor: grab;
 
-  margin: auto;
+  margin: 20px !important;
+}
+
+/* Floating Zoom Controls for Newspaper clippings */
+.shorya-modal-zoom-controls {
+  position: absolute !important;
+  bottom: 30px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  padding: 8px 16px !important;
+  border-radius: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4) !important;
+  z-index: 100000 !important;
+  backdrop-filter: blur(5px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.shorya-modal-zoom-controls .zoom-btn {
+  background-color: #fafafa !important;
+  border: 1px solid #cccccc !important;
+  color: #333333 !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.shorya-modal-zoom-controls .zoom-btn:hover:not(:disabled) {
+  background-color: #df9939 !important;
+  color: #ffffff !important;
+  border-color: #df9939 !important;
+}
+
+.shorya-modal-zoom-controls .zoom-btn:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+.shorya-modal-zoom-controls .zoom-level {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: #333333 !important;
+  min-width: 45px !important;
+  text-align: center !important;
 }
 
 @media (max-width: 640px) {
@@ -3401,6 +3457,7 @@ body,
   align-items: center;
 
   width: 100%;
+  box-sizing: border-box !important;
 }
 
 .contact-info-block {
@@ -3474,36 +3531,7 @@ body,
   resize: vertical;
 }
 
-.contact-captcha-section {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 15px;
-  color: #333;
-  padding-top: 5px;
-  align-items: center;
 
-}
-
-.captcha-label {
-  margin-bottom: 12px;
-}
-
-.captcha-input-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.captcha-input {
-  width: 45px;
-  padding: 8px;
-  border: 1px solid #dcdcdc;
-  border-radius: 6px;
-  background-color: #fafafa;
-  outline: none;
-  text-align: center;
-}
 
 .contact-actions-row {
   display: flex;
@@ -3532,6 +3560,9 @@ body,
 }
 
 @media (max-width: 768px) {
+  .contact-content-wrapper {
+    padding: 0 20px 60px 20px !important;
+  }
 
   .ticker-item {
     color: #cccccc !important;
@@ -3550,6 +3581,32 @@ body,
 
   }
 
+  /* Mobile Gallery Optimizations */
+  .shorya-gallery-thumbnail-image-clipping-box {
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+  
+  .shorya-gallery-thumbnail-card-frame.wide-frame .shorya-gallery-thumbnail-image-clipping-box {
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .shorya-gallery-hover-overlay {
+    opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .shorya-gallery-hover-icon-btn {
+    opacity: 1 !important;
+  }
+
+  .shorya-zoom-lightbox-close-btn {
+    top: 10px !important;
+    right: 10px !important;
+  }
 }
 
 @keyframes scrollLeft {

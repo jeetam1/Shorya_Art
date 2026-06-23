@@ -117,7 +117,11 @@ export default function AcrylicOnCanvas() {
               className={`shorya-gallery-thumbnail-card-frame ${item.isWide ? 'wide-frame' : ''}`}
             >
               <h3 className="shorya-gallery-item-title">{item.name}</h3>
-              <div className="shorya-gallery-thumbnail-image-clipping-box">
+              <div 
+                className="shorya-gallery-thumbnail-image-clipping-box"
+                onClick={() => navigate(`/artwork/${item.slug}`, { state: { fromGallery: true } })}
+                style={{ cursor: 'pointer' }}
+              >
                 <img loading="lazy" src={item.src} alt={item.name} className="shorya-gallery-thumbnail-img-asset" />
                 <div className="shorya-gallery-thumbnail-inner-shadow-overlay"></div>
                 <div className="shorya-gallery-hover-overlay">

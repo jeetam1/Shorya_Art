@@ -1,95 +1,5 @@
 export const galleryItems = [
   {
-    "id": 1,
-    "name": "Untitled VI",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/1.jpg",
-    "slug": "untitled-vi"
-  },
-  {
-    "id": 2,
-    "name": "Untitled VII",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/2.jpg",
-    "slug": "untitled-vii"
-  },
-  {
-    "id": 3,
-    "name": "Untitled IX",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/3.jpg",
-    "slug": "untitled-ix"
-  },
-  {
-    "id": 4,
-    "name": "Untitled X",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/4.jpg",
-    "slug": "untitled-x"
-  },
-  {
-    "id": 5,
-    "name": "Untitled XI",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/5.jpg",
-    "slug": "untitled-xi"
-  },
-  {
-    "id": 6,
-    "name": "Untitled XII",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/6.jpg",
-    "slug": "untitled-xii"
-  },
-  {
-    "id": 7,
-    "name": "Untitled XIII",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/7.jpg",
-    "slug": "untitled-xiii"
-  },
-  {
-    "id": 8,
-    "name": "Untitled XIV",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/8.jpg",
-    "slug": "untitled-xiv"
-  },
-  {
-    "id": 9,
-    "name": "Untitled XV",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/9.jpg",
-    "slug": "untitled-xv"
-  },
-  {
-    "id": 10,
-    "name": "Untitled XVI",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/10.jpg",
-    "slug": "untitled-xvi"
-  },
-  {
     "id": 11,
     "name": "Colours of Life I",
     "size": "36\" x 24\"",
@@ -272,15 +182,6 @@ export const galleryItems = [
     "description": "Can you see the color moving through this painting? Where is it going? Where are we going?"
   },
   {
-    "id": 29,
-    "name": "Untitled V",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/29.jpg",
-    "slug": "untitled-v"
-  },
-  {
     "id": 30,
     "name": "Galaxy Dreams",
     "size": "36\" x 24\"",
@@ -289,15 +190,6 @@ export const galleryItems = [
     "src": "/Gallery-photos/30.jpg",
     "slug": "Galaxy-Dreams",
     "description": "What is out there – in space? Galaxies, stars, planets…far away and mysterious"
-  },
-  {
-    "id": 31,
-    "name": "Untitled VIII",
-    "size": "24\" x 18\"",
-    "year": "2020",
-    "age": "6",
-    "src": "/Gallery-photos/31.jpg",
-    "slug": "untitled-viii"
   },
   {
     "id": 32,
@@ -338,5 +230,113 @@ export const galleryItems = [
     "src": "/photos/Tapestries.jpg",
     "slug": "tapestries",
     "description": "A layered and intricate abstract painting resembling woven fabric and complex patterns, created with acrylics on canvas."
+  },
+  {
+    "id": 1,
+    "name": "Untitled VI",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/1.jpg",
+    "slug": "untitled-vi"
+  },
+  {
+    "id": 2,
+    "name": "Untitled VII",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/2.jpg",
+    "slug": "untitled-vii"
+  },
+  {
+    "id": 3,
+    "name": "Untitled IX",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/3.jpg",
+    "slug": "untitled-ix"
+  },
+  {
+    "id": 4,
+    "name": "Untitled X",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/4.jpg",
+    "slug": "untitled-x"
+  },
+  {
+    "id": 5,
+    "name": "Untitled XI",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/5.jpg",
+    "slug": "untitled-xi"
+  },
+  {
+    "id": 6,
+    "name": "Untitled XII",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/6.jpg",
+    "slug": "untitled-xii"
+  },
+  {
+    "id": 7,
+    "name": "Untitled XIII",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/7.jpg",
+    "slug": "untitled-xiii"
+  },
+  {
+    "id": 8,
+    "name": "Untitled XIV",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/8.jpg",
+    "slug": "untitled-xiv"
+  },
+  {
+    "id": 9,
+    "name": "Untitled XV",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/9.jpg",
+    "slug": "untitled-xv"
+  },
+  {
+    "id": 10,
+    "name": "Untitled XVI",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/10.jpg",
+    "slug": "untitled-xvi"
+  },
+  {
+    "id": 29,
+    "name": "Untitled V",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/29.jpg",
+    "slug": "untitled-v"
+  },
+  {
+    "id": 31,
+    "name": "Untitled VIII",
+    "size": "24\" x 18\"",
+    "year": "2020",
+    "age": "6",
+    "src": "/Gallery-photos/31.jpg",
+    "slug": "untitled-viii"
   }
 ];

@@ -171,7 +171,7 @@ export default function Events() {
                 </audio>
               </div>
             ) : (
-              <div className="shorya-event-main-image-frame" onClick={() => setModalImage(event.imgSrc)}>
+              <div className="shorya-event-main-image-frame">
                 <img loading="lazy" src={event.imgSrc} alt={event.title} className="shorya-event-display-photo" />
               </div>
             )}

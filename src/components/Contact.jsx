@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PageBanner from './PageBanner';
 import emailjs from '@emailjs/browser';
 
@@ -9,21 +9,8 @@ export default function Contact() {
     message: ''
   });
 
-  const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, userAnswer: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-
-  const generateCaptcha = () => {
-    setCaptcha({
-      num1: Math.floor(Math.random() * 10) + 1,
-      num2: Math.floor(Math.random() * 10) + 1,
-      userAnswer: ''
-    });
-  };
-
-  useEffect(() => {
-    generateCaptcha();
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,14 +19,6 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const correctAnswer = captcha.num1 + captcha.num2;
-
-    if (parseInt(captcha.userAnswer, 10) !== correctAnswer) {
-      alert("Incorrect Captcha! Please try again.");
-      setCaptcha((prev) => ({ ...prev, userAnswer: '' }));
-      return;
-    }
-
     setIsSending(true);
 
     // Pulling keys securely directly from your .env file
@@ -95,7 +74,6 @@ export default function Contact() {
 
   const handleReset = () => {
     setFormData({ name: '', email: '', message: '' });
-    generateCaptcha();
     setIsSubmitted(false);
     setIsSending(false);
   };
@@ -129,14 +107,6 @@ export default function Contact() {
                     {isSending ? 'SENDING...' : 'SUBMIT'}
                   </button>
                   <button type="button" className="contact-btn" onClick={handleReset} disabled={isSending}>RESET</button>
-                </div>
-              </div>
-
-              <div className="contact-captcha-section">
-                <label className="captcha-label">Captcha:</label>
-                <div className="captcha-input-row">
-                  <span>{captcha.num1} + {captcha.num2} =</span>
-                  <input type="number" value={captcha.userAnswer} onChange={(e) => setCaptcha((prev) => ({ ...prev, userAnswer: e.target.value }))} className="captcha-input" required disabled={isSending} />
                 </div>
               </div>
             </div>

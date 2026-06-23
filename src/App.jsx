@@ -105,17 +105,17 @@ function ArtworkDetailView({
       <div className={`detail-page-content-body ${fromGallery ? 'from-gallery-content' : ''}`}>
         <div
           className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''} ${data.isWide ? 'is-wide-view' : ''}`}
-          ref={(!data.isArticle && !fromGallery) ? containerRef : null}
-          onMouseMove={(!data.isArticle && !fromGallery) ? handleMouseMove : null}
-          onMouseLeave={(!data.isArticle && !fromGallery) ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
-          style={{ cursor: fromGallery ? 'default' : 'crosshair' }}
+          ref={!data.isArticle ? containerRef : null}
+          onMouseMove={!data.isArticle ? handleMouseMove : null}
+          onMouseLeave={!data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
+          style={{ cursor: !data.isArticle ? 'crosshair' : 'default' }}
         >
           <img
             src={data.src}
             alt={data.title}
             className="detail-large-img"
           />
-          {!data.isArticle && !fromGallery && magnifier.show && containerRef.current && (
+          {!data.isArticle && magnifier.show && containerRef.current && (
             <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
           )}
         </div>

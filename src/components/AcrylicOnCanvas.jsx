@@ -103,8 +103,8 @@ export default function AcrylicOnCanvas() {
 
   return (
     <div className="shorya-acrylic-canvas-view-root">
-      
-      <PageBanner title="acrylic on canvas" bgImage="/acrylic_on_canvas.jpg" />
+
+      <PageBanner title="Acrylic on canvas" bgImage="/acrylic_on_canvas.jpg" />
 
       <div className="shorya-compact-gallery-outer-wrapper">
         <p className="shorya-gallery-intro-text">
@@ -112,12 +112,12 @@ export default function AcrylicOnCanvas() {
         </p>
         <div className="shorya-gallery-grid-three-columns-matrix">
           {galleryItems.map((item) => (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className={`shorya-gallery-thumbnail-card-frame ${item.isWide ? 'wide-frame' : ''}`}
             >
               <h3 className="shorya-gallery-item-title">{item.name}</h3>
-              <div 
+              <div
                 className="shorya-gallery-thumbnail-image-clipping-box"
                 onClick={() => navigate(`/artwork/${item.slug}`, { state: { fromGallery: true } })}
                 style={{ cursor: 'pointer' }}
@@ -125,7 +125,7 @@ export default function AcrylicOnCanvas() {
                 <img loading="lazy" src={item.src} alt={item.name} className="shorya-gallery-thumbnail-img-asset" />
                 <div className="shorya-gallery-thumbnail-inner-shadow-overlay"></div>
                 <div className="shorya-gallery-hover-overlay">
-                  <button 
+                  <button
                     className="shorya-gallery-hover-icon-btn"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -140,7 +140,7 @@ export default function AcrylicOnCanvas() {
                       <line x1="3" y1="21" x2="10" y2="14"></line>
                     </svg>
                   </button>
-                  <button 
+                  <button
                     className="shorya-gallery-hover-icon-btn"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -161,29 +161,29 @@ export default function AcrylicOnCanvas() {
           ))}
         </div>
       </div>
- 
+
       {zoomImage && (
-        <div 
-          className={`shorya-zoom-lightbox-overlay-shroud ${zoomClosing ? 'close-animation' : 'open-animation'}`} 
+        <div
+          className={`shorya-zoom-lightbox-overlay-shroud ${zoomClosing ? 'close-animation' : 'open-animation'}`}
           onClick={handleZoomClose}
         >
-          <div 
+          <div
             className="shorya-zoom-lightbox-content-wrapper"
             onClick={(e) => e.stopPropagation()}
           >
-            <div 
-              className={`shorya-zoom-lightbox-container ${zoomClosing ? 'close-animation' : 'open-animation'}`} 
+            <div
+              className={`shorya-zoom-lightbox-container ${zoomClosing ? 'close-animation' : 'open-animation'}`}
               style={lightboxSize}
             >
-              <button 
-                className="shorya-zoom-lightbox-close-btn" 
+              <button
+                className="shorya-zoom-lightbox-close-btn"
                 onClick={handleZoomClose}
               >&times;</button>
-              <img 
-                loading="lazy" 
-                src={zoomImage} 
-                alt={zoomTitle} 
-                className="shorya-zoom-lightbox-img" 
+              <img
+                loading="lazy"
+                src={zoomImage}
+                alt={zoomTitle}
+                className="shorya-zoom-lightbox-img"
                 onLoad={handleImageLoad}
               />
             </div>

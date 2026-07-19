@@ -1,5 +1,71 @@
 export const galleryItems = [
   {
+    "id": 25,
+    "name": "Blushing",
+    "size": "35.5\" x 23.5\"",
+    "year": "2010",
+    "age": "4",
+    "src": "/Gallery-photos/25.jpg",
+    "slug": "Blushing",
+    "description": "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!",
+    "images": [
+      "/Gallery-photos/blushing_design_wide.png"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Galaxy Dreams",
+    "size": "36\" x 24\"",
+    "year": "2010",
+    "age": "4",
+    "src": "/Gallery-photos/30.jpg",
+    "slug": "Galaxy-Dreams",
+    "description": "What is out there – in space? Galaxies, stars, planets…far away and mysterious",
+    "images": [
+      "/Gallery-photos/galaxy_dreams_design.png"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Rainy Day",
+    "size": "24\" x 18\"",
+    "year": "2010",
+    "age": "3 1/2",
+    "src": "/Gallery-photos/15.jpg",
+    "slug": "Rainy-Day",
+    "description": "Puddles of water, rain on my window, it’s a rainy day!",
+    "images": [
+      "/Gallery-photos/rainy_day_design.png"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Moving Colour",
+    "size": "33\" x 20\"",
+    "year": "2012",
+    "age": "6",
+    "src": "/Gallery-photos/28.png",
+    "slug": "Moving-Colour",
+    "description": "Can you see the color moving through this painting? Where is it going? Where are we going?",
+    "images": [
+      "/Gallery-photos/moving_colour_design.png"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Pretty Dreams",
+    "size": "35.5\" x 23.5\"",
+    "year": "2010",
+    "age": "5",
+    "src": "/Gallery-photos/26.jpg",
+    "slug": "Pretty-Dreams",
+    "description": "My friends, my family, they all come into my pretty dreams.",
+    "images": [
+      "/Gallery-photos/pretty_dreams_design.png"
+    ]
+  },
+
+  {
     "id": 11,
     "name": "Colours of Life I",
     "size": "36\" x 24\"",
@@ -7,7 +73,20 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/11.jpg",
     "slug": "Colours-of-Life",
-    "description": "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile."
+    "description": "The colors of life surround us. The garden has many colors from the plants and flowers. They make me smile."
+  },
+  {
+    "id": 24,
+    "name": "In The Sea",
+    "size": "17.5\" x 23.5\"",
+    "year": "2010",
+    "age": "4",
+    "src": "/Gallery-photos/24.png",
+    "slug": "In-The-Sea",
+    "description": "We wonder what goes on in the depths of the sea. We imagine it and the colors come through",
+    "images": [
+      "/Gallery-photos/in_the_sea_design.png"
+    ]
   },
   {
     "id": 12,
@@ -40,16 +119,7 @@ export const galleryItems = [
     "slug": "Tiny-Soldiers",
     "description": "Tiny soldiers marching across the painting…can you see them?"
   },
-  {
-    "id": 15,
-    "name": "Rainy Day",
-    "size": "18\" x 24\"",
-    "year": "2010",
-    "age": "3 1/2",
-    "src": "/Gallery-photos/15.jpg",
-    "slug": "Rainy-Day",
-    "description": "Puddles of water, rain on my window, it’s a rainy day!"
-  },
+
   {
     "id": 16,
     "name": "Fall Days",
@@ -131,36 +201,9 @@ export const galleryItems = [
     "slug": "Sea-Splash",
     "description": "The sea splashes against the sand, changing the sand each time the waves come. Bringing treasures from the sea and taking them back again."
   },
-  {
-    "id": 24,
-    "name": "In The Sea",
-    "size": "18\" x 24\"",
-    "year": "2010",
-    "age": "4",
-    "src": "/Gallery-photos/24.png",
-    "slug": "In-The-Sea",
-    "description": "We wonder what goes on in the depths of the sea. We imagine it and the colors come through"
-  },
-  {
-    "id": 25,
-    "name": "Blushing",
-    "size": "36\" x 24\"",
-    "year": "2010",
-    "age": "4",
-    "src": "/Gallery-photos/25.jpg",
-    "slug": "Blushing",
-    "description": "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!"
-  },
-  {
-    "id": 26,
-    "name": "Pretty Dreams",
-    "size": "24\" x 34\"",
-    "year": "2010",
-    "age": "5",
-    "src": "/Gallery-photos/26.jpg",
-    "slug": "Pretty-Dreams",
-    "description": "My friends, my family, they all come into my pretty dreams."
-  },
+
+
+
   {
     "id": 27,
     "name": "Windblown",
@@ -171,26 +214,8 @@ export const galleryItems = [
     "slug": "Windblown",
     "description": "The wind stirs up everything. It blows the dirt, the plants, the trees – even me!"
   },
-  {
-    "id": 28,
-    "name": "Moving Colour",
-    "size": "36\" x 60\"",
-    "year": "2012",
-    "age": "6",
-    "src": "/Gallery-photos/28.png",
-    "slug": "Moving-Colour",
-    "description": "Can you see the color moving through this painting? Where is it going? Where are we going?"
-  },
-  {
-    "id": 30,
-    "name": "Galaxy Dreams",
-    "size": "36\" x 24\"",
-    "year": "2010",
-    "age": "4",
-    "src": "/Gallery-photos/30.jpg",
-    "slug": "Galaxy-Dreams",
-    "description": "What is out there – in space? Galaxies, stars, planets…far away and mysterious"
-  },
+
+
   {
     "id": 32,
     "name": "In the Forest",

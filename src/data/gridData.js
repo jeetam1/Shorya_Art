@@ -29,7 +29,7 @@ export const gridItems = [
     summary: "My friends, my family, they all come into my pretty dreams....",
     description: "My friends, my family, they all come into my pretty dreams.",
     medium: "Acrylic on canvas",
-    size: "24\" x 34\"",
+    size: "35.5\" x 23.5\"",
     src: "/home-photos/3.jpg"
   },
   {
@@ -57,7 +57,7 @@ export const gridItems = [
     summary: "We wonder what goes on in the depths of the sea. We imagine it and the colors come through",
     description: "We wonder what goes on in the depths of the sea. We imagine it and the colors come through",
     medium: "Acrylic on canvas",
-    size: "18\" x 24\"",
+    size: "17.5\" x 23.5\"",
     age: "4",
     src: "/home-photos/6.jpg"
   },
@@ -76,7 +76,7 @@ export const gridItems = [
     summary: "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!",
     description: "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!",
     medium: "Acrylic on canvas",
-    size: "36\" x 24\"",
+    size: "35.5\" x 23.5\"",
     age: "4",
     src: "/home-photos/29.jpg"
   },
@@ -199,7 +199,7 @@ export const gridItems = [
     summary: "Puddles of water, rain on my window, it’s a rainy day!...",
     description: "Puddles of water, rain on my window, it’s a rainy day!",
     medium: "Mixed Media",
-    size: "18\" X 24\"",
+    size: "24\" x 18\"",
     age: "3 1/2",
     src: "/home-photos/21.jpg"
   },
@@ -278,7 +278,7 @@ export const gridItems = [
     summary: "Can you see the color moving through this painting? Where is it going?  Where are we going?",
     description: "Can you see the color moving through this painting? Where is it going?  Where are we going?",
     medium: "Mixed Media",
-    size: "36\" X 60\"",
+    size: "33\" x 20\"",
     age: "6",
     src: "/home-photos/28.jpg"
   }

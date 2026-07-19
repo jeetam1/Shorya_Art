@@ -86,6 +86,19 @@ function ArtworkDetailView({
   commentSectionRef,
   fromGallery
 }) {
+  const [activeImageSrc, setActiveImageSrc] = useState(data.src);
+
+  useEffect(() => {
+    setActiveImageSrc(data.src);
+  }, [data.src]);
+
+  const isStartingTwo = data.id === 11 || data.id === 12 || data.slug === 'Colours-of-Life' || data.slug === 'Sunshine';
+  const images = data.images && data.images.length > 0
+    ? [data.src, ...data.images]
+    : (isStartingTwo ? [data.src, '/design1.png', '/design5.png'] : [data.src]);
+
+  const isWallPhoto = activeImageSrc !== data.src;
+
   return (
     <div className={`artwork-detail-page ${fromGallery ? 'from-gallery-layout' : ''}`}>
       <header className="detail-page-header">
@@ -103,20 +116,53 @@ function ArtworkDetailView({
       </header>
 
       <div className={`detail-page-content-body ${fromGallery ? 'from-gallery-content' : ''}`}>
-        <div
-          className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''} ${data.isWide ? 'is-wide-view' : ''}`}
-          ref={!data.isArticle ? containerRef : null}
-          onMouseMove={!data.isArticle ? handleMouseMove : null}
-          onMouseLeave={!data.isArticle ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
-          style={{ cursor: !data.isArticle ? 'crosshair' : 'default' }}
-        >
-          <img
-            src={data.src}
-            alt={data.title}
-            className="detail-large-img"
-          />
-          {!data.isArticle && magnifier.show && containerRef.current && (
-            <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles()} />
+        <div className={`detail-image-and-thumbs-wrapper ${data.isWide ? 'is-wide-wrapper' : ''}`}>
+          <div
+            className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''} ${data.isWide ? 'is-wide-view' : ''}`}
+            ref={!data.isArticle && !isWallPhoto ? containerRef : null}
+            onMouseMove={!data.isArticle && !isWallPhoto ? handleMouseMove : null}
+            onMouseLeave={!data.isArticle && !isWallPhoto ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
+            style={{ cursor: !data.isArticle && !isWallPhoto ? 'crosshair' : 'default', position: 'relative' }}
+          >
+            {/* Invisible original image to lock container height/width */}
+            <img
+              src={data.src}
+              alt=""
+              className="detail-large-img-placeholder"
+            />
+            {/* Active image absolute-positioned over it */}
+            <img
+              src={activeImageSrc}
+              alt={data.title}
+              className="detail-large-img-active"
+            />
+            {!data.isArticle && !isWallPhoto && magnifier.show && containerRef.current && (
+              <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles(activeImageSrc)} />
+            )}
+          </div>
+
+          {images.length > 1 && (
+            <div className="detail-artwork-thumbnails-strip">
+              {images.map((img, idx) => (
+                <button
+                  key={idx}
+                  className={`detail-artwork-thumb-btn ${activeImageSrc === img ? 'is-active' : ''}`}
+                  onClick={() => {
+                    setActiveImageSrc(img);
+                    setMagnifier(prev => ({ ...prev, show: false }));
+                  }}
+                  title={
+                    data.slug === 'Blushing' || data.id === 25
+                      ? (idx === 0 ? "Original View" : idx === 1 ? "Wide Angle View" : idx === 2 ? "Closer View" : "Close to Wall View")
+                      : data.slug === 'Galaxy-Dreams' || data.id === 30 || data.slug === 'Rainy-Day' || data.id === 15 || data.slug === 'Moving-Colour' || data.id === 28 || data.slug === 'Pretty-Dreams' || data.id === 26 || data.slug === 'In-The-Sea' || data.id === 24
+                        ? (idx === 0 ? "Original View" : "Wide Angle View")
+                        : (idx === 0 ? "Original View" : idx === 1 ? "Design 1 (Living Room)" : "Design 5 (Bedroom)")
+                  }
+                >
+                  <img src={img} alt={`View ${idx + 1}`} className="detail-artwork-thumb-img" />
+                </button>
+              ))}
+            </div>
           )}
         </div>
 
@@ -271,11 +317,13 @@ export default function App() {
           size: galleryMatch.size,
           age: galleryMatch.age,
           allowComments: false,
-          isWide: galleryMatch.isWide
+          isWide: galleryMatch.isWide,
+          images: galleryMatch.images || []
         };
       } else if (match && galleryMatch) {
         match.isWide = galleryMatch.isWide;
         match.src = galleryMatch.src;
+        match.images = galleryMatch.images || [];
       }
 
       if (match) {
@@ -338,7 +386,7 @@ export default function App() {
     }
   };
 
-  const getMagnifierStyles = () => {
+  const getMagnifierStyles = (overrideSrc) => {
     if (!containerRef.current) return {};
     const lensSize = 180;
     const zoomLevel = 2.5;
@@ -350,12 +398,14 @@ export default function App() {
     const bgPosX = -(magnifier.x * zoomLevel) + (lensSize / 2);
     const bgPosY = -(magnifier.y * zoomLevel) + (lensSize / 2);
 
+    const srcToUse = overrideSrc || currentView.data.src;
+
     return {
       left: `${magnifier.x - (lensSize / 2)}px`,
       top: `${magnifier.y - (lensSize / 2)}px`,
       width: `${lensSize}px`,
       height: `${lensSize}px`,
-      backgroundImage: `url(${currentView.data.src})`,
+      backgroundImage: `url(${srcToUse})`,
       backgroundPosition: `${bgPosX}px ${bgPosY}px`,
       backgroundSize: `${bgWidth}px ${bgHeight}px`,
       imageRendering: 'high-quality'

@@ -1365,6 +1365,91 @@ body,
   border: 1px solid #f0f0f0 !important;
 }
 
+.detail-large-img-placeholder {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.detail-large-img-active {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+/* Amazon-style detail page thumbnail gallery */
+.detail-image-and-thumbs-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 0 auto 25px auto !important;
+}
+
+.detail-image-and-thumbs-wrapper.is-wide-wrapper {
+  max-width: 800px !important;
+}
+
+.artwork-detail-page.from-gallery-layout .detail-image-and-thumbs-wrapper {
+  margin: 0 0 25px 0 !important;
+}
+
+.artwork-detail-page.from-gallery-layout .detail-image-container {
+  margin: 0 !important;
+}
+
+.detail-artwork-thumbnails-strip {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 5px !important;
+}
+
+.detail-artwork-thumb-btn {
+  width: 70px !important;
+  height: 70px !important;
+  padding: 2px !important;
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+.detail-artwork-thumb-btn:hover {
+  border-color: #a0a0a0 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08) !important;
+}
+
+.detail-artwork-thumb-btn.is-active {
+  border: 2px solid #0066cc !important;
+  box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2) !important;
+}
+
+.detail-artwork-thumb-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 2px !important;
+}
+
 .artwork-magnifier-glass-lens {
   position: absolute !important;
   width: 180px !important;

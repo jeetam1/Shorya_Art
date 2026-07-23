@@ -87,7 +87,7 @@ export const gridItems = [
     summary: "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile.",
     description: "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile.",
     medium: "Acrylic on Canvas",
-    size: "36' X 24'",
+    size: "36\" x 24\"",
     age: "4",
     src: "/home-photos/10.jpg"
   },
@@ -231,7 +231,7 @@ export const gridItems = [
     summary: "The clouds pass by as I dream of ultramarine – my favorite ...",
     description: "The clouds pass by as I dream of ultramarine – my favorite color.",
     medium: "Oil on canvas",
-    size: "24\" X 72\"",
+    size: "72\" x 24\"",
     two: "24″ x 36″ canvases painted together",
     age: "6",
     src: "/Gallery-photos/32.jpg"

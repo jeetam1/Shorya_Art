@@ -92,10 +92,12 @@ function ArtworkDetailView({
     setActiveImageSrc(data.src);
   }, [data.src]);
 
-  const isStartingTwo = data.id === 11 || data.id === 12 || data.slug === 'Colours-of-Life' || data.slug === 'Sunshine';
-  const images = data.images && data.images.length > 0
-    ? [data.src, ...data.images]
-    : (isStartingTwo ? [data.src, '/design1.png', '/design5.png'] : [data.src]);
+  const isStartingTwo = data.id === 12 || data.slug === 'Sunshine';
+  const images = fromGallery
+    ? (data.images && data.images.length > 0
+        ? [data.src, ...data.images]
+        : (isStartingTwo ? [data.src, '/design1.png', '/design5.png'] : [data.src]))
+    : [data.src];
 
   const isWallPhoto = activeImageSrc !== data.src;
 
@@ -154,8 +156,8 @@ function ArtworkDetailView({
                   title={
                     data.slug === 'Blushing' || data.id === 25
                       ? (idx === 0 ? "Original View" : idx === 1 ? "Wide Angle View" : idx === 2 ? "Closer View" : "Close to Wall View")
-                      : data.slug === 'Galaxy-Dreams' || data.id === 30 || data.slug === 'Rainy-Day' || data.id === 15 || data.slug === 'Moving-Colour' || data.id === 28 || data.slug === 'Pretty-Dreams' || data.id === 26 || data.slug === 'In-The-Sea' || data.id === 24
-                        ? (idx === 0 ? "Original View" : "Wide Angle View")
+                      : data.slug === 'Galaxy-Dreams' || data.id === 30 || data.slug === 'Rainy-Day' || data.id === 15 || data.slug === 'Moving-Colour' || data.id === 28 || data.slug === 'Pretty-Dreams' || data.id === 26 || data.slug === 'In-The-Sea' || data.id === 24 || data.slug === 'Colours-of-Life' || data.slug === 'Sunshine' || data.slug === 'Cloudy-Dreams' || data.slug === 'green-rising' || data.slug === 'electric-lights' || data.slug === 'firebright' || data.slug === 'dancing-with-color' || data.slug === 'swirls' || data.slug === 'clouds-and-wind' || data.slug === 'emotions' || data.slug === 'moving-fast' || data.slug === 'Sea-Splash'
+                        ? (idx === 0 ? "Original View" : "Wall Display View")
                         : (idx === 0 ? "Original View" : idx === 1 ? "Design 1 (Living Room)" : "Design 5 (Bedroom)")
                   }
                 >

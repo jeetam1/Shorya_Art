@@ -64,16 +64,18 @@ export const galleryItems = [
       "/Gallery-photos/pretty_dreams_design.png"
     ]
   },
-
   {
-    "id": 11,
+    "id": 36,
     "name": "Colours of Life I",
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/11.jpg",
+    "src": "/home-photos/10.jpg",
     "slug": "Colours-of-Life",
-    "description": "The colors of life surround us. The garden has many colors from the plants and flowers. They make me smile."
+    "description": "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile.",
+    "images": [
+      "/Gallery-photos/colours_of_life_design.png"
+    ]
   },
   {
     "id": 24,
@@ -96,18 +98,159 @@ export const galleryItems = [
     "age": "3 1/2",
     "src": "/Gallery-photos/12.jpg",
     "slug": "Sunshine",
-    "description": "I love the sunshine! Painting in the sunshine makes the whole day joyful – and it comes through in the colors I paint"
+    "description": "I love the sunshine! Painting in the sunshine makes the whole day joyful – and it comes through in the colors I paint",
+    "images": [
+      "/Gallery-photos/sunshine_design.png"
+    ]
   },
   {
     "id": 13,
     "name": "Cloudy Dreams",
-    "size": "24\" x 72\"",
+    "size": "72\" x 24\"",
     "year": "2012",
     "age": "6",
     "src": "/Gallery-photos/32.jpg",
     "isWide": true,
     "slug": "Cloudy-Dreams",
-    "description": "The clouds pass by as I dream of ultramarine – my favorite color. Composed of two 24\" x 36\" canvases painted together as one large panorama."
+    "description": "The clouds pass by as I dream of ultramarine – my favorite color. Composed of two 24\" x 36\" canvases painted together as one large panorama.",
+    "images": [
+      "/Gallery-photos/cloudy_dreams_design.png"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Sea Splash",
+    "size": "18\" x 24\"",
+    "year": "2010",
+    "age": "4",
+    "src": "/Gallery-photos/23.jpg",
+    "slug": "Sea-Splash",
+    "description": "The sea splashes against the sand, changing the sand each time the waves come. Bringing treasures from the sea and taking them back again.",
+    "images": [
+      "/Gallery-photos/sea_splash_design.png"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Green Rising",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "35.5\" x 23.5\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/greenrishing.jpg",
+    "slug": "green-rising",
+    "description": "An energetic abstract composition featuring dynamic green splatters and layered geometric textures painted on canvas.",
+    "images": [
+      "/Gallery-photos/greenrishing_design.png"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Electric Lights",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "17.5\" x 23.5\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/electric_lights.jpg",
+    "slug": "electric-lights",
+    "description": "An electrifying abstract painting featuring vibrant orange and green highlights set against cool grey textures and energetic brushstrokes.",
+    "images": [
+      "/Gallery-photos/electric_lights_design.png"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Firebright",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "17.5\" x 23.5\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/firebright.jpg",
+    "slug": "firebright",
+    "description": "A dynamic abstract painting bursting with fiery red, orange, and golden hues layered with bold brushwork on canvas.",
+    "images": [
+      "/Gallery-photos/firebright_design.png"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Dancing With Color",
+    "medium": "Limited Edition Gicleé on Canvas",
+    "size": "34\" x 20\" (unframed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/dancing_with_color.jpg",
+    "slug": "dancing-with-color",
+    "description": "A vibrant and joyful abstract composition exploring blue, red, and yellow splash textures on canvas.",
+    "images": [
+      "/Gallery-photos/dancing_with_color_design.png"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Swirls",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "24\" x 18\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/swirls.jpg",
+    "slug": "swirls",
+    "description": "An expressive abstract painting featuring dynamic golden and black swirl textures layered over subtle grey tones.",
+    "images": [
+      "/Gallery-photos/swirls_design.png"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Clouds and Wind",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "18\" x 24\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/clouds_and_wind.jpg",
+    "slug": "clouds-and-wind",
+    "description": "A dramatic abstract painting featuring expressive grey, white, and red brushwork symbolizing clouds moving through wind.",
+    "images": [
+      "/Gallery-photos/clouds_and_wind_design.png"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Emotions",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "17.5\" x 23.5\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/emotions.jpg",
+    "slug": "emotions",
+    "description": "An intense abstract painting conveying raw emotion through layered red, black, and silver brushstrokes on canvas.",
+    "images": [
+      "/Gallery-photos/emotions_design.png"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Moving Fast",
+    "medium": "Original Acrylic Painting on Canvas",
+    "size": "18\" x 24\" (Framed)",
+    "year": "2011",
+    "age": "5",
+    "src": "/Gallery-photos/moving_fast.jpg",
+    "slug": "moving-fast",
+    "description": "A high-velocity abstract composition featuring horizontal streaks of yellow, green, and red painted across a textured canvas.",
+    "images": [
+      "/Gallery-photos/moving_fast_design.png"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Untitled XVII",
+    "size": "36\" x 24\"",
+    "year": "2010",
+    "age": "4",
+    "src": "/Gallery-photos/11.jpg",
+    "slug": "untitled-xvii",
+    "description": "An expressive abstract painting exploring vibrant green and golden textures on canvas."
   },
   {
     "id": 14,
@@ -119,7 +262,6 @@ export const galleryItems = [
     "slug": "Tiny-Soldiers",
     "description": "Tiny soldiers marching across the painting…can you see them?"
   },
-
   {
     "id": 16,
     "name": "Fall Days",
@@ -192,19 +334,6 @@ export const galleryItems = [
     "description": "We’re standing side by side. Each one beside the other. It’s makes us feel strong when we are together."
   },
   {
-    "id": 23,
-    "name": "Sea Splash",
-    "size": "18\" x 24\"",
-    "year": "2010",
-    "age": "4",
-    "src": "/Gallery-photos/23.jpg",
-    "slug": "Sea-Splash",
-    "description": "The sea splashes against the sand, changing the sand each time the waves come. Bringing treasures from the sea and taking them back again."
-  },
-
-
-
-  {
     "id": 27,
     "name": "Windblown",
     "size": "36\" x 24\"",
@@ -214,8 +343,6 @@ export const galleryItems = [
     "slug": "Windblown",
     "description": "The wind stirs up everything. It blows the dirt, the plants, the trees – even me!"
   },
-
-
   {
     "id": 32,
     "name": "In the Forest",

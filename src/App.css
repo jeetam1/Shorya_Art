@@ -373,6 +373,7 @@ body,
   padding: 24px 25px 0 25px !important;
   margin: 0 !important;
   display: -webkit-box !important;
+  line-clamp: 2 !important;
   -webkit-line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;

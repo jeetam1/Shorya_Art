@@ -20,12 +20,27 @@ coverage/
 
 # Environment variables
 .env
-.env*.local
+.env.local
+.env.*.local
+.env.*
+!.env.example
+
+# Vite & Build Caches
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Vercel & Deployment
+.vercel/
 
 # System & OS files
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Security / Keys
+*.pem
+*.key
 
 # IDE & Editor configurations
 .vscode/*
@@ -37,3 +52,6 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Local / Temp
+*.local

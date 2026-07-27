@@ -1,29 +1,21 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { galleryItems } from '../data/galleryData';
+import { calculateWallDimensions } from '../utils/dimensionUtils';
 
 const defaultDescription = "This abstract painting features vibrant colors and expressive textures. Created using premium pigments on canvas.";
 
 const getPaintingDimensions = (item) => {
-  let w = 24, h = 18;
-  const sizeStr = item.size || '24" x 18"';
-  const parts = sizeStr.split(/[xX]/).map(p => parseFloat(p.trim().replace(/["\s]/g, "")));
-  if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
-    w = parts[0];
-    h = parts[1];
-  }
-  if (item.isWide) {
-    const tempW = Math.max(w, h);
-    const tempH = Math.min(w, h);
-    w = tempW; h = tempH;
-  }
-  const scale = 7.5;
-  const maxW = item.isWide ? 520 : 280;
-  const maxH = 300;
-  let pw = w * scale;
-  let ph = h * scale;
-  if (pw > maxW) { const r = maxW / pw; pw = maxW; ph *= r; }
-  if (ph > maxH) { const r = maxH / ph; ph = maxH; pw *= r; }
-  return { width: pw, height: ph };
+  const wall = calculateWallDimensions(item.size, {
+    ppi: 3.6,
+    maxWallHeightPx: 280,
+    maxWallWidthPx: 600,
+    minWallHeightPx: 40
+  });
+  return {
+    width: wall.widthPx,
+    height: wall.heightPx,
+    formattedSizeInches: wall.formattedSizeInches
+  };
 };
 
 export default function PhotoView() {
@@ -198,7 +190,7 @@ export default function PhotoView() {
         {galleryItems.map((item, index) => {
           const dims = getPaintingDimensions(item);
           const isHovered = hoveredId === item.id;
-          const sectionWidth = item.isWide ? 620 : 400;
+          const sectionWidth = Math.max(380, dims.width + 180);
 
           return (
             <div

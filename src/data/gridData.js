@@ -7,7 +7,7 @@ export const gridItems = [
     summary: "I look at mountains and oceans. Where you stand can change the...",
     description: "I look at mountains and oceans. Where you stand can change the meaning of deep for you.",
     medium: "Acrylic on canvas",
-    size: "2' X 3'",
+    size: "24\" x 36\"",
     src: "/home-photos/1.jpg"
   },
   {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, ZoomIn, ZoomOut } from 'lucide-react';
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { calculateWallDimensions } from './utils/dimensionUtils';
 
 import Home from './components/Home';
 import Awards from './components/Awards';
@@ -87,9 +88,13 @@ function ArtworkDetailView({
   fromGallery
 }) {
   const [activeImageSrc, setActiveImageSrc] = useState(data.src);
+  const [isRoomZoomed, setIsRoomZoomed] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     setActiveImageSrc(data.src);
+    setIsRoomZoomed(false);
+    setIsLightboxOpen(false);
   }, [data.src]);
 
   const isStartingTwo = data.id === 12 || data.slug === 'Sunshine';
@@ -100,6 +105,12 @@ function ArtworkDetailView({
     : [data.src];
 
   const isWallPhoto = activeImageSrc !== data.src;
+  const wallDims = calculateWallDimensions(data.size, {
+    ppi: 3.6,
+    maxWallHeightPx: 260,
+    maxWallWidthPx: 600,
+    minWallHeightPx: 40
+  });
 
   return (
     <div className={`artwork-detail-page ${fromGallery ? 'from-gallery-layout' : ''}`}>
@@ -120,26 +131,67 @@ function ArtworkDetailView({
       <div className={`detail-page-content-body ${fromGallery ? 'from-gallery-content' : ''}`}>
         <div className={`detail-image-and-thumbs-wrapper ${data.isWide ? 'is-wide-wrapper' : ''}`}>
           <div
-            className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''} ${data.isWide ? 'is-wide-view' : ''}`}
+            className={`detail-image-container ${data.isArticle ? 'is-article-view' : ''} ${data.isWide ? 'is-wide-view' : ''} ${isWallPhoto ? 'is-wall-view-container' : ''}`}
             ref={!data.isArticle && !isWallPhoto ? containerRef : null}
             onMouseMove={!data.isArticle && !isWallPhoto ? handleMouseMove : null}
             onMouseLeave={!data.isArticle && !isWallPhoto ? () => setMagnifier(prev => ({ ...prev, show: false })) : null}
             style={{ cursor: !data.isArticle && !isWallPhoto ? 'crosshair' : 'default', position: 'relative' }}
           >
-            {/* Invisible original image to lock container height/width */}
-            <img
-              src={data.src}
-              alt=""
-              className="detail-large-img-placeholder"
-            />
-            {/* Active image absolute-positioned over it */}
-            <img
-              src={activeImageSrc}
-              alt={data.title}
-              className="detail-large-img-active"
-            />
-            {!data.isArticle && !isWallPhoto && magnifier.show && containerRef.current && (
-              <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles(activeImageSrc)} />
+            {isWallPhoto ? (
+              <div className={`shorya-dynamic-room-view ${isRoomZoomed ? 'zoomed' : ''}`}>
+                <div
+                  className="shorya-room-painting-on-wall"
+                  style={{
+                    width: `${wallDims.widthPx * (isRoomZoomed ? 1.75 : 1.0)}px`,
+                    height: `${wallDims.heightPx * (isRoomZoomed ? 1.75 : 1.0)}px`,
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setIsRoomZoomed(prev => !prev)}
+                  title={isRoomZoomed ? "Click to zoom out" : "Click to zoom in"}
+                >
+                  <img
+                    src={data.src}
+                    alt={data.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+                <button
+                  className="shorya-room-zoom-toggle"
+                  onClick={() => setIsRoomZoomed(prev => !prev)}
+                  aria-label={isRoomZoomed ? "Zoom Out" : "Zoom In"}
+                  title={isRoomZoomed ? "Zoom Out" : "Zoom In"}
+                >
+                  {isRoomZoomed ? (
+                    <>
+                      <ZoomOut size={15} style={{ marginRight: '6px' }} />
+                      <span>Zoom Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <ZoomIn size={15} style={{ marginRight: '6px' }} />
+                      <span>Zoom In</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            ) : (
+              <>
+                {/* Invisible original image to lock container height/width */}
+                <img
+                  src={data.src}
+                  alt=""
+                  className="detail-large-img-placeholder"
+                />
+                {/* Active image absolute-positioned over it */}
+                <img
+                  src={activeImageSrc}
+                  alt={data.title}
+                  className="detail-large-img-active"
+                />
+                {!data.isArticle && magnifier.show && containerRef.current && (
+                  <div className="artwork-magnifier-glass-lens" style={getMagnifierStyles(activeImageSrc)} />
+                )}
+              </>
             )}
           </div>
 
@@ -226,6 +278,31 @@ function ArtworkDetailView({
       {!fromGallery && data.allowComments && (
         <div ref={commentSectionRef}>
           <CommentSection storageKey={`comments-artwork-${data.slug || data.id}`} />
+        </div>
+      )}
+
+      {isLightboxOpen && (
+        <div
+          className="shorya-zoom-lightbox-overlay-shroud open-animation"
+          onClick={() => setIsLightboxOpen(false)}
+          style={{ zIndex: 99999 }}
+        >
+          <div className="shorya-zoom-lightbox-content-wrapper" onClick={(e) => e.stopPropagation()}>
+            <div className="shorya-zoom-lightbox-container open-animation" style={{ width: 'auto', height: 'auto', maxWidth: '92vw', maxHeight: '88vh' }}>
+              <button className="shorya-zoom-lightbox-close-btn" onClick={() => setIsLightboxOpen(false)}>&times;</button>
+              <img
+                src={activeImageSrc}
+                alt={data.title}
+                className="shorya-zoom-lightbox-img"
+                style={{ maxWidth: '90vw', maxHeight: '82vh', objectFit: 'contain' }}
+              />
+            </div>
+            {data.title && (
+              <div className="shorya-zoom-lightbox-caption">
+                {data.title} {data.size ? `(${data.size})` : ''}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

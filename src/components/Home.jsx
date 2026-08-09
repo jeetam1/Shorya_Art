@@ -28,14 +28,19 @@ export default function Home() {
           }}
         >
           <div className="art-card-wrapper">
-            <img loading="lazy" src={item.src} alt={item.title} className="art-card-img" />
+            <img 
+              loading="lazy" 
+              src={item.src} 
+              alt={item.isArticle ? `${item.title} Press Feature - Shorya Mahanot` : `${item.title} - Acrylic on Canvas Abstract Painting by Shorya Mahanot`} 
+              className="art-card-img" 
+            />
             
             <div className="card-hover-overlay">
               <h3 className="card-hover-title">{item.title}</h3>
               <p className="card-hover-description">
-                {item.summary || "Temporary dummy content placeholder goes here..."}
+                {item.summary || item.description || ""}
               </p>
-              <div className="card-hover-icon-circle">
+              <div className="card-hover-icon-circle" aria-hidden="true">
                 <Search size={20} />
               </div>
             </div>

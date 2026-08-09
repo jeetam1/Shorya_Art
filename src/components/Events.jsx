@@ -172,7 +172,7 @@ export default function Events() {
               </div>
             ) : (
               <div className="shorya-event-main-image-frame">
-                <img loading="lazy" src={event.imgSrc} alt={event.title} className="shorya-event-display-photo" />
+                <img loading="lazy" src={event.imgSrc} alt={`${event.title} - Shorya Mahanot Exhibition Event`} className="shorya-event-display-photo" />
               </div>
             )}
 
@@ -183,7 +183,7 @@ export default function Events() {
             <div className="shorya-event-split-info-row">
 
               <div className="shorya-event-brand-logo-box">
-                <img loading="lazy" src={event.logoSrc} alt={`${event.title} Logo`} className="shorya-event-brand-logo-asset" />
+                <img loading="lazy" src={event.logoSrc} alt={`${event.title} Event Official Logo`} className="shorya-event-brand-logo-asset" />
               </div>
 
               <div className="shorya-event-description-text-block">

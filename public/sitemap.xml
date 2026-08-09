@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Core Navigation Pages -->
+  <url>
+    <loc>https://www.shoryamahanot.com/</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Shorya_logo.jpg</image:loc>
+      <image:title>Shorya Mahanot - World's Youngest Signature Style Abstract Artist</image:title>
+      <image:caption>Official art portfolio of Shorya Mahanot showcasing original abstract expressionist paintings.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/biography</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/biography-photos/511.jpg</image:loc>
+      <image:title>Shorya Mahanot Portrait</image:title>
+      <image:caption>Portrait of signature style abstract expressionist artist Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artist-statement</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/banners/600.jpg</image:loc>
+      <image:title>Shorya Mahanot Painting in Action</image:title>
+      <image:caption>Artist statement and spontaneous abstract expressionist painting process.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/gallery/acrylic-on-canvas</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/acrylic_on_canvas.jpg</image:loc>
+      <image:title>Acrylic on Canvas Gallery - Shorya Mahanot</image:title>
+      <image:caption>Complete collection of original acrylic on canvas paintings by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/events</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/events-photos/701.jpg</image:loc>
+      <image:title>Solo Exhibition at The Taj Mahal Palace Hotel Mumbai</image:title>
+      <image:caption>Shorya Mahanot solo show at Chambers Terrace, Taj Mahal Palace Hotel Mumbai.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/media/newspaper-articles</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/newspaper_and_articles.jpg</image:loc>
+      <image:title>Newspaper Articles &amp; Press - Shorya Mahanot</image:title>
+      <image:caption>Global print media and newspaper coverage of Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/media/magazines</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/magazines.jpg</image:loc>
+      <image:title>Magazine Features - Shorya Mahanot</image:title>
+      <image:caption>Editorial magazine articles featuring Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/media/web-articles</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/media/videos</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/look-world-talking</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/look-world-talking/twitter-mentions</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/awards-certificates</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/contact</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Major Exhibition & Event Pages -->
+  <url>
+    <loc>https://www.shoryamahanot.com/TajMahalPalace</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Taj.jpg</image:loc>
+      <image:title>Taj Mahal Palace Solo Exhibition</image:title>
+      <image:caption>Historic solo exhibition of Shorya Mahanot at Taj Mahal Palace, Mumbai.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/rk-laxman</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/RK.jpg</image:loc>
+      <image:title>Blessings From Shri R.K. Laxman</image:title>
+      <image:caption>Demonstration before legendary cartoonist Shri R.K. Laxman.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/pogo</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Pogo-1.jpg</image:loc>
+      <image:title>Pogo Amazing Kids Award</image:title>
+      <image:caption>Pogo Television Amazing Kids Award recognition for Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/kalidas-sanskrit</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Kalidas.jpg</image:loc>
+      <image:title>Kalidas Sanskrit Academy Solo Show</image:title>
+      <image:caption>Solo exhibition installed at Kalidas Sanskrit Academy, Ujjain.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/celebrity-chef-gala</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Celebrity-chef-gala.jpg</image:loc>
+      <image:title>Celebrity Chef Gala Autism Speaks New York</image:title>
+      <image:caption>Artwork auction at Cipriani Wall Street, NYC for Autism Speaks.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/spectrum-miami</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/art-expo</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Art-Expo.jpg</image:loc>
+      <image:title>Best of Art Expo New York 2013</image:title>
+      <image:caption>Shorya Mahanot chosen as Best of Art Expo New York 2013.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/holtzman-gallery</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/holtzman--gallery.jpg</image:loc>
+      <image:title>Holtzman Gallery Featured Artist</image:title>
+      <image:caption>Holtzman Gallery Atlantic City featuring Shorya Mahanot artworks.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/ndtv</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/NDTV.jpg</image:loc>
+      <image:title>NDTV National Television Feature</image:title>
+      <image:caption>NDTV broadcast profiling young abstract prodigy Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/nestle</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Nestle.jpg</image:loc>
+      <image:title>Nestle All-India Achiever Campaign</image:title>
+      <image:caption>Nestle campaign celebrating Shorya Mahanot's artistic talent.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/TEDX</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/home-photos/30.jpg</image:loc>
+      <image:title>TEDx Keynote Presentation by Shorya Mahanot</image:title>
+      <image:caption>The Story of My Life TEDx speech by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/microsoft-future-decoded</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/sbs-radio</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/yahoo</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/readers-digest</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Original Artworks & Masterpieces -->
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/in-the-deep-ii</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/home-photos/1.jpg</image:loc>
+      <image:title>In the deep II - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract expressionist painting In the deep II (24&quot; x 36&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Blushing</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/25.jpg</image:loc>
+      <image:title>Blushing - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Blushing (35.5&quot; x 23.5&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Galaxy-Dreams</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/30.jpg</image:loc>
+      <image:title>Galaxy Dreams - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Galaxy Dreams (36&quot; x 24&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Rainy-Day</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/15.jpg</image:loc>
+      <image:title>Rainy Day - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Rainy Day (24&quot; x 18&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Moving-Colour</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/28.png</image:loc>
+      <image:title>Moving Colour - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Moving Colour (33&quot; x 20&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Pretty-Dreams</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/26.jpg</image:loc>
+      <image:title>Pretty Dreams - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Pretty Dreams (35.5&quot; x 23.5&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Colours-of-Life</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/home-photos/10.jpg</image:loc>
+      <image:title>Colours of Life I - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Colours of Life I (36&quot; x 24&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/In-The-Sea</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/24.png</image:loc>
+      <image:title>In The Sea - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting In The Sea (17.5&quot; x 23.5&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Sunshine</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/12.jpg</image:loc>
+      <image:title>Sunshine - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Sunshine (18&quot; x 24&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Cloudy-Dreams</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/32.jpg</image:loc>
+      <image:title>Cloudy Dreams Diptych - Acrylic on Canvas</image:title>
+      <image:caption>Two canvases painted together as one panorama (72&quot; x 24&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Sea-Splash</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/23.jpg</image:loc>
+      <image:title>Sea Splash - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Sea Splash (18&quot; x 24&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/green-rising</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/greenrishing.jpg</image:loc>
+      <image:title>Green Rising - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Green Rising by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/electric-lights</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/electric_lights.jpg</image:loc>
+      <image:title>Electric Lights - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Electric Lights by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/firebright</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/firebright.jpg</image:loc>
+      <image:title>Firebright - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Firebright by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/dancing-with-color</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/dancing_with_color.jpg</image:loc>
+      <image:title>Dancing With Color - Limited Edition</image:title>
+      <image:caption>Limited edition abstract artwork Dancing With Color by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/swirls</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/swirls.jpg</image:loc>
+      <image:title>Swirls - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Swirls by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/clouds-and-wind</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/clouds_and_wind.jpg</image:loc>
+      <image:title>Clouds and Wind - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Clouds and Wind by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/emotions</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/emotions.jpg</image:loc>
+      <image:title>Emotions - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Emotions by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/moving-fast</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/moving_fast.jpg</image:loc>
+      <image:title>Moving Fast - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Moving Fast by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Diving</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.shoryamahanot.com/Gallery-photos/22.jpg</image:loc>
+      <image:title>Diving - Acrylic on Canvas</image:title>
+      <image:caption>Original abstract painting Diving (18&quot; x 24&quot;) by Shorya Mahanot.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Sun-Shine</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Fall-Days</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Dawning-Day</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Side-by-Side</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Meteor-Shower</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Artist</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Shouts-and-Whispers</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Windblown</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/Tiny-Soldiers</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/the-huffington-post</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shoryamahanot.com/artwork/the-guardian</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

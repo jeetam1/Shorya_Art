@@ -83,9 +83,9 @@ export default function Contact() {
       <PageBanner title="Contact" bgImage="/contact.jpg" />
 
       <div className="contact-content-wrapper">
-        <div className="contact-info-block">
-          <p><strong>For More Inquiries:</strong> Aditya Singh Mahanot, +917999706069</p>
-          <p><strong>Email us</strong> – <a href="mailto:shorya@shoryamahanot.com">shorya@shoryamahanot.com</a></p>
+        <div className="contact-info-block" itemScope itemType="https://schema.org/ContactPoint">
+          <p><strong>For More Inquiries:</strong> <span itemProp="name">Aditya Singh Mahanot</span>, <a href="tel:+917999706069" itemProp="telephone" style={{ color: 'inherit', textDecoration: 'none' }}>+917999706069</a></p>
+          <p><strong>Email us</strong> – <a href="mailto:shorya@shoryamahanot.com" itemProp="email">shorya@shoryamahanot.com</a></p>
         </div>
 
         {isSubmitted ? (
@@ -95,18 +95,18 @@ export default function Contact() {
             <button onClick={handleReset} className="contact-btn" style={{ marginTop: '20px' }}>Send Another Message</button>
           </div>
         ) : (
-          <form className="contact-form-block" onSubmit={handleSubmit}>
+          <form className="contact-form-block" onSubmit={handleSubmit} aria-label="Art Inquiries and Contact Form">
             <div className="contact-form-layout">
               <div className="contact-main-inputs">
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" className="contact-input" required disabled={isSending} />
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="contact-input" required disabled={isSending} />
-                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Message" className="contact-textarea" required disabled={isSending}></textarea>
+                <input type="text" id="contact-name" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" className="contact-input" aria-label="Your Name" autoComplete="name" required disabled={isSending} />
+                <input type="email" id="contact-email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="contact-input" aria-label="Your Email Address" autoComplete="email" required disabled={isSending} />
+                <textarea id="contact-message" name="message" value={formData.message} onChange={handleInputChange} placeholder="Message" className="contact-textarea" aria-label="Your Message" required disabled={isSending}></textarea>
 
                 <div className="contact-actions-row">
-                  <button type="submit" className="contact-btn" disabled={isSending}>
+                  <button type="submit" className="contact-btn" disabled={isSending} aria-label="Submit Contact Message">
                     {isSending ? 'SENDING...' : 'SUBMIT'}
                   </button>
-                  <button type="button" className="contact-btn" onClick={handleReset} disabled={isSending}>RESET</button>
+                  <button type="button" className="contact-btn" onClick={handleReset} disabled={isSending} aria-label="Reset Form">RESET</button>
                 </div>
               </div>
             </div>

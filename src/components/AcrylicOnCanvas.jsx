@@ -122,7 +122,7 @@ export default function AcrylicOnCanvas() {
                 onClick={() => navigate(`/artwork/${item.slug}`, { state: { fromGallery: true } })}
                 style={{ cursor: 'pointer' }}
               >
-                <img loading="lazy" src={item.src} alt={item.name} className="shorya-gallery-thumbnail-img-asset" />
+                <img loading="lazy" src={item.src} alt={`${item.name} - Acrylic on Canvas Abstract Painting by Shorya Mahanot`} className="shorya-gallery-thumbnail-img-asset" />
                 <div className="shorya-gallery-thumbnail-inner-shadow-overlay"></div>
                 <div className="shorya-gallery-hover-overlay">
                   <button
@@ -182,7 +182,7 @@ export default function AcrylicOnCanvas() {
               <img
                 loading="lazy"
                 src={zoomImage}
-                alt={zoomTitle}
+                alt={`${zoomTitle} - High-Resolution Abstract Art by Shorya Mahanot`}
                 className="shorya-zoom-lightbox-img"
                 onLoad={handleImageLoad}
               />

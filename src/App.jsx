@@ -1,55 +1,56 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Plus, Minus, ZoomIn, ZoomOut } from 'lucide-react';
 import { gridItems } from './data/gridData';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { calculateWallDimensions } from './utils/dimensionUtils';
 
 import Home from './components/Home';
-import Awards from './components/Awards';
-import Biography from './components/Biography';
-import ArtistStatement from './components/ArtistStatement';
-import AcrylicOnCanvas from './components/AcrylicOnCanvas';
 import { galleryItems } from './data/galleryData';
-// import PhotoView from './components/PhotoView';
-import Events from './components/Events';
-import NewspaperArticles from './components/NewspaperArticles';
-import Magazines from './components/Magazines';
-import Ted from './components/Ted';
-import MicrosoftFutureDecoded from './components/MicrosoftFutureDecoded';
-import SBSRadio from './components/SBSRadio';
-import WebArticles from './components/WebArticles';
-import Videos from './components/Videos';
-import LookWorldTalking from './components/LookWorldTalking';
-import TwitterMentions from './components/TwitterMentions';
-import HuffingtonPost from './components/HuffingtonPost';
-import TedX from './components/TedX';
-import HoltzmanGallery from './components/HoltzmanGallery';
-import Pogo from './components/Pogo';
-import ArtExpo from './components/ArtExpo';
-import SpectrumMiami from './components/SpectrumMiami';
-import CelebrityChefGala from './components/CelebrityChefGala';
-import KalidasSanskrit from './components/KalidasSanskrit';
-import Contact from './components/Contact';
-import TajMahalPalace from './components/TajMahalPalace';
-import Nestle from './components/Nestle';
-import NDTV from './components/NDTV';
-import RKLaxman from './components/RKLaxman';
-import Yahoo from './components/Yahoo';
-import ReadersDigest from './components/ReadersDigest';
-
 import CommentSection from './components/CommentSection';
 import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
+import SEO from './components/SEO';
+import { ROUTE_SEO_MAP, getArtworkSEO } from './data/seoData';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
+// Lazy-loaded routes for code splitting and ultra-fast initial page loads
+const Awards = lazy(() => import('./components/Awards'));
+const Biography = lazy(() => import('./components/Biography'));
+const ArtistStatement = lazy(() => import('./components/ArtistStatement'));
+const AcrylicOnCanvas = lazy(() => import('./components/AcrylicOnCanvas'));
+const Events = lazy(() => import('./components/Events'));
+const NewspaperArticles = lazy(() => import('./components/NewspaperArticles'));
+const Magazines = lazy(() => import('./components/Magazines'));
+const Ted = lazy(() => import('./components/Ted'));
+const MicrosoftFutureDecoded = lazy(() => import('./components/MicrosoftFutureDecoded'));
+const SBSRadio = lazy(() => import('./components/SBSRadio'));
+const WebArticles = lazy(() => import('./components/WebArticles'));
+const Videos = lazy(() => import('./components/Videos'));
+const LookWorldTalking = lazy(() => import('./components/LookWorldTalking'));
+const TwitterMentions = lazy(() => import('./components/TwitterMentions'));
+const HuffingtonPost = lazy(() => import('./components/HuffingtonPost'));
+const TedX = lazy(() => import('./components/TedX'));
+const HoltzmanGallery = lazy(() => import('./components/HoltzmanGallery'));
+const Pogo = lazy(() => import('./components/Pogo'));
+const ArtExpo = lazy(() => import('./components/ArtExpo'));
+const SpectrumMiami = lazy(() => import('./components/SpectrumMiami'));
+const CelebrityChefGala = lazy(() => import('./components/CelebrityChefGala'));
+const KalidasSanskrit = lazy(() => import('./components/KalidasSanskrit'));
+const Contact = lazy(() => import('./components/Contact'));
+const TajMahalPalace = lazy(() => import('./components/TajMahalPalace'));
+const Nestle = lazy(() => import('./components/Nestle'));
+const NDTV = lazy(() => import('./components/NDTV'));
+const RKLaxman = lazy(() => import('./components/RKLaxman'));
+const Yahoo = lazy(() => import('./components/Yahoo'));
+const ReadersDigest = lazy(() => import('./components/ReadersDigest'));
 
 const ROUTE_MAP = [
   { paths: ['/', '/home'], type: 'grid', tab: 'Home' },
   { paths: ['/biography', '/biography/'], type: 'biography', tab: 'Biography' },
   { paths: ['/artist-statement', '/artists-statement', '/artists-statement/'], type: 'artist-statement', tab: "Artist's Statement" },
   { paths: ['/gallery/acrylic-on-canvas', '/acrylic-on-canvas', '/acrylic-on-canvas/'], type: 'acrylic-on-canvas', tab: 'Acrylic on canvas', expand: 'Gallery' },
-  // { paths: ['/gallery/photo-view', '/photo-view', '/photo-view/'], type: 'photo-view', tab: 'Photo View', expand: 'Gallery' },
   { paths: ['/events', '/events/'], type: 'events', tab: 'Events' },
   { paths: ['/media/newspaper-articles', '/newspapers-articles', '/newspapers-articles/'], type: 'newspaper-articles', tab: 'Newspapers Articles', expand: 'Media' },
   { paths: ['/media/magazines', '/magazines', '/magazines/'], type: 'magazines', tab: 'Magazines', expand: 'Media' },
@@ -100,8 +101,8 @@ function ArtworkDetailView({
   const isStartingTwo = data.id === 12 || data.slug === 'Sunshine';
   const images = fromGallery
     ? (data.images && data.images.length > 0
-        ? [data.src, ...data.images]
-        : (isStartingTwo ? [data.src, '/design1.png', '/design5.png'] : [data.src]))
+      ? [data.src, ...data.images]
+      : (isStartingTwo ? [data.src, '/design1.png', '/design5.png'] : [data.src]))
     : [data.src];
 
   const isWallPhoto = activeImageSrc !== data.src;
@@ -151,7 +152,7 @@ function ArtworkDetailView({
                 >
                   <img
                     src={data.src}
-                    alt={data.title}
+                    alt={`${data.title} displayed on wall - Abstract Art by Shorya Mahanot`}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 </div>
@@ -180,12 +181,13 @@ function ArtworkDetailView({
                 <img
                   src={data.src}
                   alt=""
+                  aria-hidden="true"
                   className="detail-large-img-placeholder"
                 />
                 {/* Active image absolute-positioned over it */}
                 <img
                   src={activeImageSrc}
-                  alt={data.title}
+                  alt={`${data.title} - Acrylic on Canvas Abstract Painting by Shorya Mahanot`}
                   className="detail-large-img-active"
                 />
                 {!data.isArticle && magnifier.show && containerRef.current && (
@@ -213,7 +215,7 @@ function ArtworkDetailView({
                         : (idx === 0 ? "Original View" : idx === 1 ? "Design 1 (Living Room)" : "Design 5 (Bedroom)")
                   }
                 >
-                  <img src={img} alt={`View ${idx + 1}`} className="detail-artwork-thumb-img" />
+                  <img src={img} alt={`${data.title} view ${idx + 1} - Shorya Mahanot`} className="detail-artwork-thumb-img" />
                 </button>
               ))}
             </div>
@@ -316,7 +318,6 @@ function getPageTitle(type, data) {
     case 'huffington-post': return 'Huffington Post';
     case 'artist-statement': return "Artist's Statement";
     case 'acrylic-on-canvas': return 'Acrylic on Canvas';
-    // case 'photo-view': return 'Photo View';
     case 'events': return 'Events';
     case 'newspaper-articles': return 'Newspapers Articles';
     case 'magazines': return 'Magazines';
@@ -491,8 +492,64 @@ export default function App() {
     };
   };
 
+  const getSEOProps = () => {
+    if (currentView.type === 'detail' && currentView.data) {
+      const artSEO = getArtworkSEO(currentView.data);
+      return {
+        ...artSEO,
+        path: location.pathname,
+        breadcrumbs: [
+          { name: 'Gallery', url: '/gallery/acrylic-on-canvas' },
+          { name: currentView.data.title || currentView.data.name, url: location.pathname }
+        ]
+      };
+    }
+
+    const routeKey = currentView.type === 'grid' ? 'home' : currentView.type;
+    const baseSEO = ROUTE_SEO_MAP[routeKey] || ROUTE_SEO_MAP.home;
+    const pageTitle = getPageTitle(currentView.type, currentView.data);
+
+    let breadcrumbs = [];
+    if (currentView.type !== 'grid') {
+      if (['newspaper-articles', 'magazines', 'web-articles', 'videos', 'yahoo', 'readers-digest'].includes(currentView.type)) {
+        breadcrumbs = [
+          { name: 'Media', url: '/media/newspaper-articles' },
+          { name: pageTitle, url: location.pathname }
+        ];
+      } else if (['taj-mahal', 'rk-laxman', 'pogo', 'kalidas', 'celebrity-chef', 'spectrum-miami', 'art-expo', 'holtzman', 'ndtv', 'nestle', 'tedx-event-page', 'microsoft', 'sbs-radio'].includes(currentView.type)) {
+        breadcrumbs = [
+          { name: 'Events', url: '/events' },
+          { name: pageTitle, url: location.pathname }
+        ];
+      } else if (currentView.type === 'acrylic-on-canvas') {
+        breadcrumbs = [
+          { name: 'Gallery', url: '/gallery/acrylic-on-canvas' },
+          { name: 'Acrylic on canvas', url: '/gallery/acrylic-on-canvas' }
+        ];
+      } else if (currentView.type === 'twitter-mentions') {
+        breadcrumbs = [
+          { name: 'Look the world is talking', url: '/look-world-talking' },
+          { name: 'Twitter Mentions', url: '/look-world-talking/twitter-mentions' }
+        ];
+      } else {
+        breadcrumbs = [
+          { name: pageTitle, url: location.pathname }
+        ];
+      }
+    }
+
+    return {
+      ...baseSEO,
+      path: location.pathname,
+      breadcrumbs
+    };
+  };
+
+  const currentSEO = getSEOProps();
+
   return (
     <div className={`app-container ${currentView.type === 'grid' ? 'home-layout' : ''}`}>
+      <SEO {...currentSEO} />
       <aside className="sidebar">
         <div id="brand-logo" className="logo-container" onClick={() => { navigate('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img src="/image.png" alt="Shorya Logo" className="brand-logo-img" />
@@ -559,7 +616,6 @@ export default function App() {
                               setIsMobileMenuOpen(false);
 
                               if (sub === 'Acrylic on canvas') navigate('/gallery/acrylic-on-canvas');
-                              // else if (sub === 'Photo View') navigate('/gallery/photo-view');
                               else if (sub === 'Newspapers Articles') navigate('/media/newspaper-articles');
                               else if (sub === 'Magazines') navigate('/media/magazines');
                               else if (sub === 'Yahoo') navigate('/yahoo');
@@ -599,52 +655,56 @@ export default function App() {
       </aside>
 
       <main className="main-content">
+        <Suspense fallback={
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px', width: '100%' }}>
+            <div className="shorya-spinner-circle" style={{ width: '36px', height: '36px', border: '3px solid #e2e8f0', borderTopColor: '#0f172a', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }}></div>
+          </div>
+        }>
+          {currentView.type === 'grid' && <Home />}
 
-        {currentView.type === 'grid' && <Home />}
-
-        {currentView.type === 'biography' && <Biography />}
-        {currentView.type === 'huffington-post' && <HuffingtonPost />}
-        {currentView.type === 'artist-statement' && <ArtistStatement />}
-        {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
-        {/* {currentView.type === 'photo-view' && <PhotoView />} */}
-        {currentView.type === 'events' && <Events />}
-        {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
-        {currentView.type === 'magazines' && <Magazines />}
-        {currentView.type === 'yahoo' && <Yahoo />}
-        {currentView.type === 'readers-digest' && <ReadersDigest />}
-        {currentView.type === 'web-articles' && <WebArticles />}
-        {currentView.type === 'videos' && <Videos />}
-        {currentView.type === 'look-world-talking' && <LookWorldTalking />}
-        {currentView.type === 'twitter-mentions' && <TwitterMentions />}
-        {currentView.type === 'tedx-presentation' && <TedX />}
-        {currentView.type === 'awards' && <Awards />}
-        {currentView.type === 'contact' && <Contact />}
-        {currentView.type === 'celebrity-chef' && <CelebrityChefGala />}
-        {currentView.type === 'taj-mahal' && <TajMahalPalace />}
-        {currentView.type === 'pogo' && <Pogo />}
-        {currentView.type === 'spectrum-miami' && <SpectrumMiami />}
-        {currentView.type === 'kalidas' && <KalidasSanskrit />}
-        {currentView.type === 'art-expo' && <ArtExpo />}
-        {currentView.type === 'holtzman' && <HoltzmanGallery />}
-        {currentView.type === 'rk-laxman' && <RKLaxman />}
-        {currentView.type === 'ndtv' && <NDTV />}
-        {currentView.type === 'tedx-event-page' && <Ted />}
-        {currentView.type === 'nestle' && <Nestle />}
-        {currentView.type === 'sbs-radio' && <SBSRadio />}
-        {currentView.type === 'microsoft' && <MicrosoftFutureDecoded />}
-        {currentView.type === 'detail' && (
-          <ArtworkDetailView
-            data={currentView.data}
-            scrollToComments={scrollToComments}
-            containerRef={containerRef}
-            handleMouseMove={handleMouseMove}
-            setMagnifier={setMagnifier}
-            magnifier={magnifier}
-            getMagnifierStyles={getMagnifierStyles}
-            commentSectionRef={commentSectionRef}
-            fromGallery={location.state?.fromGallery}
-          />
-        )}
+          {currentView.type === 'biography' && <Biography />}
+          {currentView.type === 'huffington-post' && <HuffingtonPost />}
+          {currentView.type === 'artist-statement' && <ArtistStatement />}
+          {currentView.type === 'acrylic-on-canvas' && <AcrylicOnCanvas />}
+          {currentView.type === 'events' && <Events />}
+          {currentView.type === 'newspaper-articles' && <NewspaperArticles />}
+          {currentView.type === 'magazines' && <Magazines />}
+          {currentView.type === 'yahoo' && <Yahoo />}
+          {currentView.type === 'readers-digest' && <ReadersDigest />}
+          {currentView.type === 'web-articles' && <WebArticles />}
+          {currentView.type === 'videos' && <Videos />}
+          {currentView.type === 'look-world-talking' && <LookWorldTalking />}
+          {currentView.type === 'twitter-mentions' && <TwitterMentions />}
+          {currentView.type === 'tedx-presentation' && <TedX />}
+          {currentView.type === 'awards' && <Awards />}
+          {currentView.type === 'contact' && <Contact />}
+          {currentView.type === 'celebrity-chef' && <CelebrityChefGala />}
+          {currentView.type === 'taj-mahal' && <TajMahalPalace />}
+          {currentView.type === 'pogo' && <Pogo />}
+          {currentView.type === 'spectrum-miami' && <SpectrumMiami />}
+          {currentView.type === 'kalidas' && <KalidasSanskrit />}
+          {currentView.type === 'art-expo' && <ArtExpo />}
+          {currentView.type === 'holtzman' && <HoltzmanGallery />}
+          {currentView.type === 'rk-laxman' && <RKLaxman />}
+          {currentView.type === 'ndtv' && <NDTV />}
+          {currentView.type === 'tedx-event-page' && <Ted />}
+          {currentView.type === 'nestle' && <Nestle />}
+          {currentView.type === 'sbs-radio' && <SBSRadio />}
+          {currentView.type === 'microsoft' && <MicrosoftFutureDecoded />}
+          {currentView.type === 'detail' && (
+            <ArtworkDetailView
+              data={currentView.data}
+              scrollToComments={scrollToComments}
+              containerRef={containerRef}
+              handleMouseMove={handleMouseMove}
+              setMagnifier={setMagnifier}
+              magnifier={magnifier}
+              getMagnifierStyles={getMagnifierStyles}
+              commentSectionRef={commentSectionRef}
+              fromGallery={location.state?.fromGallery}
+            />
+          )}
+        </Suspense>
         {currentView.type !== 'grid' && <Footer />}
 
         {['newspaper-articles', 'magazines', 'events', 'look-world-talking', 'twitter-mentions', 'biography', 'videos', 'web-articles'].includes(currentView.type) && (

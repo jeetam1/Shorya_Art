@@ -20,7 +20,7 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/30.jpg",
     "slug": "Galaxy-Dreams",
-    "description": "What is out there – in space? Galaxies, stars, planets…far away and mysterious",
+    "description": "What is out there \u2013 in space? Galaxies, stars, planets\u2026far away and mysterious",
     "images": [
       "/Gallery-photos/galaxy_dreams_design.png"
     ]
@@ -33,7 +33,7 @@ export const galleryItems = [
     "age": "3 1/2",
     "src": "/Gallery-photos/15.jpg",
     "slug": "Rainy-Day",
-    "description": "Puddles of water, rain on my window, it’s a rainy day!",
+    "description": "Puddles of water, rain on my window, it\u2019s a rainy day!",
     "images": [
       "/Gallery-photos/rainy_day_design.png"
     ]
@@ -98,7 +98,7 @@ export const galleryItems = [
     "age": "3 1/2",
     "src": "/Gallery-photos/12.jpg",
     "slug": "Sunshine",
-    "description": "I love the sunshine! Painting in the sunshine makes the whole day joyful – and it comes through in the colors I paint",
+    "description": "I love the sunshine! Painting in the sunshine makes the whole day joyful \u2013 and it comes through in the colors I paint",
     "images": [
       "/Gallery-photos/sunshine_design.png"
     ]
@@ -112,7 +112,7 @@ export const galleryItems = [
     "src": "/Gallery-photos/32.jpg",
     "isWide": true,
     "slug": "Cloudy-Dreams",
-    "description": "The clouds pass by as I dream of ultramarine – my favorite color. Composed of two 24\" x 36\" canvases painted together as one large panorama.",
+    "description": "The clouds pass by as I dream of ultramarine \u2013 my favorite color. Composed of two 24\" x 36\" canvases painted together as one large panorama.",
     "images": [
       "/Gallery-photos/cloudy_dreams_design.png"
     ]
@@ -141,7 +141,7 @@ export const galleryItems = [
     "slug": "green-rising",
     "description": "An energetic abstract composition featuring dynamic green splatters and layered geometric textures painted on canvas.",
     "images": [
-      "/Gallery-photos/greenrishing_design.png"
+      "/Gallery-photos/green_rising_design.png"
     ]
   },
   {
@@ -175,7 +175,7 @@ export const galleryItems = [
   {
     "id": 40,
     "name": "Dancing With Color",
-    "medium": "Limited Edition Gicleé on Canvas",
+    "medium": "Limited Edition Gicle\u00e9 on Canvas",
     "size": "34\" x 20\" (unframed)",
     "year": "2011",
     "age": "5",
@@ -250,7 +250,10 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/11.jpg",
     "slug": "untitled-xvii",
-    "description": "An expressive abstract painting exploring vibrant green and golden textures on canvas."
+    "description": "An expressive abstract painting exploring vibrant green and golden textures on canvas.",
+    "images": [
+      "/Gallery-photos/untitled_xvii_design.png"
+    ]
   },
   {
     "id": 14,
@@ -260,7 +263,10 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/14.jpg",
     "slug": "Tiny-Soldiers",
-    "description": "Tiny soldiers marching across the painting…can you see them?"
+    "description": "Tiny soldiers marching across the painting\u2026can you see them?",
+    "images": [
+      "/Gallery-photos/tiny_soldiers_design.png"
+    ]
   },
   {
     "id": 16,
@@ -270,7 +276,10 @@ export const galleryItems = [
     "age": "3 1/2",
     "src": "/Gallery-photos/16.jpg",
     "slug": "Fall-Days",
-    "description": "The tall trees shed their leaves – leaves falling down in golden colors."
+    "description": "The tall trees shed their leaves \u2013 leaves falling down in golden colors.",
+    "images": [
+      "/Gallery-photos/fall_days_design.png"
+    ]
   },
   {
     "id": 17,
@@ -280,7 +289,10 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/17.jpg",
     "slug": "Dawning-Day",
-    "description": "The bright sun awakes us to a new day."
+    "description": "The bright sun awakes us to a new day.",
+    "images": [
+      "/Gallery-photos/dawning_day_design.png"
+    ]
   },
   {
     "id": 18,
@@ -290,7 +302,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/Gallery-photos/18.jpg",
     "slug": "in-the-deep-ii",
-    "description": "I look at mountains and oceans. Where you stand can change the meaning of deep for you."
+    "description": "I look at mountains and oceans. Where you stand can change the meaning of deep for you.",
+    "images": [
+      "/Gallery-photos/in_the_deep_ii_design.png"
+    ]
   },
   {
     "id": 19,
@@ -300,7 +315,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/Gallery-photos/19.png",
     "slug": "Meteor-Shower",
-    "description": "Spectacular color rains across the sky from the meteor shower. We wonder at its display."
+    "description": "Spectacular color rains across the sky from the meteor shower. We wonder at its display.",
+    "images": [
+      "/Gallery-photos/meteor_shower_design.png"
+    ]
   },
   {
     "id": 20,
@@ -310,7 +328,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/Gallery-photos/20.jpg",
     "slug": "Diving",
-    "description": "Diving deep into the water – what can we see? What sea life will we discover?"
+    "description": "Diving deep into the water \u2013 what can we see? What sea life will we discover?",
+    "images": [
+      "/Gallery-photos/diving_design.png"
+    ]
   },
   {
     "id": 21,
@@ -321,7 +342,10 @@ export const galleryItems = [
     "src": "/Gallery-photos/21.jpg",
     "isWide": true,
     "slug": "Shouts-and-Whispers",
-    "description": "When someone shouts is there really another message they would like to whisper to us? Composed of two 24\" x 36\" canvases painted together as one."
+    "description": "When someone shouts is there really another message they would like to whisper to us? Composed of two 24\" x 36\" canvases painted together as one.",
+    "images": [
+      "/Gallery-photos/shouts_and_whispers_design.png"
+    ]
   },
   {
     "id": 22,
@@ -331,7 +355,10 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/22.jpg",
     "slug": "Side-by-Side",
-    "description": "We’re standing side by side. Each one beside the other. It’s makes us feel strong when we are together."
+    "description": "We\u2019re standing side by side. Each one beside the other. It\u2019s makes us feel strong when we are together.",
+    "images": [
+      "/Gallery-photos/side_by_side_design.png"
+    ]
   },
   {
     "id": 27,
@@ -341,7 +368,10 @@ export const galleryItems = [
     "age": "4",
     "src": "/Gallery-photos/27.jpg",
     "slug": "Windblown",
-    "description": "The wind stirs up everything. It blows the dirt, the plants, the trees – even me!"
+    "description": "The wind stirs up everything. It blows the dirt, the plants, the trees \u2013 even me!",
+    "images": [
+      "/Gallery-photos/windblown_design.png"
+    ]
   },
   {
     "id": 32,
@@ -351,7 +381,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/photos/In_the_Forest.jpg",
     "slug": "in-the-forest",
-    "description": "A beautiful landscape painting capturing the textures and colors of a vibrant forest, created with acrylics on canvas."
+    "description": "A beautiful landscape painting capturing the textures and colors of a vibrant forest, created with acrylics on canvas.",
+    "images": [
+      "/Gallery-photos/in_the_forest_design.png"
+    ]
   },
   {
     "id": 33,
@@ -361,7 +394,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/photos/Rushing_Past.jpg",
     "slug": "rushing-past",
-    "description": "An energetic composition portraying dynamic motion and passing colors, created with acrylics on canvas."
+    "description": "An energetic composition portraying dynamic motion and passing colors, created with acrylics on canvas.",
+    "images": [
+      "/Gallery-photos/rushing_past_design.png"
+    ]
   },
   {
     "id": 34,
@@ -371,7 +407,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/photos/Snowy_Day.jpg",
     "slug": "snowy-day",
-    "description": "An abstract representation of a quiet, cold landscape filled with textures of white and soft colors on canvas."
+    "description": "An abstract representation of a quiet, cold landscape filled with textures of white and soft colors on canvas.",
+    "images": [
+      "/Gallery-photos/snowy_day_design.png"
+    ]
   },
   {
     "id": 35,
@@ -381,7 +420,10 @@ export const galleryItems = [
     "age": "5",
     "src": "/photos/Tapestries.jpg",
     "slug": "tapestries",
-    "description": "A layered and intricate abstract painting resembling woven fabric and complex patterns, created with acrylics on canvas."
+    "description": "A layered and intricate abstract painting resembling woven fabric and complex patterns, created with acrylics on canvas.",
+    "images": [
+      "/Gallery-photos/tapestries_design.png"
+    ]
   },
   {
     "id": 1,
@@ -390,7 +432,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/1.jpg",
-    "slug": "untitled-vi"
+    "slug": "untitled-vi",
+    "images": [
+      "/Gallery-photos/untitled_vi_design.png"
+    ]
   },
   {
     "id": 2,
@@ -399,7 +444,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/2.jpg",
-    "slug": "untitled-vii"
+    "slug": "untitled-vii",
+    "images": [
+      "/Gallery-photos/untitled_vii_design.png"
+    ]
   },
   {
     "id": 3,
@@ -408,7 +456,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/3.jpg",
-    "slug": "untitled-ix"
+    "slug": "untitled-ix",
+    "images": [
+      "/Gallery-photos/untitled_ix_design.png"
+    ]
   },
   {
     "id": 4,
@@ -417,7 +468,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/4.jpg",
-    "slug": "untitled-x"
+    "slug": "untitled-x",
+    "images": [
+      "/Gallery-photos/untitled_x_design.png"
+    ]
   },
   {
     "id": 5,
@@ -426,7 +480,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/5.jpg",
-    "slug": "untitled-xi"
+    "slug": "untitled-xi",
+    "images": [
+      "/Gallery-photos/untitled_xi_design.png"
+    ]
   },
   {
     "id": 6,
@@ -435,7 +492,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/6.jpg",
-    "slug": "untitled-xii"
+    "slug": "untitled-xii",
+    "images": [
+      "/Gallery-photos/untitled_xii_design.png"
+    ]
   },
   {
     "id": 7,
@@ -444,7 +504,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/7.jpg",
-    "slug": "untitled-xiii"
+    "slug": "untitled-xiii",
+    "images": [
+      "/Gallery-photos/untitled_xiii_design.png"
+    ]
   },
   {
     "id": 8,
@@ -453,7 +516,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/8.jpg",
-    "slug": "untitled-xiv"
+    "slug": "untitled-xiv",
+    "images": [
+      "/Gallery-photos/untitled_xiv_design.png"
+    ]
   },
   {
     "id": 9,
@@ -462,7 +528,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/9.jpg",
-    "slug": "untitled-xv"
+    "slug": "untitled-xv",
+    "images": [
+      "/Gallery-photos/untitled_xv_design.png"
+    ]
   },
   {
     "id": 10,
@@ -471,7 +540,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/10.jpg",
-    "slug": "untitled-xvi"
+    "slug": "untitled-xvi",
+    "images": [
+      "/Gallery-photos/untitled_xvi_design.png"
+    ]
   },
   {
     "id": 29,
@@ -480,7 +552,10 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/29.jpg",
-    "slug": "untitled-v"
+    "slug": "untitled-v",
+    "images": [
+      "/Gallery-photos/untitled_v_design.png"
+    ]
   },
   {
     "id": 31,
@@ -489,6 +564,9 @@ export const galleryItems = [
     "year": "2020",
     "age": "6",
     "src": "/Gallery-photos/31.jpg",
-    "slug": "untitled-viii"
+    "slug": "untitled-viii",
+    "images": [
+      "/Gallery-photos/untitled_viii_design.png"
+    ]
   }
 ];

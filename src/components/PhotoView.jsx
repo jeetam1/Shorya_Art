@@ -293,7 +293,7 @@ export default function PhotoView() {
                       let w = 24, h = 18;
                       const parts = (activeItem.size || '24" x 18"').split(/[xX]/).map(p => parseFloat(p.trim().replace(/["\s]/g, "")));
                       if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) { w = parts[0]; h = parts[1]; }
-                      if (activeItem.isWide) { const t = Math.max(w,h); h = Math.min(w,h); w = t; }
+                      if (activeItem.isWide) { const t = Math.max(w, h); h = Math.min(w, h); w = t; }
                       return `${w} / ${h}`;
                     })() : '4 / 3'
                   }}

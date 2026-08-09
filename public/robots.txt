@@ -1,0 +1,29 @@
+# Robots.txt for https://www.shoryamahanot.com
+# Allow all search engine crawlers to discover and index all content & artworks
+
+User-agent: *
+Allow: /
+Allow: /Gallery-photos/
+Allow: /home-photos/
+Allow: /events-photos/
+Allow: /biography-photos/
+Allow: /banners/
+Allow: /media/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+Host: https://www.shoryamahanot.com
+Sitemap: https://www.shoryamahanot.com/sitemap.xml

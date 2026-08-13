@@ -8,7 +8,7 @@ export const gridItems = [
     description: "I look at mountains and oceans. Where you stand can change the meaning of deep for you.",
     medium: "Acrylic on canvas",
     size: "24\" x 36\"",
-    src: "/home-photos/1.jpg"
+    src: "/home-photos/shorya-mahanot-in-the-deep-ii-abstract-painting.jpg"
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ export const gridItems = [
     description: "Shorya Mahanot, Asia’s youngest abstract painter, could become a global figure in the art\nworld, believes his proud father.",
     linkText: "theGuardian.com",
     linkUrl: "https://www.theguardian.com", 
-    src: "/home-photos/2.jpg"
+    src: "/home-photos/shorya-mahanot-the-guardian-newspaper-feature.jpg"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const gridItems = [
     description: "My friends, my family, they all come into my pretty dreams.",
     medium: "Acrylic on canvas",
     size: "35.5\" x 23.5\"",
-    src: "/home-photos/3.jpg"
+    src: "/home-photos/shorya-mahanot-pretty-dreams-abstract-painting.jpg"
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ export const gridItems = [
     title: "The Huffington Post",
     summary: "Artist Prodigy Shorya Mahanot May Just Be A Six-Year-Old Jackson Pollock.",
     customLayout: 'huffington', 
-    src: "/home-photos/4.jpg",
+    src: "/home-photos/shorya-mahanot-the-huffington-post-interview.jpg",
     description: "Read the full interview...",
   },
   {
@@ -48,7 +48,7 @@ export const gridItems = [
     directLink: '#/biography', 
     summary: "World’s youngest signature style abstract artist.",
     description: "World’s youngest signature style abstract artist.",
-    src: "/home-photos/5.jpg"
+    src: "/home-photos/shorya-mahanot-artist-biography-portrait.jpg"
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "17.5\" x 23.5\"",
     age: "4",
-    src: "/home-photos/6.jpg"
+    src: "/home-photos/shorya-mahanot-in-the-sea-abstract-painting.png"
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ export const gridItems = [
     title: "TED X",
     customLayout: 'tedx',
     summary: "The story of my life’ – see my TEDx speech about 7 years of my Abstract Art Journey.",
-    src: "/home-photos/30.jpg"
+    src: "/home-photos/shorya-mahanot-tedx-speech-abstract-art-journey.jpg"
   },
   {
     id: 8,
@@ -78,7 +78,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "35.5\" x 23.5\"",
     age: "4",
-    src: "/home-photos/29.jpg"
+    src: "/home-photos/shorya-mahanot-blushing-abstract-painting.jpg"
   },
   {
     id: 9,
@@ -89,7 +89,7 @@ export const gridItems = [
     medium: "Acrylic on Canvas",
     size: "36\" x 24\"",
     age: "4",
-    src: "/home-photos/10.jpg"
+    src: "/home-photos/shorya-mahanot-colours-of-life-abstract-painting.jpg"
   },
   {
     id: 10,
@@ -98,7 +98,7 @@ export const gridItems = [
     summary: "Growing Up Gifted There simply isn’t a single way to define or gauge",
     medium: "Acrylic on canvas",
     size: "36\" x 48\"",
-    src: "/home-photos/11.jpg"
+    src: "/home-photos/shorya-mahanot-readers-digest-magazine-feature.jpg"
   },
   {
     id: 11,
@@ -109,7 +109,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "36\" x 24\"",
     age: "4",
-    src: "/home-photos/12.jpg"
+    src: "/home-photos/shorya-mahanot-side-by-side-abstract-painting.jpg"
   },
 
   {
@@ -117,14 +117,14 @@ export const gridItems = [
     slug: "Yahoo!",
     title: "Yahoo!",
     summary: "A few children who took people’s breath away, with their intelligence",
-    src: "/home-photos/13.jpg"
+    src: "/home-photos/shorya-mahanot-yahoo-news-feature.jpg"
   },
   {
     id: 14,
     slug: "SBS-Radio",
     title: "SBS Radio",
     summary: "Reaching to the land down under.Shorya’s Interview with SBS Radio Australia ",
-    src: "/home-photos/14.png"
+    src: "/home-photos/shorya-mahanot-sbs-radio-australia-interview.png"
   },
   {
     id: 15,
@@ -135,7 +135,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "24\" x 18\"",
     age: "4",
-    src: "/home-photos/15.jpg"
+    src: "/home-photos/shorya-mahanot-tiny-soldiers-abstract-painting.jpg"
   },
   {
     id: 16,
@@ -146,7 +146,7 @@ export const gridItems = [
     medium: "Mixed Media",
     size: "36\" X 24\"",
     age: "4",
-    src: "/home-photos/16.jpg"
+    src: "/home-photos/shorya-mahanot-windblown-abstract-painting.jpg"
   },
   {
     id: 17,
@@ -157,7 +157,7 @@ export const gridItems = [
     medium: "Acrylic on Canvas",
     size: "36\" x 24\"",
     age: "4",
-    src: "/home-photos/17.jpg"
+    src: "/home-photos/shorya-mahanot-galaxy-dreams-abstract-painting.jpg"
   },
   {
     id: 18,
@@ -168,7 +168,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "36\" X 24\"",
     age: "4",
-    src: "/home-photos/18.jpg"
+    src: "/home-photos/shorya-mahanot-dawning-day-abstract-painting.jpg"
   },
   {
     id: 19,
@@ -179,7 +179,7 @@ export const gridItems = [
     medium: "Oil on canvas",
     size: "18\" X 24\"",
     age: "4",
-    src: "/home-photos/19.jpg"
+    src: "/home-photos/shorya-mahanot-sea-splash-abstract-painting.jpg"
   },
   {
     id: 20,
@@ -190,7 +190,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "18\" x 24\"",
     age: "4",
-    src: "/home-photos/20.jpg"
+    src: "/home-photos/shorya-mahanot-sunshine-abstract-painting.jpg"
   },
   {
     id: 21,
@@ -201,7 +201,7 @@ export const gridItems = [
     medium: "Mixed Media",
     size: "24\" x 18\"",
     age: "3 1/2",
-    src: "/home-photos/21.jpg"
+    src: "/home-photos/shorya-mahanot-rainy-day-abstract-painting.jpg"
   },
   {
     id: 22,
@@ -212,7 +212,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "24\" x 36\"",
     age: "5",
-    src: "/home-photos/22.jpg"
+    src: "/home-photos/shorya-mahanot-meteor-shower-abstract-painting.png"
   },
   {
     id: 23,
@@ -222,7 +222,7 @@ export const gridItems = [
     description: "My friends, my family, they all come into my pretty dreams.",
     medium: "Acrylic on canvas",
     size: "24\" x 34\"",
-    src: "/home-photos/23.jpg"
+    src: "/home-photos/shorya-mahanot-pretty-dreams-artwork-large.jpg"
   },
   {
     id: 24,
@@ -234,7 +234,7 @@ export const gridItems = [
     size: "72\" x 24\"",
     two: "24″ x 36″ canvases painted together",
     age: "6",
-    src: "/Gallery-photos/32.jpg"
+    src: "/Gallery-photos/shorya-mahanot-cloudy-dreams-abstract-painting.jpg"
   },
 
   {
@@ -247,7 +247,7 @@ export const gridItems = [
     size: "72\" X 24\"",
     two: "24″ x 36″ Canvases painted together as one",
     age: "6",
-    src: "/home-photos/25.jpg"
+    src: "/home-photos/shorya-mahanot-shouts-and-whispers-abstract-painting.jpg"
   },
   {
     id: 26,
@@ -258,7 +258,7 @@ export const gridItems = [
     medium: "Oil on canvas",
     size: "18\" X 24\"",
     age: "3 1/2",
-    src: "/home-photos/26.jpg"
+    src: "/home-photos/shorya-mahanot-fall-days-abstract-painting.jpg"
   },
   {
     id: 27,
@@ -269,7 +269,7 @@ export const gridItems = [
     medium: "Acrylic on canvas",
     size: "24\" x 36\"",
     age: "5",
-    src: "/home-photos/27.jpg"
+    src: "/home-photos/shorya-mahanot-diving-abstract-painting.jpg"
   },
   {
     id: 28,
@@ -280,6 +280,6 @@ export const gridItems = [
     medium: "Mixed Media",
     size: "33\" x 20\"",
     age: "6",
-    src: "/home-photos/28.jpg"
+    src: "/home-photos/shorya-mahanot-moving-colour-abstract-painting.jpg"
   }
 ];

@@ -5,11 +5,11 @@ export const galleryItems = [
     "size": "35.5\" x 23.5\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/25.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-blushing-abstract-painting.jpg",
     "slug": "Blushing",
     "description": "My sister is blushing. She is trying to hide behind her long hair but I can see her and her pretty eyes shining at me!",
     "images": [
-      "/Gallery-photos/blushing_design_wide.png"
+      "/Gallery-photos/shorya-mahanot-blushing-wall-mockup.png"
     ]
   },
   {
@@ -18,11 +18,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/30.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-galaxy-dreams-abstract-painting.jpg",
     "slug": "Galaxy-Dreams",
-    "description": "What is out there \u2013 in space? Galaxies, stars, planets\u2026far away and mysterious",
+    "description": "What is out there – in space? Galaxies, stars, planets…far away and mysterious",
     "images": [
-      "/Gallery-photos/galaxy_dreams_design.png"
+      "/Gallery-photos/shorya-mahanot-galaxy-dreams-wall-mockup.png"
     ]
   },
   {
@@ -31,11 +31,11 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2010",
     "age": "3 1/2",
-    "src": "/Gallery-photos/15.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-rainy-day-abstract-painting.jpg",
     "slug": "Rainy-Day",
-    "description": "Puddles of water, rain on my window, it\u2019s a rainy day!",
+    "description": "Puddles of water, rain on my window, it’s a rainy day!",
     "images": [
-      "/Gallery-photos/rainy_day_design.png"
+      "/Gallery-photos/shorya-mahanot-rainy-day-wall-mockup.png"
     ]
   },
   {
@@ -44,11 +44,11 @@ export const galleryItems = [
     "size": "33\" x 20\"",
     "year": "2012",
     "age": "6",
-    "src": "/Gallery-photos/28.png",
+    "src": "/Gallery-photos/shorya-mahanot-moving-colour-abstract-painting.png",
     "slug": "Moving-Colour",
     "description": "Can you see the color moving through this painting? Where is it going? Where are we going?",
     "images": [
-      "/Gallery-photos/moving_colour_design.png"
+      "/Gallery-photos/shorya-mahanot-moving-colour-wall-mockup.png"
     ]
   },
   {
@@ -57,11 +57,11 @@ export const galleryItems = [
     "size": "35.5\" x 23.5\"",
     "year": "2010",
     "age": "5",
-    "src": "/Gallery-photos/26.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-pretty-dreams-abstract-painting.jpg",
     "slug": "Pretty-Dreams",
     "description": "My friends, my family, they all come into my pretty dreams.",
     "images": [
-      "/Gallery-photos/pretty_dreams_design.png"
+      "/Gallery-photos/shorya-mahanot-pretty-dreams-wall-mockup.png"
     ]
   },
   {
@@ -70,11 +70,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/home-photos/10.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-colours-of-life-abstract-painting.jpg",
     "slug": "Colours-of-Life",
     "description": "The colors of life surround us. The garden has so many colors from the plants and flowers. They make me smile.",
     "images": [
-      "/Gallery-photos/colours_of_life_design.png"
+      "/Gallery-photos/shorya-mahanot-colours-of-life-wall-mockup.png"
     ]
   },
   {
@@ -83,11 +83,11 @@ export const galleryItems = [
     "size": "17.5\" x 23.5\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/24.png",
+    "src": "/Gallery-photos/shorya-mahanot-in-the-sea-abstract-painting.png",
     "slug": "In-The-Sea",
     "description": "We wonder what goes on in the depths of the sea. We imagine it and the colors come through",
     "images": [
-      "/Gallery-photos/in_the_sea_design.png"
+      "/Gallery-photos/shorya-mahanot-in-the-sea-wall-mockup.png"
     ]
   },
   {
@@ -96,11 +96,11 @@ export const galleryItems = [
     "size": "18\" x 24\"",
     "year": "2010",
     "age": "3 1/2",
-    "src": "/Gallery-photos/12.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-sunshine-abstract-painting.jpg",
     "slug": "Sunshine",
-    "description": "I love the sunshine! Painting in the sunshine makes the whole day joyful \u2013 and it comes through in the colors I paint",
+    "description": "I love the sunshine! Painting in the sunshine makes the whole day joyful – and it comes through in the colors I paint",
     "images": [
-      "/Gallery-photos/sunshine_design.png"
+      "/Gallery-photos/shorya-mahanot-sunshine-wall-mockup.png"
     ]
   },
   {
@@ -109,12 +109,12 @@ export const galleryItems = [
     "size": "72\" x 24\"",
     "year": "2012",
     "age": "6",
-    "src": "/Gallery-photos/32.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-cloudy-dreams-abstract-painting.jpg",
     "isWide": true,
     "slug": "Cloudy-Dreams",
-    "description": "The clouds pass by as I dream of ultramarine \u2013 my favorite color. Composed of two 24\" x 36\" canvases painted together as one large panorama.",
+    "description": "The clouds pass by as I dream of ultramarine – my favorite color. Composed of two 24\" x 36\" canvases painted together as one large panorama.",
     "images": [
-      "/Gallery-photos/cloudy_dreams_design.png"
+      "/Gallery-photos/shorya-mahanot-cloudy-dreams-wall-mockup.png"
     ]
   },
   {
@@ -123,11 +123,11 @@ export const galleryItems = [
     "size": "18\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/23.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-sea-splash-abstract-painting.jpg",
     "slug": "Sea-Splash",
     "description": "The sea splashes against the sand, changing the sand each time the waves come. Bringing treasures from the sea and taking them back again.",
     "images": [
-      "/Gallery-photos/sea_splash_design.png"
+      "/Gallery-photos/shorya-mahanot-sea-splash-wall-mockup.png"
     ]
   },
   {
@@ -137,11 +137,11 @@ export const galleryItems = [
     "size": "35.5\" x 23.5\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/greenrishing.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-green-rising-abstract-painting.jpg",
     "slug": "green-rising",
     "description": "An energetic abstract composition featuring dynamic green splatters and layered geometric textures painted on canvas.",
     "images": [
-      "/Gallery-photos/green_rising_design.png"
+      "/Gallery-photos/shorya-mahanot-green-rising-wall-mockup.png"
     ]
   },
   {
@@ -151,11 +151,11 @@ export const galleryItems = [
     "size": "17.5\" x 23.5\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/electric_lights.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-electric-lights-abstract-painting.jpg",
     "slug": "electric-lights",
     "description": "An electrifying abstract painting featuring vibrant orange and green highlights set against cool grey textures and energetic brushstrokes.",
     "images": [
-      "/Gallery-photos/electric_lights_design.png"
+      "/Gallery-photos/shorya-mahanot-electric-lights-wall-mockup.png"
     ]
   },
   {
@@ -165,25 +165,25 @@ export const galleryItems = [
     "size": "17.5\" x 23.5\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/firebright.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-firebright-abstract-painting.jpg",
     "slug": "firebright",
     "description": "A dynamic abstract painting bursting with fiery red, orange, and golden hues layered with bold brushwork on canvas.",
     "images": [
-      "/Gallery-photos/firebright_design.png"
+      "/Gallery-photos/shorya-mahanot-firebright-wall-mockup.png"
     ]
   },
   {
     "id": 40,
     "name": "Dancing With Color",
-    "medium": "Limited Edition Gicle\u00e9 on Canvas",
+    "medium": "Limited Edition Gicleé on Canvas",
     "size": "34\" x 20\" (unframed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/dancing_with_color.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-dancing-with-color-abstract-painting.jpg",
     "slug": "dancing-with-color",
     "description": "A vibrant and joyful abstract composition exploring blue, red, and yellow splash textures on canvas.",
     "images": [
-      "/Gallery-photos/dancing_with_color_design.png"
+      "/Gallery-photos/shorya-mahanot-dancing-with-color-wall-mockup.png"
     ]
   },
   {
@@ -193,11 +193,11 @@ export const galleryItems = [
     "size": "24\" x 18\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/swirls.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-swirls-abstract-painting.jpg",
     "slug": "swirls",
     "description": "An expressive abstract painting featuring dynamic golden and black swirl textures layered over subtle grey tones.",
     "images": [
-      "/Gallery-photos/swirls_design.png"
+      "/Gallery-photos/shorya-mahanot-swirls-wall-mockup.png"
     ]
   },
   {
@@ -207,11 +207,11 @@ export const galleryItems = [
     "size": "18\" x 24\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/clouds_and_wind.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-clouds-and-wind-abstract-painting.jpg",
     "slug": "clouds-and-wind",
     "description": "A dramatic abstract painting featuring expressive grey, white, and red brushwork symbolizing clouds moving through wind.",
     "images": [
-      "/Gallery-photos/clouds_and_wind_design.png"
+      "/Gallery-photos/shorya-mahanot-clouds-and-wind-wall-mockup.png"
     ]
   },
   {
@@ -221,11 +221,11 @@ export const galleryItems = [
     "size": "17.5\" x 23.5\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/emotions.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-emotions-abstract-painting.jpg",
     "slug": "emotions",
     "description": "An intense abstract painting conveying raw emotion through layered red, black, and silver brushstrokes on canvas.",
     "images": [
-      "/Gallery-photos/emotions_design.png"
+      "/Gallery-photos/shorya-mahanot-emotions-wall-mockup.png"
     ]
   },
   {
@@ -235,11 +235,11 @@ export const galleryItems = [
     "size": "18\" x 24\" (Framed)",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/moving_fast.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-moving-fast-abstract-painting.jpg",
     "slug": "moving-fast",
     "description": "A high-velocity abstract composition featuring horizontal streaks of yellow, green, and red painted across a textured canvas.",
     "images": [
-      "/Gallery-photos/moving_fast_design.png"
+      "/Gallery-photos/shorya-mahanot-moving-fast-wall-mockup.png"
     ]
   },
   {
@@ -248,11 +248,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/11.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xvii-abstract-painting.jpg",
     "slug": "untitled-xvii",
     "description": "An expressive abstract painting exploring vibrant green and golden textures on canvas.",
     "images": [
-      "/Gallery-photos/untitled_xvii_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xvii-wall-mockup.png"
     ]
   },
   {
@@ -261,11 +261,11 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/14.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-tiny-soldiers-abstract-painting.jpg",
     "slug": "Tiny-Soldiers",
-    "description": "Tiny soldiers marching across the painting\u2026can you see them?",
+    "description": "Tiny soldiers marching across the painting…can you see them?",
     "images": [
-      "/Gallery-photos/tiny_soldiers_design.png"
+      "/Gallery-photos/shorya-mahanot-tiny-soldiers-wall-mockup.png"
     ]
   },
   {
@@ -274,11 +274,11 @@ export const galleryItems = [
     "size": "18\" x 24\"",
     "year": "2009",
     "age": "3 1/2",
-    "src": "/Gallery-photos/16.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-fall-days-abstract-painting.jpg",
     "slug": "Fall-Days",
-    "description": "The tall trees shed their leaves \u2013 leaves falling down in golden colors.",
+    "description": "The tall trees shed their leaves – leaves falling down in golden colors.",
     "images": [
-      "/Gallery-photos/fall_days_design.png"
+      "/Gallery-photos/shorya-mahanot-fall-days-wall-mockup.png"
     ]
   },
   {
@@ -287,11 +287,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/17.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-dawning-day-abstract-painting.jpg",
     "slug": "Dawning-Day",
     "description": "The bright sun awakes us to a new day.",
     "images": [
-      "/Gallery-photos/dawning_day_design.png"
+      "/Gallery-photos/shorya-mahanot-dawning-day-wall-mockup.png"
     ]
   },
   {
@@ -300,11 +300,11 @@ export const galleryItems = [
     "size": "24\" x 36\"",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/18.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-in-the-deep-ii-abstract-painting.jpg",
     "slug": "in-the-deep-ii",
     "description": "I look at mountains and oceans. Where you stand can change the meaning of deep for you.",
     "images": [
-      "/Gallery-photos/in_the_deep_ii_design.png"
+      "/Gallery-photos/shorya-mahanot-in-the-deep-ii-wall-mockup.png"
     ]
   },
   {
@@ -313,11 +313,11 @@ export const galleryItems = [
     "size": "24\" x 36\"",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/19.png",
+    "src": "/Gallery-photos/shorya-mahanot-meteor-shower-abstract-painting.png",
     "slug": "Meteor-Shower",
     "description": "Spectacular color rains across the sky from the meteor shower. We wonder at its display.",
     "images": [
-      "/Gallery-photos/meteor_shower_design.png"
+      "/Gallery-photos/shorya-mahanot-meteor-shower-wall-mockup.png"
     ]
   },
   {
@@ -326,11 +326,11 @@ export const galleryItems = [
     "size": "24\" x 36\"",
     "year": "2011",
     "age": "5",
-    "src": "/Gallery-photos/20.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-diving-abstract-painting.jpg",
     "slug": "Diving",
-    "description": "Diving deep into the water \u2013 what can we see? What sea life will we discover?",
+    "description": "Diving deep into the water – what can we see? What sea life will we discover?",
     "images": [
-      "/Gallery-photos/diving_design.png"
+      "/Gallery-photos/shorya-mahanot-diving-wall-mockup.png"
     ]
   },
   {
@@ -339,12 +339,12 @@ export const galleryItems = [
     "size": "24\" x 72\"",
     "year": "2012",
     "age": "6",
-    "src": "/Gallery-photos/21.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-shouts-and-whispers-abstract-painting.jpg",
     "isWide": true,
     "slug": "Shouts-and-Whispers",
     "description": "When someone shouts is there really another message they would like to whisper to us? Composed of two 24\" x 36\" canvases painted together as one.",
     "images": [
-      "/Gallery-photos/shouts_and_whispers_design.png"
+      "/Gallery-photos/shorya-mahanot-shouts-and-whispers-wall-mockup.png"
     ]
   },
   {
@@ -353,11 +353,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/22.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-side-by-side-abstract-painting.jpg",
     "slug": "Side-by-Side",
-    "description": "We\u2019re standing side by side. Each one beside the other. It\u2019s makes us feel strong when we are together.",
+    "description": "We’re standing side by side. Each one beside the other. It’s makes us feel strong when we are together.",
     "images": [
-      "/Gallery-photos/side_by_side_design.png"
+      "/Gallery-photos/shorya-mahanot-side-by-side-wall-mockup.png"
     ]
   },
   {
@@ -366,11 +366,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2010",
     "age": "4",
-    "src": "/Gallery-photos/27.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-windblown-abstract-painting.jpg",
     "slug": "Windblown",
-    "description": "The wind stirs up everything. It blows the dirt, the plants, the trees \u2013 even me!",
+    "description": "The wind stirs up everything. It blows the dirt, the plants, the trees – even me!",
     "images": [
-      "/Gallery-photos/windblown_design.png"
+      "/Gallery-photos/shorya-mahanot-windblown-wall-mockup.png"
     ]
   },
   {
@@ -379,11 +379,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2011",
     "age": "5",
-    "src": "/photos/In_the_Forest.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-in-the-forest-abstract-painting.jpg",
     "slug": "in-the-forest",
     "description": "A beautiful landscape painting capturing the textures and colors of a vibrant forest, created with acrylics on canvas.",
     "images": [
-      "/Gallery-photos/in_the_forest_design.png"
+      "/Gallery-photos/shorya-mahanot-in-the-forest-wall-mockup.png"
     ]
   },
   {
@@ -392,11 +392,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2011",
     "age": "5",
-    "src": "/photos/Rushing_Past.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-rushing-past-abstract-painting.jpg",
     "slug": "rushing-past",
     "description": "An energetic composition portraying dynamic motion and passing colors, created with acrylics on canvas.",
     "images": [
-      "/Gallery-photos/rushing_past_design.png"
+      "/Gallery-photos/shorya-mahanot-rushing-past-wall-mockup.png"
     ]
   },
   {
@@ -405,11 +405,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2011",
     "age": "5",
-    "src": "/photos/Snowy_Day.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-snowy-day-abstract-painting.jpg",
     "slug": "snowy-day",
     "description": "An abstract representation of a quiet, cold landscape filled with textures of white and soft colors on canvas.",
     "images": [
-      "/Gallery-photos/snowy_day_design.png"
+      "/Gallery-photos/shorya-mahanot-snowy-day-wall-mockup.png"
     ]
   },
   {
@@ -418,11 +418,11 @@ export const galleryItems = [
     "size": "36\" x 24\"",
     "year": "2011",
     "age": "5",
-    "src": "/photos/Tapestries.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-tapestries-abstract-painting.jpg",
     "slug": "tapestries",
     "description": "A layered and intricate abstract painting resembling woven fabric and complex patterns, created with acrylics on canvas.",
     "images": [
-      "/Gallery-photos/tapestries_design.png"
+      "/Gallery-photos/shorya-mahanot-tapestries-wall-mockup.png"
     ]
   },
   {
@@ -431,10 +431,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/1.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-vi-abstract-painting.jpg",
     "slug": "untitled-vi",
     "images": [
-      "/Gallery-photos/untitled_vi_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-vi-wall-mockup.png"
     ]
   },
   {
@@ -443,10 +443,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/2.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-vii-abstract-painting.jpg",
     "slug": "untitled-vii",
     "images": [
-      "/Gallery-photos/untitled_vii_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-vii-wall-mockup.png"
     ]
   },
   {
@@ -455,10 +455,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/3.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-ix-abstract-painting.jpg",
     "slug": "untitled-ix",
     "images": [
-      "/Gallery-photos/untitled_ix_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-ix-wall-mockup.png"
     ]
   },
   {
@@ -467,10 +467,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/4.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-x-abstract-painting.jpg",
     "slug": "untitled-x",
     "images": [
-      "/Gallery-photos/untitled_x_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-x-wall-mockup.png"
     ]
   },
   {
@@ -479,10 +479,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/5.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xi-abstract-painting.jpg",
     "slug": "untitled-xi",
     "images": [
-      "/Gallery-photos/untitled_xi_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xi-wall-mockup.png"
     ]
   },
   {
@@ -491,10 +491,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/6.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xii-abstract-painting.jpg",
     "slug": "untitled-xii",
     "images": [
-      "/Gallery-photos/untitled_xii_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xii-wall-mockup.png"
     ]
   },
   {
@@ -503,10 +503,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/7.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xiii-abstract-painting.jpg",
     "slug": "untitled-xiii",
     "images": [
-      "/Gallery-photos/untitled_xiii_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xiii-wall-mockup.png"
     ]
   },
   {
@@ -515,10 +515,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/8.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xiv-abstract-painting.jpg",
     "slug": "untitled-xiv",
     "images": [
-      "/Gallery-photos/untitled_xiv_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xiv-wall-mockup.png"
     ]
   },
   {
@@ -527,10 +527,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/9.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xv-abstract-painting.jpg",
     "slug": "untitled-xv",
     "images": [
-      "/Gallery-photos/untitled_xv_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xv-wall-mockup.png"
     ]
   },
   {
@@ -539,10 +539,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/10.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-xvi-abstract-painting.jpg",
     "slug": "untitled-xvi",
     "images": [
-      "/Gallery-photos/untitled_xvi_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-xvi-wall-mockup.png"
     ]
   },
   {
@@ -551,10 +551,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/29.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-v-abstract-painting.jpg",
     "slug": "untitled-v",
     "images": [
-      "/Gallery-photos/untitled_v_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-v-wall-mockup.png"
     ]
   },
   {
@@ -563,10 +563,10 @@ export const galleryItems = [
     "size": "24\" x 18\"",
     "year": "2020",
     "age": "6",
-    "src": "/Gallery-photos/31.jpg",
+    "src": "/Gallery-photos/shorya-mahanot-untitled-viii-abstract-painting.jpg",
     "slug": "untitled-viii",
     "images": [
-      "/Gallery-photos/untitled_viii_design.png"
+      "/Gallery-photos/shorya-mahanot-untitled-viii-wall-mockup.png"
     ]
   }
 ];

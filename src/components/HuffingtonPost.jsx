@@ -24,7 +24,7 @@ export default function HuffingtonPost() {
             </p>
           </div>
           <div className="split-img-right">
-            <img loading="lazy" src="/home-photos/4.jpg" alt="The Huffington Post Logo" className="inline-article-img" />
+            <img loading="lazy" src="/home-photos/shorya-mahanot-the-huffington-post-interview.jpg" alt="The Huffington Post Feature - Shorya Mahanot Child Prodigy" className="inline-article-img" />
           </div>
         </div>
 

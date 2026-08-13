@@ -74,7 +74,7 @@ export const ROUTE_SEO_MAP = {
     description: "Read the inspiring biography of Shorya Mahanot, dubbed 'India's Child Picasso' by The Guardian. Discover his international debut at Art Expo New York, Spectrum Miami, and academic accolades.",
     keywords: "Shorya Mahanot Biography, India's Child Picasso, Youngest Signature Style Abstract Artist, Child Prodigy Painter Bio, Shorya Mahanot Life, Art Expo New York 2013, Holtzman Gallery Artist",
     path: "/biography",
-    image: `${BASE_URL}/biography-photos/511.jpg`,
+    image: `${BASE_URL}/biography-photos/shorya-mahanot-artist-portrait.jpg`,
     type: "profile"
   },
   "artist-statement": {
@@ -250,7 +250,7 @@ export const ROUTE_SEO_MAP = {
     description: "Watch Shorya Mahanot's inspiring TEDx talk sharing his extraordinary 7-year journey of abstract art, colors, and creativity.",
     keywords: "TEDx Shorya Mahanot, TEDx Speech Young Artist, Story of My Life TEDx, Abstract Art Keynote Presentation",
     path: "/TEDX",
-    image: `${BASE_URL}/home-photos/30.jpg`,
+    image: `${BASE_URL}/home-photos/shorya-mahanot-tedx-speech-abstract-art-journey.jpg`,
     type: "article"
   },
   microsoft: {
@@ -274,7 +274,7 @@ export const ROUTE_SEO_MAP = {
     description: "Yahoo global feature highlighting Shorya Mahanot as the Jackson Pollock of India, detailing his vibrant abstract masterpieces.",
     keywords: "Yahoo Shorya Mahanot, Jackson Pollock of India Yahoo, Yahoo News Abstract Art Prodigy, Shorya Mahanot Web Feature",
     path: "/yahoo",
-    image: `${BASE_URL}/home-photos/13.jpg`,
+    image: `${BASE_URL}/home-photos/shorya-mahanot-yahoo-news-feature.jpg`,
     type: "article"
   },
   "readers-digest": {
@@ -282,7 +282,7 @@ export const ROUTE_SEO_MAP = {
     description: "Reader's Digest magazine exclusive article 'Growing Up Gifted' exploring the early genius and signature style of Shorya Mahanot.",
     keywords: "Readers Digest Shorya Mahanot, Growing Up Gifted Magazine, Readers Digest Child Prodigy, Shorya Mahanot Genius",
     path: "/readers-digest",
-    image: `${BASE_URL}/home-photos/14.jpg`,
+    image: `${BASE_URL}/home-photos/shorya-mahanot-readers-digest-magazine-feature.jpg`,
     type: "article"
   },
   "huffington-post": {
@@ -290,7 +290,7 @@ export const ROUTE_SEO_MAP = {
     description: "The Huffington Post arts feature: 'Artist Prodigy Shorya Mahanot May Just Be A Six-Year-Old Jackson Pollock'. Read the full international story.",
     keywords: "Huffington Post Shorya Mahanot, Six Year Old Jackson Pollock, Huffington Post Art Review, Child Prodigy Painter Huffington",
     path: "/artwork/the-huffington-post",
-    image: `${BASE_URL}/home-photos/4.jpg`,
+    image: `${BASE_URL}/home-photos/shorya-mahanot-the-huffington-post-interview.jpg`,
     type: "article"
   }
 };

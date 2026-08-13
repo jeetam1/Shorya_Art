@@ -46,9 +46,9 @@ export default function Biography() {
 
         <div 
           className="shorya-main-portrait-frame-wrapper" 
-          onClick={() => setModalImage('/biography-photos/511.jpg')}
+          onClick={() => setModalImage('/biography-photos/shorya-mahanot-artist-portrait.jpg')}
         >
-          <img loading="lazy" src="/biography-photos/511.jpg" alt="Shorya Mahanot - World's Youngest Signature Style Abstract Artist Portrait" className="shorya-main-portrait-img-element" />
+          <img loading="lazy" src="/biography-photos/shorya-mahanot-artist-portrait.jpg" alt="Shorya Mahanot - World's Youngest Signature Style Abstract Artist Portrait" className="shorya-main-portrait-img-element" />
         </div>
 
         <div className="shorya-biography-paragraphs-stack-column" style={{ maxWidth: '800px' }}>
@@ -82,15 +82,15 @@ export default function Biography() {
             to create a legacy, one magnum opus at one time!
           </p>
 
-          <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/biography-photos/500.jpg')} style={{ margin: '40px auto', display: 'flex', justifyContent: 'center' }}>
-            <img loading="lazy" src="/biography-photos/500.jpg" alt="Shorya Mahanot Abstract Art Journey Timeline and International Milestones" className="shorya-timeline-infographic-asset-img" style={{ margin: '0 auto' }} />
+          <div className="shorya-timeline-infographic-holder-box" onClick={() => setModalImage('/biography-photos/shorya-mahanot-art-journey-timeline.jpg')} style={{ margin: '40px auto', display: 'flex', justifyContent: 'center' }}>
+            <img loading="lazy" src="/biography-photos/shorya-mahanot-art-journey-timeline.jpg" alt="Shorya Mahanot Abstract Art Journey Timeline and International Milestones" className="shorya-timeline-infographic-asset-img" style={{ margin: '0 auto' }} />
           </div>
 
           <h2 className="shorya-secondary-scaffold-section-header">Shorya's art journey till date</h2>
 
           <div className="shorya-single-artwork-presentation-row-block" style={{ margin: '20px auto 40px auto', display: 'flex', justifyContent: 'center' }}>
-            <div className="shorya-single-artwork-inner-card-frame" onClick={() => setModalImage('/biography-photos/502.jpg')} style={{ margin: '0 auto' }}>
-              <img loading="lazy" src="/biography-photos/502.jpg" alt="Sparks of Spring (2011) - Original Acrylic on Canvas Abstract Painting by Shorya Mahanot" className="shorya-single-artwork-img-asset" />
+            <div className="shorya-single-artwork-inner-card-frame" onClick={() => setModalImage('/biography-photos/shorya-mahanot-sparks-of-spring-abstract-painting.jpg')} style={{ margin: '0 auto' }}>
+              <img loading="lazy" src="/biography-photos/shorya-mahanot-sparks-of-spring-abstract-painting.jpg" alt="Sparks of Spring (2011) - Original Acrylic on Canvas Abstract Painting by Shorya Mahanot" className="shorya-single-artwork-img-asset" />
               <div className="shorya-single-artwork-meta-footer-strip">
                 <span className="shorya-meta-txt-left">Sparks of Spring (Sold)</span>
                 <span className="shorya-meta-badge-center">2011</span>

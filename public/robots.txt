@@ -1,5 +1,5 @@
 # Robots.txt for https://www.shoryamahanot.com
-# Allow all search engine crawlers to discover and index all content & artworks
+# Allow search engines to index core site content while blocking legacy WordPress feeds & parameters
 
 User-agent: *
 Allow: /
@@ -10,8 +10,22 @@ Allow: /biography-photos/
 Allow: /banners/
 Allow: /media/
 
+# Block legacy WordPress feeds, queries, and taxonomies
+Disallow: /*/feed/
+Disallow: /feed/
+Disallow: /*?attachment_id=*
+Disallow: /*?replytocom=*
+Disallow: /Media/uncategorized/
+Disallow: /Media/featured/
+
 User-agent: Googlebot
 Allow: /
+Disallow: /*/feed/
+Disallow: /feed/
+Disallow: /*?attachment_id=*
+Disallow: /*?replytocom=*
+Disallow: /Media/uncategorized/
+Disallow: /Media/featured/
 
 User-agent: Googlebot-Image
 Allow: /

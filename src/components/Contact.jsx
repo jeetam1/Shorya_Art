@@ -61,7 +61,7 @@ export default function Contact() {
         setIsSending(false);
         setIsSubmitted(true);
       } else {
-        throw new Error('Server returned an unexpected status code.');
+        throw new Error('Server returned AN expected status code.');
       }
       
     } catch (err) {

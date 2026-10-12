@@ -1,9 +1,6 @@
 {
   "redirects": [
-    { "source": "/biography/", "destination": "/biography", "permanent": true },
-    { "source": "/events/", "destination": "/events", "permanent": true },
-    { "source": "/contact/", "destination": "/contact", "permanent": true },
-    { "source": "/look-world-talking/", "destination": "/look-world-talking", "permanent": true },
+    { "source": "/:path+/", "destination": "/:path+", "permanent": true },
 
     { "source": "/pretty-dreams-2", "destination": "/artwork/Pretty-Dreams", "permanent": true },
     { "source": "/pretty-dreams-2/:match*", "destination": "/artwork/Pretty-Dreams", "permanent": true },

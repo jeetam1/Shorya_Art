@@ -367,9 +367,21 @@ export default function App() {
   };
 
   useEffect(() => {
-    const path = location.pathname;
+    const rawPath = location.pathname;
+    const cleanPath = (rawPath.length > 1 && rawPath.endsWith('/'))
+      ? rawPath.replace(/\/+$/, '')
+      : rawPath;
 
-    const matchedRoute = ROUTE_MAP.find(route => route.paths.includes(path));
+    if (rawPath !== cleanPath) {
+      navigate(`${cleanPath}${location.search}${location.hash}`, { replace: true });
+      return;
+    }
+
+    const path = cleanPath;
+
+    const matchedRoute = ROUTE_MAP.find(route => 
+      route.paths.includes(path) || route.paths.some(p => p.replace(/\/+$/, '') === path)
+    );
     let viewType = 'grid';
     let viewData = null;
 
@@ -381,7 +393,7 @@ export default function App() {
         setExpandedMenu(matchedRoute.expand);
       }
     } else if (path.startsWith('/artwork/')) {
-      const urlSlug = path.replace('/artwork/', '');
+      const urlSlug = path.replace('/artwork/', '').replace(/\/+$/, '');
       let match = gridItems.find(item => item.slug === urlSlug || item.slug?.toLowerCase() === urlSlug.toLowerCase());
 
       const galleryMatch = galleryItems.find(item => item.slug === urlSlug || item.slug?.toLowerCase() === urlSlug.toLowerCase());

@@ -3,6 +3,10 @@
 
 User-agent: *
 Allow: /
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
 Allow: /Gallery-photos/
 Allow: /home-photos/
 Allow: /events-photos/
@@ -20,6 +24,10 @@ Disallow: /Media/featured/
 
 User-agent: Googlebot
 Allow: /
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
 Disallow: /*/feed/
 Disallow: /feed/
 Disallow: /*?attachment_id=*
@@ -29,6 +37,9 @@ Disallow: /Media/featured/
 
 User-agent: Googlebot-Image
 Allow: /
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /apple-touch-icon.png
 
 User-agent: Bingbot
 Allow: /
